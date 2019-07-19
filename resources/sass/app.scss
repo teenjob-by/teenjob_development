@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+@import 'header';
+@import 'site';
+@import 'footer';
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 960px;
+    padding: 0;
+  }
+}
