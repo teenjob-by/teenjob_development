@@ -191,3 +191,30 @@
   line-height: 19px;
   color: #FFFFFF;
 }
+
+@media (min-width: 321px) {
+  .container {
+    min-width: 960px;
+  }
+  .container-fluid {
+    min-width: 960px;
+  }
+  .header{
+    min-width: 960px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    width: 320px;
+    overflow-x: hidden;
+  }
+  .container-fluid {
+    width: 320px;
+    overflow-x: hidden;
+  }
+  .header{
+    width: 320px;
+    overflow-x: hidden;
+  }
+}

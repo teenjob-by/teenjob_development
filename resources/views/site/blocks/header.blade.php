@@ -1,9 +1,6 @@
 <div class="header {{ request()->routeIs('home') ? 'bg-1' : '' }} {{ request()->routeIs('conditions') ? 'bg-2' : '' }}">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="images/logo.png"></a>
 
             <div class="collapse navbar-collapse" id="navbarsMain">
@@ -21,6 +18,9 @@
                        href="{{ route('home') }}"><strong>@lang('header.navlink_5')</strong></a>
                 </div>
             </div>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
     </nav>
 
