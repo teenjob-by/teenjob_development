@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  composer:
+    container_name: 'teenjob-composer'
+    restart: 'no'
+    image: composer
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: 'install --ignore-platform-reqs'
+  mysql:
+    build: ./docker/mysql
+    container_name: 'teenjob-mysql'
+    restart: 'always'
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: teenjob
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+  webserver:
+    build:
+      context: './'
+      dockerfile: 'docker/apache/Dockerfile'
+    container_name: 'teenjob-webserver'
+    restart: 'always'
+    working_dir: /var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "9000"
+    links:
+      - mysql
+    volumes:
+      - ./:/var/www/html
+      - ./docker/apache/logs:/var/log/apache2
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php/apache/vhosts:/etc/apache2/sites-enabled
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'teenjob-phpmyadmin'
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - '8085:80'

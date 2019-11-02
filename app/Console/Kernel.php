@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->command('archive:process')->dailyAt('00:01')->thenPing('https://cronhub.io/ping/04e239e0-ef90-11e9-9049-b3495b2b8c72');
     }
 
     /**

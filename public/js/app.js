@@ -49361,8 +49361,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Frozen\Desktop\TeenJob\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Frozen\Desktop\TeenJob\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Frozen\Desktop\TeenJob\teenjob_development\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Frozen\Desktop\TeenJob\teenjob_development\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

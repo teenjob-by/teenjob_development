@@ -1,0 +1,313 @@
+.container-fluid.organisation {
+  background: #ffffff;
+
+  .nav-tabs {
+    a {
+      font-size: 16px;
+      font-weight: bold;
+      padding-right: 0.8rem;
+      padding-left: 0.8rem;
+    }
+  }
+  .internship-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 40px;
+    border: 1px solid #cfcfcf94;
+  }
+  .items-empty {
+    width: 100%;
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-size: 16px;
+    color: #274684;
+  }
+  .container {
+    padding: 25px 66px 50px;
+    max-width: 756px;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    background: #FFFFFF;
+
+    .title {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      color: #274684;
+      margin-top: 34px;
+      margin-bottom: 34px;
+      text-align: left;
+    }
+
+    .section-title {
+      margin-top: 35px;
+    }
+
+    .internship-item {
+      height: 84px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .internship-name {
+        padding-left: 35px;
+        padding-right: 10px;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        display: block;
+        line-height: 22px;
+        align-items: center;
+        color: #2F2F2F;
+      }
+      @media all and (max-width: 639px) {
+        .internship-name {
+          padding-left: 0 !important;
+        }
+      }
+    }
+
+    .internship-actions {
+      height: 84px;
+      display: flex;
+      flex-direction: column;
+      margin-right: 32px;
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      a {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: right;
+        text-decoration-line: underline;
+        color: #274684;
+      }
+      span {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: right;
+        color: #2F2F2F;
+      }
+
+    }
+
+    h3 {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 54px;
+      text-align: center;
+      color: #2C2C2C;
+      margin-top: 10px;
+    }
+
+    label {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      color: #2F2F2F;
+      text-align: right;
+      margin-left: -86px;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: #121212;
+      margin-top: 35px;
+      margin-bottom: 25px;
+      padding-left: 10px;
+    }
+
+    .btn {
+      width: auto;
+      min-width: 385px;
+      height: 50px;
+
+      background: #274684;
+      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45);
+      color: #fff !important;
+      border-radius: 0;
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 35px;
+      margin-right: 15px;
+      margin-top: 40px;
+    }
+
+    input {
+      border-radius: 0;
+      min-width: 385px;
+      background: #fff;
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      border: 1px solid #E8ECEE;
+      color: #000000;
+      outline: none;
+
+      &:focus {
+        outline: none;
+        border: 1px solid #E8ECEE;
+        box-shadow: none;
+      }
+    }
+
+    @media all and (max-width: 639px) {
+      input {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+
+    hr {
+      margin-top: 0.5rem;
+    }
+
+    textarea {
+      height: 120px;
+    }
+  }
+
+  .btn-create {
+    width: 289px !important;
+    height: 50px !important;
+    min-width: auto !important;
+    margin-left: auto !important;
+  }
+
+    @media all and (max-width:800px) {
+        .container {
+            padding: 25px 0px 50px;
+
+            h2 {
+                text-align: center;
+            }
+
+            .btn {
+                height: auto !important;
+                width: 100% !important;
+                min-width: auto !important;
+            }
+
+            .form-group {
+                flex-direction: column !important;
+                label {
+                    margin-left: 0 !important;
+                    text-align: left !important;
+                }
+            }
+        }
+    }
+}
+
+.container-fluid.organisation.organisation-form {
+  h3 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 35px;
+    color: #2C2C2C;
+  }
+
+  h2 {
+    padding-left: 35px !important;
+  }
+
+  .remove {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration: underline;
+    margin-top: 35px;
+    color: #274684;
+    margin-left: 260px !important;
+    cursor: pointer;
+  }
+  textarea::placeholder {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #B0B0B0;
+  }
+  .tip {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 150%;
+    margin-bottom: 5px;
+    color: #000000;
+    margin-left: 145px;
+  }
+  .btn {
+    margin-left: 155px !important;
+  }
+    @media all and (max-width: 800px) {
+        h2 {
+            padding-left: 0px !important;
+        }
+
+        .btn-success {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .tip {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .remove {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+}
+
+.volunteer-icon {
+  width: 24px;
+  height: 24px;
+  background: url("/images/volunteer.png") 100% 100% no-repeat;
+  margin-left: auto;
+}
+
+.intern-icon {
+  width: 24px;
+  height: 24px;
+  background: url("/images/internship.png") 100% 100% no-repeat;
+  margin-left: auto;
+}

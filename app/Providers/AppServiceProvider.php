@@ -3,6 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Schema;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+
     /**
      * Bootstrap any application services.
      *
@@ -23,6 +29,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Schema::defaultStringLength(191);
+        VerifyEmail::toMailUsing(function ($notifiable,$url){
+            $mail = new MailMessage;
+            $mail->subject('Подтверждение адреса');
+            $mail->markdown('emails.verify-email', ['url' => $url]);
+            return $mail;
+        });
     }
 }

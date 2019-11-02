@@ -26,7 +26,7 @@ return [
     'navlink_4' => 'Поддержать проект',
     'navlink_5' => 'Опубликовать объявление',
     'title' => 'Паспрабуй!',
-    'search_placeholder' => 'Официант',
+    'search_placeholder' => 'Введите название или город',
     'search_placeholder_alter' => 'Найди свою первую работу',
     'example_text' => 'Например: Помощник повара',
 

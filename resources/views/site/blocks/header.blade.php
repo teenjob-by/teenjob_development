@@ -1,27 +1,50 @@
-<div class="header {{ request()->routeIs('home') ? 'bg-1' : '' }} {{ request()->routeIs('conditions') ? 'bg-2' : '' }}">
+<div class="header {{ request()->routeIs('home') ? 'bg-1' : 'bg-2' }} ">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="images/logo.png"></a>
-
+            <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
             <div class="collapse navbar-collapse" id="navbarsMain">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
+                    <a class="nav-link {{ (app('request')->input('internship') == 'on') ? 'active' : '' }}" href="{{ route('site.offers', ['internship' => 'on']) }}">
                         @lang('header.navlink_1')
                     </a>
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
-                       href="{{ route('home') }}">@lang('header.navlink_2')</a>
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
-                       href="{{ route('home') }}">@lang('header.navlink_3')</a>
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
-                       href="{{ route('home') }}">@lang('header.navlink_4')</a>
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
-                       href="{{ route('home') }}"><strong>@lang('header.navlink_5')</strong></a>
+                    <a class="nav-link {{ (app('request')->input('volunteering') == 'on') ? 'active' : '' }}"
+                       href="{{ route('site.offers', ['volunteering' => 'on']) }}"><span>@lang('header.navlink_2')</span></a>
+                    <a class="nav-link {{ request()->routeIs('site.events') ? 'active' : '' }}"
+                       href="{{ route('site.events') }}">@lang('header.navlink_3')</a>
+                    <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
+                       href="{{ route('site.howsupport') }}">@lang('header.navlink_4')</a>
+
+                    @guest
+                        <div class="nav-item">
+                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_5')</strong><p>вход для организаций</p></a>
+                        </div>
+                    @else
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->role)
+                            <a class="nav-link" href="{{ route('organisation') }}"><strong>Личный кабинет</strong></a>
+                        @else
+                            <a class="nav-link" href="{{ route('admin') }}"><strong>Панель управления</strong></a>
+                        @endif
+
+                        <a class="nav-link account-delimiter">/</a>
+                        <a class="nav-link account-logout" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                 Выйти
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </div>
             </div>
+
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+
     </nav>
 
     <div class="search-wrapper">
@@ -33,19 +56,17 @@
         @endif
 
 
-        <div class="search-box">
+        <form id="main-search" class="search-box desktop-search" method="get" action="{{ route('site.search') }}">
             <div class="input-group mb-3">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle category-dropdown" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Категории
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Стажировка</a>
-                        <a class="dropdown-item" href="#">Волонтерство</a>
-                        <a class="dropdown-item" href="#">Мероприятия</a>
-                    </div>
+                    <select class="dropdown-menu category-dropdown" name="category">
+                        <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))? 'selected': ''}} value="offers">Категории</option>
+                        <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">Стажировка</option>
+                        <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">Волонтерство</option>
+                        <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">Мероприятия</option>
+                    </select>
                 </div>
-                <input type="text" class="form-control search-input" placeholder="{{ request()->routeIs('home') ? trans('header.search_placeholder') : trans('header.search_placeholder_alter') }}">
+                <input type="text" class="form-control search-input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                 <div class="input-group-append">
                     <button class="btn btn-success btn-search" type="submit">
                         <i class="fas fa-search"></i>
@@ -53,7 +74,74 @@
                 </div>
             </div>
 
-        </div>
+        </form>
+        @if(Route::getCurrentRoute()->uri() == '/')
+            <a class="btn volunteers-desktop-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdPUyBvRzbUtRkMIlJMC8ZoVjUPQPlV1YMILN4NqLjhBoJOaw/viewform" target="_blank"><span>Присоединиться к базе волонтеров</span></a>
+        @endif
+
+
+            @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))))
+                @if(!(Str::contains(Route::getCurrentRoute()->uri(), 'organisation')))
+
+                    <div class="mobile-categories {{ (Route::getCurrentRoute()->uri() != '/') ? "mobile-categories-string" : "" }}">
+                        <a class="mobile-categories-button" href="/offers?volunteering=on">
+                    <span>
+                        Волонтерство
+                    </span>
+                        </a>
+                        <a class="mobile-categories-button" href="/offers?internship=on">
+                    <span>
+                        Стажировки
+                    </span>
+                        </a>
+                        <a class="mobile-categories-button" href="/events">
+                    <span>
+                        Мероприятия
+                    </span>
+                        </a>
+                    </div>
+                @endif
+            @else
+                <form id="main-mobile-search" class="search-box mobile-search" method="get" action="{{ route('site.search') }}">
+                    <div class="input-group mb-3">
+
+                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))
+                            <input type="hidden" name="category" value="offers">
+                            <input type="hidden" name="volunteering" value="on">
+                            <input type="hidden" name="internship" value="on">
+                        @elseif(app('request')->input('volunteering') == 'on')
+                            <input type="hidden" name="volunteering" value="on">
+                            <input type="hidden" name="category" value="offers">
+                        @elseif(app('request')->input('internship') == 'on')
+                            <input type="hidden" name="internship" value="on">
+                            <input type="hidden" name="category" value="offers">
+                        @elseif(request()->routeIs('site.events'))
+                            <input type="hidden" name="category" value="events">
+                        @endif
+
+                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))
+                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск волонтерства и стажировок" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                        @elseif(app('request')->input('volunteering') == 'on')
+                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск волонтерства" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                        @elseif(app('request')->input('internship') == 'on')
+                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск стажировок" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                        @elseif(request()->routeIs('site.events'))
+                                <input type="text" class="form-control search-input" name="query" placeholder="Поиск мероприятий" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                        @endif
+
+                        <div class="input-group-append">
+                            <button class="btn btn-success btn-search" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            @endif
+
+
     </div>
 
+    @if(Route::getCurrentRoute()->uri() == '/')
+        <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdPUyBvRzbUtRkMIlJMC8ZoVjUPQPlV1YMILN4NqLjhBoJOaw/viewform" target="_blank"><span>Присоединиться к базе волонтеров</span></a>
+    @endif
 </div>

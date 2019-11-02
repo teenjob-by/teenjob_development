@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\City;
+use App\Organisation;
 use App\Http\Controllers\Controller;
+use App\OrganisationType;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/organisation';
 
     /**
      * Create a new controller instance.
@@ -50,7 +53,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'link' => ['required', 'string', 'max:255'],
+            'city' => ['required'],
+            'unique_identifier' => ['required', 'digits:9'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:organisations'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -59,14 +65,35 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Organisation
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Organisation::create([
             'name' => $data['name'],
+            'link' => $data['link'],
+            'type' => $data['type'],
+            'unique_identifier' => $data['unique_identifier'],
+            'city_id' => $data['city'],
+            'contact' => $data['contact'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 1
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $types = OrganisationType::all();
+        $cities = City::all();
+
+        return view("auth.register")->with("types", $types)->with("cities", $cities);
+    }
+
+    public function redirectTo(){
+
+        return '/organisation/';
+
     }
 }

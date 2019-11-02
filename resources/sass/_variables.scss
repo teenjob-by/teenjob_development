@@ -2,9 +2,8 @@
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-size-base: 0.875rem;
 
 // Colors
 $blue: #3490dc;
@@ -24,4 +23,13 @@ $theme-colors: (
         "danger": #ff4136
 );
 
+$custom-file-text: (
+        en: "Browse",
+        ru: "Загрузить"
+);
 
+
+.select2-container {
+  display: block !important;
+  width: 100% !important;
+}
