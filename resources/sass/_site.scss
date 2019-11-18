@@ -5,6 +5,14 @@ body {
 h2 {
     word-wrap: break-word;
 }
+
+#loader {
+  width: 100px;
+  margin-left: auto;
+  height: 100px;
+  margin-right: auto;
+  margin-top: 40px;
+}
 .section-about {
   padding-top: 85px;
   padding-bottom: 103px;
