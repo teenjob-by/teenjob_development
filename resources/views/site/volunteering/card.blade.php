@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="offer-title">{{ $volunteering->title }}</h2>
-                    <h3 class="offer-organisation">{{ $volunteering->organisation['name'] }}</h3>
+                    <h3 class="offer-organisation"><a href="{{ $volunteering->organisation['link'] }}" target="_blank">{{$volunteering->organisation['name']}}</a></h3>
                     <p class="offer-card-info location">{{ $volunteering->city->name }}</p>
                     <p class="offer-card-info portfolio">{{ $volunteering->speciality()->name }}</p>
                     <p class="offer-card-info user">Возраст: {{ $volunteering->age }}+</p>

@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="event-title">{{ $event->title }}</h2>
-                    <h3 class="event-organisation">{{ $event->organisation['name'] }}</h3>
+                    <h3 class="event-organisation"><a href="{{ $event->organisation['link'] }}" target="_blank">{{$event->organisation['name']}}</a></h3>
                     <p class="event-card-info date">{{ $event->date_start->format('H:i') }}, {{ $event->date_start->format('d.m.Y') }}</p>
                     <p class="event-card-info location">{{ $event->city->name }}, {{ $event->address }}</p>
                     <p class="event-card-info user">Возраст: {{ $event->age }}+</p>
