@@ -9,6 +9,7 @@ services:
     volumes:
       - ./:/app
     command: 'install --ignore-platform-reqs'
+
   mysql:
     build: ./docker/mysql
     container_name: 'teenjob-mysql'
@@ -20,6 +21,9 @@ services:
       MYSQL_DATABASE: teenjob
       MYSQL_USER: admin
       MYSQL_PASSWORD: root
+    networks:
+          - internal
+
   webserver:
     build:
       context: './'
@@ -39,6 +43,12 @@ services:
       - ./docker/apache/logs:/var/log/apache2
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
       - ./docker/php/apache/vhosts:/etc/apache2/sites-enabled
+    environment:
+          XDEBUG_CONFIG: "remote_host=host.docker.internal remote_enable=1"
+          PHP_IDE_CONFIG: "serverName=Docker"
+    networks:
+      - internal
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: 'teenjob-phpmyadmin'
@@ -49,3 +59,13 @@ services:
       PMA_PORT: 3306
     ports:
       - '8085:80'
+    networks:
+          - internal
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.100.0/24
