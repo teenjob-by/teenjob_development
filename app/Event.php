@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Str;
 
 class Event extends Model
 {
@@ -35,15 +36,19 @@ class Event extends Model
 
     public function getPreviewDesc()
     {
-        $str = str_replace("</p>", "<br>", $this->description);
-        $str = str_replace("</a>", " ", $str);
-        $str = str_replace("</li>", "<br>", $str);
-        $str = str_replace("&nbsp;", ' ', strip_tags($str, '<br>'));
-        $str = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $str);
-        $str = strip_tags($str);
-        $out = strlen($str) > 120 ? mb_substr($str,0,120,'utf-8')."..." : $str;
+//        $str = str_replace("</p>", "<br>", );
+//        $str = str_replace("</a>", " ", $str);
+//        $str = str_replace("</li>", "<br>", $str);
+//        $str = str_replace("&nbsp;", ' ', strip_tags($str, '<br>'));
+//        $str = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $str);
+//        $str = strip_tags($str);
+//        $out = strlen($str) > 120 ? mb_substr($str,0,120,'utf-8')."..." : $str;
+        $desc = $this->description;
+        $str = preg_replace('/\s+/', ' ', clean($desc));
+        $out = Str::limit($str,80,'...');
 
-        return $out.'</p>';
+
+        return $out;
     }
 
     public function getSeoMeta()

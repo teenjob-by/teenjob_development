@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Jenssegers\Date\Date;
+use Illuminate\Support\Str;
 
 class Offer extends Model
 {
@@ -44,16 +45,18 @@ class Offer extends Model
 
     public function getPreviewDesc()
     {
-        $str = str_replace("</p>", "<br>", $this->description);
-        $str = str_replace("</a>", " ", $str);
-        $str = str_replace("</li>", "<br>", $str);
-        $str = str_replace("&nbsp;", ' ', strip_tags($str, '<br>'));
-        $str = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $str);
-        $out = strlen($str) > 300 ? mb_substr($str,0,299,'utf-8')."..." : $str;
+//        $str = str_replace("</p>", "<br>", $this->description);
+//        $str = str_replace("</a>", " ", $str);
+//        $str = str_replace("</li>", "<br>", $str);
+//        $str = str_replace("&nbsp;", ' ', strip_tags($str, '<br>'));
+//        $str = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $str);
+//        $out = strlen($str) > 300 ? mb_substr($str,0,299,'utf-8')."..." : $str;
 
 
-
-        return $out.'</p>';
+        $desc = $this->description;
+        $str = preg_replace('/\s+/', ' ', clean($desc));
+        $out = Str::limit($str,200,'...');
+        return $out;
     }
 
     public function getSeoMeta()
