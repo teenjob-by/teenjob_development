@@ -55,12 +55,20 @@
 .bg-1 {
   background-image: url("/images/header.png");
 }
+
+
 .bg-2 {
   background-image: url("/images/header2.png");
   height: 236px;
 }
 .bg-3 {
   background-image: url("/images/header3.png");
+}
+
+@media all and (max-width: 640px) {
+  .bg-1, .bg-2, .bg-3 {
+    box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.4);
+  }
 }
 .search-wrapper {
   text-align: center;
@@ -389,7 +397,7 @@
     .search-wrapper {
       .title {
         line-height: normal;
-        margin-bottom: 55px;
+        margin-bottom: 32px;
       }
     }
 
@@ -397,21 +405,16 @@
 
     .mobile-categories {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
+      flex-wrap: nowrap;
       margin: auto;
       max-width: 320px;
-      justify-content: space-between;
+      align-items: center;
 
 
       .mobile-categories-button {
-        width: 137px;
-        height: 48px;
-        background: #274684;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 32px;
+        margin-bottom: 15px;
+        cursor: pointer;
 
 
         span {
@@ -419,7 +422,7 @@
           font-family: Open Sans;
           font-style: normal;
           font-weight: 600;
-          font-size: 14px;
+          font-size: 18px;
           line-height: 19px;
           color: #FFFFFF;
         }
@@ -435,6 +438,32 @@
 
     .mobile-categories-string {
       flex-wrap: nowrap !important;
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+      max-width: 320px;
+      justify-content: space-between;
+      padding-top: 56px;
+
+
+      .mobile-categories-button {
+        margin-bottom: 0px;
+        width: 137px;
+        height: 48px;
+        background: #274684;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          display: block;
+          font-family: Open Sans;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 19px;
+          color: #FFFFFF;
+        }
+      }
 
       .mobile-categories-button:nth-child(2) {
         border-right: 2px solid #ffffff;
