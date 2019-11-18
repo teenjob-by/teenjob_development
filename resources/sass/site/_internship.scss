@@ -62,6 +62,10 @@
       font-size: 12px;
       line-height: 16px;
       color: #274684;
+      a {
+        color: #274684;
+        text-decoration: none;
+      }
     }
 
     .offer-description {
@@ -75,6 +79,19 @@
       font-size: 14px;
       line-height: 150%;
       color: #2F2F2F;
+
+      p {
+        font-family: "Open Sans", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 150%;
+        color: #2F2F2F;
+      }
+
+      img {
+        padding: 10px;
+      }
     }
 
     .offer-footer {
@@ -127,6 +144,10 @@
 
   .offer-organisation {
     margin-bottom: 8px;
+    a {
+      color: #274684;
+      text-decoration: none;
+    }
   }
 
   .back-link {
@@ -158,6 +179,10 @@
   .offer-description {
     margin-top: 24px;
     margin-bottom: 50px;
+
+   img {
+     padding: 10px;
+   }
   }
 
   h2 {

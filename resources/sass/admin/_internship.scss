@@ -57,6 +57,10 @@
       font-size: 12px;
       line-height: 16px;
       color: #274684;
+      a {
+        color: #274684;
+        text-decoration: none;
+      }
     }
 
     .offer-description {
@@ -70,6 +74,7 @@
       font-size: 14px;
       line-height: 150%;
       color: #2F2F2F;
+
     }
 
     .offer-footer {
