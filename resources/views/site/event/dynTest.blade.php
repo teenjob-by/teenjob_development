@@ -9,7 +9,7 @@
                     <div class="filter-panel">
                         <div class="window-cross" onclick="closeFilter()"><i class="fa fa-times"></i></div>
 
-                        <form method="get" action="{{ route('site.events') }}">
+                        <form method="get">
 
 
                             @if(!empty($_GET['query']))
@@ -24,14 +24,14 @@
                                 <label class="label-title" for="filter-type">Состоится</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['today']))? 'checked="checked"': '' }} class="overflow-control-input" name="today" >
+                                        <input type="checkbox" {{ (!empty($_GET['today']))? 'checked="checked"': '' }} class="overflow-control-input" name="today" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Сегодня</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['tomorrow']))? 'checked="checked"': '' }} class="overflow-control-input" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'tomorrow'))? 'checked="checked"': '' }} name="tomorrow" >
+                                        <input type="checkbox" {{ (!empty($_GET['tomorrow']))? 'checked="checked"': '' }} class="overflow-control-input" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'tomorrow'))? 'checked="checked"': '' }} name="tomorrow" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Завтра</span>
                                     </label>
@@ -39,7 +39,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['week']))? 'checked="checked"': '' }} class="overflow-control-input" name="week" >
+                                        <input type="checkbox" {{ (!empty($_GET['week']))? 'checked="checked"': '' }} class="overflow-control-input" name="week" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">На этой неделе</span>
                                     </label>
@@ -47,7 +47,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['nextweek']))? 'checked="checked"': '' }} class="overflow-control-input" name="nextweek" >
+                                        <input type="checkbox" {{ (!empty($_GET['nextweek']))? 'checked="checked"': '' }} class="overflow-control-input" name="nextweek" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">На следующей неделе</span>
                                     </label>
@@ -55,7 +55,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['past']))? 'checked="checked"': '' }} class="overflow-control-input" name="past" >
+                                        <input type="checkbox" {{ (!empty($_GET['past']))? 'checked="checked"': '' }} class="overflow-control-input" name="past" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Прошедшие</span>
                                     </label>
@@ -65,14 +65,14 @@
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['payment']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="payment" >
+                                        <input {{ (!empty($_GET['payment']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="payment" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Платно</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['free']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="free" >
+                                        <input {{ (!empty($_GET['free']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="free" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Бесплатно</span>
                                     </label>
@@ -80,7 +80,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['donate']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="donate" >
+                                        <input {{ (!empty($_GET['donate']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="donate" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">За донейт</span>
                                     </label>
@@ -90,7 +90,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-age">Возраст</label>
-                                <select class="select-selectric" name="age" >
+                                <select class="select-selectric" name="age" onchange="getData(getPage(), this.form)">
 
                                     @foreach($ages as $age)
                                         @isset($_GET['age'])
@@ -101,16 +101,12 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-success" type="submit">Найти</button>
-                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-12 filter-mobile-compact">
 
-                    <form method="get" action="{{ route('site.events') }}" class="filter-panel-compact">
+                    <form method="get" class="filter-panel-compact">
 
 
                         @if(!empty($_GET['query']))
@@ -120,7 +116,7 @@
 
                         <div class="form-group filter-city-mobile">
 
-                            <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage())">
+                            <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage(), this.form)">
                                 <option selected value> Все города </option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
@@ -140,7 +136,7 @@
             <div class="row align-items-start">
                 <div class="col-lg-4 filter-non-mobile">
                     <div class="filter-panel">
-                        <form method="get" action="{{ route('site.events') }}" id="filter">
+                        <form method="get" class="filter">
 
 
                             @if(!empty($_GET['query']))
@@ -150,7 +146,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">Город</label>
-                                <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage())">
+                                <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage(), this.form)">
                                     <option selected value> Все города </option>
                                     @foreach($cities as $city)
                                         @isset($_GET['city_id'])
@@ -166,14 +162,14 @@
                                 <label class="label-title" for="filter-type">Состоится</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['today']))? 'checked="checked"': '' }} class="overflow-control-input" name="today" onchange="getData(getPage())">
+                                        <input type="checkbox" {{ (!empty($_GET['today']))? 'checked="checked"': '' }} class="overflow-control-input" name="today" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Сегодня</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['tomorrow']))? 'checked="checked"': '' }} class="overflow-control-input" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'tomorrow'))? 'checked="checked"': '' }} name="tomorrow" onchange="getData(getPage())">
+                                        <input type="checkbox" {{ (!empty($_GET['tomorrow']))? 'checked="checked"': '' }} class="overflow-control-input" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'tomorrow'))? 'checked="checked"': '' }} name="tomorrow" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Завтра</span>
                                     </label>
@@ -181,7 +177,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['week']))? 'checked="checked"': '' }} class="overflow-control-input" name="week" onchange="getData(getPage())">
+                                        <input type="checkbox" {{ (!empty($_GET['week']))? 'checked="checked"': '' }} class="overflow-control-input" name="week" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">На этой неделе</span>
                                     </label>
@@ -189,7 +185,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['nextweek']))? 'checked="checked"': '' }} class="overflow-control-input" name="nextweek" onchange="getData(getPage())">
+                                        <input type="checkbox" {{ (!empty($_GET['nextweek']))? 'checked="checked"': '' }} class="overflow-control-input" name="nextweek" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">На следующей неделе</span>
                                     </label>
@@ -197,7 +193,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" {{ (!empty($_GET['past']))? 'checked="checked"': '' }} class="overflow-control-input" name="past" onchange="getData(getPage())">
+                                        <input type="checkbox" {{ (!empty($_GET['past']))? 'checked="checked"': '' }} class="overflow-control-input" name="past" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Прошедшие</span>
                                     </label>
@@ -207,14 +203,14 @@
                             <div class="form-group">
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['payment']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="payment" onchange="getData(getPage())">
+                                        <input {{ (!empty($_GET['payment']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="payment" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Платно</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['free']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="free" onchange="getData(getPage())">
+                                        <input {{ (!empty($_GET['free']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="free" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Бесплатно</span>
                                     </label>
@@ -222,7 +218,7 @@
 
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input {{ (!empty($_GET['donate']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="donate" onchange="getData(getPage())">
+                                        <input {{ (!empty($_GET['donate']))? 'checked="checked"': '' }} type="checkbox" class="overflow-control-input" name="donate" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">За донейт</span>
                                     </label>
@@ -232,7 +228,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-age">Возраст</label>
-                                <select name="age" onchange="getData(getPage())" class="select-selectric">
+                                <select name="age" onchange="getData(getPage(), this.form)" class="select-selectric">
 
                                     @foreach($ages as $age)
                                         @isset($_GET['age'])
@@ -310,21 +306,21 @@
                         return page;
                     }
 
-                    function getData(page){
-                        console.log(page);
+                    function getData(page, filter = $('.filter')){
+
                         var url = '?page=' + page;
 
-                        var emptyinputs = $('#filter').find('input').filter(function(){
+                        var emptyinputs = $(filter).find('input').filter(function(){
                             return !$.trim(this.value).length;  // get all empty fields
                         }).prop('disabled',true);
-                        var emptyselects = $('#filter').find('select').filter(function(){
+                        var emptyselects = $(filter).find('select').filter(function(){
                             return !$.trim(this.value).length;  // get all empty fields
                         }).prop('disabled',true).selectric('refresh');
-                        console.log($('#filter').serialize());
-                        url = url + '&' + $('#filter').serialize();
 
-                        var emptyinputs = $('#filter').find('input').prop('disabled',false);
-                        var emptyselects = $('#filter').find('select').prop('disabled',false).selectric('refresh');
+                        url = url + '&' + $(filter).serialize();
+
+                        var emptyinputs = $(filter).find('input').prop('disabled',false);
+                        var emptyselects = $(filter).find('select').prop('disabled',false).selectric('refresh');
 
 
                         $.ajax(

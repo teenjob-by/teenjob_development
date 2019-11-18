@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-sm-12 filter-mobile closed">
                     <div class="filter-panel">
-                        <form method="get" action="{{ route('site.offers') }}">
+                        <form method="get" >
                             <div class="window-cross" onclick="closeFilter()"><i class="fa fa-times"></i></div>
 
 
@@ -104,15 +104,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button class="btn btn-success" onclick="getData(getPage())">Найти</button>
-                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-sm-12 filter-mobile-compact">
 
-                    <form method="get" action="{{ route('site.offers') }}" class="filter-panel-compact">
+                    <form method="get"  class="filter-panel-compact">
 
 
                         @if(!empty($_GET['query']))
@@ -140,7 +137,7 @@
                         @endif
                         <div class="form-group filter-city-mobile">
 
-                            <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage())">
+                            <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)">
                                 <option selected value> Все города </option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
@@ -160,7 +157,7 @@
             <div class="row">
                 <div class="col-lg-4 filter-non-mobile">
                     <div class="filter-panel">
-                        <form method="get" action="{{ route('site.offers') }}" id="filter">
+                        <form method="get"  class="filter">
 
                             @if(!empty($_GET['query']))
                                 <input type="hidden" name="query" value="{{ $_GET['query'] }}">
@@ -168,7 +165,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">Город</label>
-                                <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage())" id="cities">
+                                <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)" id="cities">
                                     <option selected value> Все города </option>
                                 </select>
                             </div>
@@ -177,14 +174,14 @@
                                 <label class="label-title" for="filter-type">Вид деятельности</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="getData(getPage())">
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Волонтерство</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage())">
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Стажировка</span>
                                     </label>
@@ -193,7 +190,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-speciality">Профобласть</label>
-                                <select name="speciality" onchange="getData(getPage())" class="select-selectric" id="specialities">
+                                <select name="speciality" onchange="getData(getPage(), this.form)" class="select-selectric" id="specialities">
                                     <option selected value> Все профобласти </option>
 
                                 </select>
@@ -201,7 +198,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-age">Возраст</label>
-                                <select name="age" onchange="getData(getPage())" class="select-selectric">
+                                <select name="age" onchange="getData(getPage(), this.form)" class="select-selectric">
                                     <option selected value> Не выбрано </option>
                                     @foreach($ages as $age)
                                         @isset($_GET['age'])
@@ -220,24 +217,24 @@
 
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-today-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" onchange="getData(getPage())">
+                                    <input type="radio" class="custom-control-input" id="date-today-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-today-non-mobile">
                                         Сегодня
                                     </label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-days-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" onchange="getData(getPage())">
+                                    <input type="radio" class="custom-control-input" id="date-days-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-days-non-mobile">За 3 дня</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-week-non-mobile" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" onchange="getData(getPage())">
+                                    <input type="radio" class="custom-control-input" id="date-week-non-mobile" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-week-non-mobile">За 7 дней</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-month-non-mobile" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} onchange="getData(getPage())">
+                                    <input type="radio" class="custom-control-input" id="date-month-non-mobile" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-month-non-mobile">За месяц</label>
                                 </div>
 
@@ -312,21 +309,21 @@
                         return page;
                     }
 
-                    function getData(page){
-                        console.log(page);
+                    function getData(page, filter = $('.filter')){
+
                         var url = '?page=' + page;
 
-                        var emptyinputs = $('#filter').find('input').filter(function(){
+                        var emptyinputs = $(filter).find('input').filter(function(){
                             return !$.trim(this.value).length;  // get all empty fields
                         }).prop('disabled',true);
-                        var emptyselects = $('#filter').find('select').filter(function(){
+                        var emptyselects = $(filter).find('select').filter(function(){
                             return !$.trim(this.value).length;  // get all empty fields
                         }).prop('disabled',true).selectric('refresh');
-                        console.log($('#filter').serialize());
-                        url = url + '&' + $('#filter').serialize();
 
-                        var emptyinputs = $('#filter').find('input').prop('disabled',false);
-                        var emptyselects = $('#filter').find('select').prop('disabled',false).selectric('refresh');
+                        url = url + '&' + $(filter).serialize();
+
+                        var emptyinputs = $(filter).find('input').prop('disabled',false);
+                        var emptyselects = $(filter).find('select').prop('disabled',false).selectric('refresh');
 
 
                         $.ajax(
@@ -342,7 +339,7 @@
 
 
                         }).fail(function(jqXHR, ajaxOptions, thrownError){
-                                $("#dynWrapper").empty().html("Ничего не найдено(");
+                            $("#dynWrapper").empty().html("Ничего не найдено(");
                         });
                     }
 
