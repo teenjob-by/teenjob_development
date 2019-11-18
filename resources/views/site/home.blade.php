@@ -148,7 +148,7 @@
                                 <img src="images/partners/image-4.png" class="slick-image">
                                 <p class="partner-name">Алексей Кирпиченков</p>
                                 <p class="partner-role">Разработчик</p>
-                                <a href="https://github.com/fr0zen/">
+                                <a href="https://www.facebook.com/alexey.kirpichenkau">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
                             </div>
