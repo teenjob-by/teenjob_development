@@ -265,7 +265,7 @@
 
                 <div class="col-sm-12 col-lg-8 card-wrapper">
                     @foreach($events as $event)
-                        <a class="card event-card" href="/events/{{$event->id}}">
+                        <a class="card event-card {{ ($event->status == 2)? "card-overlay":"" }}" href="/events/{{$event->id}}">
                             <div class="event-header">
                                 <div class="event-time">
                                     <p>{{$event->date_start->format('d.m.Y')}}, <span>{{$event->date_start->format('H:i')}}</span></p>
