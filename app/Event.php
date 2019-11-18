@@ -45,6 +45,12 @@ class Event extends Model
 //        $out = strlen($str) > 120 ? mb_substr($str,0,120,'utf-8')."..." : $str;
         $desc = $this->description;
         $str = preg_replace('/\s+/', ' ', clean($desc));
+        $pattern = '/<p(.*?)>((.*?)+)\<\/p>/';
+        $replacement = '${2}<br/>';
+        //$out = preg_replace($pattern, $replacement, $str);
+        //$out = Str::limit($out,80,'...');
+
+
         $out = Str::limit($str,80,'...');
 
 

@@ -262,6 +262,7 @@
 @endsection
 
             @section('pagescript')
+                <script src="/js/jquery.shave.min.js"></script>
                 <script>
 
                     $(window).on('hashchange', function() {
@@ -277,6 +278,10 @@
 
                     $(document).ready(function()
                     {
+
+                        $('.three-line').shave(90);
+                        $('.two-line').shave(90);
+
                         $.ajaxSetup({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -9,8 +9,8 @@
                     <img src="{{$event->image}}" class="event-card-img" onError='this.onerror=null;this.src="/images/noimg.png";'>
                 </div>
                 <p class="event-location">{{$event->city->name}}</p>
-                <h3 class="event-title">{{$event->title}}</h3>
-                <div class="event-description">
+                <h3 class="event-title two-line">{{$event->title}}</h3>
+                <div class="event-description three-line">
                         {!!  $event->getPreviewDesc() !!}
                 </div>
             </a>
