@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Jenssegers\Date\Date;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
 
 
 
@@ -23,7 +24,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function indexOld(Request $request)
     {
         $filters = $request->only(['city_id']);
         $age_filter=[
@@ -35,49 +36,61 @@ class EventsController extends Controller
             ];
         }
 
-        $date_filter=[
-            ['date_start', '>=', Carbon::now()]
+        $sort_direction = 'asc';
+        $date_filter = [
+            'all' => [['date_start', '>=', Carbon::today()]],
+            'today' => [],
+            'tomorrow' => [],
+            'week' => [],
+            'next_week' => [],
+            'past' => []
         ];
 
 
+
+
         if($request->has('today')) {
-            $date_filter=[
-                ['date_start', '=', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['today'] = [
+                    ['date_start', '>=', Carbon::today()],
+                    ['date_start', '<', Carbon::tomorrow()]
             ];
         }
 
         if($request->has('tomorrow')) {
-            $date_filter=[
-                ['date_start', '<=', Carbon::now()->addDay()],
-                ['date_start', '>=', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['tomorrow'] = [
+                ['date_start', '>=', Carbon::tomorrow()],
+                ['date_start', '<', Carbon::tomorrow()->addDay()]
             ];
         }
 
+
         if($request->has('week')) {
-            $date_filter=[
-                ['date_start', '>=', Carbon::now()],
-                ['date_start', '<=', Carbon::now()->endOfWeek()]
+            $date_filter['all'] = [];
+            $date_filter['week'] = [
+                ['date_start', '>=', Carbon::today()],
+                ['date_start', '<', Carbon::today()->endOfWeek()]
             ];
         }
 
         if($request->has('nextweek')) {
-            $date_filter=[
-                ['date_start', '>=', Carbon::now()->addWeek()->startOfWeek()],
-                ['date_start', '<=', Carbon::now()->addWeek()->endOfWeek()]
+            $date_filter['all'] = [];
+            $date_filter['next_week'] = [
+                ['date_start', '>=', Carbon::today()->addWeek()->startOfWeek()],
+                ['date_start', '<', Carbon::today()->addWeek()->endOfWeek()]
             ];
         }
 
 
         if($request->has('past')) {
-            $date_filter=[
-                ['date_start', '<', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['past'] = [
+                ['date_start', '<', Carbon::today()]
             ];
-        }
-        
-        if($request->has('past')) {
-            $date_filter=[
-                ['date_start', '<', Carbon::now()]
-            ];
+
+            $sort_direction = 'desc';
+
         }
 
         $type_filter_value = [];
@@ -104,29 +117,47 @@ class EventsController extends Controller
         //dd($type_filter);
         if($request->has('query')) {
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
+            $events = Event::whereIn('status', [1,2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
                 ->where(function ($query) use ($request) {
                     $query->where('title', 'like', '%'.$request->get('query').'%')
-                        ->orWhere('description', 'like', '%'.$request->get('query').'%');
+                        ->orWhere('description', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('name', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
                 ->where($filters)
                 ->where($age_filter)
-                ->where($date_filter)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
                 ->whereIn('type_id', $type_filter_value)
-                ->orderBy('date_start', 'asc')
+                ->orderBy('date_start', $sort_direction)
                 ->paginate(30)
                 ->onEachSide(1);
         }
         else{
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
+            $events = Event::whereIn('status', [1, 2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
                 ->where($filters)
-                ->where($date_filter)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
                 ->where($age_filter)
                 ->whereIn('type_id', $type_filter_value)
-                ->orderBy('date_start', 'asc')
+                ->orderBy('date_start', $sort_direction)
                 ->paginate(30)
                 ->onEachSide(1);
         }
@@ -159,8 +190,30 @@ class EventsController extends Controller
         return view ( 'site.event.index' )->with('query_message', 'Ничего не найдено!' )->with('events', $events)->with('cities', $cities)->with('ages', $ages);
     }
 
+    public function indexdynview(){
 
-    public function indexdyn(Request $request)
+        $cities = City::all();
+        $ages = [
+            [
+                'value' => 14,
+                'name'=>'14+'
+            ],
+            [
+                'value' => 15,
+                'name'=>'15+'
+            ],
+            [
+                'value' => 16,
+                'name'=>'16+'
+            ],
+            [
+                'value' => 17,
+                'name'=>'17+'
+            ]
+        ];
+        return view('site.event.indexDyn')->with('cities', $cities)->with('ages', $ages);
+    }
+    public function index(Request $request)
     {
         $filters = $request->only(['city_id']);
         $age_filter=[
@@ -172,49 +225,61 @@ class EventsController extends Controller
             ];
         }
 
-        $date_filter=[
-            ['date_start', '>=', Carbon::now()]
+        $sort_direction = 'asc';
+        $date_filter = [
+            'all' => [['date_start', '>=', Carbon::today()]],
+            'today' => [],
+            'tomorrow' => [],
+            'week' => [],
+            'next_week' => [],
+            'past' => []
         ];
 
 
+
+
         if($request->has('today')) {
-            $date_filter=[
-                ['date_start', '=', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['today'] = [
+                ['date_start', '>=', Carbon::today()],
+                ['date_start', '<', Carbon::tomorrow()]
             ];
         }
 
         if($request->has('tomorrow')) {
-            $date_filter=[
-                ['date_start', '<=', Carbon::now()->addDay()],
-                ['date_start', '>=', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['tomorrow'] = [
+                ['date_start', '>=', Carbon::tomorrow()],
+                ['date_start', '<', Carbon::tomorrow()->addDay()]
             ];
         }
 
+
         if($request->has('week')) {
-            $date_filter=[
-                ['date_start', '>=', Carbon::now()],
-                ['date_start', '<=', Carbon::now()->endOfWeek()]
+            $date_filter['all'] = [];
+            $date_filter['week'] = [
+                ['date_start', '>=', Carbon::today()],
+                ['date_start', '<', Carbon::today()->endOfWeek()]
             ];
         }
 
         if($request->has('nextweek')) {
-            $date_filter=[
-                ['date_start', '>=', Carbon::now()->addWeek()->startOfWeek()],
-                ['date_start', '<=', Carbon::now()->addWeek()->endOfWeek()]
+            $date_filter['all'] = [];
+            $date_filter['next_week'] = [
+                ['date_start', '>=', Carbon::today()->addWeek()->startOfWeek()],
+                ['date_start', '<', Carbon::today()->addWeek()->endOfWeek()]
             ];
         }
 
 
         if($request->has('past')) {
-            $date_filter=[
-                ['date_start', '<', Carbon::now()]
+            $date_filter['all'] = [];
+            $date_filter['past'] = [
+                ['date_start', '<', Carbon::today()]
             ];
-        }
 
-        if($request->has('past')) {
-            $date_filter=[
-                ['date_start', '<', Carbon::now()]
-            ];
+            $sort_direction = 'desc';
+
         }
 
         $type_filter_value = [];
@@ -241,29 +306,47 @@ class EventsController extends Controller
         //dd($type_filter);
         if($request->has('query')) {
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
+            $events = Event::whereIn('status', [1,2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
                 ->where(function ($query) use ($request) {
                     $query->where('title', 'like', '%'.$request->get('query').'%')
-                        ->orWhere('description', 'like', '%'.$request->get('query').'%');
+                        ->orWhere('description', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('name', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
                 ->where($filters)
                 ->where($age_filter)
-                ->where($date_filter)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
                 ->whereIn('type_id', $type_filter_value)
-                ->orderBy('date_start', 'asc')
+                ->orderBy('date_start', $sort_direction)
                 ->paginate(30)
                 ->onEachSide(1);
         }
         else{
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
+            $events = Event::whereIn('status', [1, 2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
                 ->where($filters)
-                ->where($date_filter)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
                 ->where($age_filter)
                 ->whereIn('type_id', $type_filter_value)
-                ->orderBy('date_start', 'asc')
+                ->orderBy('date_start', $sort_direction)
                 ->paginate(30)
                 ->onEachSide(1);
         }
@@ -289,6 +372,189 @@ class EventsController extends Controller
                 'name'=>'17+'
             ]
         ];
+
+
+        if (count ( $events ) > 0) {
+            if ($request->ajax()) {
+                return view('presult')->with('data', $events)->with('ajax', true)->with('page', $events->currentPage());
+            }
+            return view('site.event.dynTest')->with('data', $events)->with('cities', $cities)->with('ages', $ages)->with('ajax', false)->with('page', $events->currentPage());
+
+        }
+
+        return view('site.event.dynTest')->with('data', null)->with('query_message', 'Ничего не найдено' )->with('cities', $cities)->with('ages', $ages)->with('ajax', false);
+
+    }
+    public function indexdyn(Request $request)
+    {
+        $filters = $request->only(['city_id']);
+        $age_filter=[
+            ['age', '>=', 14]
+        ];
+        if($request->has('age')) {
+            $age_filter=[
+                ['age', '>=', $request->get('age')]
+            ];
+        }
+
+        $sort_direction = 'asc';
+        $date_filter = [
+            'all' => [['date_start', '>=', Carbon::today()]],
+            'today' => [],
+            'tomorrow' => [],
+            'week' => [],
+            'next_week' => [],
+            'past' => []
+        ];
+
+
+
+
+        if($request->has('today')) {
+            $date_filter['all'] = [];
+            $date_filter['today'] = [
+                ['date_start', '>=', Carbon::today()],
+                ['date_start', '<', Carbon::tomorrow()]
+            ];
+        }
+
+        if($request->has('tomorrow')) {
+            $date_filter['all'] = [];
+            $date_filter['tomorrow'] = [
+                ['date_start', '>=', Carbon::tomorrow()],
+                ['date_start', '<', Carbon::tomorrow()->addDay()]
+            ];
+        }
+
+
+        if($request->has('week')) {
+            $date_filter['all'] = [];
+            $date_filter['week'] = [
+                ['date_start', '>=', Carbon::today()],
+                ['date_start', '<', Carbon::today()->endOfWeek()]
+            ];
+        }
+
+        if($request->has('nextweek')) {
+            $date_filter['all'] = [];
+            $date_filter['next_week'] = [
+                ['date_start', '>=', Carbon::today()->addWeek()->startOfWeek()],
+                ['date_start', '<', Carbon::today()->addWeek()->endOfWeek()]
+            ];
+        }
+
+
+        if($request->has('past')) {
+            $date_filter['all'] = [];
+            $date_filter['past'] = [
+                ['date_start', '<', Carbon::today()]
+            ];
+
+            $sort_direction = 'desc';
+
+        }
+
+        $type_filter_value = [];
+        if($request->has('free')) {
+            $type_filter_value[] =  2;
+        }
+
+        if($request->has('payment')) {
+            $type_filter_value[] =  1;
+        }
+
+        if($request->has('donate')) {
+            $type_filter_value[] =  3;
+        }
+
+        if(count($type_filter_value) == 0) {
+            $type_filter_value = [1, 2, 3];
+        }
+
+
+
+
+
+        //dd($type_filter);
+        if($request->has('query')) {
+
+            $events = Event::whereIn('status', [1,2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
+                ->where(function ($query) use ($request) {
+                    $query->where('title', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('description', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('name', 'like', '%'.$request->get('query').'%')
+                        ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
+                })
+                ->where($filters)
+                ->where($age_filter)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
+                ->whereIn('type_id', $type_filter_value)
+                ->orderBy('date_start', $sort_direction)
+                ->paginate(30)
+                ->onEachSide(1);
+        }
+        else{
+
+            $events = Event::whereIn('status', [1, 2])
+                ->join('cities', 'events.city_id', '=', 'cities.id')
+                ->select('events.*', 'cities.name as city_name')
+                ->where($filters)
+                ->where(function ($datequery) use ($date_filter) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
+                ->where($age_filter)
+                ->whereIn('type_id', $type_filter_value)
+                ->orderBy('date_start', $sort_direction)
+                ->paginate(30)
+                ->onEachSide(1);
+        }
+
+        $pagination = $events->appends($_GET);
+
+        $cities = City::all();
+        $ages = [
+            [
+                'value' => 14,
+                'name'=>'14+'
+            ],
+            [
+                'value' => 15,
+                'name'=>'15+'
+            ],
+            [
+                'value' => 16,
+                'name'=>'16+'
+            ],
+            [
+                'value' => 17,
+                'name'=>'17+'
+            ]
+        ];
+        $events = $events->toArray();
+
+        foreach($events['data'] as $key=>$event)
+        {
+
+            $str = preg_replace('/\s+/', ' ', clean($event['description']));
+            $events['data'][$key]['description'] = Str::limit($str,80,'...');
+
+            $events['data'][$key]['time_start'] = $events['data'][$key]['date_start']->format('H:i');
+            $events['data'][$key]['date_start'] = $events['data'][$key]['date_start']->format('d.m.Y');
+        }
 
         if (count ( $events ) > 0)
             //return view('site.event.index')->with('events', $events)->with('cities', $cities)->with('ages', $ages);
