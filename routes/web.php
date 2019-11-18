@@ -45,6 +45,12 @@ Route::get('/support', 'RulesPagesController@support')->name('site.support');
 Route::post('/support', 'RulesPagesController@sendEmail')->name('site.support');
 Route::get('/contacts', 'RulesPagesController@support')->name('site.contacts');
 Route::get('/search', 'SearchController@index')->name('site.search');
+Route::get('/eDyn', 'EventsController@indexdynview')->name('site.dynview');
+Route::get('/eventsDyn', 'EventsController@indexdyn')->name('site.dyn');
+Route::get('/dynTest', 'EventsController@dynTest')->name('site.dyntest');
+Route::get('/specialities', 'SearchOffersController@getSpecialities')->name('site.specialities');
+Route::get('/cities', 'SearchOffersController@getCities')->name('site.cities');
+
 
 
 Route::resource('events', 'EventsController', [
