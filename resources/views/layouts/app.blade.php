@@ -58,10 +58,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('organisation') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Размещение объявлений') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выход') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -82,16 +87,16 @@
                 <div class="row">
                     <div class="sidebar-wrapper">
                         <div class="bg-light border-right" id="sidebar-wrapper">
-                            <div class="sidebar-heading">Меню </div>
+                            <div class="sidebar-heading">Меню</div>
                             <div class="list-group list-group-flush">
-                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light">Волонтерство</a>
-                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light">Волонтерство на модерацию</a>
-                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light">Стажировки</a>
-                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light">Стажировки на модерацию</a>
-                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light">Список мероприятий</a>
-                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light">Мероприятия на модерацию</a>
-                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light">Орг. на модерацию</a>
-                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light">Список организаций</a>
+                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">Волонтерство</a>
+                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">Волонтерство на модерацию</a>
+                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">Стажировки</a>
+                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">Стажировки на модерацию</a>
+                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">Мероприятия</a>
+                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events.moderation') ? 'active' : '' }}">Мероприятия на модерацию</a>
+                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light {{ (request()->routeIs('admin.organisation') || request()->routeIs('admin') ) ? 'active' : '' }}">Организации</a>
+                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.organisation.moderation') ? 'active' : '' }}">Организации на модерацию</a>
                             </div>
                         </div>
                     </div>

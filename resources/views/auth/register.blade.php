@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
+                                <!--<div class="form-group row">
                                     <label for="city" class="col-sm-12 col-lg-5 col-form-label padding-0">Город*</label>
 
                                     <div class="col-sm-12 col-lg-7">
@@ -55,7 +55,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="form-group row">
                                     <label for="link" class="col-sm-12 col-lg-5 col-form-label">Сайт/группа в соц. сети</label>

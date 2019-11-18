@@ -30,7 +30,7 @@
             <tbody>
                 @if(!empty($organisations))
                     @foreach($organisations as $organisation)
-                        @if(!($organisation->status == 1))
+                        @if($organisation->status == 3)
                             <tr style="background:lightcoral">
                         @else
                             <tr>
@@ -44,9 +44,9 @@
                             <td class="phone">{{$organisation->phone}}</td>
                             <td class="request">{{$organisation->request}}</td>
                             <td>
-                                <a href="{{ route('admin.organisations.approve', $organisation->id)}}" class="btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a>
+                                <a href="{{ route('admin.organisations.approve', $organisation->id)}}" class=" {{ in_array($organisation->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a>
                                 <a href="{{ route('admin.organisationForm', $organisation->id)}}" class="btn btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="{{ route('admin.organisations.ban', $organisation->id)}}" class="btn btn-disable"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                                <a href="{{ route('admin.organisations.ban', $organisation->id)}}" class="{{ in_array($organisation->status, [3]) ? 'd-none': '' }} btn btn-disable" ><i class="fa fa-ban" aria-hidden="true"></i></a>
                                 <a href="{{ route('admin.organisations.remove', $organisation->id)}}" class="btn btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                         </tr>

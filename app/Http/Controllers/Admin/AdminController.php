@@ -26,7 +26,9 @@ class AdminController extends Controller
     public function index()
     {
         $organisations = Organisation::where('role', '>', 0)
-            ->orderBy('created_at', 'desc')->get();
+            ->where('status', '1')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('admin.organisation.index')->with('organisations', $organisations);
     }
 }

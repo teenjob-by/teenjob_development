@@ -31,10 +31,10 @@
                     <div class="form-group">
                         <label class="label-title" for="filter-age">Возраст</label>
                         <select name="age">
-                            <option {{ (14 == $volunteering->age)? 'selected': '' }} value="{{ 14 }}">14+</option>
-                            <option {{ (15 == $volunteering->age)? 'selected': '' }} value="{{ 15 }}">15+</option>
-                            <option {{ (16 == $volunteering->age)? 'selected': '' }} value="{{ 16 }}">16+</option>
-                            <option {{ (17 == $volunteering->age)? 'selected': '' }} value="{{ 17 }}">17+</option>
+                            <option {{ (14 == $volunteering->age)? 'selected': '' }} value="{{ 14 }}">от 14</option>
+                            <option {{ (15 == $volunteering->age)? 'selected': '' }} value="{{ 15 }}">от 15</option>
+                            <option {{ (16 == $volunteering->age)? 'selected': '' }} value="{{ 16 }}">от 16</option>
+                            <option {{ (17 == $volunteering->age)? 'selected': '' }} value="{{ 17 }}">от 17</option>
                         </select>
                     </div>
                     <div class="form-group">

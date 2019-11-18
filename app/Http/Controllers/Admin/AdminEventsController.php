@@ -34,23 +34,17 @@ class AdminEventsController extends Controller
 
         if($request->has('query')) {
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
-                ->where(function ($query) use ($request) {
-                    $query->where('title', 'like', '%'.$request->get('query').'%')
-                        ->orWhere('description', 'like', '%'.$request->get('query').'%');
-                })
+            $events = Event::whereIn(1, 2)
                 ->where($filters)
                 ->where($age_filter)
-                ->orderBy('date_start', 'asc')
+                ->orderBy('date_start', 'desc')
                 ->paginate(30)
                 ->onEachSide(1);
         }
         else{
 
-            $events = Event::where('status', 1)
-                ->where('date_start', '>=', Carbon::now()->subDays(1))
-                ->orderBy('date_start', 'asc')
+            $events = Event::whereIn('status', [1, 2])
+                ->orderBy('date_start', 'desc')
                 ->paginate(30)
                 ->onEachSide(1);
         }
@@ -61,19 +55,19 @@ class AdminEventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
 
@@ -158,19 +152,19 @@ class AdminEventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
         $types = EventType::all();
@@ -270,8 +264,8 @@ class AdminEventsController extends Controller
 
     public function showUnapproved()
     {
-        $events = Event::where('status', 0)
-            ->orderBy('created_at', 'asc')
+        $events = Event::whereIn('status', [0, 3])
+            ->orderBy('status', 'asc')
             ->paginate(30)
             ->onEachSide(1);
 

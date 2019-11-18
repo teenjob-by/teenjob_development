@@ -1,4 +1,8 @@
 .events {
+  ul, ol {
+    list-style-position: inside;
+    padding-inline-start: 0px;
+  }
 
   .card-overlay {
     filter: brightness(0.7);
@@ -232,7 +236,8 @@
       margin-bottom: 25px;
 
       img {
-        padding: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
       }
     }
 

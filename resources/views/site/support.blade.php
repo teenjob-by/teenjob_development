@@ -31,7 +31,7 @@
                     @endif
                     <div class="form-group support-form-subject col-lg-12">
                         <label for="subject">Тема</label>
-                        <input type="text" class="form-control" name="subject" />
+                        <input type="text" required class="form-control" name="subject" />
                     </div>
 
                     @error('title')
@@ -40,22 +40,22 @@
 
                     <div class="form-group support-form-message col-lg-12">
                         <label for="message">Ваше сообщение:</label>
-                        <textarea type="text" class="form-control support-form-message-text" name="description">@if(!empty($_GET['abuse'])){{url()->previous()}}@endif</textarea>
+                        <textarea type="text" required class="form-control support-form-message-text" name="description">@if(!empty($_GET['abuse'])){{url()->previous()}}@endif</textarea>
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
                         <label for="last_name">Ваше имя*</label>
-                        <input type="text" class="form-control" name="name" />
+                        <input type="text" required class="form-control" name="name" />
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
                         <label for="city">email*</label>
-                        <input type="text" class="form-control" name="email" />
+                        <input type="text" required class="form-control" name="email" />
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
                         <label for="city">Телефон*</label>
-                        <input type="text" class="form-control" name="phone" />
+                        <input type="text" required  class="form-control" name="phone" />
                     </div>
 
                     <button type="submit" class="ml-3 btn btn-primary">Отправить</button>

@@ -30,8 +30,11 @@ class AdminVolunteeringsController extends Controller
     {
 
 
-        $volunteerings = Offer::where('offer_type', 0)->paginate(15)
-        ->onEachSide(1);
+        $volunteerings = Offer::where('offer_type', 0)
+            ->whereIn('status', [1, 2])
+            ->orderBy('created_at', 'desc')
+            ->paginate(30)
+            ->onEachSide(1);
 
         $specializations = OfferSpecialization::all();
         $cities = City::all();
@@ -44,9 +47,10 @@ class AdminVolunteeringsController extends Controller
 
     public function showUnapproved()
     {
-        $volunteerings = Offer::where('offer_type', 0)->where('status', 0)
-                ->orderBy('created_at', 'desc')
-            ->paginate(15)
+        $volunteerings = Offer::where('offer_type', 0)
+            ->whereIn('status', [0, 3])
+            ->orderBy('status', 'asc')
+            ->paginate(30)
             ->onEachSide(1);
 
         return view('admin.volunteerings.index')->with('volunteerings', $volunteerings);
@@ -93,19 +97,19 @@ class AdminVolunteeringsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
 

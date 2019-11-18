@@ -68,19 +68,19 @@ class VolunteeringController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
 
@@ -162,19 +162,19 @@ class VolunteeringController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
 

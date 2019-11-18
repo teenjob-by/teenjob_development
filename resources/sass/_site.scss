@@ -5,7 +5,9 @@ body {
 h2 {
     word-wrap: break-word;
 }
-
+.banned {
+  background-color: #ffd1d1;
+}
 #loader {
   width: 100px;
   margin-left: auto;

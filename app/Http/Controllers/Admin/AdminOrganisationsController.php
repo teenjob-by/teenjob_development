@@ -28,14 +28,17 @@ class AdminOrganisationsController extends Controller
     public function index()
     {
         $organisations = Organisation::where('role', '>', 0)
-            ->orderBy('created_at', 'desc')->get();
+            ->where('status', '1')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('admin.organisation.index')->with('organisations', $organisations);
     }
 
     public function showUnapproved()
     {
-        $organisations = Organisation::where('status', 0)
-                ->orderBy('created_at', 'desc')->get();
+        $organisations = Organisation::whereIn('status', [0, 3])
+            ->orderBy('status', 'asc')
+            ->get();
 
         return view('admin.organisation.index')->with('organisations', $organisations);
     }

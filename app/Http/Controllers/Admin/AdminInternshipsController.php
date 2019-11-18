@@ -30,8 +30,12 @@ class AdminInternshipsController extends Controller
     {
 
 
-        $internships = Offer::where('offer_type', 1)->paginate(15)
+        $internships = Offer::where('offer_type', 1)
+            ->whereIn('status', [1, 2])
+            ->orderBy('created_at', 'desc')
+            ->paginate(30)
             ->onEachSide(1);
+
 
         $specializations = OfferSpecialization::all();
         $cities = City::all();
@@ -44,9 +48,10 @@ class AdminInternshipsController extends Controller
 
     public function showUnapproved()
     {
-        $internships = Offer::where('offer_type', 1)->where('status', 0)
-                ->orderBy('created_at', 'desc')
-            ->paginate(15)
+        $internships = Offer::where('offer_type', 1)
+            ->whereIn('status', [0, 3])
+            ->orderBy('status', 'asc')
+            ->paginate(30)
             ->onEachSide(1);
 
         return view('admin.internships.index')->with('internships', $internships);
@@ -60,19 +65,19 @@ class AdminInternshipsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'14+'
+                'name'=>'от 14'
             ],
             [
                 'value' => 15,
-                'name'=>'15+'
+                'name'=>'от 15'
             ],
             [
                 'value' => 16,
-                'name'=>'16+'
+                'name'=>'от 16'
             ],
             [
                 'value' => 17,
-                'name'=>'17+'
+                'name'=>'от 17'
             ]
         ];
 
