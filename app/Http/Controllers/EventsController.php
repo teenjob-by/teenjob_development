@@ -374,15 +374,11 @@ class EventsController extends Controller
         ];
 
 
-        if (count ( $events ) > 0) {
+
             if ($request->ajax()) {
                 return view('presult')->with('data', $events)->with('ajax', true)->with('page', $events->currentPage());
             }
             return view('site.event.dynTest')->with('data', $events)->with('cities', $cities)->with('ages', $ages)->with('ajax', false)->with('page', $events->currentPage());
-
-        }
-
-        return view('site.event.dynTest')->with('data', null)->with('query_message', 'Ничего не найдено' )->with('cities', $cities)->with('ages', $ages)->with('ajax', false);
 
     }
     public function indexdyn(Request $request)

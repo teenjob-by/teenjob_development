@@ -214,15 +214,12 @@ class SearchOffersController extends Controller
         $cities = City::all();
 
 
-        if (count ( $offers ) > 0) {
+
             if ($request->ajax()) {
                 return view('presultoffers')->with('data', $offers)->with('ajax', true)->with('page', $offers->currentPage());
             }
             return view('site.offers.dynTest')->with('data', $offers)->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages)->with('ajax', false)->with('page', $offers->currentPage());
 
-        }
-
-        return view('site.offers.dynTest')->with('data', null)->with('query_message', 'Ничего не найдено' )->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages)->with('ajax', false);
 
 
 
