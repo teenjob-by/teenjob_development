@@ -1,5 +1,6 @@
 sudo: required
 language: php
+dist: trusty
 
 # Keep the cache between builds to speed up installs
 cache:
@@ -8,7 +9,7 @@ cache:
     - $HOME/.npm
     - node_modules
 php:
-  - 7.2
+  - 7.1.28
 
 before_install: 
   - travis_retry composer self-update && composer --version
@@ -31,5 +32,5 @@ after_success:
   - mkdir build
   - mv !(node_modules) build
   - tar -czf package.tgz build
-  - sshpass -p $PASSWORD scp -o strictHOSTkeychecking=no -P $PORT package.tgz $USER@$HOST:$PATH
-  - sshpass -p $PASSWORD ssh -p $PORT $USER@$HOST $PATH/deploy.sh
+  - sshpass -p $DEPLOY_PASSWORD scp -o strictHOSTkeychecking=no -P $DEPLOY_PORT package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass -p $DEPLOY_PASSWORD ssh -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
