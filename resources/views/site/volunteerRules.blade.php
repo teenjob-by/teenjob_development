@@ -6,6 +6,12 @@
 
     <title>Кто такой волонтер - teenjob.by</title>
 @endsection
+
+@section('og_meta')
+    <meta property="og:image" content="{{url('/')}}/images/main_fb.png">
+    <meta property="og:url" content="{{url()->current()}}">
+    <meta property="vk:image" content="{{url('/')}}/images/main_vk.png">
+@endsection
 @section('body_class', 'page-home')
 
 @section('content')
