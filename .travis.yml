@@ -2,6 +2,12 @@ sudo: required
 language: php
 dist: trusty
 
+addons:
+    apt:
+        packages:
+            - sshpass
+    chrome: stable
+
 # Keep the cache between builds to speed up installs
 cache:
   directories:
@@ -15,6 +21,7 @@ before_install:
   - travis_retry composer self-update && composer --version
   - nvm install 'lts/*'
   - npm i -g npm
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - cp .env.example .env
@@ -22,10 +29,7 @@ install:
   - npm install --no-audit --no-progress --quiet
   - npm run dev
   
-addons:
-    apt:
-        packages:
-            - sshpass
+
             
 after_success: 
   - shopt -s extglob
@@ -34,3 +38,8 @@ after_success:
   - tar -czf package.tgz build
   - sshpass -p $DEPLOY_PASSWORD scp -o stricthostkeychecking=no -P $DEPLOY_PORT package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   - sshpass -p $DEPLOY_PASSWORD ssh -o stricthostkeychecking=no -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
