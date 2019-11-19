@@ -6,7 +6,6 @@ addons:
     apt:
         packages:
             - sshpass
-    chrome: stable
 
 # Keep the cache between builds to speed up installs
 cache:
@@ -21,7 +20,6 @@ before_install:
   - travis_retry composer self-update && composer --version
   - nvm install 'lts/*'
   - npm i -g npm
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
   - cp .env.example .env
@@ -29,7 +27,6 @@ install:
   - npm install --no-audit --no-progress --quiet
   - npm run dev
   
-
             
 after_success: 
   - shopt -s extglob
