@@ -50,7 +50,9 @@
     }
 
     .internship-item {
-      height: 84px;
+      height: auto;
+      max-height: 150px;
+      overflow: hidden;
       border: 1px solid #ccc;
       display: flex;
       flex-direction: row;
@@ -303,6 +305,7 @@
   height: 24px;
   background: url("/images/volunteer.png") 100% 100% no-repeat;
   margin-left: auto;
+  margin-top: 2px;
 }
 
 .intern-icon {
@@ -310,4 +313,5 @@
   height: 24px;
   background: url("/images/internship.png") 100% 100% no-repeat;
   margin-left: auto;
+  margin-top: 2px;
 }

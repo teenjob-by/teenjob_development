@@ -23,7 +23,7 @@
                             @endif
                             <table class="ml-auto">
                                 <tr>
-                                    <td> <a href="{{ route('admin.volunteerings.approve', $volunteering->id)}}" class="{{ in_array($volunteeering->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
+                                    <td> <a href="{{ route('admin.volunteerings.approve', $volunteering->id)}}" class="{{ in_array($volunteering->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
 
                                     <td><a href="{{ route('admin.volunteeringForm', $volunteering->id)}}" class="btn btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 

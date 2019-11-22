@@ -159,6 +159,21 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="label-title" for="filter-age">Возраст</label>
+                                <select name="age" onchange="getData(getPage(), this.form)" class="select-selectric">
+
+                                    @foreach($ages as $age)
+                                        @isset($_GET['age'])
+                                            <option {{ ($age['value'] == $_GET['age'])? 'selected': '' }} value="{{ $age['value'] }}">{{ $age['name'] }}</option>
+                                        @else
+                                            <option value="{{ $age['value'] }}">{{ $age['name'] }}</option>
+                                        @endisset
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
                                 <label class="label-title" for="filter-type">Состоится</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
@@ -225,20 +240,6 @@
                                 </div>
                             </div>
 
-
-                            <div class="form-group">
-                                <label class="label-title" for="filter-age">Возраст</label>
-                                <select name="age" onchange="getData(getPage(), this.form)" class="select-selectric">
-
-                                    @foreach($ages as $age)
-                                        @isset($_GET['age'])
-                                            <option {{ ($age['value'] == $_GET['age'])? 'selected': '' }} value="{{ $age['value'] }}">{{ $age['name'] }}</option>
-                                        @else
-                                            <option value="{{ $age['value'] }}">{{ $age['name'] }}</option>
-                                        @endisset
-                                    @endforeach
-                                </select>
-                            </div>
                         </form>
                     </div>
                 </div>

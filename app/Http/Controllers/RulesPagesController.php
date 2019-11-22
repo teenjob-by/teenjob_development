@@ -56,9 +56,9 @@ class RulesPagesController extends Controller
         $data = $request->all();
 
         Mail::send(['text'=>'emails.contact'], $data, function($message) {
-            $message->to('teenjob.by@gmail.com', 'Жалоба')->subject
-            ('Жалоба');
-            $message->from('team@teenjob.by','Жалоба');
+            $message->to('teenjob.by@gmail.com', 'Сообщение')->subject
+            ('Сообщение');
+            $message->from('team@teenjob.by','Сообщение');
         });
 
         return redirect()->back()->with(['message', 'Письмо успешно отправлено']);
