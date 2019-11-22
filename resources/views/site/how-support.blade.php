@@ -34,8 +34,8 @@
                             <img src="/images/gift.png">
                         </div>
                             <h3>Донейт</h3>
-                            <p>Наш проект волонтерский, поэтому на его поддержку всегда нужна помощь. Если вы хотите сделать донейт, пожауйста, напишите нам <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a></p>
-
+                            <p>Мы волонтерская инициатива и своими силами создали сам портал! Средства пойдут на поддержку деятельности и развитие инициативы. </p>
+                            <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
                     </div>
                     <div class="support-card">
                         <div class="circle">
