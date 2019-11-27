@@ -20,6 +20,9 @@
         <div class="container how-support">
             <h2>Поддержать проект</h2>
             <div class="row justify-content-center">
+                <div class="donate-widget">
+                    <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
+                </div>
                 <div class="card-wrapper">
                     <div class="support-card">
                         <div class="circle">
@@ -27,31 +30,14 @@
                         </div>
                             <h3>Стань волонтером</h3>
                             <p><a href="https://docs.google.com/forms/d/130lf1zM6lgpancdpPOBCTfyKaML5hAgE-CMtRAam6Ws/edit#responses">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
+                    </div>
 
-                    </div>
-                    <div class="support-card">
-                        <div class="circle">
-                            <img src="/images/gift.png">
-                        </div>
-                            <h3>Донейт</h3>
-                            <p>Мы волонтерская инициатива и своими силами создали сам портал! Средства пойдут на поддержку деятельности и развитие инициативы. </p>
-                            <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
-                    </div>
-                    <div class="support-card">
-                        <div class="circle">
-                            <img src="/images/heart.png">
-                        </div>
-                            <h3>Лайк</h3>
-                            <p>Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!</p>
-
-                    </div>
                     <div class="support-card">
                         <div class="circle">
                             <img src="/images/collaboration.png">
                         </div>
                         <h3>Стань партнером</h3>
                         <p>Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!</p>
-
                     </div>
                 </div>
                 <h2 class="partners-title">Партнеры</h2>
