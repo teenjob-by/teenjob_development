@@ -18,21 +18,32 @@
 @section('content')
     <div class="container-fluid background">
         <div class="container how-support">
-            <h2>Поддержать проект</h2>
+            <h2>Поддержать</h2>
             <div class="row justify-content-center">
+                <p>Мы волонтерская инициатива и создали teenjob.by своими силами, зная о потребности в обществе. Сейчас вы можете поддержать нас, чтобы проект продолжал стабильно работать и развиваться!</p>
                 <div class="donate-widget">
                     <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
                 </div>
                 <div class="card-wrapper">
-                    <div class="support-card">
+                    <div class="support-card mb-0">
                         <div class="circle">
                             <img src="/images/charity.png">
                         </div>
                             <h3>Стань волонтером</h3>
                             <p><a href="https://docs.google.com/forms/d/130lf1zM6lgpancdpPOBCTfyKaML5hAgE-CMtRAam6Ws/edit#responses">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
                     </div>
+                </div>
+                <div class="card-wrapper mb-0">
 
                     <div class="support-card">
+                        <div class="circle">
+                            <img src="/images/heart.png">
+                        </div>
+                        <h3>Лайк</h3>
+                        <p>Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!</p>
+
+                    </div>
+                    <div class="support-card mb-0">
                         <div class="circle">
                             <img src="/images/collaboration.png">
                         </div>
