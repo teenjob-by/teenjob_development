@@ -37,14 +37,14 @@
                                 <label class="label-title" for="filter-type">Вид деятельности</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" >
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Волонтерство</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
-                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" >
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Стажировка</span>
                                     </label>
@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-speciality">Профобласть</label>
-                                <select name="speciality" class="select-selectric">
+                                <select name="speciality" onchange="getData(getPage(), this.form)" class="select-selectric">
                                     <option selected value> Все профобласти </option>
                                     @foreach($specialities as $speciality)
                                         @isset($_GET['speciality'])
@@ -68,7 +68,7 @@
 
                             <div class="form-group">
                                 <label class="label-title" for="filter-age">Возраст</label>
-                                <select class="select-selectric" name="age" >
+                                <select onchange="getData(getPage(), this.form)" class="select-selectric" name="age" >
 
                                     @foreach($ages as $age)
                                         @isset($_GET['age'])
@@ -84,22 +84,22 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-date">Опубликовано</label>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-today" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" >
+                                    <input type="radio" class="custom-control-input" id="date-today" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" onchange="getData(getPage(), this.form)" >
                                     <label class="custom-control-label" for="date-today">Сегодня</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-days" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" >
+                                    <input type="radio" class="custom-control-input" id="date-days" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-days">За 3 дня</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-week" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" >
+                                    <input type="radio" class="custom-control-input" id="date-week" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" onchange="getData(getPage(), this.form)" >
                                     <label class="custom-control-label" for="date-week">За 7 дней</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="date-month" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} >
+                                    <input type="radio" class="custom-control-input" id="date-month" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-month">За месяц</label>
                                 </div>
                             </div>
