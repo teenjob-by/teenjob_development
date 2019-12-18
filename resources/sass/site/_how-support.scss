@@ -97,3 +97,11 @@
         margin-bottom: 160px;
     }
 }
+
+@media all and (max-width:480px) {
+    .support-card  {
+        .bottom-margin {
+            margin-bottom: 50px !important;
+        }
+    }
+}
