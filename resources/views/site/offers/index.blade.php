@@ -37,14 +37,14 @@
                                     <label class="label-title" for="filter-type">Вид деятельности</label>
                                     <div class="form-check">
                                         <label class="custom-control overflow-checkbox">
-                                            <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" >
+                                            <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="validate(this.form)">
                                             <span class="overflow-control-indicator"></span>
                                             <span class="overflow-control-description">Волонтерство</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="custom-control overflow-checkbox">
-                                            <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" >
+                                            <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="validate(this.form)">
                                             <span class="overflow-control-indicator"></span>
                                             <span class="overflow-control-description">Стажировка</span>
                                         </label>
