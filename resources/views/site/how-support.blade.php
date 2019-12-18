@@ -33,22 +33,20 @@
                             <p><a href="https://docs.google.com/forms/d/130lf1zM6lgpancdpPOBCTfyKaML5hAgE-CMtRAam6Ws/edit#responses">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
                     </div>
                 </div>
-                <div class="card-wrapper mb-0">
-
-                    <div class="support-card">
-                        <div class="circle">
-                            <img src="/images/heart.png">
-                        </div>
-                        <h3>Лайк</h3>
-                        <p>Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!</p>
-
-                    </div>
+                <div class="card-wrapper mb-0">                  
                     <div class="support-card mb-0">
                         <div class="circle">
                             <img src="/images/collaboration.png">
                         </div>
                         <h3>Стань партнером</h3>
                         <p>Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!</p>
+                    </div>
+                    <div class="support-card">
+                        <div class="circle">
+                            <img src="/images/heart.png">
+                        </div>
+                        <h3>Лайк</h3>
+                        <p>Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!</p>
                     </div>
                 </div>
                 <h2 class="partners-title">Партнеры</h2>
