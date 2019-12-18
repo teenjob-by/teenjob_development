@@ -41,7 +41,7 @@
                         <h3>Стань партнером</h3>
                         <p>Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!</p>
                     </div>
-                    <div class="support-card">
+                    <div class="support-card mb-0">
                         <div class="circle">
                             <img src="/images/heart.png">
                         </div>
