@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="card-wrapper mb-0">                  
-                    <div class="support-card mb-0">
+                    <div class="support-card mb-0 bottom-margin">
                         <div class="circle">
                             <img src="/images/collaboration.png">
                         </div>
