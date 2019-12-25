@@ -28,7 +28,7 @@ class AdminEventsController extends Controller
         $filters = $request->only(['city_id', 'date', 'type_id']);
         if($request->has('age')) {
             $age_filter=[
-                ['age', '>=', $request->get('age')]
+                ['age', '<=', $request->get('age')]
             ];
         }
 

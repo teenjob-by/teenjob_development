@@ -25,7 +25,7 @@ class VolunteeringController extends Controller
         ];
         if($request->has('age')) {
             $age_filter=[
-                ['age', '>=', $request->get('age')]
+                ['age', '<=', $request->get('age')]
             ];
         }
 

@@ -27,7 +27,7 @@ class SearchOffersController extends Controller
         ];
         if($request->has('age')) {
             $age_filter=[
-                ['age', '>=', $request->get('age')]
+                ['age', '<=', $request->get('age')]
             ];
         }
         $offer_type = -1;
@@ -127,7 +127,7 @@ class SearchOffersController extends Controller
         ];
         if($request->has('age')) {
             $age_filter=[
-                ['age', '>=', $request->get('age')]
+                ['age', '<=', $request->get('age')]
             ];
         }
         $offer_type = -1;
