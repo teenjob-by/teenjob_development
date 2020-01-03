@@ -22,7 +22,7 @@
                     <p class="offer-card-info profile">{{ $internship->contact }}</p>
                     <p class="offer-card-info envelope">{{ $internship->email }}</p>
                     <p class="offer-card-info telephone">{{ $internship->phone }}</p>
-                    <a class="btn btn-info offer-button" href="{{ route("site.whoisvolunteer") }}">Что такое стажировка?</a>
+                    <a class="btn btn-info offer-button" href="{{ route("site.whoisintern") }}">Что такое стажировка?</a>
                     <div class="offer-card-footer">
                         <p class="offer-card-date">Опубликовано {{ $internship->published_at->format('d.m.Y') }}</p>
                         <a href="/support?abuse=on" class="offer-card-abuse">Пожаловаться на объявление</a>
