@@ -116,36 +116,6 @@
                     <div class="partners-carousel mr-auto ml-auto">
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">Валерия Омелюсик</p>
-                                <p class="partner-role">Идея и координация</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-2.png" class="slick-image">
-                                <p class="partner-name">Анастасия Морозова</p>
-                                <p class="partner-role">ui/ux дизайнер</p>
-                                <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-3.png" class="slick-image">
-                                <p class="partner-name">Ярослава Голубова</p>
-                                <p class="partner-role">Дизайн-концепт</p>
-                                <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
                                 <img src="images/partners/image-4.png" class="slick-image">
                                 <p class="partner-name">Алексей Кирпиченков</p>
                                 <p class="partner-role">Разработчик</p>
@@ -175,7 +145,7 @@
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-6.png" class="slick-image">
                                 <p class="partner-name">Елизавета Индушко</p>
-                                <p class="partner-role">Представитель в Гродно</p>
+                                <p class="partner-role">Представитель Гродно</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -250,6 +220,36 @@
                                         <img class="social" src="images/partners/fb.svg">
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="partner-card mx-auto">
+                                <img src="images/partners/image-1.png" class="slick-image">
+                                <p class="partner-name">Валерия Омелюсик</p>
+                                <p class="partner-role">Идея и координация</p>
+                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="partner-card mx-auto">
+                                <img src="images/partners/image-2.png" class="slick-image">
+                                <p class="partner-name">Анастасия Морозова</p>
+                                <p class="partner-role">ui/ux дизайнер</p>
+                                <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="partner-card mx-auto">
+                                <img src="images/partners/image-3.png" class="slick-image">
+                                <p class="partner-name">Ярослава Голубова</p>
+                                <p class="partner-role">Дизайн-концепт</p>
+                                <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
                             </div>
                         </div>
                     </div>
