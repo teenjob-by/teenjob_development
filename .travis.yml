@@ -1,0 +1,42 @@
+sudo: required
+language: php
+dist: trusty
+
+addons:
+    apt:
+        packages:
+            - sshpass
+
+# Keep the cache between builds to speed up installs
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
+    - node_modules
+php:
+  - 7.2
+
+before_install: 
+  - travis_retry composer self-update && composer --version
+  - nvm install 'lts/*'
+  - npm i -g npm
+
+install:
+  - cp .env.example .env
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+  - npm install --no-audit --no-progress --quiet
+  - npm run dev
+  
+            
+after_success: 
+  - shopt -s extglob
+  - mkdir build
+  - mv !(node_modules) build
+  - tar -czf package.tgz build
+  - sshpass -p $DEPLOY_PASSWORD scp -o stricthostkeychecking=no -P $DEPLOY_PORT package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH_ROOT
+  - sshpass -p $DEPLOY_PASSWORD ssh -o stricthostkeychecking=no -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always

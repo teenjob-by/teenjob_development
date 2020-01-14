@@ -1,0 +1,146 @@
+.how-support {
+    margin-bottom: 160px;
+
+    h2 {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 57px;
+        text-align: center;
+
+        /* Headlines */
+
+        color: #2C2C2C;
+        padding-top: 82px;
+        margin-bottom: 45px;
+
+    }
+
+    .subtitle {
+        margin-bottom: 61px;
+    }
+
+    p {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        color: #000000;
+    }
+    .card-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 45px;
+    }
+
+    .donate-widget {
+        width: 100%;
+    }
+    .support-card {
+        max-width: 380px;
+        margin: auto;
+        text-align: center;
+        -webkit-box-pack: center;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+        margin-bottom: 50px;
+
+        h3 {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 27px;
+            color: #121212;
+            margin-top: 10px;
+            margin-bottom: 7px;
+        }
+
+        p {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            text-align: center;
+            color: #2F2F2F;
+        }
+
+        .circle {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            background: #F1F1F1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .partners-title {
+        margin-bottom: 62px;
+        width: 100%;
+
+    }
+
+
+    .partner-card {
+        display: flex;
+        align-items: center;
+        margin-left: 80px !important;
+        margin-right: auto !important;
+    }
+
+    .partner-card:first-child {
+        margin-left: auto !important;
+    }
+
+    .partners-carousel-two {
+        width: 300px;
+        flex-wrap: nowrap;
+        display: flex;
+        align-items: center;
+
+        .slick-slide {
+            width: 280px;
+            display: flex;
+            margin-right: auto;
+            margin-left: auto;
+            height: 130px;
+        }
+    }
+
+    .no-mobile {
+        display: flex !important;
+    }
+
+    .mobile {
+        display: none !important;
+    }
+}
+
+@media all and (max-width:480px) {
+    .support-card  {
+        .bottom-margin {
+            margin-bottom: 50px !important;
+        }
+    }
+
+    .how-support {
+        .no-mobile {
+            display: none !important;
+        }
+
+        .mobile {
+            display: flex !important;
+        }
+    }
+}
