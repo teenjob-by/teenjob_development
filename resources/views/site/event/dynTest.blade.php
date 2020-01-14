@@ -1,5 +1,19 @@
 @extends('layouts.site')
 
+@section('seo_meta')
+    <meta name="description" content="Тренинги, мастер-классы, конференции, дискуссии и другие события для подростков от 14 до 18 лет."/>
+    <meta name="language" content="RU"/>
+    <meta name="keywords" content="мероприятия в городе, мероприятия сегодня, мероприятия 2019, мероприятия для детей, мероприятия в беларуси, куда сходить">
+
+    <title>Мероприятия для подростков - teenjob.by</title>
+@endsection
+
+@section('og_meta')
+    <meta property="og:image" content="{{url('/')}}/images/main_fb.png">
+    <meta property="og:url" content="{{url()->current()}}">
+    <meta property="vk:image" content="{{url('/')}}/images/main_vk.png">
+@endsection
+
 @section('content')
     <div class="container-fluid events">
 
