@@ -1,4 +1,6 @@
 .how-support {
+    margin-bottom: 160px;
+
     h2 {
         font-family: Open Sans;
         font-style: normal;
@@ -89,12 +91,39 @@
 
     }
 
-    .slick-slider {
-        margin-bottom: 121px;
-    }
 
     .partner-card {
-        margin-bottom: 160px;
+        display: flex;
+        align-items: center;
+        margin-left: 80px !important;
+        margin-right: auto !important;
+    }
+
+    .partner-card:first-child {
+        margin-left: auto !important;
+    }
+
+    .partners-carousel-two {
+        width: 300px;
+        flex-wrap: nowrap;
+        display: flex;
+        align-items: center;
+
+        .slick-slide {
+            width: 280px;
+            display: flex;
+            margin-right: auto;
+            margin-left: auto;
+            height: 130px;
+        }
+    }
+
+    .no-mobile {
+        display: flex !important;
+    }
+
+    .mobile {
+        display: none !important;
     }
 }
 
@@ -102,6 +131,16 @@
     .support-card  {
         .bottom-margin {
             margin-bottom: 50px !important;
+        }
+    }
+
+    .how-support {
+        .no-mobile {
+            display: none !important;
+        }
+
+        .mobile {
+            display: flex !important;
         }
     }
 }

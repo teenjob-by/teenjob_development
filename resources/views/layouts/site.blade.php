@@ -100,6 +100,19 @@
                     prevArrow: '<img class="carousel-arrow-left" src="/images/partners/prev.svg">'
                 });
             });
+
+            $(document).ready(function(){
+                $('.partners-carousel-two').slick({
+                    infinite: true,
+                    variableWidth: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    swipe: true,
+                    swipeToSlide: true,
+                    nextArrow: '<img class="carousel-arrow-right" src="/images/partners/next.svg">',
+                    prevArrow: '<img class="carousel-arrow-left" src="/images/partners/prev.svg">'
+                });
+            });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>

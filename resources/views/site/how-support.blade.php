@@ -50,12 +50,27 @@
                     </div>
                 </div>
                 <h2 class="partners-title">Партнеры</h2>
-                <div class="row">
+                <div class="row no-mobile">
 
-                    <div class="partner-card mx-auto">
+                    <div class="partner-card">
                         <a href="https://hoster.by" target="_blank"> <img src="images/partners/partner-logo-1.png"></a>
                     </div>
+                    <div class="partner-card">
+                        <a href="https://www.facebook.com/TerytoryjaPravou/" target="_blank"> <img src="images/partners/partner-logo-2.png"></a>
+                    </div>
 
+                </div>
+                <div class="row mobile partners-carousel-two">
+                    <div>
+                        <div class="partner-card">
+                            <a href="https://hoster.by" target="_blank"> <img src="images/partners/partner-logo-1.png"></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="partner-card">
+                            <a href="https://www.facebook.com/TerytoryjaPravou/" target="_blank"> <img src="images/partners/partner-logo-2.png"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
