@@ -76,7 +76,7 @@
 
         </form>
         @if(Route::getCurrentRoute()->uri() == '/')
-            <a class="btn volunteers-desktop-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdeE3yE-I0GkDdwDbMc0cddLWCryaoYb3iL0QJftnJ_NHdzaQ/viewform" target="_blank"><span>Пройти опрос: что с образованием?</span></a>
+            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>Добавить объявление</span></a>
         @endif
 
 
@@ -142,6 +142,6 @@
     </div>
 
     @if(Route::getCurrentRoute()->uri() == '/')
-        <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdeE3yE-I0GkDdwDbMc0cddLWCryaoYb3iL0QJftnJ_NHdzaQ/viewform" target="_blank"><span>Пройти опрос: что с образованием?</span></a>
+        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" ><span>Добавить объявление</span></a>
     @endif
 </div>
