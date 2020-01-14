@@ -33,8 +33,8 @@ after_success:
   - mkdir build
   - mv !(node_modules) build
   - tar -czf package.tgz build
-  - sshpass -p $DEPLOY_PASSWORD scp -o stricthostkeychecking=no -P $DEPLOY_PORT package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  - sshpass -p $DEPLOY_PASSWORD ssh -o stricthostkeychecking=no -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
+  - sshpass -p $DEPLOY_PASSWORD scp -o stricthostkeychecking=no -P $DEPLOY_PORT package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH_ROOT
+  - sshpass -p $DEPLOY_PASSWORD ssh -o stricthostkeychecking=no -p $DEPLOY_PORT $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH
 
 notifications:
   email:
