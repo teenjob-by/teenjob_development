@@ -23,7 +23,7 @@ class InternshipController extends Controller
             ['age', '>=', 14]
         ];
         if($request->has('age')) {
-            $age_filter=[
+            $age_filter = [
                 ['age', '<=', $request->get('age')]
             ];
         }

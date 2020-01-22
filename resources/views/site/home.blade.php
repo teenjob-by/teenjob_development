@@ -1,11 +1,10 @@
 @extends('layouts.site')
 
 @section('seo_meta')
-    <meta name="description" content="Тут собраны все возможности волонтерства, стажировок и неформальных мероприятий для подростков из городов Беларуси."/>
-    <meta name="language" content="RU"/>
-    <meta name="keywords" content="волонтерское движение, волонтер, волонтерское движение гомель, стажировка ,мероприятие, мероприятия в минске, подавать объявление, подать объявление, подам объявление, подавать объявление бесплатно, волонтерский проект, Присоединиться к команде">
-
-    <title>teenjob.by - возможности для подростков Беларуси</title>
+    <meta name="description" content="@lang('headings.home.description')"/>
+    <meta name="language" content="@lang('headings.home.language')"/>
+    <meta name="keywords" content="@lang('headings.home.keywords')">
+    <title>@lang('headings.home.title')</title>
 @endsection
 
 @section('og_meta')
@@ -117,8 +116,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-4.png" class="slick-image">
-                                <p class="partner-name">Алексей Кирпиченков</p>
-                                <p class="partner-role">Разработчик</p>
+                                <p class="partner-name">@lang("team.team_1.name") @lang("team.team_1.surname")</p>
+                                <p class="partner-role">@lang("team.team_1.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/alexey.kirpichenkau" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -132,8 +131,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">Дарья Чернухина</p>
-                                <p class="partner-role">Коммуникации и PR</p>
+                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
+                                <p class="partner-role">@lang("team.team_2.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -144,8 +143,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-6.png" class="slick-image">
-                                <p class="partner-name">Елизавета Индушко</p>
-                                <p class="partner-role">Представитель Гродно</p>
+                                <p class="partner-name">@lang("team.team_3.name") @lang("team.team_3.surname")</p>
+                                <p class="partner-role">@lang("team.team_3.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -156,8 +155,8 @@
                        <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">Валерия Омелюсик</p>
-                                <p class="partner-role">Идея и координация</p>
+                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
+                                <p class="partner-role">@lang("team.team_4.role")</p>
                                 <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
@@ -166,8 +165,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-2.png" class="slick-image">
-                                <p class="partner-name">Анастасия Морозова</p>
-                                <p class="partner-role">ui/ux дизайнер</p>
+                                <p class="partner-name">@lang("team.team_5.name") @lang("team.team_5.surname")</p>
+                                <p class="partner-role">@lang("team.team_5.role")</p>
                                 <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
@@ -176,8 +175,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-3.png" class="slick-image">
-                                <p class="partner-name">Ярослава Голубова</p>
-                                <p class="partner-role">Дизайн-концепт</p>
+                                <p class="partner-name">@lang("team.team_6.name") @lang("team.team_6.surname")</p>
+                                <p class="partner-role">@lang("team.team_6.role")</p>
                                 <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
@@ -186,8 +185,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-4.png" class="slick-image">
-                                <p class="partner-name">Алексей Кирпиченков</p>
-                                <p class="partner-role">Разработчик</p>
+                                <p class="partner-name">@lang("team.team_1.name") @lang("team.team_1.surname")</p>
+                                <p class="partner-role">@lang("team.team_1.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/alexey.kirpichenkau" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -201,8 +200,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">Дарья Чернухина</p>
-                                <p class="partner-role">Коммуникации и PR</p>
+                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
+                                <p class="partner-role">@lang("team.team_2.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -213,8 +212,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-6.png" class="slick-image">
-                                <p class="partner-name">Елизавета Индушко</p>
-                                <p class="partner-role">Представитель в Гродно</p>
+                                <p class="partner-name">@lang("team.team_3.name") @lang("team.team_3.surname")</p>
+                                <p class="partner-role">@lang("team.team_3.role")</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
@@ -225,8 +224,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">Валерия Омелюсик</p>
-                                <p class="partner-role">Идея и координация</p>
+                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
+                                <p class="partner-role">@lang("team.team_4.role")</p>
                                 <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
@@ -235,8 +234,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-2.png" class="slick-image">
-                                <p class="partner-name">Анастасия Морозова</p>
-                                <p class="partner-role">ui/ux дизайнер</p>
+                                <p class="partner-name">@lang("team.team_5.name") @lang("team.team_5.surname")</p>
+                                <p class="partner-role">@lang("team.team_5.role")</p>
                                 <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
@@ -245,8 +244,8 @@
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-3.png" class="slick-image">
-                                <p class="partner-name">Ярослава Голубова</p>
-                                <p class="partner-role">Дизайн-концепт</p>
+                                <p class="partner-name">@lang("team.team_6.name") @lang("team.team_6.surname")</p>
+                                <p class="partner-role">@lang("team.team_6.role")</p>
                                 <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
