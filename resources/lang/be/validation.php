@@ -1,14 +1,14 @@
 <?php
 return [
     'custom' => [
-        'title' => 'Пожалуйста заполните поле',
-        'required' => 'Пожалуйста заполните поле',
+        'title' => 'Калі ласка запоўніце поле',
+        'required' => 'Калі ласка запоўніце поле',
         'email' => [
             'required' => 'We need to know your e-mail address!',
         ],
     ],
     'title' => [
-        'required' => 'Пожалуйста заполните поле'
+        'required' => 'Калі ласка запоўніце поле'
     ],
 
     /*

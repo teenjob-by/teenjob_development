@@ -49,7 +49,7 @@
                         <p>@lang('content.help.column-3-text')</p>
                     </div>
                 </div>
-                <h2 class="partners-title">Партнеры</h2>
+                <h2 class="partners-title">@lang('content.help.partner')</h2>
                 <div class="row no-mobile">
 
                     <div class="partner-card">
