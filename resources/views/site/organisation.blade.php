@@ -8,16 +8,16 @@
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#account">Данные об организации</a>
+                            <a class="nav-link active" data-toggle="tab" href="#account">@lang('content.organisation.title')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#internship">Стажировки</a>
+                            <a class="nav-link" data-toggle="tab" href="#internship">@lang('content.organisation.internTab')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#volunteering">Волонтерство</a>
+                            <a class="nav-link" data-toggle="tab" href="#volunteering">@lang('content.organisation.volunteerTab')</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#events">Мероприятия</a>
+                            <a class="nav-link" data-toggle="tab" href="#events">@lang('content.organisation.eventTab')</a>
                         </li>
                     </ul>
                 </div>
@@ -29,36 +29,36 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="account">
-                    <h3  class="section-title">Личный кабинет</h3>
+                    <h3  class="section-title">@lang('content.organisation.account.name')</h3>
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-sm-12">
                             <div class="row">
                                 <div class="offset-lg-3 col-lg-9 col-sm-12">
-                                    <h2>Данные об организации</h2>
+                                    <h2>@lang('content.organisation.account.title')</h2>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="title" class="col-lg-5 col-sm-12 col-form-label padding-0">Название (офиц.)*</label>
+                                <label for="title" class="col-lg-5 col-sm-12 col-form-label padding-0">@lang('content.organisation.account.orgName')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="title" value="{{ $organisation->name }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="link" class="col-lg-5 col-sm-12 col-form-label">Сайт/группа в соц. сети*</label>
+                                <label for="link" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.orgSite')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="link" value="{{ $organisation->link }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="type" class="col-lg-5 col-sm-12 col-form-label">Тип*</label>
+                                <label for="type" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.orgType')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="type" value="{{ $organisation->type }}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="unique_identifier" class="col-lg-5 col-sm-12 col-form-label">УНП</label>
+                                <label for="unique_identifier" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.orgID')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="unique_identifier" value="{{ $organisation->unique_identifier }}">
                                 </div>
@@ -66,59 +66,59 @@
 
                             <div class="row">
                                 <div class="offset-lg-3 col-lg-9 col-sm-12">
-                                    <h2>Контактные данные</h2>
+                                    <h2>@lang('content.organisation.account.contactsTitle')</h2>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="contact" class="col-lg-5 col-sm-12 col-form-label">Контактное лицо</label>
+                                <label for="contact" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.contactsPerson')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="contact" value="{{ $organisation->contact }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="phone" class="col-lg-5 col-sm-12 col-form-label">Телефон</label>
+                                <label for="phone" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.contactsPhone')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="phone" value="{{ $organisation->phone }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="alt_phone" class="col-lg-5 col-sm-12 col-form-label">Доп. тел.</label>
+                                <label for="alt_phone" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.contactsAdditionalPhone')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="alt_phone" value="{{ $organisation->alt_phone }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="email" class="col-lg-5 col-sm-12 col-form-label">Email</label>
+                                <label for="email" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.contactsEmail')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="email" value="{{ $organisation->email }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="alt_email" class="col-lg-5 col-sm-12 col-form-label">Дополнительный email</label>
+                                <label for="alt_email" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisation.account.contactsadditionalEmail')</label>
                                 <div class="col-lg-7 col-sm-12">
                                     <input type="text" readonly class="form-control" name="alt_email" value="{{ $organisation->alt_email }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <a class="btn btn-success ml-auto" href="{{ '/organisation/edit' }} " role="button">Править персональную информацию</a>
+                                <a class="btn btn-success ml-auto" href="{{ '/organisation/edit' }} " role="button">@lang('content.organisation.account.editPersonalInfo')</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="internship">
-                    <h3 class="section-title">Стажировки</h3>
+                    <h3 class="section-title">@lang('content.organisation.internships.title')</h3>
 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-create {{ (count($internships) > 0)?'':'disable' }}" href="{{ route('account.internshipForm') }}" role="button">Создать объявление</a>
+                                <a class="btn btn-success btn-create {{ (count($internships) > 0)?'':'disable' }}" href="{{ route('account.internshipForm') }}" role="button">@lang('content.organisation.internships.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">Опубликовано</h3>
+                                    <h3 class="title">@lang('content.organisation.internships.published')</h3>
                                     <div class="internship-list">
                                         @if(count($internships))
                                             @foreach($internships as $internship)
@@ -129,14 +129,14 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/internship/archive/{{ $internship->id }}">Заархивировать</a>
-                                                            <span>до {{ $internship->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
+                                                            <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive') </a>
+                                                            <span>@lang('content.organisation.internships.publishedBefore') {{ $internship->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
                                                 @endif
                                             @endforeach
                                         @else
-                                            <span class="items-empty">Нет опубликованных стажировок</span>
+                                            <span class="items-empty">@lang('content.organisation.internships.notFoundPublished')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">На модерации</h3>
+                                    <h3 class="title">@lang('content.organisation.internships.moderated')</h3>
                                     <div class="internship-list">
                                         @if(count($internships))
                                         @foreach($internships as $internship)
@@ -155,15 +155,14 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/archive/{{ $internship->id }}">Заархивировать</a>
-
+                                                        <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
 
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Нет стажировок на модерации</span>
+                                            <span class="items-empty">@lang('content.organisation.internships.notFoundModerated')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -171,7 +170,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">В архиве</h3>
+                                    <h3 class="title">@lang('content.organisation.internships.archiveTitle')</h3>
                                     <div class="internship-list">
                                         @if(count($internships))
                                         @foreach($internships as $internship)
@@ -182,15 +181,14 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/unarchive/{{ $internship->id }}">Разархивировать</a>
-
+                                                        <a href="/internship/unarchive/{{ $internship->id }}">@lang('content.organisation.internships.unarchive')</a>
                                                     </div>
                                                 </div>
                                             @endif
 
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Архив стажировок пуст</span>
+                                            <span class="items-empty">@lang('content.organisation.internships.notFoundArchive')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -203,17 +201,17 @@
                 </div>
 
                 <div class="tab-pane fade" id="volunteering">
-                    <h3  class="section-title" >Волонтерство</h3>
+                    <h3  class="section-title">@lang('content.organisation.volunteering.title')</h3>
 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-create {{ (count($volunteerings) > 0)?'':'disable' }}" href=" {{ route('account.volunteeringForm') }}" role="button">Создать объявление</a>
+                                <a class="btn btn-success btn-create {{ (count($volunteerings) > 0)?'':'disable' }}" href=" {{ route('account.volunteeringForm') }}" role="button">@lang('content.organisation.volunteering.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">Опубликовано</h3>
+                                    <h3 class="title">@lang('content.organisation.volunteering.published')</h3>
                                     <div class="internship-list">
                                         @if(count($volunteerings))
                                         @foreach($volunteerings as $volunteering)
@@ -224,15 +222,15 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">Заархивировать</a>
-                                                        <span>до {{ $volunteering->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
+                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
+                                                        <span>@lang('content.organisation.volunteering.archiveBefore') {{ $volunteering->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
 
                                         @else
-                                            <span class="items-empty">Нет опубликованных объявлений</span>
+                                            <span class="items-empty">@lang('content.organisation.volunteering.notFoundPublished')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -240,7 +238,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">На модерации</h3>
+                                    <h3 class="title">@lang('content.organisation.volunteering.moderationTitle')</h3>
                                     <div class="internship-list">
                                         @if(count($volunteerings))
                                         @foreach($volunteerings as $volunteering)
@@ -251,14 +249,13 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">Заархивировать</a>
-
+                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Нет объявлений на модерации</span>
+                                            <span class="items-empty">@lang('content.organisation.volunteering.notFoundModeration')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -267,7 +264,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">В архиве</h3>
+                                    <h3 class="title">@lang('content.organisation.volunteering.archiveTitle')</h3>
                                     <div class="internship-list">
                                         @if(count($volunteerings))
                                         @foreach($volunteerings as $volunteering)
@@ -278,35 +275,32 @@
                                                 </div>
 
                                                 <div class="internship-actions">
-                                                    <a href="/volunteering/unarchive/{{ $volunteering->id }}">Разархивировать</a>
-
+                                                    <a href="/volunteering/unarchive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.unarchive')</a>
                                                 </div>
                                             </div>
                                             @endif
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Архив объявлений пуст</span>
+                                            <span class="items-empty">@lang('content.organisation.volunteering.notFoundArchive')</span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="events">
-                    <h3  class="section-title" >Мероприятия</h3>
+                    <h3 class="section-title">@lang('content.organisation.events.title')</h3>
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-create {{ (count($events) > 0)?'':'disable' }}" href="{{ route('account.eventForm') }}" role="button">Создать объявление</a>
+                                <a class="btn btn-success btn-create {{ (count($events) > 0)?'':'disable' }}" href="{{ route('account.eventForm') }}" role="button">@lang('content.organisation.events.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">Опубликовано</h3>
+                                    <h3 class="title">@lang('content.organisation.events.published')</h3>
                                     <div class="internship-list">
                                         @if(count($events))
                                         @foreach($events as $event)
@@ -317,14 +311,14 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/event/archive/{{ $event->id }}">Заархивировать</a>
-                                                        <span>до {{ $event->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
+                                                        <a href="/event/archive/{{ $event->id }}">@lang('content.organisation.events.archive')</a>
+                                                        <span>@lang('content.organisation.events.archiveBefore') {{ $event->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Нет опубликованных событий</span>
+                                            <span class="items-empty">@lang('content.organisation.events.notFoundEvents')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -332,7 +326,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">На модерации</h3>
+                                    <h3 class="title">@lang('content.organisation.events.moderationTitle')</h3>
                                     <div class="internship-list">
                                         @if(count($events))
                                         @foreach($events as $event)
@@ -343,13 +337,13 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/event/archive/{{ $event->id }}">Заархивировать</a>
+                                                        <a href="/event/archive/{{ $event->id }}">@lang('content.organisation.events.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Нет событий на модерации</span>
+                                            <span class="items-empty">@lang('content.organisation.events.notFoundEvents')</span>
                                         @endif
                                     </div>
                                 </div>
@@ -357,7 +351,7 @@
 
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
-                                    <h3 class="title">В архиве</h3>
+                                    <h3 class="title">@lang('content.organisation.events.archiveTitle')</h3>
                                     <div class="internship-list">
                                         @if(count($events))
                                         @foreach($events as $event)
@@ -368,24 +362,21 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/event/unarchive/{{ $event->id }}">Разархивировать</a>
+                                                        <a href="/event/unarchive/{{ $event->id }}">@lang('content.organisation.events.unarchive')</a>
                                                     </div>
                                                 </div>
                                             @endif
                                         @endforeach
                                         @else
-                                            <span class="items-empty">Архив событий пуст</span>
+                                            <span class="items-empty">@lang('content.organisation.events.notFoundArchive')</span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
