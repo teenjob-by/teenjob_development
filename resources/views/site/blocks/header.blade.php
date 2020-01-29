@@ -96,7 +96,7 @@
 
 
             @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))))
-                @if(!(Str::contains(Route::getCurrentRoute()->uri(), 'organisation')))
+                @if((!(Str::contains(Route::getCurrentRoute()->uri(), 'organisation'))) && (!(Str::contains(Route::getCurrentRoute()->uri(), 'login'))))
 
                     <div class="mobile-categories {{ (Route::getCurrentRoute()->uri() != '/') ? "mobile-categories-string" : "" }}">
                         <a class="mobile-categories-button" href="/offers?volunteering=on">
