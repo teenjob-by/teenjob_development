@@ -242,6 +242,7 @@ return [
         'events' => [
             'title' => 'Мероприятия',
             'published' => ' Опубликовано',
+            'create' => 'Создать мероприятие',
             'archive' => ' Заархивировать',
             'notFoundEvents' => 'Нет опубликованных событий',
             'moderationTitle' => 'На модерации',

@@ -36,7 +36,7 @@
                         <div class="form-group row">
                             <label for="request" class="col-lg-5 col-sm-12 col-form-label">@lang('content.organisationForm.request')</label>
                             <div class="col-sm-12 col-lg-7">
-                                <textarea type="text" maxlength="250" class="form-control @error('request') is-invalid @enderror " name="request" placeholder="@lang('content.organisationForm.request_placeholder)">{{ $organisation->request }}</textarea>
+                                <textarea type="text" maxlength="250" class="form-control @error('request') is-invalid @enderror " name="request" placeholder="@lang('content.organisationForm.requestPlaceholder')">{{ $organisation->request }}</textarea>
                             </div>
                         </div>
 
