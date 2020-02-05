@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="password_confirmation" class="col-sm-12 col-lg-5 col-form-label">@lang('content.organisationForm.passwordReset')</label>
+                            <label for="password_confirmation" class="col-sm-12 col-lg-5 col-form-label">@lang('content.organisationForm.passwordRepeat')</label>
                             <div class="col-sm-12 col-lg-7">
                                 <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror " name="password_confirmation" >
                             </div>

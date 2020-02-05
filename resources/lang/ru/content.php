@@ -193,7 +193,7 @@ return [
         ]
     ],
     'organisation' => [
-        'title' => 'Данные об организации',
+        'title' => 'Личный кабинет',
         'eventTab' => 'Мероприятия',
         'volunteerTab' => 'Волонтерство',
         'internTab' => 'Стажировки',
@@ -214,7 +214,7 @@ return [
         ],
         'internships' => [
             'title' => 'Стажировки',
-            'create' => 'Создать объявление',
+            'create' => 'Опубликовать стажировку',
             'published' => 'Опубликовано',
             'publishedBefore' => 'до ',
             'notFoundPublished' => 'Нет опубликованных стажировок',
@@ -227,7 +227,7 @@ return [
         ],
         'volunteering' => [
             'title' => 'Волонтерство',
-            'create' => 'Создать объявление',
+            'create' => 'Опубликовать волонтерство',
             'published' => 'Опубликовано',
             'archive' => 'Заархивировать',
             'archiveBefore' => 'до',
@@ -241,8 +241,8 @@ return [
 
         'events' => [
             'title' => 'Мероприятия',
-            'published' => ' Опубликовано',
-            'create' => 'Создать мероприятие',
+            'published' => 'Опубликовано',
+            'create' => 'Опубликовать мероприятие',
             'archive' => ' Заархивировать',
             'notFoundEvents' => 'Нет опубликованных событий',
             'moderationTitle' => 'На модерации',

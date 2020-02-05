@@ -29,7 +29,7 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="account">
-                    <h3  class="section-title">@lang('content.organisation.account.name')</h3>
+
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-sm-12">
                             <div class="row">
@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="internship">
-                    <h3 class="section-title">@lang('content.organisation.internships.title')</h3>
+
 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -201,7 +201,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="volunteering">
-                    <h3  class="section-title">@lang('content.organisation.volunteering.title')</h3>
+
 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -291,7 +291,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="events">
-                    <h3 class="section-title">@lang('content.organisation.events.title')</h3>
+
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
