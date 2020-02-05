@@ -96,26 +96,7 @@
 
 
             @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))))
-                @if((!(Str::contains(Route::getCurrentRoute()->uri(), 'organisation'))) && (!(Str::contains(Route::getCurrentRoute()->uri(), 'login'))))
 
-                    <div class="mobile-categories {{ (Route::getCurrentRoute()->uri() != '/') ? "mobile-categories-string" : "" }}">
-                        <a class="mobile-categories-button" href="/offers?volunteering=on">
-                    <span>
-                        @lang('header.navlink_1')
-                    </span>
-                        </a>
-                        <a class="mobile-categories-button" href="/offers?internship=on">
-                    <span>
-                        @lang('header.navlink_2')
-                    </span>
-                        </a>
-                        <a class="mobile-categories-button" href="/events">
-                    <span>
-                        @lang('header.navlink_3')
-                    </span>
-                        </a>
-                    </div>
-                @endif
             @else
                 <form id="main-mobile-search" class="search-box mobile-search" method="get" action="{{ route('site.search') }}">
                     <div class="input-group mb-3">
