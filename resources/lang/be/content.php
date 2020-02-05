@@ -177,7 +177,7 @@ return [
         ]
     ],
     'organisation' => [
-        'title' => 'Асабісты кабінеті',
+        'title' => 'Асабісты кабінет',
         'eventTab' => 'Мерапрыемствы',
         'volunteerTab' => 'Валанцерства',
         'internTab' => 'Стажыроўкі',
