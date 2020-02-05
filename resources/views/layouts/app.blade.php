@@ -89,14 +89,14 @@
                         <div class="bg-light border-right" id="sidebar-wrapper">
                             <div class="sidebar-heading">@lang('content.internship.admin.menu')</div>
                             <div class="list-group list-group-flush">
-                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">@lang('content.internship.admin.volunteering') Волонтерство</a>
-                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">@lang('content.internship.admin.volunteeringModerate') Волонтерство на модерацию</a>
-                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">@lang('content.internship.admin.internship') Стажировки</a>
-                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">@lang('content.internship.admin.internshipModerate') Стажировки на модерацию</a>
-                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">@lang('content.internship.admin.event') Мероприятия</a>
-                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events.moderation') ? 'active' : '' }}">@lang('content.internship.admin.eventModerate') Мероприятия на модерацию</a>
-                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light {{ (request()->routeIs('admin.organisation') || request()->routeIs('admin') ) ? 'active' : '' }}">@lang('content.internship.admin.organisation') Организации</a>
-                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.organisation.moderation') ? 'active' : '' }}">@lang('content.internship.admin.organisationModerate') Организации на модерацию</a>
+                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">@lang('content.internship.admin.volunteering')</a>
+                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">@lang('content.internship.admin.volunteeringModerate')</a>
+                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">@lang('content.internship.admin.internship')</a>
+                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">@lang('content.internship.admin.internshipModerate')</a>
+                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">@lang('content.internship.admin.event')</a>
+                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events.moderation') ? 'active' : '' }}">@lang('content.internship.admin.eventModerate')</a>
+                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light {{ (request()->routeIs('admin.organisation') || request()->routeIs('admin') ) ? 'active' : '' }}">@lang('content.internship.admin.organisation')</a>
+                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.organisation.moderation') ? 'active' : '' }}">@lang('content.internship.admin.organisationModerate')</a>
                             </div>
                         </div>
                     </div>
