@@ -5,21 +5,21 @@
         <div class="container">
             <div class="row flex-column align-items-center">
 
-                    <h2 class="display-5">Новое объявление</h2>
+                    <h2 class="display-5">@lang('content.event.create.title')</h2>
 
 
                         <form method="post" action="{{ route('events.store') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
-                                <label for="title">Название:</label>
+                                <label for="title">@lang('content.event.create.name')</label>
                                 <input type="text" required class="form-control" name="title"/>
                             </div>
                             @error('title')
                                 <div class="alert alert-danger">{{ $errors->title }}</div>
                             @enderror
                             <div class="form-group">
-                                <label class="label-title" for="filter-city">Город</label>
+                                <label class="label-title" for="filter-city">@lang('content.event.create.city')</label>
                                 <select name="city" class="js-select2-basic-single">
                                     @foreach($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -29,7 +29,7 @@
 
                             <div class="time-group">
                                 <div class="form-group">
-                                    <label for="date_start">Дата начала</label>
+                                    <label for="date_start">@lang('content.event.create.dateStart')</label>
                                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                                         <input type="text" required class="form-control datetimepicker-input" data-target="#datetimepicker2" id="date_start" name="date_start"/>
                                         <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
@@ -40,7 +40,7 @@
 
                                 <div class="form-group">
 
-                                    <label for="date_start" class="time-label">Время</label>
+                                    <label for="date_start" class="time-label">@lang('content.event.create.timeStart')</label>
                                     <div class="input-group time" id="datetimepicker3" data-target-input="nearest">
                                         <input required type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" name="time_start"/>
                                         <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
@@ -68,23 +68,23 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="address">Адрес</label>
+                                <label for="address">@lang('content.event.create.address')</label>
                                 <input type="text" required class="form-control" name="address"/>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-age">Возраст</label>
+                                <label class="label-title" for="filter-age">@lang('content.event.create.age')</label>
                                 <select name="age" class="select-selectric">
-                                    <option value="14" selected="selected">от 14</option>
-                                    <option value="15">от 15</option>
-                                    <option value="16">от 16</option>
-                                    <option value="17">от 17</option>
+                                    <option value="14" selected="selected">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
                                 </select>
                             </div>
 
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-speciality">Условия участия</label>
+                                <label class="label-title" for="filter-speciality">@lang('content.event.create.terms')</label>
                                 <select name="type" class="select-selectric">
                                     @foreach($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -98,7 +98,7 @@
 
                             <div class="form-group">
 
-                                <label for="event-image">Загрузить обложку*</label>
+                                <label for="event-image">@lang('content.event.create.loadPreview')</label>
                                 <div class="custom-file">
                                     <label class="custom-file-label" for="event-image">png, jpg, jpeg</label>
                                     <input type="file" class="custom-file-input" value="{{ old('image') }}" name="image" id="event-image" required accept="image/gif, image/jpeg, image/jpg, image/png">
@@ -113,7 +113,7 @@
 
 
 
-                            <p class="map-title">Отметьте место проведения на карте</p>
+                            <p class="map-title">@lang('content.event.create.map')</p>
                             <div class="form-group map" id="map">
                                 <!--<div class="mapouter">
                                     <div class="gmap_canvas">
@@ -125,9 +125,9 @@
                             <input type="hidden" name="location" id="event-location">
 
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">Отправить на модерацию</button>
+                                <button type="submit" class="btn btn-success">@lang('content.event.create.moderate')</button>
                             </div>
-                            <p class="notification">Будет опубликовано в ближайшее время после прохождения предварительной модерации.</p>
+                            <p class="notification">@lang('content.event.create.notification')</p>
                         </form>
 
             </div>

@@ -44,11 +44,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">@lang('content.internship.admin.login')</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">@lang('content.internship.admin.register')</a>
                                 </li>
                             @endif
                         @else
@@ -61,12 +61,12 @@
                                     <a class="dropdown-item" href="{{ route('organisation') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Размещение объявлений') }}
+                                       @lang('content.internship.admin.add')
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Выход') }}
+                                        @lang('content.internship.admin.logout')
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -87,16 +87,16 @@
                 <div class="row">
                     <div class="sidebar-wrapper">
                         <div class="bg-light border-right" id="sidebar-wrapper">
-                            <div class="sidebar-heading">Меню</div>
+                            <div class="sidebar-heading">@lang('content.internship.admin.menu')</div>
                             <div class="list-group list-group-flush">
-                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">Волонтерство</a>
-                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">Волонтерство на модерацию</a>
-                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">Стажировки</a>
-                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">Стажировки на модерацию</a>
-                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">Мероприятия</a>
-                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events.moderation') ? 'active' : '' }}">Мероприятия на модерацию</a>
-                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light {{ (request()->routeIs('admin.organisation') || request()->routeIs('admin') ) ? 'active' : '' }}">Организации</a>
-                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.organisation.moderation') ? 'active' : '' }}">Организации на модерацию</a>
+                                <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">@lang('content.internship.admin.volunteering') Волонтерство</a>
+                                <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">@lang('content.internship.admin.volunteeringModerate') Волонтерство на модерацию</a>
+                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">@lang('content.internship.admin.internship') Стажировки</a>
+                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">@lang('content.internship.admin.internshipModerate') Стажировки на модерацию</a>
+                                <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">@lang('content.internship.admin.event') Мероприятия</a>
+                                <a href="/admin/events/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events.moderation') ? 'active' : '' }}">@lang('content.internship.admin.eventModerate') Мероприятия на модерацию</a>
+                                <a href="/admin/organisations" class="list-group-item list-group-item-action bg-light {{ (request()->routeIs('admin.organisation') || request()->routeIs('admin') ) ? 'active' : '' }}">@lang('content.internship.admin.organisation') Организации</a>
+                                <a href="/admin/organisations/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.organisation.moderation') ? 'active' : '' }}">@lang('content.internship.admin.organisationModerate') Организации на модерацию</a>
                             </div>
                         </div>
                     </div>

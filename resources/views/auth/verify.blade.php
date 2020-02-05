@@ -6,19 +6,19 @@
     <div class="container auth">
 
         <div class="row justify-content-center">
-            <h3>{{ __('Подтверждение вашей почты') }}</h3>
+            <h3>@lang('auth.verify.title')</h3>
 
             <hr align="center" width="627" color="lightgray" />
 
             @if (session('resent'))
                 <div class="alert alert-success" role="alert">
-                    {{ __('Ссылка на активацию аккаунта была отправлена на вашу почту') }}
+                    @lang('auth.verify.link')
                 </div>
             @endif
 
             <p>
-                <br>{{ __('Перед продолжением, проверьте свой e-mail адрес') }}<br>
-                <br>{{ __('Если вы не получили письмо') }}, <a href="{{ route('verification.resend') }}">{{ __('Нажмите, чтобы выслать еще раз') }}</a>.<br>
+                <br>@lang('auth.verify.check')<br>
+                <br>@lang('auth.verify.notAppear'), <a href="{{ route('verification.resend') }}">@lang('auth.verify.click')</a>.<br>
             </p>
         </div>
     </div>
