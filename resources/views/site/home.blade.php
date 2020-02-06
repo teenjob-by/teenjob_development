@@ -131,14 +131,12 @@
                         </div>
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">Дарья Чернухина</p>
-                                <p class="partner-role">Коммуникации и PR</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
+                                <img src="images/partners/image-1.png" class="slick-image">
+                                <p class="partner-name">Валерия Омелюсик</p>
+                                <p class="partner-role">Идея и координация</p>
+                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
                             </div>
                         </div>
                         <div>
@@ -153,14 +151,16 @@
                                 </div>
                             </div>
                         </div>
-                       <div>
+                        <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">Валерия Омелюсик</p>
-                                <p class="partner-role">Идея и координация</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
+                                <img src="images/partners/image-5.png" class="slick-image">
+                                <p class="partner-name">Дарья Чернухина</p>
+                                <p class="partner-role">Коммуникации и PR</p>
+                                <div class="d-flex">
+                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
+                                        <img class="social" src="images/partners/fb.svg">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -200,14 +200,12 @@
                         </div>
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">Дарья Чернухина</p>
-                                <p class="partner-role">Коммуникации и PR</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
+                                <img src="images/partners/image-1.png" class="slick-image">
+                                <p class="partner-name">Валерия Омелюсик</p>
+                                <p class="partner-role">Идея и координация</p>
+                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
                             </div>
                         </div>
                         <div>
@@ -224,12 +222,14 @@
                         </div>
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">Валерия Омелюсик</p>
-                                <p class="partner-role">Идея и координация</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
+                                <img src="images/partners/image-5.png" class="slick-image">
+                                <p class="partner-name">Дарья Чернухина</p>
+                                <p class="partner-role">Коммуникации и PR</p>
+                                <div class="d-flex">
+                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
+                                        <img class="social" src="images/partners/fb.svg">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div>
