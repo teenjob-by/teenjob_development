@@ -212,7 +212,7 @@
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-6.png" class="slick-image">
                                 <p class="partner-name">Елизавета Индушко</p>
-                                <p class="partner-role">Представитель в Гродно</p>
+                                <p class="partner-role">Представитель Гродно</p>
                                 <div class="d-flex">
                                     <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
                                         <img class="social" src="images/partners/fb.svg">
