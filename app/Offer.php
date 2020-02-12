@@ -55,7 +55,9 @@ class Offer extends Model
 
         $desc = $this->description;
         $str = preg_replace('/\s+/', ' ', clean($desc));
+
         $out = Str::limit($str,200,'...');
+        $out  = clean($out);
         return $out;
     }
 
