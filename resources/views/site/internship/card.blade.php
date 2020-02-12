@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('seo_meta')
-    <meta name="description" content="{!!  $internship->getPreviewDesc() !!}}"/>
+    <meta name="description" content="{!!  $internship->getPreviewDesc() !!}"/>
     <meta name="language" content="RU"/>
 
     <title>{{ $internship->title }}</title>

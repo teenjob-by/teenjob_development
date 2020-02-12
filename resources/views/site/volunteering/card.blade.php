@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('seo_meta')
-    <meta name="description" content="{!!  $volunteering->getSeoMeta() !!}"/>
+    <meta name="description" content="{!!  $volunteering->getPreviewDesc() !!}"/>
     <meta name="language" content="RU"/>
 
     <title>{{ $volunteering->title }}</title>
