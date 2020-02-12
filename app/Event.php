@@ -55,15 +55,17 @@ class Event extends Model
         $out = Str::limit($str,80,'...');
         $out  = clean($out);
 
-
         return $out;
     }
 
     public function getSeoMeta()
     {
 
-        $str = strip_tags($this->description);
-        $out = strlen($str) > 120 ? mb_substr($str,0,120,'utf-8')."..." : $str;
+        $desc = $this->description;
+        $str = preg_replace('/\s+/', ' ', clean($desc));
+        $out = Str::limit($str,120,'...');
+        $out  = clean($out);
+        $out = strip_tags($out);
 
         return $out;
     }

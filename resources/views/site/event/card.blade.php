@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @section('seo_meta')
-    <meta name="description" content="{!! $event->getPreviewDesc() !!}"/>
+    <meta name="description" content="{!! $event->getSeoMeta() !!}"/>
     <meta name="language" content="RU"/>
 
     <title>{{ $event->title }}</title>
