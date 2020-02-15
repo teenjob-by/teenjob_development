@@ -30,7 +30,7 @@
                             <img src="/images/charity.png">
                         </div>
                             <h3>Стань волонтером</h3>
-                            <p><a href="https://docs.google.com/forms/d/130lf1zM6lgpancdpPOBCTfyKaML5hAgE-CMtRAam6Ws/edit#responses">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
+                            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
                     </div>
                 </div>
                 <div class="card-wrapper mb-0">                  
