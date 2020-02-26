@@ -35,6 +35,7 @@ class SearchOffersController extends Controller
             $offer_type = $offer_type + 1;
         if($request->has('internship'))
             $offer_type = $offer_type + 2;
+        //TODO
 
         if(($offer_type !== 2) && ($offer_type !== -1))
             $filters['offer_type'] = $offer_type;

@@ -4,6 +4,9 @@
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
             <div class="collapse navbar-collapse" id="navbarsMain">
                 <div class="navbar-nav ml-auto">
+                    <a class="nav-link {{ (app('request')->input('vacancy') == 'on') ? 'active' : '' }}" href="{{ route('site.offers', ['vacancy' => 'on']) }}">
+                        @lang('header.navlink_6')
+                    </a>
                     <a class="nav-link {{ (app('request')->input('internship') == 'on') ? 'active' : '' }}" href="{{ route('site.offers', ['internship' => 'on']) }}">
                         @lang('header.navlink_1')
                     </a>
@@ -95,40 +98,52 @@
         @endif
 
 
-            @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))))
+            @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))|| (app('request')->input('vacancy') == 'on')))
                 @if(Route::getCurrentRoute()->uri() == '/')
 
                     <div class="mobile-categories">
                         <a class="mobile-categories-button" href="/offers?volunteering=on">
-                    <span>
-                        @lang('header.navlink_1')
-                    </span>
+                            <span>
+                                @lang('header.navlink_1')
+                            </span>
                         </a>
                         <a class="mobile-categories-button" href="/offers?internship=on">
-                    <span>
-                        @lang('header.navlink_2')
-                    </span>
+                            <span>
+                                @lang('header.navlink_2')
+                            </span>
                         </a>
+
+                        <a class="mobile-categories-button" href="/offers?vacancy=on">
+                            <span>
+                                @lang('header.navlink_6')
+                            </span>
+                        </a>
+
                         <a class="mobile-categories-button" href="/events">
-                    <span>
-                        @lang('header.navlink_3')
-                    </span>
+                            <span>
+                                @lang('header.navlink_3')
+                            </span>
                         </a>
+
                     </div>
                 @endif
             @else
                 <form id="main-mobile-search" class="search-box mobile-search" method="get" action="{{ route('site.search') }}">
                     <div class="input-group mb-3">
 
-                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))
+                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on') && (app('request')->input('vacancy') == 'on'))
                             <input type="hidden" name="category" value="offers">
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="internship" value="on">
+                            <input type="hidden" name="vacancy" value="on">
                         @elseif(app('request')->input('volunteering') == 'on')
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="category" value="offers">
                         @elseif(app('request')->input('internship') == 'on')
                             <input type="hidden" name="internship" value="on">
+                            <input type="hidden" name="category" value="offers">
+                        @elseif(app('request')->input('vacancy') == 'on')
+                            <input type="hidden" name="vacancy" value="on">
                             <input type="hidden" name="category" value="offers">
                         @elseif(request()->routeIs('site.events'))
                             <input type="hidden" name="category" value="events">
@@ -142,6 +157,8 @@
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_2')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(request()->routeIs('site.events'))
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_3')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                        @elseif(request()->routeIs('site.vacancy'))
+                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_4')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @endif
 
                         <div class="input-group-append">

@@ -11,6 +11,9 @@
                             <a class="nav-link active" data-toggle="tab" href="#account">@lang('content.organisation.title')</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#vacancy">@lang('content.organisation.vacancyTab')</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#internship">@lang('content.organisation.internTab')</a>
                         </li>
                         <li class="nav-item">
@@ -105,6 +108,99 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="tab-pane fade" id="vacancy">
+
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="row justify-content-end">
+                                <a class="btn btn-success btn-create {{ (count($vacancies) > 0)?'':'disable' }}" href="{{ route('account.vacancyForm') }}" role="button">@lang('content.organisation.vacancies.create')</a>
+                            </div>
+
+                            <div class="row justify-content-start">
+                                <div class="col-md-12">
+                                    <h3 class="title">@lang('content.organisation.vacancies.published')</h3>
+                                    <div class="vacancy-list">
+                                        @if(count($vacancies))
+                                            @foreach($vacancies as $vacancy)
+                                                @if($vacancy->status == 1)
+                                                    <div class="vacancy-item">
+                                                        <div class="vacancy-title">
+                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                        </div>
+
+                                                        <div class="vacancy-actions">
+                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
+                                                            <span>@lang('content.organisation.vacancies.publishedBefore') {{ $vacancy->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <span class="items-empty">@lang('content.organisation.vacancies.notFoundPublished')</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-start">
+                                <div class="col-md-12">
+                                    <h3 class="title">@lang('content.organisation.vacancies.moderated')</h3>
+                                    <div class="vacancy-list">
+                                        @if(count($vacancies))
+                                            @foreach($vacancies as $vacancy)
+                                                @if($vacancy->status == 0)
+                                                    <div class="vacancy-item">
+                                                        <div class="vacancy-title">
+                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                        </div>
+
+                                                        <div class="vacancy-actions">
+                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                            @endforeach
+                                        @else
+                                            <span class="items-empty">@lang('content.organisation.vacancies.notFoundModerated')</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-start">
+                                <div class="col-md-12">
+                                    <h3 class="title">@lang('content.organisation.vacancies.archiveTitle')</h3>
+                                    <div class="vacancy-list">
+                                        @if(count($vacancies))
+                                            @foreach($vacancies as $vacancy)
+                                                @if($vacancy->status == 2)
+                                                    <div class="vacancy-item">
+                                                        <div class="vacancy-title">
+                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                        </div>
+
+                                                        <div class="vacancy-actions">
+                                                            <a href="/vacancy/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                            @endforeach
+                                        @else
+                                            <span class="items-empty">@lang('content.organisation.vacancies.notFoundArchive')</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="tab-pane fade" id="internship">

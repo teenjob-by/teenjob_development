@@ -49,6 +49,13 @@
                                             <span class="overflow-control-description">Стажировка</span>
                                         </label>
                                     </div>
+                                    <div class="form-check">
+                                        <label class="custom-control overflow-checkbox">
+                                            <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="validate(this.form)">
+                                            <span class="overflow-control-indicator"></span>
+                                            <span class="overflow-control-description">Подработка</span>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">

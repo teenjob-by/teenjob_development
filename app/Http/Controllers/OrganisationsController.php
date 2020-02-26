@@ -42,8 +42,9 @@ class OrganisationsController extends Controller
 
         $internships = Offer::where('offer_type', 1)->where('organisation_id', Auth::id())->orderBy('created_at', 'desc')->get();
         $volunteerings = Offer::where('offer_type', 0)->where('organisation_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $vacancies = Offer::where('offer_type', 2)->where('organisation_id', Auth::id())->orderBy('created_at', 'desc')->get();
         $events = $organisation->events;
-        return view('site.organisation')->with('organisation', $organisation)->with('internships', $internships)->with('volunteerings', $volunteerings)->with('events', $events);
+        return view('site.organisation')->with('organisation', $organisation)->with('internships', $internships)->with('vacancies', $vacancies)->with('volunteerings', $volunteerings)->with('events', $events);
     }
 
     public function getOrganisationForm()

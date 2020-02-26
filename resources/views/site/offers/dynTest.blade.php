@@ -49,6 +49,13 @@
                                         <span class="overflow-control-description">@lang('content.offers.search.internship')</span>
                                     </label>
                                 </div>
+                                <div class="form-check">
+                                    <label class="custom-control overflow-checkbox">
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="getData(getPage(), this.form)">
+                                        <span class="overflow-control-indicator"></span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.vacancy')</span>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -135,6 +142,10 @@
                         @if(!empty($_GET['internship']))
                             <input type="hidden" name="internship" value="{{ $_GET['internship'] }}">
                         @endif
+
+                        @if(!empty($_GET['vacancy']))
+                            <input type="hidden" name="internship" value="{{ $_GET['vacancy'] }}">
+                        @endif
                         <div class="form-group filter-city-mobile">
 
                             <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)">
@@ -184,6 +195,14 @@
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">@lang('content.offers.search.internship')</span>
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="custom-control overflow-checkbox">
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="getData(getPage(), this.form)">
+                                        <span class="overflow-control-indicator"></span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.vacancy')</span>
                                     </label>
                                 </div>
                             </div>
