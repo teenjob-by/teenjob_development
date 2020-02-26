@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row flex-column align-items-center">
 
-                <h2 class="display-5">Редактировать объявление</h2>
+                <h2 class="display-5">@lang('content.volunteering.edit.title')</h2>
 
 
                 <form method="post" action="{{ route('volunteering.update', $volunteering->id) }}">
@@ -13,14 +13,14 @@
                     @csrf
                     <input type="hidden" name="organisation" value="{{ $volunteering->organisation_id }}"/>
                     <div class="form-group">
-                        <label for="title">Название:</label>
+                        <label for="title">@lang('content.volunteering.edit.name')</label>
                         <input type="text" class="form-control" name="title" value="{{ $volunteering->title }}"/>
                     </div>
                     @error('title')
                     <div class="alert alert-danger">{{ $errors->title }}</div>
                     @enderror
                     <div class="form-group">
-                        <label class="label-title" for="filter-city">Город</label>
+                        <label class="label-title" for="filter-city">@lang('content.volunteering.edit.city')</label>
                         <select name="city">
                             @foreach($cities as $city)
                                 <option {{ ($city->id == $volunteering->city_id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -29,16 +29,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="label-title" for="filter-age">Возраст</label>
+                        <label class="label-title" for="filter-age">@lang('content.volunteering.edit.age')</label>
                         <select name="age">
-                            <option {{ (14 == $volunteering->age)? 'selected': '' }} value="{{ 14 }}">от 14</option>
-                            <option {{ (15 == $volunteering->age)? 'selected': '' }} value="{{ 15 }}">от 15</option>
-                            <option {{ (16 == $volunteering->age)? 'selected': '' }} value="{{ 16 }}">от 16</option>
-                            <option {{ (17 == $volunteering->age)? 'selected': '' }} value="{{ 17 }}">от 17</option>
+                            <option {{ (14 == $volunteering->age)? 'selected': '' }} value="{{ 14 }}">14</option>
+                            <option {{ (15 == $volunteering->age)? 'selected': '' }} value="{{ 15 }}">15</option>
+                            <option {{ (16 == $volunteering->age)? 'selected': '' }} value="{{ 16 }}">16</option>
+                            <option {{ (17 == $volunteering->age)? 'selected': '' }} value="{{ 17 }}">17</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="label-title" for="filter-speciality">Профобласть</label>
+                        <label class="label-title" for="filter-speciality">@lang('content.volunteering.edit.area')</label>
                         <select name="speciality">
                             @foreach($specialities as $speciality)
                                 <option {{ ($speciality->id == $volunteering->speciality)? 'selected': '' }} value="{{ $speciality->id }}">{{ $speciality->name }}</option>
@@ -50,29 +50,29 @@
                         <textarea name="description" id="summernote">{{ $volunteering->description }}</textarea>
                     </div>
                     <div class="form-group m-n">
-                        <h3 class="title">Контакты</h3>
+                        <h3 class="title">@lang('content.volunteering.edit.contacts')</h3>
                     </div>
 
                     <div class="form-group">
-                        <label for="contact">Контактное лицо*</label>
+                        <label for="contact">@lang('content.volunteering.edit.person')</label>
                         <input type="text" class="form-control" name="contact" value="{{ $volunteering->contact }}"/>
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail*</label>
+                        <label for="email">@lang('content.volunteering.edit.email')</label>
                         <input type="text" class="form-control" name="email" value="{{ $volunteering->email }}"/>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Телефон*</label>
+                        <label for="phone">@lang('content.volunteering.edit.phone')</label>
                         <input type="text" class="form-control" name="phone" value="{{ $volunteering->phone }}"/>
                     </div>
                     <div class="form-group">
-                        <label for="alt_phone">Дополнительный контакт:</label>
+                        <label for="alt_phone">@lang('content.volunteering.edit.addPhone')</label>
                         <input type="text" class="form-control" name="alt_phone" value="{{ $volunteering->alt_phone }}"/>
                     </div>
                     <div class="form-group m-n">
-                        <button type="submit" class="btn btn-success">Опубликовать</button>
+                        <button type="submit" class="btn btn-success">@lang('content.volunteering.edit.moderate')</button>
                     </div>
-                    <p class="notification">Будет опубликовано в ближайшее время после прохождения предварительной модерации.</p>
+                    <p class="notification">@lang('content.volunteering.edit.notification')</p>
                 </form>
 
             </div>

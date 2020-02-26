@@ -12,7 +12,7 @@
                 {{ session()->get('success') }}
             </div><br />
         @endif
-        <h2 class="display-5">Стажировки</h2>
+        <h2 class="display-5">@lang('content.organisation.internTab')</h2>
             <div class="col-sm-8 offers-admin">
                 @foreach($internships as $internship)
                     <div class="card mt-3 card-offer {{ ($internship->status == 3)? 'banned':''}}" style="padding: 20px">

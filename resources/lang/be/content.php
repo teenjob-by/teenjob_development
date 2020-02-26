@@ -155,6 +155,11 @@ return [
         'send' => 'Отправить'
     ],
     'organisationForm' => [
+        'name' => 'Назва',
+        'type' => 'Тып',
+        'unp' => 'УНП',
+        'site' => 'Сайт',
+        'person' => 'Кантактная асоба',
         'title' => 'Правіць асабістую інфармацыю',
         'email' => 'Асноўны email',
         'additionalEmail' => 'Дадатковы email',

@@ -170,6 +170,11 @@ return [
         'send' => 'Отправить',
     ],
     'organisationForm' => [
+        'name' => 'Название',
+        'type' => 'Тип',
+        'unp' => 'УНП',
+        'site' => 'Сайт',
+        'person' => 'Контактное лицо',
         'title' => 'Править персональную информацию',
         'email' => 'Основной email',
         'additionalEmail' => 'Дополнительный email',
