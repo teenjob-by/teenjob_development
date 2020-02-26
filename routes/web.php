@@ -51,6 +51,8 @@ Route::get('/dynTest', 'EventsController@dynTest')->name('site.dyntest');
 Route::get('/specialities', 'SearchOffersController@getSpecialities')->name('site.specialities');
 Route::get('/cities', 'SearchOffersController@getCities')->name('site.cities');
 
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
 
 
 Route::resource('events', 'EventsController', [

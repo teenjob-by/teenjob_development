@@ -18,9 +18,9 @@
 @section('content')
     <div class="container-fluid background">
         <div class="container how-support">
-            <h2>Поддержать</h2>
+            <h2>@lang('content.help.title')</h2>
             <div class="row justify-content-center">
-                <p>Мы волонтерская инициатива и создали teenjob.by своими силами, зная о потребности в обществе. Сейчас вы можете поддержать нас, чтобы проект продолжал стабильно работать и развиваться!</p>
+                <p>@lang('content.help.subtitle')</p>
                 <div class="donate-widget">
                     <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
                 </div>
@@ -29,8 +29,8 @@
                         <div class="circle">
                             <img src="/images/charity.png">
                         </div>
-                            <h3>Стань волонтером</h3>
-                            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform">Присоединяйтесь к нашей команде!</a><br> Над развитием портала трудятся дизайнеры, разработчики, смм, seo, пр-специалисты, сисадмины, модераторы и нетолько! Будем рады как специалистам, так и желающим приобрести опыт!</p>
+                            <h3>@lang('content.help.column-1')</h3>
+                            <p>@lang('content.help.column-1-text')</p>
                     </div>
                 </div>
                 <div class="card-wrapper mb-0">                  
@@ -38,18 +38,18 @@
                         <div class="circle">
                             <img src="/images/collaboration.png">
                         </div>
-                        <h3>Стань партнером</h3>
-                        <p>Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!</p>
+                        <h3>@lang('content.help.column-2')</h3>
+                        <p>@lang('content.help.column-2-text')</p>
                     </div>
                     <div class="support-card mb-0">
                         <div class="circle">
                             <img src="/images/heart.png">
                         </div>
-                        <h3>Лайк</h3>
-                        <p>Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!</p>
+                        <h3>@lang('content.help.column-3')</h3>
+                        <p>@lang('content.help.column-3-text')</p>
                     </div>
                 </div>
-                <h2 class="partners-title">Партнеры</h2>
+                <h2 class="partners-title">@lang('content.help.partner')</h2>
                 <div class="row no-mobile">
 
                     <div class="partner-card">

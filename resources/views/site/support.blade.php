@@ -17,10 +17,10 @@
     <div class="container-fluid support-page">
         <div class="container">
             <div class="row">
-                <h3 class="mx-auto">Контакты</h3>
+                <h3 class="mx-auto">@lang('content.support.title')</h3>
             </div>
             <div class="row">
-                <p class="notification">Напишите нам на <b>teenjob.by@gmail.com</b> или заполните форму обратной связи, расположенную ниже.</p>
+                <p class="notification">@lang('content.support.subtitle')</p>
             </div>
             <div class="row">
                 <form method="post" action="{{ route('site.support') }}">
@@ -35,30 +35,30 @@
                     </div>
 
                     @error('title')
-                    <div class="alert alert-danger">error</div>
+                    <div class="alert alert-danger">@lang('content.support.error')</div>
                     @enderror
 
                     <div class="form-group support-form-message col-lg-12">
-                        <label for="message">Ваше сообщение:</label>
+                        <label for="message">@lang('content.support.yourMessage')</label>
                         <textarea type="text" required class="form-control support-form-message-text" name="description">@if(!empty($_GET['abuse'])){{url()->previous()}}@endif</textarea>
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
-                        <label for="last_name">Ваше имя*</label>
+                        <label for="last_name">@lang('content.support.yourName')</label>
                         <input type="text" required class="form-control" name="name" />
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
-                        <label for="city">email*</label>
+                        <label for="city">@lang('content.support.yourEmail')</label>
                         <input type="text" required class="form-control" name="email" />
                     </div>
 
                     <div class="form-group support-form-field col-lg-12">
-                        <label for="city">Телефон*</label>
+                        <label for="city">@lang('content.support.yourPhone')</label>
                         <input type="text" required  class="form-control" name="phone" />
                     </div>
 
-                    <button type="submit" class="ml-3 btn btn-primary">Отправить</button>
+                    <button type="submit" class="ml-3 btn btn-primary">@lang('content.support.send')</button>
                 </form>
             </div>
         </div>

@@ -17,4 +17,11 @@ class OfferSpecialization extends Model
         return $this->hasMany(Event::class);
     }
 
+    public function getNameAttribute($value)
+    {
+        if (\App::isLocale('be')) {
+            return $this->attributes['name_be'];
+        }
+        return $this->attributes['name_be'];
+    }
 }

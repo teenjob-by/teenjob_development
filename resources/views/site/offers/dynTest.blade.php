@@ -34,27 +34,27 @@
 
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-type">Вид деятельности</label>
+                                <label class="label-title" for="filter-type">@lang('content.offers.search.type')</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
-                                        <span class="overflow-control-description">Волонтерство</span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.volunteering')</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
-                                        <span class="overflow-control-description">Стажировка</span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.internship')</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-speciality">Профобласть</label>
+                                <label class="label-title" for="filter-speciality">@lang('content.offers.search.area')</label>
                                 <select name="speciality" onchange="getData(getPage(), this.form)" class="select-selectric">
-                                    <option selected value> Все профобласти </option>
+                                    <option selected value>@lang('content.offers.search.areas')</option>
                                     @foreach($specialities as $speciality)
                                         @isset($_GET['speciality'])
                                             <option {{ ($speciality->id == $_GET['speciality'])? 'selected': '' }} value="{{ $speciality->id }}">{{ $speciality->name }}</option>
@@ -67,7 +67,7 @@
 
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-age">Возраст</label>
+                                <label class="label-title" for="filter-age">@lang('content.offers.search.age')</label>
                                 <select onchange="getData(getPage(), this.form)" class="select-selectric" name="age" >
 
                                     @foreach($ages as $age)
@@ -82,25 +82,25 @@
 
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-date">Опубликовано</label>
+                                <label class="label-title" for="filter-date">@lang('content.offers.search.published')</label>
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-today" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" onchange="getData(getPage(), this.form)" >
-                                    <label class="custom-control-label" for="date-today">Сегодня</label>
+                                    <label class="custom-control-label" for="date-today">@lang('content.offers.search.today')</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-days" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" onchange="getData(getPage(), this.form)">
-                                    <label class="custom-control-label" for="date-days">За 3 дня</label>
+                                    <label class="custom-control-label" for="date-days">@lang('content.offers.search.threeDays')</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-week" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" onchange="getData(getPage(), this.form)" >
-                                    <label class="custom-control-label" for="date-week">За 7 дней</label>
+                                    <label class="custom-control-label" for="date-week">@lang('content.offers.search.week')</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-month" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} onchange="getData(getPage(), this.form)">
-                                    <label class="custom-control-label" for="date-month">За месяц</label>
+                                    <label class="custom-control-label" for="date-month">@lang('content.offers.search.month')</label>
                                 </div>
                             </div>
 
@@ -138,7 +138,7 @@
                         <div class="form-group filter-city-mobile">
 
                             <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)">
-                                <option selected value> Все города </option>
+                                <option selected value>@lang('content.offers.search.cities')</option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
                                         <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -164,42 +164,42 @@
                             @endif
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-city">Город</label>
+                                <label class="label-title" for="filter-city">@lang('content.offers.search.city')</label>
                                 <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)" id="cities">
-                                    <option selected value> Все города </option>
+                                    <option selected value>@lang('content.offers.search.cities')</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-type">Вид деятельности</label>
+                                <label class="label-title" for="filter-type">@lang('content.offers.search.type')</label>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['volunteering'])? '': 'checked="checked"'}} name="volunteering" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
-                                        <span class="overflow-control-description">Волонтерство</span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.volunteering')</span>
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
-                                        <span class="overflow-control-description">Стажировка</span>
+                                        <span class="overflow-control-description">@lang('content.offers.search.internship')</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-speciality">Профобласть</label>
+                                <label class="label-title" for="filter-speciality">@lang('content.offers.search.area')</label>
                                 <select name="speciality" onchange="getData(getPage(), this.form)" class="select-selectric" id="specialities">
-                                    <option selected value> Все профобласти </option>
+                                    <option selected value>@lang('content.offers.search.areas')</option>
 
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-age">Возраст</label>
+                                <label class="label-title" for="filter-age">@lang('content.offers.search.age')</label>
                                 <select name="age" onchange="getData(getPage(), this.form)" class="select-selectric">
-                                    <option selected value> Не выбрано </option>
+                                    <option selected value>@lang('content.offers.search.notSelected')</option>
                                     @foreach($ages as $age)
                                         @isset($_GET['age'])
                                             <option {{ ($age['value'] == $_GET['age'])? 'selected': '' }} value="{{ $age['value'] }}">{{ $age['name'] }}</option>
@@ -213,29 +213,29 @@
 
 
                             <div class="form-group">
-                                <label class="label-title" for="filter-date">Опубликовано</label>
+                                <label class="label-title" for="filter-date">@lang('content.offers.search.published')</label>
 
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-today-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'today'))? 'checked="checked"': '' }} name="publish_date" value="today" onchange="getData(getPage(), this.form)">
                                     <label class="custom-control-label" for="date-today-non-mobile">
-                                        Сегодня
+                                        @lang('content.offers.search.today')
                                     </label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-days-non-mobile" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == '3'))? 'checked="checked"': '' }} name="publish_date" value="3" onchange="getData(getPage(), this.form)">
-                                    <label class="custom-control-label" for="date-days-non-mobile">За 3 дня</label>
+                                    <label class="custom-control-label" for="date-days-non-mobile">@lang('content.offers.search.threeDays')</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-week-non-mobile" name="publish_date" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'week'))? 'checked="checked"': '' }} value="week" onchange="getData(getPage(), this.form)">
-                                    <label class="custom-control-label" for="date-week-non-mobile">За 7 дней</label>
+                                    <label class="custom-control-label" for="date-week-non-mobile">@lang('content.offers.search.week')</label>
                                 </div>
 
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="date-month-non-mobile" name="publish_date" value="month" {{ ((!empty($_GET['publish_date'])) && ($_GET['publish_date'] == 'month'))? 'checked="checked"': '' }} onchange="getData(getPage(), this.form)">
-                                    <label class="custom-control-label" for="date-month-non-mobile">За месяц</label>
+                                    <label class="custom-control-label" for="date-month-non-mobile">@lang('content.offers.search.month')</label>
                                 </div>
 
                             </div>
@@ -339,7 +339,7 @@
 
 
                         }).fail(function(jqXHR, ajaxOptions, thrownError){
-                            $("#dynWrapper").empty().html("Ничего не найдено(");
+                            $("#dynWrapper").empty().html("@lang('content.notFound')");
                         });
                     }
 

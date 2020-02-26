@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row flex-column align-items-center">
 
-            <h2 class="display-5">Редактировать объявление</h2>
+            <h2 class="display-5">@lang('content.event.edit.title')</h2>
 
             <form method="post" action="{{ route('events.update', $event->id) }}" enctype="multipart/form-data">
                 @method('PATCH')
@@ -13,14 +13,14 @@
 
                 <input type="hidden" name="organisation" value="{{ $event->organisation_id }}">
                 <div class="form-group">
-                    <label for="title">Название:</label>
+                    <label for="title">@lang('content.event.edit.name')</label>
                     <input type="text" class="form-control" name="title" value="{{ $event->title }}">
                 </div>
                 @error('title')
                 <div class="alert alert-danger">{{ $errors->title }}</div>
                 @enderror
                 <div class="form-group">
-                    <label class="label-title" for="filter-city">Город</label>
+                    <label class="label-title" for="filter-city">@lang('content.event.edit.city')</label>
                     <select name="city" class="js-select2-basic-single">
                         @foreach($cities as $city)
                             <option {{ ($city->id == $event->city_id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -30,7 +30,7 @@
 
                 <div class="form-group time-group">
 
-                    <label for="date_start">Дата начала</label>
+                    <label for="date_start">@lang('content.event.edit.dateStart')</label>
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" id="date_start" name="date_start" value="{{ $event->date_start->format('d.m.Y') }}">
                         <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
 
-                    <label for="date_start">Время</label>
+                    <label for="date_start">@lang('content.event.edit.timeStart')</label>
                     <div class="input-group time" id="datetimepicker3" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker3" name="time_start" value="{{ $event->date_start->format('h:i') }}">
                         <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
@@ -65,23 +65,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Адрес</label>
+                    <label for="address">@lang('content.event.edit.address')</label>
                     <input type="text" class="form-control" name="address" value="{{ $event->address }}">
                 </div>
 
                 <div class="form-group">
-                    <label class="label-title" for="filter-age">Возраст</label>
+                    <label class="label-title" for="filter-age">@lang('content.event.edit.age')</label>
                     <select name="age" class="select-selectric">
-                        <option {{ (14 == $event->age)? 'selected': '' }} value="{{ 14 }}">от 14</option>
-                        <option {{ (15 == $event->age)? 'selected': '' }} value="{{ 15 }}">от 15</option>
-                        <option {{ (16 == $event->age)? 'selected': '' }} value="{{ 16 }}">от 16</option>
-                        <option {{ (17 == $event->age)? 'selected': '' }} value="{{ 17 }}">от 17</option>
+                        <option {{ (14 == $event->age)? 'selected': '' }} value="{{ 14 }}">14</option>
+                        <option {{ (15 == $event->age)? 'selected': '' }} value="{{ 15 }}">15</option>
+                        <option {{ (16 == $event->age)? 'selected': '' }} value="{{ 16 }}">16</option>
+                        <option {{ (17 == $event->age)? 'selected': '' }} value="{{ 17 }}">17</option>
                     </select>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="label-title" for="filter-speciality">Условия участия</label>
+                    <label class="label-title" for="filter-speciality">@lang('content.event.edit.terms')</label>
                     <select name="type" class="select-selectric">
                         @foreach($types as $type)
                             <option {{ ($type->id == $event->type_id)? 'selected': '' }} value="{{ $type->id }}">{{ $type->name }}</option>
@@ -95,7 +95,7 @@
 
                 <div class="form-group">
 
-                    <label for="event-image">Загрузить обложку*</label>
+                    <label for="event-image">@lang('content.event.edit.loadPreview')</label>
                     <div class="custom-file">
                         <label class="custom-file-label" for="event-image">png, jpg, jpeg</label>
                         <input type="file" class="custom-file-input" name="image" id="event-image" accept="image/gif, image/jpeg, image/jpg, image/png">
@@ -111,7 +111,7 @@
 
 
 
-                <p class="map-title">Отметьте место проведения на карте</p>
+                <p class="map-title">@lang('content.event.edit.map')</p>
                 <div class="form-group map" id="map">
                     <!--<div class="mapouter">
                         <div class="gmap_canvas">
@@ -123,9 +123,9 @@
                 <input type="hidden" name="location" id="event-location">
 
                 <div class="form-group m-n">
-                    <button type="submit" class="btn btn-success">Сохранить</button>
+                    <button type="submit" class="btn btn-success">@lang('content.event.edit.save')</button>
                 </div>
-                <p class="notification">Будет опубликовано в ближайшее время после прохождения предварительной модерации.</p>
+                <p class="notification">@lang('content.event.edit.notification')</p>
             </form>
 
         </div>

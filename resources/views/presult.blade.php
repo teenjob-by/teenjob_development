@@ -20,7 +20,7 @@
             {{ $data->appends($_GET)->links() }}
         </div>
     @else
-        <p>Ничего не найдено(</p>
+        <p>@lang('content.notFound')</p>
     @endif
 
 

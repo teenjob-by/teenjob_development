@@ -19,7 +19,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: teenjob
-      MYSQL_USER: admin
+      MYSQL_USER: root
       MYSQL_PASSWORD: root
     networks:
           - internal

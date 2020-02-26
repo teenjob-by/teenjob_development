@@ -55,19 +55,19 @@ class AdminEventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
 
@@ -152,19 +152,19 @@ class AdminEventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
         $types = EventType::all();

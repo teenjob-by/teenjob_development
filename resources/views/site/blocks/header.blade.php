@@ -16,27 +16,41 @@
 
                     @guest
                         <div class="nav-item">
-                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_5')</strong><p>вход для организаций</p></a>
+                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_5')</strong><p>@lang('header.enter')</p></a>
                         </div>
                     @else
 
                         @if(\Illuminate\Support\Facades\Auth::user()->role)
-                            <a class="nav-link" href="{{ route('organisation') }}"><strong>Личный кабинет</strong></a>
+                            <a class="nav-link" href="{{ route('organisation') }}"><strong>@lang('header.cabinet')</strong></a>
                         @else
-                            <a class="nav-link" href="{{ route('admin') }}"><strong>Панель управления</strong></a>
+                            <a class="nav-link" href="{{ route('admin') }}"><strong>@lang('header.panel')</strong></a>
                         @endif
 
                         <a class="nav-link account-delimiter">/</a>
                         <a class="nav-link account-logout" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                 Выйти
+                                 @lang('header.quit')
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     @endguest
+
+                    <div class="language-panel">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                <div>
+                                    <a class="language-panel_link" href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                                </div>
+                            @else
+                                <div>
+                                    <a class="language-panel_link-selected" href="{{ route('lang.switch', $lang) }}">{{$language}}</a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
@@ -44,6 +58,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+
 
     </nav>
 
@@ -60,10 +75,10 @@
             <div class="input-group mb-3">
                 <div class="dropdown">
                     <select class="dropdown-menu category-dropdown" name="category">
-                        <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))? 'selected': ''}} value="offers">Категории</option>
-                        <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">Стажировка</option>
-                        <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">Волонтерство</option>
-                        <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">Мероприятия</option>
+                        <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))? 'selected': ''}} value="offers">@lang('header.categories')</option>
+                        <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">@lang('header.navlink_1')</option>
+                        <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">@lang('header.navlink_2')</option>
+                        <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">@lang('header.navlink_3')</option>
                     </select>
                 </div>
                 <input type="text" class="form-control search-input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
@@ -76,27 +91,27 @@
 
         </form>
         @if(Route::getCurrentRoute()->uri() == '/')
-            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>Добавить объявление</span></a>
+            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>@lang('header.navlink_5')</span></a>
         @endif
 
 
             @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))))
-                @if(!(Str::contains(Route::getCurrentRoute()->uri(), 'organisation')))
+                @if(Route::getCurrentRoute()->uri() == '/')
 
-                    <div class="mobile-categories {{ (Route::getCurrentRoute()->uri() != '/') ? "mobile-categories-string" : "" }}">
+                    <div class="mobile-categories">
                         <a class="mobile-categories-button" href="/offers?volunteering=on">
                     <span>
-                        Волонтерство
+                        @lang('header.navlink_1')
                     </span>
                         </a>
                         <a class="mobile-categories-button" href="/offers?internship=on">
                     <span>
-                        Стажировки
+                        @lang('header.navlink_2')
                     </span>
                         </a>
                         <a class="mobile-categories-button" href="/events">
                     <span>
-                        Мероприятия
+                        @lang('header.navlink_3')
                     </span>
                         </a>
                     </div>
@@ -120,13 +135,13 @@
                         @endif
 
                         @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))
-                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск волонтерства и стажировок" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_0')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(app('request')->input('volunteering') == 'on')
-                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск волонтерства" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_1')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(app('request')->input('internship') == 'on')
-                            <input type="text" class="form-control search-input" name="query" placeholder="Поиск стажировок" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_2')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(request()->routeIs('site.events'))
-                                <input type="text" class="form-control search-input" name="query" placeholder="Поиск мероприятий" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_3')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @endif
 
                         <div class="input-group-append">
@@ -142,6 +157,8 @@
     </div>
 
     @if(Route::getCurrentRoute()->uri() == '/')
-        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" ><span>Добавить объявление</span></a>
+        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
+            <span>@lang('header.navlink_5')</span>
+        </a>
     @endif
 </div>

@@ -36,4 +36,12 @@ class City extends Model
     {
         return $this->hasOne(Event::class);
     }
+
+    public function getNameAttribute($value)
+    {
+        if (\App::isLocale('be')) {
+            return $this->attributes['name_be'];
+        }
+        return $this->attributes['name_be'];
+    }
 }

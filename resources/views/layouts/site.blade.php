@@ -129,7 +129,7 @@
 
                     reader.onload = function (e) {
                         if (e.total > 2500000) {
-                            $('#imageerror').text('Изображение слишком большое');
+                            $('#imageerror').text('@lang("content.imageTooBig")');
                             $jimage = $("#event-image");
                             $jimage.val("");
                             $jimage.wrap('<form>').closest('form').get(0).reset();
