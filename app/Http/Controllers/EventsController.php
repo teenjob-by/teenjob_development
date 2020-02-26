@@ -168,19 +168,19 @@ class EventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
 
@@ -196,19 +196,19 @@ class EventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
         return view('site.event.indexDyn')->with('cities', $cities)->with('ages', $ages);
@@ -216,6 +216,8 @@ class EventsController extends Controller
     public function index(Request $request)
     {
         $filters = $request->only(['city_id']);
+
+        var_dump($filters);
         $age_filter=[
             ['age', '>=', 14]
         ];
@@ -316,6 +318,14 @@ class EventsController extends Controller
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
                 ->where($filters)
+                ->where(function ($datequery) use ($filters) {
+                    $datequery->where($date_filter['all'])
+                        ->orWhere($date_filter['today'])
+                        ->orWhere($date_filter['tomorrow'])
+                        ->orWhere($date_filter['week'])
+                        ->orWhere($date_filter['next_week'])
+                        ->orWhere($date_filter['past']);
+                })
                 ->where($age_filter)
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
@@ -357,19 +367,19 @@ class EventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
 
@@ -384,6 +394,7 @@ class EventsController extends Controller
     public function indexdyn(Request $request)
     {
         $filters = $request->only(['city_id']);
+
         $age_filter=[
             ['age', '>=', 14]
         ];
@@ -525,19 +536,19 @@ class EventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
         $events = $events->toArray();
@@ -686,19 +697,19 @@ class EventsController extends Controller
         $ages = [
             [
                 'value' => 14,
-                'name'=>'от 14'
+                'name'=>'14'
             ],
             [
                 'value' => 15,
-                'name'=>'от 15'
+                'name'=>'15'
             ],
             [
                 'value' => 16,
-                'name'=>'от 16'
+                'name'=>'16'
             ],
             [
                 'value' => 17,
-                'name'=>'от 17'
+                'name'=>'17'
             ]
         ];
         $types = EventType::all();

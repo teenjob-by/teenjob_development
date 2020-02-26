@@ -71,10 +71,10 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-age">Возраст</label>
                                 <select name="age">
-                                    <option value="14" selected="selected">от 14</option>
-                                    <option value="15">от 15</option>
-                                    <option value="16">от 16</option>
-                                    <option value="17">от 17</option>
+                                    <option value="14" selected="selected">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
                                 </select>
                             </div>
 
