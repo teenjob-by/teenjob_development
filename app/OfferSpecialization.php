@@ -22,6 +22,6 @@ class OfferSpecialization extends Model
         if (\App::isLocale('be')) {
             return $this->attributes['name_be'];
         }
-        return $this->attributes['name_be'];
+        return $this->attributes['name'];
     }
 }
