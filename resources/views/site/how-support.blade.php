@@ -58,6 +58,9 @@
                     <div class="partner-card">
                         <a href="https://www.facebook.com/TerytoryjaPravou/" target="_blank"> <img src="images/partners/partner-logo-2.png"></a>
                     </div>
+                    <div class="partner-card">
+                        <a href="http://eduexpo.by/" target="_blank"> <img src="images/partners/partner-logo-3.png"></a>
+                    </div>
 
                 </div>
                 <div class="row mobile partners-carousel-two">
@@ -69,6 +72,11 @@
                     <div>
                         <div class="partner-card">
                             <a href="https://www.facebook.com/TerytoryjaPravou/" target="_blank"> <img src="images/partners/partner-logo-2.png"></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="partner-card">
+                            <a href="http://eduexpo.by/" target="_blank"> <img src="images/partners/partner-logo-3-mobile.png"></a>
                         </div>
                     </div>
                 </div>

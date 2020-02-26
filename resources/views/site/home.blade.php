@@ -130,14 +130,12 @@
                         </div>
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
-                                <p class="partner-role">@lang("team.team_2.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
+                                <img src="images/partners/image-1.png" class="slick-image">
+                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
+                                <p class="partner-role">@lang("team.team_4.role")</p>
+                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
                             </div>
                         </div>
                         <div>
@@ -151,15 +149,17 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                       <div>
+                        </div>                        
+                        <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
-                                <p class="partner-role">@lang("team.team_4.role")</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
+                                <img src="images/partners/image-5.png" class="slick-image">
+                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
+                                <p class="partner-role">@lang("team.team_2.role")</p>
+                                <div class="d-flex">
+                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
+                                        <img class="social" src="images/partners/fb.svg">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div>
@@ -199,16 +199,14 @@
                         </div>
                         <div>
                             <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
-                                <p class="partner-role">@lang("team.team_2.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
+                                <img src="images/partners/image-1.png" class="slick-image">
+                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
+                                <p class="partner-role">@lang("team.team_4.role")</p>
+                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
+                                    <img class="social" src="images/partners/fb.svg">
+                                </a>
                             </div>
-                        </div>
+                        </div>                        
                         <div>
                             <div class="partner-card mx-auto">
                                 <img src="images/partners/image-6.png" class="slick-image">
@@ -229,6 +227,18 @@
                                 <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
                                     <img class="social" src="images/partners/fb.svg">
                                 </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="partner-card mx-auto">
+                                <img src="images/partners/image-5.png" class="slick-image">
+                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
+                                <p class="partner-role">@lang("team.team_2.role")</p>
+                                <div class="d-flex">
+                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
+                                        <img class="social" src="images/partners/fb.svg">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div>
