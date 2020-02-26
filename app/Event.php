@@ -47,12 +47,13 @@ class Event extends Model
         $str = preg_replace('/\s+/', ' ', clean($desc));
         $pattern = '/<p(.*?)>((.*?)+)\<\/p>/';
         $replacement = '${2}<br/>';
+
         //$out = preg_replace($pattern, $replacement, $str);
         //$out = Str::limit($out,80,'...');
 
 
         $out = Str::limit($str,80,'...');
-
+        $out  = clean($out);
 
         return $out;
     }
@@ -60,8 +61,11 @@ class Event extends Model
     public function getSeoMeta()
     {
 
-        $str = strip_tags($this->description);
-        $out = strlen($str) > 120 ? mb_substr($str,0,120,'utf-8')."..." : $str;
+        $desc = $this->description;
+        $str = preg_replace('/\s+/', ' ', clean($desc));
+        $out = Str::limit($str,120,'...');
+        $out  = clean($out);
+        $out = strip_tags($out);
 
         return $out;
     }
