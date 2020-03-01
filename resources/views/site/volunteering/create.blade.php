@@ -12,7 +12,7 @@
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
-                                <label for="title">@lang('content.volunteering.create.name'):</label>
+                                <label for="title">@lang('content.volunteering.create.name')</label>
                                 <input type="text" required class="form-control" name="title"/>
                             </div>
                             @error('title')
