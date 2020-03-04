@@ -145,10 +145,14 @@
                             @if(!empty($_GET['internship']))
                                 <input type="hidden" name="internship" value="{{ $_GET['internship'] }}">
                             @endif
+
+                            @if(!empty($_GET['vacancy']))
+                                <input type="hidden" name="internship" value="{{ $_GET['internship'] }}">
+                            @endif
                         <div class="form-group filter-city-mobile">
 
                             <select name="city_id" class="city-select js-select2-basic-single" onchange="validate(this.form)">
-                                <option selected value> Все города </option>
+                                <option selected value='120'> Все города </option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
                                         <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -176,7 +180,7 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">Город</label>
                                 <select name="city_id" class="city-select js-select2-basic-single" onchange="validate(this.form)">
-                                    <option selected value> Все города </option>
+                                    <option selected value='120'> Все города </option>
                                     @foreach($cities as $city)
                                         @isset($_GET['city_id'])
                                             <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -201,6 +205,13 @@
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['internship'])? '': 'checked="checked"'}} name="internship" onchange="validate(this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">Стажировка</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="custom-control overflow-checkbox">
+                                        <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="validate(this.form)">
+                                        <span class="overflow-control-indicator"></span>
+                                        <span class="overflow-control-description">Подработка</span>
                                     </label>
                                 </div>
                             </div>
@@ -263,14 +274,19 @@
                     @foreach($offers as $offer)
                         <div class="card mt-3 card-offer">
                             <h3 class="offer-title">
-                                <a href="{{ '/'.($offer->offer_type?'internship':'volunteering').'/'.$offer->id }}">{{$offer->title}}</a>
+
                                 @if(false)
                                     <span class="approved"></span>
                                 @endif
                                 @if($offer->offer_type == 0)
+                                    <a href="{{ '/'.'volunteering'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="volunteer-icon"></span>
                                 @elseif($offer->offer_type == 1)
+                                    <a href="{{ '/'.'internship'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="intern-icon"></span>
+                                @elseif($offer->offer_type == 2)
+                                    <a href="{{ '/'.'vacancy'.'/'.$offer->id }}">{{$offer->title}}</a>
+                                    <span class="vacancy-icon"></span>
                                 @endif
                             </h3>
                             <h4 class="offer-organisation"><a href="{{ $offer->organisation['link'] }}" target="_blank">{{$offer->organisation['name']}}</a></h4>

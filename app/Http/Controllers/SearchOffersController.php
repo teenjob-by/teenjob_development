@@ -21,7 +21,7 @@ class SearchOffersController extends Controller
      */
     public function indexOld(Request $request)
     {
-        $filters = $request->only(['city_id', 'date', 'type_id', 'speciality']);
+        $filters = $request->only(['date', 'type_id', 'speciality']);
         $age_filter=[
             ['age', '>=', 14]
         ];
@@ -30,15 +30,23 @@ class SearchOffersController extends Controller
                 ['age', '<=', $request->get('age')]
             ];
         }
-        $offer_type = -1;
-        if($request->has('volunteering'))
-            $offer_type = $offer_type + 1;
-        if($request->has('internship'))
-            $offer_type = $offer_type + 2;
-        //TODO
 
-        if(($offer_type !== 2) && ($offer_type !== -1))
-            $filters['offer_type'] = $offer_type;
+        $city_id_array = array(120);
+        if($request->has('city_id')) {
+            array_push($city_id_array, $request->get('city_id'));
+        }
+        var_dump($city_id_array);
+
+        $offer_types_array = array();
+        if($request->has('volunteering'))
+            array_push($offer_types_array, 0);
+        if($request->has('internship'))
+            array_push($offer_types_array, 1);
+        if($request->has('vacancy'))
+            array_push($offer_types_array, 2);
+
+        if(empty($offer_types_array))
+            $offer_types_array = array(0, 1, 2);
 
         $date_filter=[
             ['published_at', '<=', Carbon::now()]
@@ -70,6 +78,8 @@ class SearchOffersController extends Controller
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
                 ->where($filters)
+                ->whereIn('offer_type', $offer_types_array)
+                ->whereIn('city_id', $city_id_array)
                 ->where($age_filter)
                 ->where($date_filter)
                 ->orderBy('published_at', 'desc')
@@ -83,6 +93,8 @@ class SearchOffersController extends Controller
                 ->select('offers.*', 'cities.name as city_name')
                 ->orderBy('published_at', 'desc')
                 ->where($filters)
+                ->whereIn('city_id', $city_id_array)
+                ->whereIn('offer_type', $offer_types_array)
                 ->where($age_filter)
                 ->where($date_filter)
                 ->paginate(30)
@@ -122,7 +134,7 @@ class SearchOffersController extends Controller
 
     public function index(Request $request)
     {
-        $filters = $request->only(['city_id', 'date', 'type_id', 'speciality']);
+        $filters = $request->only(['date', 'type_id', 'speciality']);
         $age_filter=[
             ['age', '>=', 14]
         ];
@@ -131,14 +143,26 @@ class SearchOffersController extends Controller
                 ['age', '<=', $request->get('age')]
             ];
         }
-        $offer_type = -1;
-        if($request->has('volunteering'))
-            $offer_type = $offer_type + 1;
-        if($request->has('internship'))
-            $offer_type = $offer_type + 2;
 
-        if(($offer_type !== 2) && ($offer_type !== -1))
-            $filters['offer_type'] = $offer_type;
+        $city_id_array = array(120);
+        $city_id = null;
+        if($request->has('city_id')) {
+            array_push($city_id_array, $request->get('city_id'));
+        }
+        else
+            $city_id_array = array();
+
+        $offer_types_array = array();
+        if($request->has('volunteering'))
+            array_push($offer_types_array, 0);
+        if($request->has('internship'))
+            array_push($offer_types_array, 1);
+        if($request->has('vacancy'))
+            array_push($offer_types_array, 2);
+
+        if(empty($offer_types_array))
+            $offer_types_array = array(0, 1, 2);
+
 
         $date_filter=[
             ['published_at', '<=', Carbon::now()]
@@ -170,6 +194,10 @@ class SearchOffersController extends Controller
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
                 ->where($filters)
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
+                })
+                ->whereIn('offer_type', $offer_types_array)
                 ->where($age_filter)
                 ->where($date_filter)
                 ->orderBy('published_at', 'desc')
@@ -183,6 +211,10 @@ class SearchOffersController extends Controller
                 ->select('offers.*', 'cities.name as city_name')
                 ->orderBy('published_at', 'desc')
                 ->where($filters)
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
+                })
+                ->whereIn('offer_type', $offer_types_array)
                 ->where($age_filter)
                 ->where($date_filter)
                 ->paginate(30)

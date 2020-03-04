@@ -4,14 +4,9 @@
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
             <div class="collapse navbar-collapse" id="navbarsMain">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link {{ (app('request')->input('vacancy') == 'on') ? 'active' : '' }}" href="{{ route('site.offers', ['vacancy' => 'on']) }}">
-                        @lang('header.navlink_6')
+                    <a class="nav-link {{ ((app('request')->input('vacancy') == 'on') || (app('request')->input('internship') == 'on') || (app('request')->input('volunteering') == 'on')) ? 'active' : '' }}" href="{{ route('site.offers') }}">
+                        @lang('header.navlink_7')
                     </a>
-                    <a class="nav-link {{ (app('request')->input('internship') == 'on') ? 'active' : '' }}" href="{{ route('site.offers', ['internship' => 'on']) }}">
-                        @lang('header.navlink_1')
-                    </a>
-                    <a class="nav-link {{ (app('request')->input('volunteering') == 'on') ? 'active' : '' }}"
-                       href="{{ route('site.offers', ['volunteering' => 'on']) }}"><span>@lang('header.navlink_2')</span></a>
                     <a class="nav-link {{ request()->routeIs('site.events') ? 'active' : '' }}"
                        href="{{ route('site.events') }}">@lang('header.navlink_3')</a>
                     <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
@@ -78,9 +73,10 @@
             <div class="input-group mb-3">
                 <div class="dropdown">
                     <select class="dropdown-menu category-dropdown" name="category">
-                        <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))? 'selected': ''}} value="offers">@lang('header.categories')</option>
-                        <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">@lang('header.navlink_1')</option>
-                        <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">@lang('header.navlink_2')</option>
+                        <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on') && (app('request')->input('vacancy') == 'on'))? 'selected': ''}} value="offers">@lang('header.categories')</option>
+                        <option {{((app('request')->input('vacancy') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="vacancy">@lang('header.navlink_6')</option>
+                        <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">@lang('header.navlink_1')</option>
+                        <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">@lang('header.navlink_2')</option>
                         <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">@lang('header.navlink_3')</option>
                     </select>
                 </div>
@@ -98,24 +94,14 @@
         @endif
 
 
-            @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events'))|| (app('request')->input('vacancy') == 'on')))
+            @if(!((app('request')->input('volunteering') == 'on') || (app('request')->input('internship') == 'on') || (request()->routeIs('site.events')) || (app('request')->input('vacancy') == 'on')))
                 @if(Route::getCurrentRoute()->uri() == '/')
 
                     <div class="mobile-categories">
-                        <a class="mobile-categories-button" href="/offers?volunteering=on">
-                            <span>
-                                @lang('header.navlink_1')
-                            </span>
-                        </a>
-                        <a class="mobile-categories-button" href="/offers?internship=on">
-                            <span>
-                                @lang('header.navlink_2')
-                            </span>
-                        </a>
 
-                        <a class="mobile-categories-button" href="/offers?vacancy=on">
+                        <a class="mobile-categories-button" href="/offers">
                             <span>
-                                @lang('header.navlink_6')
+                                @lang('header.navlink_7')
                             </span>
                         </a>
 
@@ -149,7 +135,7 @@
                             <input type="hidden" name="category" value="events">
                         @endif
 
-                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on'))
+                        @if((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on') && (app('request')->input('vacancy') == 'on'))
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_0')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(app('request')->input('volunteering') == 'on')
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_1')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">

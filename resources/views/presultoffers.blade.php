@@ -3,14 +3,18 @@
         @foreach($data as $offer)
             <div class="card mt-3 card-offer">
                 <h3 class="offer-title">
-                    <a href="{{ '/'.($offer->offer_type?'internship':'volunteering').'/'.$offer->id }}">{{$offer->title}}</a>
                     @if(false)
                         <span class="approved"></span>
                     @endif
                     @if($offer->offer_type == 0)
+                        <a href="{{ '/'.'volunteering'.'/'.$offer->id }}">{{$offer->title}}</a>
                         <span class="volunteer-icon"></span>
                     @elseif($offer->offer_type == 1)
+                        <a href="{{ '/'.'internship'.'/'.$offer->id }}">{{$offer->title}}</a>
                         <span class="intern-icon"></span>
+                    @elseif($offer->offer_type == 2)
+                        <a href="{{ '/'.'vacancy'.'/'.$offer->id }}">{{$offer->title}}</a>
+                        <span class="vacancy-icon"></span>
                     @endif
                 </h3>
                 <h4 class="offer-organisation"><a href="{{ $offer->organisation['link'] }}" target="_blank">{{$offer->organisation['name']}}</a></h4>

@@ -18,13 +18,15 @@ class SearchController extends Controller
     {
         $path='offers';
         if($request->get("category") == 'offers')
-            $path = $path.'?volunteering=on&internship=on';
+            $path = $path.'?volunteering=on&internship=on&vacancy=on';
         if($request->get("category") == 'events')
             return redirect()->route('site.'.$request->get("category"), request()->except('category'));
         if($request->get("category") == 'internship')
             $path = $path.'?internship=on';
         if($request->get("category") == 'volunteering')
             $path = $path.'?volunteering=on';
+        if($request->get("category") == 'vacancy')
+            $path = $path.'?vacancy=on';
         if(!empty($request->get("query")))
             //$path = $path.'&query='.(request()->except('category'));
             $path = $path.'&query='.($request->get("query"));
