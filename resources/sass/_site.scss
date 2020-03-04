@@ -430,6 +430,40 @@ h2 {
   hr {
     margin-top: 0.5rem;
   }
+
+  .btn {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 150%;
+    color: #000000;
+    padding-left: 0;
+    text-decoration: none;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-left: none;
+    border-radius: 0;
+    border-right: none;
+    .card-header {
+      background-color: #ffffff;
+      border: none;
+      padding-left: 0;
+    }
+    .card-body {
+      padding-top: 0;
+      padding-left: 0;
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 150%;
+      color: #2F2F2F;
+    }
+  }
 }
 
 @media all and (max-width: 640px) {
