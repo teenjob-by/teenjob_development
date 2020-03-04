@@ -40,6 +40,8 @@ Route::get('/offers', 'SearchOffersController@index')->name('site.offers');
 Route::get('/who-is-volunteer', 'RulesPagesController@getVolunteerRules')->name('site.whoisvolunteer');
 Route::get('/who-is-intern', 'RulesPagesController@getInternRules')->name('site.whoisintern');
 Route::get('/terms-of-use', 'RulesPagesController@getTermsOfUse')->name('site.termsofuse');
+Route::get('/vacancy-rules', 'RulesPagesController@getVacancyRules')->name('site.whatisvacancy');
+Route::get('/faq', 'RulesPagesController@getFAQ')->name('site.faq');
 Route::get('/conditions', 'RulesPagesController@conditions')->name('site.conditions');
 Route::get('/support', 'RulesPagesController@support')->name('site.support');
 Route::post('/support', 'RulesPagesController@sendEmail')->name('site.support');
