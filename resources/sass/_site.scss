@@ -367,6 +367,63 @@ h2 {
     color: #274684;
     margin-top: 10px;
   }
+
+  .article {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    .article-description {
+      margin-left: 50px;
+    }
+    h2 {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: #121212;
+    }
+
+    strong {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #274684;
+    }
+
+    p {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      padding-top: 0px;
+      margin-bottom: 5px;
+      color: #000000;
+    }
+    li {
+      list-style: none;
+      position: relative;
+    }
+    ul {
+      padding-left: 15px;
+    }
+    li:before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 9px;
+      left: -15px;
+      width: 7px;
+      height: 7px;
+      background: #C4C4C4;
+      border-radius: 50%;
+    }
+  }
+
+
   hr {
     width: 728px;
     text-align: center;
