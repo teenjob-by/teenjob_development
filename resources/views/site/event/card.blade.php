@@ -16,7 +16,7 @@
                     <h3 class="event-organisation"><a href="{{ $event->organisation['link'] }}" target="_blank">{{$event->organisation['name']}}</a></h3>
                     <p class="event-card-info date">{{ $event->date_start->format('H:i') }}, {{ $event->date_start->format('d.m.Y') }}</p>
                     <p class="event-card-info location">{{ $event->city->name }}, {{ $event->address }}</p>
-                    <p class="event-card-info user">@lang('content.event.card.age') {{ $event->age }}+</p>
+                    <p class="event-card-info user">@lang('content.event.card.age') {{ $event->age }}</p>
                     <p class="event-card-info type">{{ $event->type->name}}</p>
                     <div class="event-card-description">{!!  $event->description !!}</div>
 

@@ -16,7 +16,7 @@
                     <h3 class="offer-organisation"><a href="{{ $internship->organisation['link'] }}" target="_blank">{{$internship->organisation['name']}}</a></h3>
                     <p class="offer-card-info location">{{ $internship->city->name }}</p>
                     <p class="offer-card-info portfolio">{{ $internship->speciality()->name }}</p>
-                    <p class="offer-card-info user">@lang('content.internship.card.age') {{ $internship->age }}+</p>
+                    <p class="offer-card-info user">@lang('content.internship.card.age') {{ $internship->age }}</p>
                     <div class="offer-description">{!! $internship->description !!}</div>
                     <p class="offer-card-title">@lang('content.internship.card.contacts')</p>
                     <p class="offer-card-info profile">{{ $internship->contact }}</p>
