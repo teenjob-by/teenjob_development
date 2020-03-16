@@ -39,6 +39,8 @@ class AdminInternshipsController extends Controller
 
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $internships ) > 0)
             return view('admin.internships.index')->with('internships', $internships)->with('specializations', $specializations)->with('cities', $cities);
 
@@ -62,6 +64,8 @@ class AdminInternshipsController extends Controller
         $internship = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

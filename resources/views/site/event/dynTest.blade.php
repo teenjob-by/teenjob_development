@@ -131,7 +131,6 @@
                         <div class="form-group filter-city-mobile">
 
                             <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage(), this.form)">
-                                <option selected value>@lang('content.event.search.cities')</option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
                                         <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -161,7 +160,6 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">@lang('content.event.search.city')</label>
                                 <select name="city_id" class="js-select2-basic-single" onchange="getData(getPage(), this.form)">
-                                    <option selected value>@lang('content.event.search.cities')</option>
                                     @foreach($cities as $city)
                                         @isset($_GET['city_id'])
                                             <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>

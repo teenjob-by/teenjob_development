@@ -177,7 +177,7 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">@lang('content.offers.search.city')</label>
                                 <select name="city_id" class="city-select js-select2-basic-single" onchange="getData(getPage(), this.form)" id="cities">
-                                    <option selected value>@lang('content.offers.search.cities')</option>
+
                                 </select>
                             </div>
 

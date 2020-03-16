@@ -65,6 +65,8 @@ class VolunteeringController extends Controller
         $pagination = $offers->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -86,6 +88,8 @@ class VolunteeringController extends Controller
 
         $specialities = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $offers ) > 0)
             return view('site.volunteering.index')->with('offers', $offers)->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages);
 
@@ -103,6 +107,8 @@ class VolunteeringController extends Controller
         $organisation = Auth::user()->id;
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         return view('site.volunteering.create')->with("organisation", $organisation)->with('specializations', $specializations)->with('cities', $cities);
     }
 
@@ -159,6 +165,8 @@ class VolunteeringController extends Controller
         $volunteering = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

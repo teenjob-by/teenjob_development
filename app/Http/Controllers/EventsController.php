@@ -175,6 +175,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -203,6 +205,8 @@ class EventsController extends Controller
     public function indexdynview(){
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -384,6 +388,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -563,6 +569,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -611,6 +619,8 @@ class EventsController extends Controller
         $organisation = Auth::user()->id;
         $types = EventType::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         return view('site.event.create')->with("organisation", $organisation)->with('types', $types)->with('cities', $cities);
     }
 
@@ -724,6 +734,8 @@ class EventsController extends Controller
     {
         $event = Event::find($id);
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

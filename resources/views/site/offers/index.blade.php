@@ -152,7 +152,6 @@
                         <div class="form-group filter-city-mobile">
 
                             <select name="city_id" class="city-select js-select2-basic-single" onchange="validate(this.form)">
-                                <option selected value='120'> Все города </option>
                                 @foreach($cities as $city)
                                     @isset($_GET['city_id'])
                                         <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -180,7 +179,6 @@
                             <div class="form-group">
                                 <label class="label-title" for="filter-city">Город</label>
                                 <select name="city_id" class="city-select js-select2-basic-single" onchange="validate(this.form)">
-                                    <option selected value='120'> Все города </option>
                                     @foreach($cities as $city)
                                         @isset($_GET['city_id'])
                                             <option {{ ($city->id == $_GET['city_id'])? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>

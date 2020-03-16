@@ -125,6 +125,8 @@ class SearchOffersController extends Controller
 
         $specialities = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $offers ) > 0)
             return view('site.offers.index')->with('offers', $offers)->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages);
 
@@ -245,6 +247,8 @@ class SearchOffersController extends Controller
 
         $specialities = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
 
 
 
@@ -282,6 +286,9 @@ class SearchOffersController extends Controller
     public function getCities()
     {
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
+
         $htmlOutput = "";
         foreach ($cities as $city) {
             $htmlOutput = $htmlOutput."<option value=".$city->id.">".$city->name."</option>\n";

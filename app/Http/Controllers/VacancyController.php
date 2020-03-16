@@ -77,6 +77,8 @@ class VacancyController extends Controller
 
         $specialities = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $offers ) > 0)
             return view('site.vacancy.index')->with('offers', $offers)->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages);
 
@@ -94,6 +96,8 @@ class VacancyController extends Controller
         $organisation = Auth::user()->id;
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         return view('site.vacancy.create')->with("organisation", $organisation)->with('specializations', $specializations)->with('cities', $cities);
     }
 
@@ -150,6 +154,8 @@ class VacancyController extends Controller
         $vacancy = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

@@ -39,6 +39,8 @@ class AdminVacanciesController extends Controller
 
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $vacancies ) > 0)
             return view('admin.vacancies.index')->with('vacancies', $vacancies)->with('specializations', $specializations)->with('cities', $cities);
 
@@ -62,6 +64,8 @@ class AdminVacanciesController extends Controller
         $vacancy = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

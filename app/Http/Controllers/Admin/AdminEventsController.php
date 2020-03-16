@@ -52,6 +52,8 @@ class AdminEventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -87,6 +89,8 @@ class AdminEventsController extends Controller
         $organisation = Auth::user()->id;
         $types = EventType::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         return view('admin.event.create')->with("organisation", $organisation)->with('types', $types)->with('cities', $cities);
     }
 
@@ -149,6 +153,8 @@ class AdminEventsController extends Controller
     {
         $event = Event::find($id);
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
