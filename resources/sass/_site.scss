@@ -464,6 +464,24 @@ h2 {
     display: inline;
     width: 100%;
   }
+
+  .vacancy-rules-link {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 0px;
+    margin-bottom: 5px;
+    padding-left: 0;
+  }
+
+  .vacancy-rules-link:hover {
+    text-decoration: underline;
+  }
+  .vacancy-rules-link:before {
+    content: "";
+  }
   a {
     font-family: Open Sans;
     font-style: normal;
