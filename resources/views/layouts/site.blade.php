@@ -15,15 +15,15 @@
 
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/fonts/all.min.css">
-
-
-        <script defer src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script defer src="//stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
         <script
                 src="https://code.jquery.com/jquery-3.4.1.min.js"
                 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
                 crossorigin="anonymous">
         </script>
+
+        <script defer src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script defer src="//stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
@@ -154,36 +154,22 @@
             })
 
             function validate(obj) {
-                
-
                 var emptyinputs = $(obj).find('input').filter(function(){
                     return !$.trim(this.value).length;  // get all empty fields
                 }).prop('disabled',true);
                 var emptyselects = $(obj).find('select').filter(function(){
                     return !$.trim(this.value).length;  // get all empty fields
                 }).prop('disabled',true).selectric('refresh');
-
                 obj.submit();
-
-
-
             }
 
             $(document).on('click',function(){
-                $('.collapse').collapse('hide');
+                $('.collapse.menu-collapse').collapse('hide');
             });
-            
-           
+
             $(document).on('scroll',function(){
-                $('.collapse').collapse('hide');
+                $('.collapse.menu-collapse').collapse('hide');
             });
-             
-            
-            //window.addEventListener('resize', () => {
-  // We execute the same script as before
-  //let vh = window.innerHeight * 0.01;
-  //document.documentElement.style.setProperty('--vh', `${vh}px`);
-//});
 
         </script>
 

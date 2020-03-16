@@ -122,16 +122,16 @@
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
                                     <h3 class="title">@lang('content.organisation.vacancies.published')</h3>
-                                    <div class="vacancy-list">
+                                    <div class="internship-list">
                                         @if(count($vacancies))
                                             @foreach($vacancies as $vacancy)
                                                 @if($vacancy->status == 1)
-                                                    <div class="vacancy-item">
-                                                        <div class="vacancy-title">
-                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                    <div class="internship-item">
+                                                        <div class="internship-title">
+                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
-                                                        <div class="vacancy-actions">
+                                                        <div class="internship-actions">
                                                             <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
                                                             <span>@lang('content.organisation.vacancies.publishedBefore') {{ $vacancy->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
@@ -148,16 +148,16 @@
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
                                     <h3 class="title">@lang('content.organisation.vacancies.moderated')</h3>
-                                    <div class="vacancy-list">
+                                    <div class="internship-list">
                                         @if(count($vacancies))
                                             @foreach($vacancies as $vacancy)
                                                 @if($vacancy->status == 0)
-                                                    <div class="vacancy-item">
-                                                        <div class="vacancy-title">
-                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                    <div class="internship-item">
+                                                        <div class="internship-title">
+                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
-                                                        <div class="vacancy-actions">
+                                                        <div class="internship-actions">
                                                             <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
                                                         </div>
                                                     </div>
@@ -174,16 +174,16 @@
                             <div class="row justify-content-start">
                                 <div class="col-md-12">
                                     <h3 class="title">@lang('content.organisation.vacancies.archiveTitle')</h3>
-                                    <div class="vacancy-list">
+                                    <div class="internship-list">
                                         @if(count($vacancies))
                                             @foreach($vacancies as $vacancy)
                                                 @if($vacancy->status == 2)
-                                                    <div class="vacancy-item">
-                                                        <div class="vacancy-title">
-                                                            <a class="vacancy-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                    <div class="internship-item">
+                                                        <div class="internship-title">
+                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
-                                                        <div class="vacancy-actions">
+                                                        <div class="internship-actions">
                                                             <a href="/vacancy/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
                                                         </div>
                                                     </div>

@@ -519,15 +519,39 @@ h2 {
 
   .card {
     background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-left: none;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0;
-    border-right: none;
+    margin-bottom: 0px;
+
+
+    .fa {
+      padding-top: 13px;
+    }
+
+
     .card-header {
       background-color: #ffffff;
       border: none;
       padding-left: 0;
+
+      h5 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .blue {
+        color: #274684;
+      }
+
+      .faq-btn {
+        text-align: left;
+      }
     }
+
     .card-body {
       padding-top: 0;
       padding-left: 0;
