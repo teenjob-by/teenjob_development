@@ -9,6 +9,7 @@ return [
     'navlink_5' => 'Дадаць аб’яву',
     'navlink_6' => 'Падпрацоўка',
     'navlink_7' => 'Актыўнасці',
+    'navlink_8' => 'Кантакты',
     'title' => 'Паспрабуй!',
     'search_placeholder' => 'Увядзіце назву ці горад',
     'search_placeholder_alter' => 'Знайдзі сваю першую працу',

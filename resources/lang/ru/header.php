@@ -27,6 +27,7 @@ return [
     'navlink_5' => 'Добавить объявление',
     'navlink_6' => 'Подработка',
     'navlink_7' => 'Активности',
+    'navlink_8' => 'Контакты',
     'title' => 'Паспрабуй!',
     'search_placeholder' => 'Введите название или город',
     'search_placeholder_alter' => 'Найди свою первую работу',
