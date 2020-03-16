@@ -16,6 +16,9 @@
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.conditions') }}">@lang('footer.navlink_3')</a>
                     </li>
                     <li>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.faq') }}">@lang('footer.navlink_5')</a>
+                    </li>
+                    <li>
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.contacts') }}">@lang('footer.navlink_4')</a>
                     </li>
                 </ul>
