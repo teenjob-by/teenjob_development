@@ -251,6 +251,7 @@ return [
             'archive' => ' Заархивировать',
             'notFoundEvents' => 'Нет опубликованных событий',
             'moderationTitle' => 'На модерации',
+            'archiveBefore' => 'до',
             'archiveTitle' => 'В архиве',
             'unarchive' => 'Разархивировать',
             'notFoundArchive' => 'Архив событий пуст',
