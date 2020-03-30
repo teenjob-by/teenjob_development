@@ -1,9 +1,9 @@
 @extends('layouts.site')
 @section('seo_meta')
-    <meta name="description" content="Стажировка - это отличная возможность получить навыки в определенной сфере деятельности, попробовать и развить свои способности."/>
+    <meta name="description" content="Ограниченная во времени занятость, во время которой вы пробуете и приобретаете навыки на практике как часть какой-либо организации."/>
     <meta name="language" content="RU"/>
 
-    <title>Что такое стажировка - teenjob.by</title>
+    <title>Правила трудоустройства для подростков - teenjob.by</title>
 @endsection
 
 @section('og_meta')
