@@ -115,6 +115,17 @@
                     </div>
                 </div>
 
+                <div class="article">
+                    <div>
+                        <img>
+                    </div>
+                    <div class="article-description">
+                        <ul>
+                            @lang('content.vacancyRules.text.notification')
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
