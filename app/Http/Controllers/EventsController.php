@@ -217,7 +217,6 @@ class EventsController extends Controller
     {
         $filters = $request->only(['city_id']);
 
-        var_dump($filters);
         $age_filter=[
             ['age', '>=', 14]
         ];
