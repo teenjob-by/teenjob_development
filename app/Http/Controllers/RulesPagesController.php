@@ -31,6 +31,11 @@ class RulesPagesController extends Controller
         return view('site.support');
     }
 
+    public function about()
+    {
+        return view('site.about');
+    }
+
     public function getVacancyRules()
     {
         return view('site.vacancyRules');

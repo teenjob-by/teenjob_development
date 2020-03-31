@@ -5,6 +5,7 @@
     <meta name="language" content="@lang('headings.home.language')"/>
     <meta name="keywords" content="@lang('headings.home.keywords')">
     <title>@lang('headings.home.title')</title>
+    <meta name="yandex-verification" content="0650b2f8f4059cd1" />
 @endsection
 
 @section('og_meta')

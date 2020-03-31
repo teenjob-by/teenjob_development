@@ -43,6 +43,7 @@ Route::get('/terms-of-use', 'RulesPagesController@getTermsOfUse')->name('site.te
 Route::get('/vacancy-rules', 'RulesPagesController@getVacancyRules')->name('site.whatisvacancy');
 Route::get('/faq', 'RulesPagesController@getFAQ')->name('site.faq');
 Route::get('/conditions', 'RulesPagesController@conditions')->name('site.conditions');
+Route::get('/about-us', 'RulesPagesController@about')->name('site.about');
 Route::get('/support', 'RulesPagesController@support')->name('site.support');
 Route::post('/support', 'RulesPagesController@sendEmail')->name('site.support');
 Route::get('/contacts', 'RulesPagesController@support')->name('site.contacts');
