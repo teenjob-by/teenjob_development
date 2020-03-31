@@ -62,7 +62,7 @@ return [
         'column-2-text' => 'Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!',
         'column-3' => 'Лайк',
         'column-3-text' => 'Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!',
-        'partner' => 'Партнер'
+        'partner' => 'Партнеры'
     ],
     'internRules' => [
         'title' => 'Что такое стажировка?',
@@ -216,7 +216,7 @@ return [
                         </p>
                     </li>
                     <li>
-                        <p><a class="vacancy-rules-link" href="http://pravo.by/pravovaya-informatsiya/normativnye-dokumenty/konstitutsiya-respubliki-belarus/">Трудовой Кодекс Республики Беларусь (ст. 114, 272-279);</a>
+                        <p><a class="vacancy-rules-link" href="https://kodeksy-by.com/trudovoj_kodeks_rb.htm">Трудовой Кодекс Республики Беларусь (ст. 114, 272-279);</a>
                         </p>
                     </li>
                     <li>

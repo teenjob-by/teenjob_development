@@ -36,13 +36,8 @@
                     @endfor
 
                     <div class="article">
-                        <div>
-                            <img>
-                        </div>
                         <div class="article-description">
-                            <ul>
-                                @lang('content.vacancyRules.text.notification')
-                            </ul>
+                           @lang('content.vacancyRules.text.notification')
                         </div>
                     </div>
                 </div>

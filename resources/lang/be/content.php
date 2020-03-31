@@ -196,11 +196,11 @@ return [
                 'title' => 'Асноўныя нарматыўныя дакументы, якія рэгулююць працаўладкаванне падлеткаў:',
                 'description' => '
                     <li>
-                        <p>Канстытуцыя Рэспублікі Беларусь (арт. 41, 42);
+                        <p><a class="vacancy-rules-link" href="http://pravo.by/pravovaya-informatsiya/normativnye-dokumenty/konstitutsiya-respubliki-belarus/">Канстытуцыя Рэспублікі Беларусь (арт. 41, 42);</a>
                         </p>
                     </li>
                     <li>
-                        <p><a class="vacancy-rules-link" href="http://pravo.by/pravovaya-informatsiya/normativnye-dokumenty/konstitutsiya-respubliki-belarus/">Працоўны Кодэкс Рэспублікі Беларусь (арт. 114, 272-279);</a>
+                        <p><a class="vacancy-rules-link" href="https://kodeksy-by.com/trudovoj_kodeks_rb.htm">Працоўны Кодэкс Рэспублікі Беларусь (арт. 114, 272-279);</a>
                         </p>
                     </li>
                     <li>
