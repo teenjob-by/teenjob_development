@@ -2,7 +2,7 @@
     <div class="container wrapper">
         <div class="row">
             <div class="col-lg-1">
-                <img class="logo-footer" src="/images/footer-logo.svg">
+                <a href="/"><img class="logo-footer" src="/images/footer-logo.svg"></a>
             </div>
             <div class="offset-lg-3 col-lg-5">
                 <ul>

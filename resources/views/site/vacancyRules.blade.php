@@ -24,7 +24,7 @@
                     @for ($i = 1; $i <= 8; $i++)
                         <div class="article">
                             <div class="article-heading">
-                                <img src="{{url('/')}}/images/rules-block-{{ $i }}-icon.png">
+                                <img src="{{url('/')}}/images/rules-block-{{ $i }}-icon.svg">
                                 <h4>@lang('content.vacancyRules.text.section_'. $i .'.title')</h4>
                             </div>
                             <div class="article-description">
