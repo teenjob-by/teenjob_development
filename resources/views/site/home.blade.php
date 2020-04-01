@@ -4,6 +4,7 @@
     <meta name="description" content="@lang('headings.home.description')"/>
     <meta name="language" content="@lang('headings.home.language')"/>
     <meta name="keywords" content="@lang('headings.home.keywords')">
+    <meta name="yandex-verification" content="0650b2f8f4059cd1" />
     <title>@lang('headings.home.title')</title>
 @endsection
 
