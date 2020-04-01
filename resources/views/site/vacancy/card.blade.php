@@ -22,6 +22,9 @@
                     <p class="offer-card-info profile">{{ $vacancy->contact }}</p>
                     <p class="offer-card-info envelope">{{ $vacancy->email }}</p>
                     <p class="offer-card-info telephone">{{ $vacancy->phone }}</p>
+                    @if(!empty($vacancy->alt_phone))
+                        <p class="offer-card-info telephone">{{ $vacancy->alt_phone }}</p>
+                    @endif
                     <a class="btn btn-info offer-button" href="{{ route("site.whoisvolunteer") }}">@lang('content.vacancy.card.whatIs')</a>
                     <div class="offer-card-footer">
                         <p class="offer-card-date">@lang('content.vacancy.card.published') {{ $vacancy->published_at->format('d.m.Y') }}</p>

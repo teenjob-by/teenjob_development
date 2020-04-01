@@ -22,6 +22,9 @@
                     <p class="offer-card-info profile">{{ $internship->contact }}</p>
                     <p class="offer-card-info envelope">{{ $internship->email }}</p>
                     <p class="offer-card-info telephone">{{ $internship->phone }}</p>
+                    @if(!empty($internship->alt_phone))
+                        <p class="offer-card-info telephone">{{ $internship->alt_phone }}</p>
+                    @endif
                     <a class="btn btn-info offer-button" href="{{ route("site.whoisintern") }}">@lang('content.internship.card.whatIs')</a>
                     <div class="offer-card-footer">
                         <p class="offer-card-date">@lang('content.internship.card.published') {{ $internship->published_at->format('d.m.Y') }}</p>
