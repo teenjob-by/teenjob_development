@@ -151,7 +151,7 @@
 
   .text-row:first-child {
     .column {
-      margin-bottom: 140px;
+      margin-bottom: 130px;
       img {
         margin-bottom: -70px;
       }
@@ -173,6 +173,7 @@
 
     .column.text {
       justify-content: center;
+      padding-bottom: 50px;
 
       p {
         font-size: 18px;
@@ -487,10 +488,14 @@
       margin-bottom: 0px;
 
       .column {
-
         margin-bottom: 20px;
         max-width: unset;
       }
+
+      .column.text {
+        padding-bottom: 0;
+      }
+
       .column.image {
         align-items: center;
         img {
