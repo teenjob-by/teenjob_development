@@ -25,7 +25,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_1.svg" alt="@lang('content.about.card_1.title')">
+                        <img class="mx-auto" src="images/about/card_1.svg" alt="Для подростков">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_1.title')</h4>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_2.svg" alt="@lang('content.about.card_2.title')">
+                        <img class="mx-auto" src="images/about/card_2.svg" alt="Волонтерство">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_2.title')</h4>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_3.svg" alt="@lang('content.about.card_3.title')">
+                        <img class="mx-auto" src="images/about/card_3.svg" alt="Мероприятия">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_3.title')</h4>
