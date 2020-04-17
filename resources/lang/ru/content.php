@@ -27,7 +27,7 @@ return [
             'text' => 'Актуальные возможности только для ребят от 14 до 18 лет. Все объявления модерируются.',
         ],
         'card_2' => [
-            'title' => 'Волонтерство',
+            'title' => '<a href="https://teenjob.by/offers>Волонтерство</a>',
             'text' => 'Волонтерский<br> проект–площадка для размещения объявлений с возможностями для подростков. <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform">Присоединиться к команде</a><br> можешь и ты!',
         ],
         'card_3' => [
