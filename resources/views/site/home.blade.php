@@ -50,10 +50,10 @@
                         <p class="card-text text-center">@lang('content.about.card_3.text')</p>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
-                <a class="btn btn-success mx-auto" href="/offers">
+                <a class="btn btn-success mx-auto" href="https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform">
                     <span>
                         @lang('content.about.button')
                     </span>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="row">
-                <a class="btn btn-success mx-auto" href="{{ route('register') }}">
+                <a class="btn btn-success mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                     <span>
                         @lang('content.organisations.button')
                     </span>
