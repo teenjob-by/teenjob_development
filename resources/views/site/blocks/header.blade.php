@@ -92,7 +92,10 @@
 
         </form>
         @if(Route::getCurrentRoute()->uri() == '/')
+        <div class='buttons-wrapper'>
             <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>@lang('header.navlink_5')</span></a>
+            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>@lang('header.navlink_9')</span></a>
+        </div>
         @endif
 
 
@@ -162,8 +165,13 @@
     </div>
 
     @if(Route::getCurrentRoute()->uri() == '/')
+    <div class='button-mobile-wrapper'>
         <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
             <span>@lang('header.navlink_5')</span>
         </a>
+        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
+            <span>@lang('header.navlink_9')</span>
+        </a>
+    </div>
     @endif
 </div>
