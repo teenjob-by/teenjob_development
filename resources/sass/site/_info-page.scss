@@ -373,17 +373,21 @@
     }
 
     &-button {
-      background: #274684;
-      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45);
+      background: #ffbe4d !important;
+      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45) !important;
       border-radius: 0;
       font-weight: 600;
       font-size: 18px;
       line-height: 25px;
-      color: #FFFFFF;
+      color: #000000 !important;
       width: 264px;
       height: 50px;
       margin-top: 26px;
+      border: none !important;
+      outline: none !important;
     }
+
+
     @media screen and (max-width: 1023px) {
       &-button {
         display: block;
