@@ -16,7 +16,7 @@
 
                     @guest
                         <div class="nav-item">
-                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_5')</strong><p>@lang('header.enter')</p></a>
+                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_10')</strong></a>
                         </div>
                     @else
 
