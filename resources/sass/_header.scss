@@ -87,28 +87,34 @@
         color: #000;
 
         span {
-          display: block;
-          font-family: "Open Sans";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 21px;
-          text-align: center;
-          color: #000000;
+            display: block;
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 21px;
+            text-align: center;
+            color: #000000;
         }
     }
 }
 
 .bg-1 {
-    background-image: url("/images/header.png");
+    background-image: url("/images/header-1.png");
 }
 
 .bg-2 {
-    background-image: url("/images/header2.png");
-    height: 236px;
+    background-image: url("/images/header-2.png");
+
 }
+
 .bg-3 {
-    background-image: url("/images/header3.png");
+    background-image: url("/images/header-3.png");
+}
+
+.bg-inner {
+    background-image: url("/images/header-inner.png");
+    height: 236px;
 }
 
 @media all and (max-width: 640px) {
@@ -419,9 +425,9 @@
 
         span {
             display: block;
-            font-family: "Open Sans";
+            font-family: Open Sans;
             font-style: normal;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 16px;
             line-height: 21px;
             text-align: center;
