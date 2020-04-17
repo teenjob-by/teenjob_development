@@ -70,7 +70,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_1.svg" alt="@lang('content.organisations.card_1.title')">
+                        <img class="mx-auto" src="images/organisations/card_1_new.svg" alt="@lang('content.organisations.card_1.title')">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_1.text')</p>

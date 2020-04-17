@@ -16,7 +16,7 @@
 
                     @guest
                         <div class="nav-item">
-                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_5')</strong><p>@lang('header.enter')</p></a>
+                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_10')</strong><p>@lang('header.enter')</p></a>
                         </div>
                     @else
 
@@ -166,7 +166,7 @@
 
     @if(Route::getCurrentRoute()->uri() == '/')
         <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
-            <span>@lang('header.navlink_5')</span>
+            <span>@lang('header.navlink_9')</span>
         </a>
         <a class="btn volunteers-mobile-button volunteers-mobile-button--2" href="https://teenjob.by/login" >
             <span>@lang('header.navlink_9')</span>
