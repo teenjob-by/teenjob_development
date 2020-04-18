@@ -1,4 +1,4 @@
-<div class="header {{ request()->routeIs('home') ? 'bg-'.rand(1, 3) : 'bg-inner' }} ">
+<div class="header {{ request()->routeIs('home') ? 'bg-3' : 'bg-inner' }} ">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
