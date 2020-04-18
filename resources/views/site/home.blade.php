@@ -25,7 +25,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_1.svg" alt="@lang('content.about.card_1.title')">
+                        <img class="mx-auto" src="images/about/card_1.svg">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_1.title')</h4>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_2.svg" alt="@lang('content.about.card_2.title')">
+                        <img class="mx-auto" src="images/about/card_2.svg">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_2.title')</h4>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_3.svg" alt="@lang('content.about.card_3.title')">
+                        <img class="mx-auto" src="images/about/card_3.svg">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_3.title')</h4>
@@ -70,7 +70,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_1.svg" alt="@lang('content.organisations.card_1.title')">
+                        <img class="mx-auto" src="images/organisations/card_1.svg">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_1.text')</p>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_2.svg" alt="@lang('content.organisations.card_2.title')">
+                        <img class="mx-auto" src="images/organisations/card_2.svg">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_2.text')</p>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_3.svg" alt="@lang('content.organisations.card_3.title')">
+                        <img class="mx-auto" src="images/organisations/card_3.svg">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_3.text')</p>
