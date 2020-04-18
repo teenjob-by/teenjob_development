@@ -1,4 +1,4 @@
-<div class="header {{ request()->routeIs('home') ? 'bg-1' : 'bg-2' }} ">
+<div class="header {{ request()->routeIs('home') ? 'bg-3' : 'bg-inner' }} ">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
@@ -16,7 +16,7 @@
 
                     @guest
                         <div class="nav-item">
-                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_10')</strong><p>@lang('header.enter')</p></a>
+                            <a class="nav-link login-link" href="{{ route('login') }}"><strong>@lang('header.navlink_10')</strong></a>
                         </div>
                     @else
 
