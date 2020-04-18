@@ -102,12 +102,12 @@
                 @if(Route::getCurrentRoute()->uri() == '/')
 
                     <div class="mobile-categories">
-                        <a class="mobile-categories-button" href="/offers?volunteering=on">
+                        <a class="mobile-categories-button" href="/offers?internship=on">
                     <span>
                         @lang('header.navlink_1')
                     </span>
                         </a>
-                        <a class="mobile-categories-button" href="/offers?internship=on">
+                        <a class="mobile-categories-button" href="/offers?volunteering=on">
                     <span>
                         @lang('header.navlink_2')
                     </span>
@@ -164,7 +164,7 @@
         <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform" >
             <span>@lang('header.navlink_5')</span>
         </a>
-        <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" >
+        <a class="btn volunteers-mobile-button volunteers-mobile-button--2" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" >
             <span>@lang('header.navlink_9')</span>
         </a>
     </div>
