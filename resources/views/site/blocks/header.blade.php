@@ -92,8 +92,8 @@
         </form>
         @if(Route::getCurrentRoute()->uri() == '/')
         <div class='buttons-wrapper'>
-            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>@lang('header.navlink_5')</span></a>
-            <a class="btn volunteers-desktop-button" href="https://teenjob.by/login"><span>@lang('header.navlink_9')</span></a>
+            <a class="btn volunteers-desktop-button" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform"><span>@lang('header.navlink_5')</span></a>
+            <a class="btn volunteers-desktop-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform"><span>@lang('header.navlink_9')</span></a>
         </div>
         @endif
 
@@ -161,10 +161,10 @@
 
     @if(Route::getCurrentRoute()->uri() == '/')
     <div class='button-mobile-wrapper'>
-        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
+        <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform" >
             <span>@lang('header.navlink_5')</span>
         </a>
-        <a class="btn volunteers-mobile-button" href="https://teenjob.by/login" >
+        <a class="btn volunteers-mobile-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" >
             <span>@lang('header.navlink_9')</span>
         </a>
     </div>
