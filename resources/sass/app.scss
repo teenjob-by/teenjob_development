@@ -47,15 +47,6 @@ $container-max-widths: (
   }
 }
 
-@media (max-width: 1024px) {
-  .container-fluid {
-    .container {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-}
-
 .scroll {
   overflow: auto;
 }
@@ -78,4 +69,13 @@ $container-max-widths: (
 
 .custom-file-label::after {
   content: "Обзор" !important;
+}
+
+@media (max-width: 1024px) {
+  .container-fluid {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }

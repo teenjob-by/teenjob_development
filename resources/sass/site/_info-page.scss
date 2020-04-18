@@ -104,6 +104,11 @@
       border-radius: 0;
     }
 
+    .btn.active {
+      color: #274684;
+      border: 1px solid rgba(0, 0, 0, 0);
+    }
+
     .card-title {
       font-weight: bold;
       font-size: 20px;
@@ -255,8 +260,8 @@
       margin-top: 54px;
       width: 362px;
       height: 50px;
-      background: #ffbe4d;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
+      background: #274684;
+      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45);
       border-radius: 0;
       justify-content: center;
       align-items: center;
@@ -269,7 +274,7 @@
         font-weight: 600;
         font-size: 18px;
         line-height: 25px;
-        color: #000000;
+        color: #FFFFFF;
       }
     }
   }
@@ -373,21 +378,17 @@
     }
 
     &-button {
-      background: #ffbe4d !important;
-      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45) !important;
+      background: #274684;
+      box-shadow: 0px 4px 15px rgba(39, 70, 132, 0.45);
       border-radius: 0;
       font-weight: 600;
       font-size: 18px;
       line-height: 25px;
-      color: #000000 !important;
+      color: #FFFFFF;
       width: 264px;
       height: 50px;
       margin-top: 26px;
-      border: none !important;
-      outline: none !important;
     }
-
-
     @media screen and (max-width: 1023px) {
       &-button {
         display: block;

@@ -53,7 +53,7 @@
 
             </div>
             <div class="row">
-                <a class="btn btn-success mx-auto" href="https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform">
+                <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform">
                     <span>
                         @lang('content.about.button')
                     </span>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="row">
-                <a class="btn btn-success mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+                <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                     <span>
                         @lang('content.organisations.button')
                     </span>
@@ -269,7 +269,7 @@
 
 
         <div class="row">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" class="btn btn-success mx-auto">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" class="btn btn-success btn-orange mx-auto">
                 <span>
                     @lang('content.partners.button')
                 </span>
