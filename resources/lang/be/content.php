@@ -29,6 +29,7 @@ return [
         'card_3' => [
             'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Дапаможам знайсці</a> і адабраць валанцёраў, стажораў і ўдзельнікаў падзей',
         ],
+        'buttonSubtitle' => 'Мы гатовыя распавесці больш',
         'button' => 'Пакінуць заяву'
     ],
     'partners' => [
