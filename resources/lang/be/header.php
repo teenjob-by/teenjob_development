@@ -10,6 +10,8 @@ return [
     'navlink_6' => 'Падпрацоўка',
     'navlink_7' => 'Актыўнасці',
     'navlink_8' => 'Кантакты',
+    'navlink_9' => 'Кампаніям',
+    'navlink_10' => 'Дадаць аб\'яву',
     'title' => 'Падлеткам ад 14',
     'search_placeholder' => 'Увядзіце назву ці горад',
     'search_placeholder_alter' => 'Знайдзі сваю першую працу',
