@@ -95,7 +95,7 @@
             </div>
 
             <div class="row flex-column">
-                <p class="btn-subtitle">Мы готовы рассказать больше</p>
+                <p class="btn-subtitle">@lang('content.organisations.buttonSubtitle')</p>
                 <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                     <span>
                         @lang('content.organisations.button')
