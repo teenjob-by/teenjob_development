@@ -21,7 +21,7 @@ return [
     */
 
     'about' => [
-        'title' => 'Что такое teenjob?',
+        'title' => 'Что такое teenjob.by?',
         'card_1' => [
             'title' => 'Для подростков',
             'text' => 'Все объявления модерируются. Горящие возможности в<a href="https://t.me/teenjob_by"> телеграм-канале</a>',
