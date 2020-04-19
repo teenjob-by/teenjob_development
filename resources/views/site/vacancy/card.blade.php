@@ -23,7 +23,7 @@
                     <p class="offer-card-info envelope">{{ $vacancy->email }}</p>
                     <p class="offer-card-info telephone">{{ $vacancy->phone }}</p>
                     @if(!empty($vacancy->alt_phone))
-                        <p class="offer-card-info telephone">{{ $vacancy->alt_phone }}</p>
+                        <p class="offer-card-info alt-contact">{{ $vacancy->alt_phone }}</p>
                     @endif
                     <a class="btn btn-info offer-button" href="{{ route("site.whoisvolunteer") }}">@lang('content.vacancy.card.whatIs')</a>
                     <div class="offer-card-footer">

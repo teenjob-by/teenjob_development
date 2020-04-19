@@ -23,7 +23,7 @@
                     <p class="offer-card-info envelope">{{ $internship->email }}</p>
                     <p class="offer-card-info telephone">{{ $internship->phone }}</p>
                     @if(!empty($internship->alt_phone))
-                        <p class="offer-card-info telephone">{{ $internship->alt_phone }}</p>
+                        <p class="offer-card-info alt-contact">{{ $internship->alt_phone }}</p>
                     @endif
                     <a class="btn btn-info offer-button" href="{{ route("site.whoisintern") }}">@lang('content.internship.card.whatIs')</a>
                     <div class="offer-card-footer">
