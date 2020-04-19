@@ -21,7 +21,7 @@ return [
     'organisations' => [
         'title' => 'Арганізацыям',
         'card_1' => [
-            'text' => '<a href="https://teenjob.by/login">Дадавайце аб'яву</a> на сайт і ў<a href="https://t.me/teenjob_by"> тэлеграм-канал</a> бясплатна!',
+            'text' => '<a href="https://teenjob.by/login">Дадавайце пост</a> на сайт і ў<a href="https://t.me/teenjob_by"> тэлеграм-канал</a> бясплатна!',
         ],
         'card_2' => [
             'text' => 'Уключыць у сваю дзейнасць матываваных і крэатыўных падлеткаў',
