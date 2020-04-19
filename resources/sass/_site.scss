@@ -121,6 +121,18 @@ h2 {
     margin-bottom: 60px;
   }
 
+  .btn-subtitle {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000000;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
   .card {
     background-color: #F5F5F5;
     width: 258px;
@@ -163,7 +175,7 @@ h2 {
   }
 
   .btn {
-    margin-top: 30px;
+    margin-top: 0px !important;
     width: 362px;
     height: 50px;
     background: #274684;
