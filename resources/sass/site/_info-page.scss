@@ -42,7 +42,8 @@
       font-style: normal;
       font-weight: bold;
       font-size: 20px;
-      margin-bottom: 5px;
+      margin-bottom: 16px;
+      padding-top: 16px;
       color: #2C2C2C;
       display: block;
     }
@@ -115,7 +116,7 @@
       color: inherit;
       text-align: left;
       margin-bottom: 20px;
-      padding-right: 10px;
+      padding-right: 20px;
     }
 
     .fa-plus {
@@ -443,7 +444,7 @@
       font-size: 30px;
       position: absolute;
       margin-left: -20px;
-      margin-top: 3px;
+      margin-top: 1px;
     }
   }
 }
@@ -498,6 +499,8 @@
 
       .column.image {
         align-items: center;
+        margin-bottom: 64px !important;
+
         img {
           width: 100%;
           height: auto;
