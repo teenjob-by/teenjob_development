@@ -71,7 +71,7 @@
 
                         <div class="form-group flex-column row">
                             <div class="text-center ">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-success btn-orange">
                                     @lang('auth.login.signin')
                                 </button>
                             </div>
@@ -87,7 +87,7 @@
 
                     <div class="form-group flex-column row">
                         <div class="text-center">
-                            <a href="{{ route('register') }}" class="btn btn-success" id="register">
+                            <a href="{{ route('register') }}" class="btn btn-success btn-orange" id="register">
                                 @lang('auth.login.register')
                             </a>
                         </div>

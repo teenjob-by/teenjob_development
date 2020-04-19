@@ -173,7 +173,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 offset-lg-5 col-lg-7">
-                                        <button class="btn btn-success ml-auto" type="submit" class="btn btn-success">
+                                        <button class="btn btn-success btn-orange ml-auto" type="submit">
                                             @lang('auth.register.register')
                                         </button>
                                     </div>
