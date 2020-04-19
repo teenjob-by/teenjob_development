@@ -3,7 +3,7 @@
 return [
 
     'about' => [
-        'title' => 'Што такое teenjob?',
+        'title' => 'Што такое teenjob.by?',
         'card_1' => [
             'title' => 'Для падлеткаў',
             'text' => 'Усе аб’явы мадэруюцца. Гарачыя магсымасці ў <a href="https://t.me/teenjob_by"> тэлеграм-канале</a>',
