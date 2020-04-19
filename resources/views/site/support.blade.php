@@ -57,7 +57,7 @@
                                 <input type="text" required  class="form-control" name="phone" placeholder="@lang('content.support.yourPhonePlaceholder')"/>
                             </div>
 
-                            <button type="submit" class="btn btn-primary contact-form-button">@lang('content.support.send')</button>
+                            <button type="submit" class="btn btn-primary btn-orange contact-form-button">@lang('content.support.send')</button>
                         </form>
                 </div>
             </div>

@@ -86,7 +86,7 @@
 
 
                     <div class="row">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" class="btn btn-success mx-auto">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" class="btn btn-orange btn-success mx-auto">
                             <span>
                                 @lang('content.partners.button')
                             </span>
