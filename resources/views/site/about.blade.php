@@ -52,7 +52,7 @@
                 </div>
 
 
-                <div class="container-fluid team-section">
+                <div class="team-section">
                     <div class="row">
                         <h3 class="mx-auto">@lang('content.partners.title')</h3>
                     </div>
