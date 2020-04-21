@@ -70,7 +70,7 @@
                                 <input type="text" class="form-control" name="alt_phone"/>
                             </div>
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">@lang('content.internship.create.moderate')</button>
+                                <button type="submit" class="btn btn-success btn-orange">@lang('content.internship.create.moderate')</button>
                             </div>
                             <p class="notification">@lang('content.internship.create.notification')</p>
                         </form>

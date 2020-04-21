@@ -70,7 +70,7 @@
                         <input type="text" class="form-control" name="alt_phone" value="{{ $volunteering->alt_phone }}"/>
                     </div>
                     <div class="form-group m-n">
-                        <button type="submit" class="btn btn-success">@lang('content.volunteering.edit.moderate')</button>
+                        <button type="submit" class="btn btn-success btn-orange">@lang('content.volunteering.edit.moderate')</button>
                     </div>
                     <p class="notification">@lang('content.volunteering.edit.notification')</p>
                 </form>
