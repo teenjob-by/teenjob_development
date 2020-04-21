@@ -17,6 +17,6 @@ return [
         'route_5' => 'who-is-intern',
         'route_6' => 'who-is-volunteer',
         'route_7' => 'faq',
-        'route_8' => 'support',
+        'route_8' => 'feedback',
     ],
 ];

@@ -44,9 +44,10 @@ Route::get('/vacancy-rules', 'RulesPagesController@getVacancyRules')->name('site
 Route::get('/faq', 'RulesPagesController@getFAQ')->name('site.faq');
 Route::get('/conditions', 'RulesPagesController@conditions')->name('site.conditions');
 Route::get('/about-us', 'RulesPagesController@about')->name('site.about');
-Route::get('/support', 'RulesPagesController@support')->name('site.support');
-Route::post('/support', 'RulesPagesController@sendEmail')->name('site.support');
-Route::get('/contacts', 'RulesPagesController@support')->name('site.contacts');
+
+Route::post('/feedback', 'RulesPagesController@sendEmail')->name('site.feedback');
+Route::get('/feedback', 'RulesPagesController@support')->name('site.feedback');
+
 Route::get('/search', 'SearchController@index')->name('site.search');
 Route::get('/eDyn', 'EventsController@indexdynview')->name('site.dynview');
 Route::get('/eventsDyn', 'EventsController@indexdyn')->name('site.dyn');
@@ -135,8 +136,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         ],
         'except' => ['index', 'show']
     ]);
-    //Route::resource('volunteers', 'VolunteersController');
-    //Route::resource('offers', 'OffersController');
+
 
 });
 

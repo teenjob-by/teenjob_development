@@ -22,7 +22,7 @@
                     <p class="notification">@lang('content.support.subtitle')</p>
 
 
-                        <form method="post" class="contact-form" action="{{ route('site.support') }}">
+                        <form method="post" class="contact-form" action="{{ route('site.feedback') }}">
                             @csrf
 
                             @if(!empty($message))
