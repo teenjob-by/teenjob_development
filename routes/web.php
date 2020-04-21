@@ -34,7 +34,7 @@ Route::get('/internship', 'InternshipController@index')->name('site.internship')
 Route::get('/internship/{id}', 'InternshipController@show')->where('id', '[0-9]+');
 Route::get('/volunteering', 'VolunteeringController@index')->name('site.volunteering');
 Route::get('/volunteering/{id}', 'VolunteeringController@show')->where('id', '[0-9]+');
-Route::get('/offers', 'SearchOffersController@index')->name('site.offers');
+Route::get('/volunteering', 'SearchOffersController@index')->name('site.offers');
 //Route::get('/events', 'EventsController@index')->name('site.events');
 //Route::get('/events/{id}', 'EventsController@show')->where('id', '[0-9]+');
 Route::get('/who-is-volunteer', 'RulesPagesController@getVolunteerRules')->name('site.whoisvolunteer');

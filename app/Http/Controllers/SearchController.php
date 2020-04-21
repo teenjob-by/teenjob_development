@@ -28,11 +28,8 @@ class SearchController extends Controller
         if($request->get("category") == 'vacancy')
             $path = $path.'?vacancy=on';
         if(!empty($request->get("query")))
-            //$path = $path.'&query='.(request()->except('category'));
             $path = $path.'&query='.($request->get("query"));
 
-        //return redirect()->route('site.'.$request->get("category"), request()->except('category'));
-        //return redirect()->route('/offers?'.$query);
 
         return redirect($path);
     }

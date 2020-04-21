@@ -9,7 +9,7 @@ return [
             'text' => 'Усе аб’явы мадэруюцца. Гарачыя магсымасці ў <a href="https://t.me/teenjob_by"> тэлеграм-канале</a>',
         ],
         'card_2' => [
-            'title' => '<a href="https://teenjob.by/offers">Валанцёрства / Стажыроўка</a>',
+            'title' => '<a href="https://teenjob.by/volunteering">Валанцёрства / Стажыроўка</a>',
             'text' => 'Гэта магчымасць атрымаць досвед і далучыцца да ініцыятыў свайго горада',
         ],
         'card_3' => [
