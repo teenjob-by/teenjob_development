@@ -77,6 +77,9 @@ class InternshipController extends Controller
 
         $specialities = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
+
         if (count ( $offers ) > 0)
             return view('site.internship.index')->with('offers', $offers)->with('specialities', $specialities)->with('cities', $cities)->with('ages', $ages);
 
@@ -94,6 +97,9 @@ class InternshipController extends Controller
         $organisation = Auth::user()->id;
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
+
         return view('site.internship.create')->with("organisation", $organisation)->with('specializations', $specializations)->with('cities', $cities);
     }
 
@@ -150,6 +156,8 @@ class InternshipController extends Controller
         $internship = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -170,7 +178,7 @@ class InternshipController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.internship.edit')->with('internship', $internship)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.internships-for-teens.edit')->with('internship', $internship)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**
@@ -196,7 +204,7 @@ class InternshipController extends Controller
 
         $internship->save();
 
-        return redirect('/internship/'.$id);
+        return redirect('/internships-for-teens/'.$id);
     }
 
     /**
@@ -210,7 +218,7 @@ class InternshipController extends Controller
         $internship = Offer::find($id);
         $internship->delete();
 
-        return redirect('/internships')->with('success', 'Offer deleted!');
+        return redirect('/internships-for-teens')->with('success', 'Offer deleted!');
     }
 
 

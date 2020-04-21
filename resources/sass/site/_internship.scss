@@ -245,6 +245,12 @@
     }
   }
 
+  .alt-contact {
+    &:before {
+      content: url("/images/altcontact-icon.svg");
+    }
+  }
+
   .profile {
     &:before {
       content: url("/images/profile-icon.png");

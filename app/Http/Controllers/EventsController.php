@@ -26,7 +26,13 @@ class EventsController extends Controller
      */
     public function indexOld(Request $request)
     {
-        $filters = $request->only(['city_id']);
+        $city_id_array = array(120);
+        $city_id = null;
+        if($request->has('city_id')) {
+            array_push($city_id_array, $request->get('city_id'));
+        }
+        else
+            $city_id_array = array();
         $age_filter=[
             ['age', '>=', 14]
         ];
@@ -126,7 +132,6 @@ class EventsController extends Controller
                         ->orWhere('name', 'like', '%'.$request->get('query').'%')
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
-                ->where($filters)
                 ->where($age_filter)
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
@@ -135,6 +140,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->whereIn('type_id', $type_filter_value)
                 ->orderBy('date_start', $sort_direction)
@@ -146,7 +154,6 @@ class EventsController extends Controller
             $events = Event::whereIn('status', [1, 2])
                 ->join('cities', 'events.city_id', '=', 'cities.id')
                 ->select('events.*', 'cities.name as city_name')
-                ->where($filters)
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
                         ->orWhere($date_filter['today'])
@@ -154,6 +161,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->where($age_filter)
                 ->whereIn('type_id', $type_filter_value)
@@ -165,6 +175,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -193,6 +205,8 @@ class EventsController extends Controller
     public function indexdynview(){
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -215,7 +229,13 @@ class EventsController extends Controller
     }
     public function index(Request $request)
     {
-        $filters = $request->only(['city_id']);
+        $city_id_array = array(120);
+        $city_id = null;
+        if($request->has('city_id')) {
+            array_push($city_id_array, $request->get('city_id'));
+        }
+        else
+            $city_id_array = array();
 
         $age_filter=[
             ['age', '>=', 14]
@@ -316,8 +336,7 @@ class EventsController extends Controller
                         ->orWhere('name', 'like', '%'.$request->get('query').'%')
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
-                ->where($filters)
-                ->where(function ($datequery) use ($filters) {
+                ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
                         ->orWhere($date_filter['today'])
                         ->orWhere($date_filter['tomorrow'])
@@ -333,6 +352,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->whereIn('type_id', $type_filter_value)
                 ->orderBy('date_start', $sort_direction)
@@ -344,7 +366,7 @@ class EventsController extends Controller
             $events = Event::whereIn('status', [1, 2])
                 ->join('cities', 'events.city_id', '=', 'cities.id')
                 ->select('events.*', 'cities.name as city_name')
-                ->where($filters)
+
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
                         ->orWhere($date_filter['today'])
@@ -352,6 +374,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->where($age_filter)
                 ->whereIn('type_id', $type_filter_value)
@@ -363,6 +388,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -392,7 +419,13 @@ class EventsController extends Controller
     }
     public function indexdyn(Request $request)
     {
-        $filters = $request->only(['city_id']);
+        $city_id_array = array(120);
+        $city_id = null;
+        if($request->has('city_id')) {
+            array_push($city_id_array, $request->get('city_id'));
+        }
+        else
+            $city_id_array = array();
 
         $age_filter=[
             ['age', '>=', 14]
@@ -493,7 +526,6 @@ class EventsController extends Controller
                         ->orWhere('name', 'like', '%'.$request->get('query').'%')
                         ->orWhere('cities.name', 'like', '%'.$request->get('query').'%');
                 })
-                ->where($filters)
                 ->where($age_filter)
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
@@ -502,6 +534,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->whereIn('type_id', $type_filter_value)
                 ->orderBy('date_start', $sort_direction)
@@ -513,7 +548,6 @@ class EventsController extends Controller
             $events = Event::whereIn('status', [1, 2])
                 ->join('cities', 'events.city_id', '=', 'cities.id')
                 ->select('events.*', 'cities.name as city_name')
-                ->where($filters)
                 ->where(function ($datequery) use ($date_filter) {
                     $datequery->where($date_filter['all'])
                         ->orWhere($date_filter['today'])
@@ -521,6 +555,9 @@ class EventsController extends Controller
                         ->orWhere($date_filter['week'])
                         ->orWhere($date_filter['next_week'])
                         ->orWhere($date_filter['past']);
+                })
+                ->when($request->has('city_id'), function ($query) use ($city_id_array) {
+                    return $query->whereIn('city_id', $city_id_array);
                 })
                 ->where($age_filter)
                 ->whereIn('type_id', $type_filter_value)
@@ -532,6 +569,8 @@ class EventsController extends Controller
         $pagination = $events->appends($_GET);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,
@@ -580,6 +619,8 @@ class EventsController extends Controller
         $organisation = Auth::user()->id;
         $types = EventType::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         return view('site.event.create')->with("organisation", $organisation)->with('types', $types)->with('cities', $cities);
     }
 
@@ -693,6 +734,8 @@ class EventsController extends Controller
     {
         $event = Event::find($id);
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

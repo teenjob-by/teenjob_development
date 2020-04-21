@@ -1,3 +1,6 @@
+.container-fluid.organisation .container.container-large {
+  max-width: 960px;
+}
 .container-fluid.organisation {
   background: #ffffff;
 
@@ -7,6 +10,9 @@
       font-weight: bold;
       padding-right: 0.8rem;
       padding-left: 0.8rem;
+    }
+    .nav-item .nav-link {
+      margin-bottom: 0px;
     }
   }
   .internship-list {
@@ -303,15 +309,24 @@
 .volunteer-icon {
   width: 24px;
   height: 24px;
-  background: url("/images/volunteer.png") 100% 100% no-repeat;
+  background: url("/images/volunteer.svg") 100% 100% no-repeat;
   margin-left: auto;
   margin-top: 2px;
 }
 
 .intern-icon {
-  width: 24px;
-  height: 24px;
-  background: url("/images/internship.png") 100% 100% no-repeat;
+  width: 28px;
+  height: 28px;
+  background: url("/images/internship.svg") 100% 100% no-repeat;
   margin-left: auto;
   margin-top: 2px;
 }
+
+.vacancy-icon {
+  width: 24px;
+  height: 24px;
+  background: url("/images/vacancy.svg") 100% 100% no-repeat;
+  margin-left: auto;
+  margin-top: 2px;
+}
+

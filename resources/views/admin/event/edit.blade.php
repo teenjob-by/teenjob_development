@@ -52,12 +52,12 @@
                             $('#datetimepicker2').datetimepicker({
                                 locale: 'ru',
                                 minDate: moment(),
-                                format: "D.MM.Y",
+                                format: "DD.MM.YYYY",
                                 allowInputToggle: true
                             });
 
                             $('#datetimepicker3').datetimepicker({
-                                format: 'LT',
+                                format: 'HH.mm',
                                 allowInputToggle: true
                             });
                         });

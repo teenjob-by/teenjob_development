@@ -87,6 +87,8 @@ class RegisterController extends Controller
     {
         $types = OrganisationType::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
 
         return view("auth.register")->with("types", $types)->with("cities", $cities);
     }

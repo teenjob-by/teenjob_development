@@ -4,8 +4,8 @@
     <meta name="description" content="@lang('headings.home.description')"/>
     <meta name="language" content="@lang('headings.home.language')"/>
     <meta name="keywords" content="@lang('headings.home.keywords')">
-    <meta name="yandex-verification" content="0650b2f8f4059cd1" />
     <title>@lang('headings.home.title')</title>
+    <meta name="yandex-verification" content="0650b2f8f4059cd1" />
 @endsection
 
 @section('og_meta')
@@ -25,7 +25,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_1.svg">
+                        <img class="mx-auto" src="images/about/card_1.svg" alt="Для подростков">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_1.title')</h4>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_2.svg">
+                        <img class="mx-auto" src="images/about/card_2.svg" alt="Волонтерство">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_2.title')</h4>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/about/card_3.svg">
+                        <img class="mx-auto" src="images/about/card_3.svg" alt="Мероприятия">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title text-center">@lang('content.about.card_3.title')</h4>
@@ -70,7 +70,7 @@
             <div class="row justify-content-between">
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_1.svg">
+                        <img class="mx-auto" src="images/organisations/card_1.svg" alt="@lang('content.organisations.card_1.title')">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_1.text')</p>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_2.svg">
+                        <img class="mx-auto" src="images/organisations/card_2.svg" alt="@lang('content.organisations.card_2.title')">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_2.text')</p>
@@ -86,14 +86,16 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-img-top mx-auto">
-                        <img class="mx-auto" src="images/organisations/card_3.svg">
+                        <img class="mx-auto" src="images/organisations/card_3.svg" alt="@lang('content.organisations.card_3.title')">
                     </div>
                     <div class="card-body">
                         <p class="card-text text-center">@lang('content.organisations.card_3.text')</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+
+            <div class="row flex-column">
+                <p class="btn-subtitle">@lang('content.organisations.buttonSubtitle')</p>
                 <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                     <span>
                         @lang('content.organisations.button')
@@ -114,154 +116,22 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="partners-carousel mr-auto ml-auto">
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-4.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_1.name") @lang("team.team_1.surname")</p>
-                                <p class="partner-role">@lang("team.team_1.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/alexey.kirpichenkau" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                    <a class="ml-1" href="https://github.com/fr0zen" target="_blank">
-                                        <img class="social" src="images/github.svg">
-                                    </a>
+
+                        @for ($i = 1; $i <= 6; $i++)
+                            <div>
+                                <div class="partner-card mx-auto">
+                                    <img src="images/partners/image-{{ $i }}.png" class="slick-image">
+                                    <p class="partner-name">@lang("team.team_".$i.".name") @lang("team.team_".$i.".surname")</p>
+                                    <p class="partner-role">@lang("team.team_".$i.".role")</p>
+                                    <div class="d-flex">
+                                        <a href="@lang('team.team_'.$i.'.social.link_1')" target="_blank">
+                                            <img class="social" src="images/partners/fb.svg">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
-                                <p class="partner-role">@lang("team.team_4.role")</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-6.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_3.name") @lang("team.team_3.surname")</p>
-                                <p class="partner-role">@lang("team.team_3.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>                        
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
-                                <p class="partner-role">@lang("team.team_2.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-2.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_5.name") @lang("team.team_5.surname")</p>
-                                <p class="partner-role">@lang("team.team_5.role")</p>
-                                <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-3.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_6.name") @lang("team.team_6.surname")</p>
-                                <p class="partner-role">@lang("team.team_6.role")</p>
-                                <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-4.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_1.name") @lang("team.team_1.surname")</p>
-                                <p class="partner-role">@lang("team.team_1.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/alexey.kirpichenkau" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                    <a class="ml-1" href="https://github.com/fr0zen" target="_blank">
-                                        <img class="social" src="images/github.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
-                                <p class="partner-role">@lang("team.team_4.role")</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>                        
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-6.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_3.name") @lang("team.team_3.surname")</p>
-                                <p class="partner-role">@lang("team.team_3.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100034265058592" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-1.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_4.name") @lang("team.team_4.surname")</p>
-                                <p class="partner-role">@lang("team.team_4.role")</p>
-                                <a href="https://www.facebook.com/valeriya.omeliusik" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-5.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_2.name") @lang("team.team_2.surname")</p>
-                                <p class="partner-role">@lang("team.team_2.role")</p>
-                                <div class="d-flex">
-                                    <a href="https://www.facebook.com/profile.php?id=100021516801825" target="_blank">
-                                        <img class="social" src="images/partners/fb.svg">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-2.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_5.name") @lang("team.team_5.surname")</p>
-                                <p class="partner-role">@lang("team.team_5.role")</p>
-                                <a href="https://www.facebook.com/anastasiya.novemberfrost" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="partner-card mx-auto">
-                                <img src="images/partners/image-3.png" class="slick-image">
-                                <p class="partner-name">@lang("team.team_6.name") @lang("team.team_6.surname")</p>
-                                <p class="partner-role">@lang("team.team_6.role")</p>
-                                <a href="https://www.facebook.com/yaroslava.golubova" target="_blank">
-                                    <img class="social" src="images/partners/fb.svg">
-                                </a>
-                            </div>
-                        </div>
+                        @endfor
+
                     </div>
                 </div>
             </div>

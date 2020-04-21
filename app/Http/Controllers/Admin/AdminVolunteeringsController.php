@@ -38,6 +38,8 @@ class AdminVolunteeringsController extends Controller
 
         $specializations = OfferSpecialization::all();
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         if (count ( $volunteerings ) > 0)
             return view('admin.volunteerings.index')->with('volunteerings', $volunteerings)->with('specializations', $specializations)->with('cities', $cities);
 
@@ -94,6 +96,8 @@ class AdminVolunteeringsController extends Controller
         $volunteering = Offer::find($id);
 
         $cities = City::all();
+        $lastCity = $cities->pop();
+        $cities = $cities->prepend($lastCity);
         $ages = [
             [
                 'value' => 14,

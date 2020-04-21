@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <button type="submit" class="btn btn-success mx-auto">@lang('content.organisationForm.save')</button>
+                            <button type="submit" class="btn btn-success btn-orange mx-auto">@lang('content.organisationForm.save')</button>
                         </div>
                         <div class="form-group row">
                             <a class="mx-auto remove" onclick='showModal()'>@lang('content.organisationForm.remove')</a>

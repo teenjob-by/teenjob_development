@@ -2,7 +2,7 @@
     <div class="container wrapper">
         <div class="row">
             <div class="col-lg-1">
-                <img class="logo-footer" src="/images/footer-logo.svg">
+                <a href="/"><img class="logo-footer" src="/images/footer-logo.svg"></a>
             </div>
             <div class="offset-lg-3 col-lg-5">
                 <ul>
@@ -16,7 +16,10 @@
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.conditions') }}">@lang('footer.navlink_3')</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.contacts') }}">@lang('footer.navlink_4')</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.faq') }}">@lang('footer.navlink_5')</a>
+                    </li>
+                    <li>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.feedback') }}">@lang('footer.navlink_4')</a>
                     </li>
                 </ul>
             </div>

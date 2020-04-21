@@ -11,17 +11,23 @@
     <meta property="og:url" content="{{url()->current()}}">
     <meta property="vk:image" content="{{url('/')}}/images/main_vk.png">
 @endsection
-@section('body_class', 'page-home')
 
 @section('content')
-    <div class="container-fluid background">
-        <div class="container conditions">
-            <div class="row justify-content-center">
-                <h3>@lang('content.internRules.title')</h3>
-                <hr/>
-               @lang('content.internRules.subtitle')
-               @lang('content.internRules.description')
+
+    <div class="container-fluid">
+        <div class="container info-page">
+            <div class="content-section">
+                <h3 class="info-page-title">@lang('content.internRules.title')</h3>
+                <div class="text-section">
+                    @lang('content.internRules.subtitle')
+                    @lang('content.internRules.description')
+                </div>
+            </div>
+
+            <div class="menu-section">
+                @include('site.blocks.infoSideMenu')
             </div>
         </div>
     </div>
+
 @endsection

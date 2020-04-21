@@ -17,20 +17,20 @@
                 @foreach($internships as $internship)
                     <div class="card mt-3 card-offer {{ ($internship->status == 3)? 'banned':''}}" style="padding: 20px">
                         <h3 class="offer-title">
-                            <a href="/internship/{{ $internship->id }}">{{$internship->title}}</a>
+                            <a href="/internships-for-teens/{{ $internship->id }}">{{$internship->title}}</a>
                             @if($internship->organisation['status'] == 4)
                                 <span class="approved"></span>
                             @endif
 
                             <table class="ml-auto">
                                 <tr>
-                                    <td> <a href="{{ route('admin.internship.approve', $internship->id)}}" class="{{ in_array($internship->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
+                                    <td> <a href="{{ route('admin.internships-for-teens.approve', $internship->id)}}" class="{{ in_array($internship->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
 
                                     <td><a href="{{ route('admin.internshipForm', $internship->id)}}" class="btn btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-                                    <td><a href="{{ route('admin.internship.ban', $internship->id)}}" class=" {{ in_array($internship->status, [3]) ? 'd-none': '' }} btn btn-disable"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+                                    <td><a href="{{ route('admin.internships-for-teens.ban', $internship->id)}}" class=" {{ in_array($internship->status, [3]) ? 'd-none': '' }} btn btn-disable"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
 
-                                    <td><a href="{{ route('admin.internship.remove', $internship->id)}}" class="btn btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a href="{{ route('admin.internships-for-teens.remove', $internship->id)}}" class="btn btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             </table>
                         </h3>
