@@ -95,7 +95,7 @@
                                     <a href="{{ '/'.'internships-for-teens'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="intern-icon"></span>
                                 @elseif($offer->offer_type == 2)
-                                    <a href="{{ '/'.'vacancy'.'/'.$offer->id }}">{{$offer->title}}</a>
+                                    <a href="{{ '/'.'jobs-for-teens'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="vacancy-icon"></span>
                                 @endif
 
