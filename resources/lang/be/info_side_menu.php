@@ -13,7 +13,7 @@ return [
         'route_1' => 'about-us',
         'route_2' => 'terms-of-use',
         'route_3' => 'conditions',
-        'route_4' => 'vacancy-rules',
+        'route_4' => 'employment-law-for-teens',
         'route_5' => 'who-is-intern',
         'route_6' => 'who-is-volunteer',
         'route_7' => 'faq',
