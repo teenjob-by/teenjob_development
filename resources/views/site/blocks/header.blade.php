@@ -6,9 +6,9 @@
                 <div class="navbar-nav ml-auto">
 
                     <a class="nav-link {{ request()->routeIs('site.internship') ? 'active' : '' }}"
-                       href="/volunteering-for-teens?internship=on">@lang('header.navlink_1')</a>
+                       href="/volunteering?internship=on">@lang('header.navlink_1')</a>
                     <a class="nav-link {{ request()->routeIs('site.volunteering') ? 'active' : '' }}"
-                       href="/volunteering-for-teens?volunteering=on">@lang('header.navlink_2')</a>
+                       href="/volunteering?volunteering=on">@lang('header.navlink_2')</a>
                     <a class="nav-link {{ request()->routeIs('site.events') ? 'active' : '' }}"
                        href="{{ route('site.events') }}">@lang('header.navlink_3')</a>
                     <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
@@ -105,9 +105,15 @@
 
                     <div class="mobile-categories">
 
-                        <a class="mobile-categories-button" href="/volunteering-for-teens">
+                        <a class="mobile-categories-button" href="/volunteering?internship=on">
                             <span>
-                                @lang('header.navlink_7')
+                                @lang('header.navlink_1')
+                            </span>
+                        </a>
+
+                        <a class="mobile-categories-button" href="/volunteering?volunteering=on">
+                            <span>
+                                @lang('header.navlink_2')
                             </span>
                         </a>
 

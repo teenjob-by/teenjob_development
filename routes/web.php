@@ -34,7 +34,7 @@ Route::get('/internships-for-teens', 'InternshipController@index')->name('site.i
 Route::get('/internships-for-teens/{id}', 'InternshipController@show')->where('id', '[0-9]+');
 Route::get('/volunteering-for-teens', 'VolunteeringController@index')->name('site.volunteering');
 Route::get('/volunteering-for-teens/{id}', 'VolunteeringController@show')->where('id', '[0-9]+');
-Route::get('/volunteering-for-teens', 'SearchOffersController@index')->name('site.offers');
+Route::get('/volunteering', 'SearchOffersController@index')->name('site.offers');
 //Route::get('/events', 'EventsController@index')->name('site.events');
 //Route::get('/events/{id}', 'EventsController@show')->where('id', '[0-9]+');
 Route::get('/who-is-volunteer', 'RulesPagesController@getVolunteerRules')->name('site.whoisvolunteer');
@@ -157,9 +157,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/volunteering-for-teens/ban/{id}', 'Admin\AdminVolunteeringsController@ban')->name('admin.volunteerings.ban');
     Route::get('/admin/volunteering-for-teens', 'Admin\AdminVolunteeringsController@index')->name('admin.volunteering');
     Route::get('/admin/volunteering-for-teens/moderation', 'Admin\AdminVolunteeringsController@showUnapproved')->name('admin.volunteering.moderation');
-    Route::get('/admin/volunteering/edit/{id}', 'Admin\AdminVolunteeringsController@edit')->name('admin.volunteeringForm');
-    Route::post('/admin/volunteering/update', 'Admin\AdminVolunteeringsController@update')->name('admin.volunteering.update');
-    Route::get('/admin/volunteering/destroy', 'Admin\AdminVolunteeringsController@destroy')->name('admin.volunteering.destroy');
+    Route::get('/admin/volunteering-for-teens/edit/{id}', 'Admin\AdminVolunteeringsController@edit')->name('admin.volunteeringForm');
+    Route::post('/admin/volunteering-for-teens/update', 'Admin\AdminVolunteeringsController@update')->name('admin.volunteering.update');
+    Route::get('/admin/volunteering-for-teens/destroy', 'Admin\AdminVolunteeringsController@destroy')->name('admin.volunteering.destroy');
 
     Route::get('/admin/jobs-for-teens/approve/{id}', 'Admin\AdminVacanciesController@approve')->name('admin.vacancies.approve');
     Route::get('/admin/jobs-for-teens/remove/{id}', 'Admin\AdminVacanciesController@remove')->name('admin.vacancies.remove');
