@@ -201,7 +201,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>-->
 
                 <div class="tab-pane fade" id="internship">
 
@@ -474,5 +474,5 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 @endsection
