@@ -132,7 +132,7 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
+                                                            <a href="/jobs-for-teens/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
                                                             <span>@lang('content.organisation.vacancies.publishedBefore') {{ $vacancy->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
@@ -158,7 +158,7 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
+                                                            <a href="/jobs-for-teens/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -184,7 +184,7 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
+                                                            <a href="/jobs-for-teens/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
                                                         </div>
                                                     </div>
                                                 @endif

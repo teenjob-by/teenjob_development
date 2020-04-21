@@ -99,15 +99,15 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/organisation/internship/create', 'InternshipController@create')->name('account.internshipForm');
     Route::get('/organisation/volunteering/create', 'VolunteeringController@create')->name('account.volunteeringForm');
     Route::get('/organisation/events/create', 'EventsController@create')->name('account.eventForm');
-    Route::get('/organisation/vacancies/create', 'VacancyController@create')->name('account.vacancyForm');
+    Route::get('/organisation/jobs-for-teens/create', 'VacancyController@create')->name('account.vacancyForm');
     Route::get('/internship/archive/{id}', 'InternshipController@archive')->name('internship.archive');
     Route::get('/event/archive/{id}', 'EventsController@archive')->name('event.archive');
     Route::get('/volunteering/archive/{id}', 'VolunteeringController@archive')->name('volunteering.archive');
-    Route::get('/vacancy/archive/{id}', 'VacancyController@archive')->name('vacancy.archive');
+    Route::get('/jobs-for-teens/archive/{id}', 'VacancyController@archive')->name('vacancy.archive');
     Route::get('/internship/unarchive/{id}', 'InternshipController@unarchive')->name('internship.unarchive');
     Route::get('/event/unarchive/{id}', 'EventsController@unarchive')->name('event.unarchive');
     Route::get('/volunteering/unarchive/{id}', 'VolunteeringController@unarchive')->name('volunteering.unarchive');
-    Route::get('/vacancy/unarchive/{id}', 'VacancyController@unarchive')->name('vacancy.unarchive');
+    Route::get('/jobs-for-teens/unarchive/{id}', 'VacancyController@unarchive')->name('vacancy.unarchive');
 
 
     Route::resource('events', 'EventsController', [
@@ -161,14 +161,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/admin/volunteering/update', 'Admin\AdminVolunteeringsController@update')->name('admin.volunteering.update');
     Route::get('/admin/volunteering/destroy', 'Admin\AdminVolunteeringsController@destroy')->name('admin.volunteering.destroy');
 
-    Route::get('/admin/vacancies/approve/{id}', 'Admin\AdminVacanciesController@approve')->name('admin.vacancies.approve');
-    Route::get('/admin/vacancies/remove/{id}', 'Admin\AdminVacanciesController@remove')->name('admin.vacancies.remove');
-    Route::get('/admin/vacancies/ban/{id}', 'Admin\AdminVacanciesController@ban')->name('admin.vacancies.ban');
-    Route::get('/admin/vacancies', 'Admin\AdminVacanciesController@index')->name('admin.vacancy');
-    Route::get('/admin/vacancies/moderation', 'Admin\AdminVacanciesController@showUnapproved')->name('admin.vacancy.moderation');
-    Route::get('/admin/vacancy/edit/{id}', 'Admin\AdminVacanciesController@edit')->name('admin.vacancyForm');
-    Route::post('/admin/vacancy/update', 'Admin\AdminVacanciesController@update')->name('admin.vacancy.update');
-    Route::get('/admin/vacancy/destroy', 'Admin\AdminVacanciesController@destroy')->name('admin.vacancy.destroy');
+    Route::get('/admin/jobs-for-teens/approve/{id}', 'Admin\AdminVacanciesController@approve')->name('admin.vacancies.approve');
+    Route::get('/admin/jobs-for-teens/remove/{id}', 'Admin\AdminVacanciesController@remove')->name('admin.vacancies.remove');
+    Route::get('/admin/jobs-for-teens/ban/{id}', 'Admin\AdminVacanciesController@ban')->name('admin.vacancies.ban');
+    Route::get('/admin/jobs-for-teens', 'Admin\AdminVacanciesController@index')->name('admin.vacancy');
+    Route::get('/admin/jobs-for-teens/moderation', 'Admin\AdminVacanciesController@showUnapproved')->name('admin.vacancy.moderation');
+    Route::get('/admin/jobs-for-teens/edit/{id}', 'Admin\AdminVacanciesController@edit')->name('admin.vacancyForm');
+    Route::post('/admin/jobs-for-teens/update', 'Admin\AdminVacanciesController@update')->name('admin.vacancy.update');
+    Route::get('/admin/jobs-for-teens/destroy', 'Admin\AdminVacanciesController@destroy')->name('admin.vacancy.destroy');
 
     Route::get('/admin/internships/approve/{id}', 'Admin\AdminInternshipsController@approve')->name('admin.internship.approve');
     Route::get('/admin/internships/remove/{id}', 'Admin\AdminInternshipsController@remove')->name('admin.internship.remove');

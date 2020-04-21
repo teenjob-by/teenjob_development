@@ -202,7 +202,7 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect('/vacancy/'.$id);
+        return redirect('/jobs-for-teens/'.$id);
     }
 
     /**
@@ -216,7 +216,7 @@ class VacancyController extends Controller
         $vacancy = Offer::find($id);
         $vacancy->delete();
 
-        return redirect('/vacancies')->with('success', 'Offer deleted!');
+        return redirect('/jobs-for-teens')->with('success', 'Offer deleted!');
     }
 
 

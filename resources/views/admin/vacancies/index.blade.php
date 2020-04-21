@@ -17,7 +17,7 @@
                 @foreach($vacancies as $vacancy)
                     <div class="card mt-3 card-offer {{ ($vacancy->status == 3)? 'banned':''}}" style="padding: 20px">
                         <h3 class="offer-title">
-                            <a href="/vacancy/{{ $vacancy->id }}">{{$vacancy->title}}</a>
+                            <a href="/jobs-for-teens/{{ $vacancy->id }}">{{$vacancy->title}}</a>
                             @if($vacancy->organisation['status'] == 4)
                                 <span class="approved"></span>
                             @endif
