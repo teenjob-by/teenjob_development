@@ -104,7 +104,7 @@
 
                     <div class="mobile-categories">
 
-                        <a class="mobile-categories-button" href="/volunteering">
+                        <a class="mobile-categories-button" href="/volunteering-for-teens">
                             <span>
                                 @lang('header.navlink_7')
                             </span>

@@ -214,7 +214,7 @@ class VolunteeringController extends Controller
 
         $volunteering->save();
 
-        return redirect('/volunteering/'.$id);
+        return redirect('/volunteering-for-teens/'.$id);
     }
 
     /**
@@ -228,7 +228,7 @@ class VolunteeringController extends Controller
         $volunteering = Offer::find($id);
         $volunteering->delete();
 
-        return redirect('/volunteerings')->with('success', 'Offer deleted!');
+        return redirect('/volunteering-for-teens')->with('success', 'Offer deleted!');
     }
 
     public function archive($id)

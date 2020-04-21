@@ -32,9 +32,9 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/internships-for-teens', 'InternshipController@index')->name('site.internship');
 Route::get('/internships-for-teens/{id}', 'InternshipController@show')->where('id', '[0-9]+');
-Route::get('/volunteering', 'VolunteeringController@index')->name('site.volunteering');
-Route::get('/volunteering/{id}', 'VolunteeringController@show')->where('id', '[0-9]+');
-Route::get('/volunteering', 'SearchOffersController@index')->name('site.offers');
+Route::get('/volunteering-for-teens', 'VolunteeringController@index')->name('site.volunteering');
+Route::get('/volunteering-for-teens/{id}', 'VolunteeringController@show')->where('id', '[0-9]+');
+Route::get('/volunteering-for-teens', 'SearchOffersController@index')->name('site.offers');
 //Route::get('/events', 'EventsController@index')->name('site.events');
 //Route::get('/events/{id}', 'EventsController@show')->where('id', '[0-9]+');
 Route::get('/who-is-volunteer', 'RulesPagesController@getVolunteerRules')->name('site.whoisvolunteer');
@@ -97,16 +97,16 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/organisation/update', 'OrganisationsController@update')->name('update');
     Route::get('/organisation/destroy', 'OrganisationsController@destroy')->name('destroy');
     Route::get('/organisation/internships-for-teens/create', 'InternshipController@create')->name('account.internshipForm');
-    Route::get('/organisation/volunteering/create', 'VolunteeringController@create')->name('account.volunteeringForm');
+    Route::get('/organisation/volunteering-for-teens/create', 'VolunteeringController@create')->name('account.volunteeringForm');
     Route::get('/organisation/events/create', 'EventsController@create')->name('account.eventForm');
     Route::get('/organisation/jobs-for-teens/create', 'VacancyController@create')->name('account.vacancyForm');
     Route::get('/internships-for-teens/archive/{id}', 'InternshipController@archive')->name('internship.archive');
     Route::get('/event/archive/{id}', 'EventsController@archive')->name('event.archive');
-    Route::get('/volunteering/archive/{id}', 'VolunteeringController@archive')->name('volunteering.archive');
+    Route::get('/volunteering-for-teens/archive/{id}', 'VolunteeringController@archive')->name('volunteering.archive');
     Route::get('/jobs-for-teens/archive/{id}', 'VacancyController@archive')->name('vacancy.archive');
     Route::get('/internships-for-teens/unarchive/{id}', 'InternshipController@unarchive')->name('internship.unarchive');
     Route::get('/event/unarchive/{id}', 'EventsController@unarchive')->name('event.unarchive');
-    Route::get('/volunteering/unarchive/{id}', 'VolunteeringController@unarchive')->name('volunteering.unarchive');
+    Route::get('/volunteering-for-teens/unarchive/{id}', 'VolunteeringController@unarchive')->name('volunteering.unarchive');
     Route::get('/jobs-for-teens/unarchive/{id}', 'VacancyController@unarchive')->name('vacancy.unarchive');
 
 
@@ -152,11 +152,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/admin/organisation/update', 'Admin\AdminOrganisationsController@update')->name('admin.organisation.update');
     Route::get('/admin/organisation/destroy', 'Admin\AdminOrganisationsController@destroy')->name('admin.organisation.destroy');
 
-    Route::get('/admin/volunteerings/approve/{id}', 'Admin\AdminVolunteeringsController@approve')->name('admin.volunteerings.approve');
-    Route::get('/admin/volunteerings/remove/{id}', 'Admin\AdminVolunteeringsController@remove')->name('admin.volunteerings.remove');
-    Route::get('/admin/volunteerings/ban/{id}', 'Admin\AdminVolunteeringsController@ban')->name('admin.volunteerings.ban');
-    Route::get('/admin/volunteerings', 'Admin\AdminVolunteeringsController@index')->name('admin.volunteering');
-    Route::get('/admin/volunteerings/moderation', 'Admin\AdminVolunteeringsController@showUnapproved')->name('admin.volunteering.moderation');
+    Route::get('/admin/volunteering-for-teens/approve/{id}', 'Admin\AdminVolunteeringsController@approve')->name('admin.volunteerings.approve');
+    Route::get('/admin/volunteering-for-teens/remove/{id}', 'Admin\AdminVolunteeringsController@remove')->name('admin.volunteerings.remove');
+    Route::get('/admin/volunteering-for-teens/ban/{id}', 'Admin\AdminVolunteeringsController@ban')->name('admin.volunteerings.ban');
+    Route::get('/admin/volunteering-for-teens', 'Admin\AdminVolunteeringsController@index')->name('admin.volunteering');
+    Route::get('/admin/volunteering-for-teens/moderation', 'Admin\AdminVolunteeringsController@showUnapproved')->name('admin.volunteering.moderation');
     Route::get('/admin/volunteering/edit/{id}', 'Admin\AdminVolunteeringsController@edit')->name('admin.volunteeringForm');
     Route::post('/admin/volunteering/update', 'Admin\AdminVolunteeringsController@update')->name('admin.volunteering.update');
     Route::get('/admin/volunteering/destroy', 'Admin\AdminVolunteeringsController@destroy')->name('admin.volunteering.destroy');
