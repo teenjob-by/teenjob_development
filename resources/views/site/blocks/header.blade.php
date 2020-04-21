@@ -4,15 +4,16 @@
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
             <div class="collapse menu-collapse navbar-collapse" id="navbarsMain">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link {{ ((app('request')->input('vacancy') == 'on') || (app('request')->input('internship') == 'on') || (app('request')->input('volunteering') == 'on')) ? 'active' : '' }}" href="{{ route('site.offers') }}">
-                        @lang('header.navlink_7')
-                    </a>
+
+                    <a class="nav-link {{ request()->routeIs('site.internship') ? 'active' : '' }}"
+                       href="/offers?internship=on">@lang('header.navlink_1')</a>
+                    <a class="nav-link {{ request()->routeIs('site.volunteering') ? 'active' : '' }}"
+                       href="/offers?volunteering=on">@lang('header.navlink_2')</a>
                     <a class="nav-link {{ request()->routeIs('site.events') ? 'active' : '' }}"
                        href="{{ route('site.events') }}">@lang('header.navlink_3')</a>
                     <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
                        href="{{ route('site.howsupport') }}">@lang('header.navlink_4')</a>
-                    <a class="nav-link {{ request()->routeIs('site.support') ? 'active' : '' }}"
-                       href="{{ route('site.support') }}">@lang('header.navlink_8')</a>
+
 
                     @guest
                         <div class="nav-item">
