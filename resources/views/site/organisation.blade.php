@@ -128,7 +128,7 @@
                                                 @if($vacancy->status == 1)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
@@ -154,7 +154,7 @@
                                                 @if($vacancy->status == 0)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
@@ -180,7 +180,7 @@
                                                 @if($vacancy->status == 2)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
@@ -314,7 +314,7 @@
                                             @if($volunteering->status == 1)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                        <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">
@@ -341,7 +341,7 @@
                                             @if($volunteering->status == 0)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                        <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">
@@ -367,7 +367,7 @@
                                             @if($volunteering->status == 2)
                                             <div class="internship-item">
                                                 <div class="internship-title">
-                                                    <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                    <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                 </div>
 
                                                 <div class="internship-actions">

@@ -176,7 +176,7 @@ class VacancyController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.vacancy.edit')->with('vacancy', $vacancy)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.jobs-for-teens.edit')->with('vacancy', $vacancy)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**

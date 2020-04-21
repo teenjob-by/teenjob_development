@@ -8,7 +8,7 @@
                     <h2 class="display-5">@lang('content.internship.create.title')</h2>
 
 
-                        <form method="post" action="{{ route('internship.store') }}">
+                        <form method="post" action="{{ route('internships-for-teens.store') }}">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">

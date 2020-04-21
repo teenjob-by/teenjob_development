@@ -187,7 +187,7 @@ class VolunteeringController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.volunteering.edit')->with('volunteering', $volunteering)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.volunteering-for-teens.edit')->with('volunteering', $volunteering)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**

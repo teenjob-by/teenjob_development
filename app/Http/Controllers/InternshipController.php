@@ -178,7 +178,7 @@ class InternshipController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.internship.edit')->with('internship', $internship)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.internships-for-teens.edit')->with('internship', $internship)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**

@@ -8,7 +8,7 @@
                     <h2 class="display-5">@lang('content.volunteering.create.title')</h2>
 
 
-                        <form method="post" action="{{ route('volunteering.store') }}">
+                        <form method="post" action="{{ route('volunteering-for-teens.store') }}">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
