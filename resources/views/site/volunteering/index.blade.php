@@ -89,10 +89,10 @@
                                     <span class="approved"></span>
                                 @endif
                                 @if($offer->offer_type == 0)
-                                    <a href="{{ '/'.'volunteering'.'/'.$offer->id }}">{{$offer->title}}</a>
+                                    <a href="{{ '/'.'volunteering-for-teens'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="volunteer-icon"></span>
                                 @elseif($offer->offer_type == 1)
-                                    <a href="{{ '/'.'internship'.'/'.$offer->id }}">{{$offer->title}}</a>
+                                    <a href="{{ '/'.'internships-for-teens'.'/'.$offer->id }}">{{$offer->title}}</a>
                                     <span class="intern-icon"></span>
                                 @elseif($offer->offer_type == 2)
                                     <a href="{{ '/'.'vacancy'.'/'.$offer->id }}">{{$offer->title}}</a>

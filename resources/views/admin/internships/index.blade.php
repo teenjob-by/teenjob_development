@@ -24,13 +24,13 @@
 
                             <table class="ml-auto">
                                 <tr>
-                                    <td> <a href="{{ route('admin.internship.approve', $internship->id)}}" class="{{ in_array($internship->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
+                                    <td> <a href="{{ route('admin.internships-for-teens.approve', $internship->id)}}" class="{{ in_array($internship->status, [1, 2]) ? 'd-none': '' }} btn btn-enable"><i class="fa fa-globe" aria-hidden="true"></i></a></td>
 
                                     <td><a href="{{ route('admin.internshipForm', $internship->id)}}" class="btn btn-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-                                    <td><a href="{{ route('admin.internship.ban', $internship->id)}}" class=" {{ in_array($internship->status, [3]) ? 'd-none': '' }} btn btn-disable"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
+                                    <td><a href="{{ route('admin.internships-for-teens.ban', $internship->id)}}" class=" {{ in_array($internship->status, [3]) ? 'd-none': '' }} btn btn-disable"><i class="fa fa-ban" aria-hidden="true"></i></a></td>
 
-                                    <td><a href="{{ route('admin.internship.remove', $internship->id)}}" class="btn btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a href="{{ route('admin.internships-for-teens.remove', $internship->id)}}" class="btn btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             </table>
                         </h3>

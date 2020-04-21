@@ -218,7 +218,7 @@ class InternshipController extends Controller
         $internship = Offer::find($id);
         $internship->delete();
 
-        return redirect('/internships-for-teenss')->with('success', 'Offer deleted!');
+        return redirect('/internships-for-teens')->with('success', 'Offer deleted!');
     }
 
 
