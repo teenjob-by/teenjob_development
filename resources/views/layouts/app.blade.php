@@ -91,8 +91,8 @@
                             <div class="list-group list-group-flush">
                                 <a href="/admin/volunteerings" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering') ? 'active' : '' }}">@lang('content.admin.volunteering')</a>
                                 <a href="/admin/volunteerings/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.volunteering.moderation') ? 'active' : '' }}">@lang('content.admin.volunteeringModerate')</a>
-                                <a href="/admin/internships" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">@lang('content.admin.internship')</a>
-                                <a href="/admin/internships/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">@lang('content.admin.internshipModerate')</a>
+                                <a href="/admin/internships-for-teens" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship') ? 'active' : '' }}">@lang('content.admin.internship')</a>
+                                <a href="/admin/internships-for-teens/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.internship.moderation') ? 'active' : '' }}">@lang('content.admin.internshipModerate')</a>
                                 <a href="/admin/jobs-for-teens" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.vacancy') ? 'active' : '' }}">@lang('content.admin.vacancy')</a>
                                 <a href="/admin/jobs-for-teens/moderation" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.vacancy.moderation') ? 'active' : '' }}">@lang('content.admin.vacancyModerate')</a>
                                 <a href="/admin/events" class="list-group-item list-group-item-action bg-light {{ request()->routeIs('admin.events') ? 'active' : '' }}">@lang('content.admin.event')</a>

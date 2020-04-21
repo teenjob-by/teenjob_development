@@ -126,7 +126,7 @@ class VacancyController extends Controller
             'organisation_id' => $organisation,
         ]);
         $vacancy->save();
-        return redirect('/organisation#vacancy')->with('success', 'Offer saved!');
+        return redirect('/organisation#jobs-for-teens')->with('success', 'Offer saved!');
 
     }
 

@@ -204,7 +204,7 @@ class InternshipController extends Controller
 
         $internship->save();
 
-        return redirect('/internship/'.$id);
+        return redirect('/internships-for-teens/'.$id);
     }
 
     /**
@@ -218,7 +218,7 @@ class InternshipController extends Controller
         $internship = Offer::find($id);
         $internship->delete();
 
-        return redirect('/internships')->with('success', 'Offer deleted!');
+        return redirect('/internships-for-teenss')->with('success', 'Offer deleted!');
     }
 
 

@@ -11,7 +11,7 @@
                             <a class="nav-link active" data-toggle="tab" href="#account">@lang('content.organisation.title')</a>
                         </li>
                         <!--<li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#vacancy">@lang('content.organisation.vacancyTab')</a>
+                            <a class="nav-link" data-toggle="tab" href="#jobs-for-teens">@lang('content.organisation.vacancyTab')</a>
                         </li>-->
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#internship">@lang('content.organisation.internTab')</a>
@@ -225,7 +225,7 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive') </a>
+                                                            <a href="/internships-for-teens/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive') </a>
                                                             <span>@lang('content.organisation.internships.publishedBefore') {{ $internship->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
@@ -251,7 +251,7 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive')</a>
+                                                        <a href="/internships-for-teens/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -277,7 +277,7 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/unarchive/{{ $internship->id }}">@lang('content.organisation.internships.unarchive')</a>
+                                                        <a href="/internships-for-teens/unarchive/{{ $internship->id }}">@lang('content.organisation.internships.unarchive')</a>
                                                     </div>
                                                 </div>
                                             @endif
