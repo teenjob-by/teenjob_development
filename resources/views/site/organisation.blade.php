@@ -10,9 +10,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#account">@lang('content.organisation.title')</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#vacancy">@lang('content.organisation.vacancyTab')</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#internship">@lang('content.organisation.internTab')</a>
                         </li>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="vacancy">
+                <!--<div class="tab-pane fade" id="vacancy">
 
 
                     <div class="row justify-content-center">
@@ -474,5 +474,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 @endsection

@@ -49,13 +49,13 @@
                                         <span class="overflow-control-description">@lang('content.offers.search.internship')</span>
                                     </label>
                                 </div>
-                                <div class="form-check">
+                                <!--<div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">@lang('content.offers.search.vacancy')</span>
                                     </label>
-                                </div>
+                                </div>-->
                             </div>
 
                             <div class="form-group">
@@ -198,13 +198,13 @@
                                     </label>
                                 </div>
 
-                                <div class="form-check">
+                                <!--<div class="form-check">
                                     <label class="custom-control overflow-checkbox">
                                         <input type="checkbox" class="overflow-control-input" {{ empty($_GET['vacancy'])? '': 'checked="checked"'}} name="vacancy" onchange="getData(getPage(), this.form)">
                                         <span class="overflow-control-indicator"></span>
                                         <span class="overflow-control-description">@lang('content.offers.search.vacancy')</span>
                                     </label>
-                                </div>
+                                </div>-->
                             </div>
 
                             <div class="form-group">

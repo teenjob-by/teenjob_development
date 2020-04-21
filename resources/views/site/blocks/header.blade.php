@@ -77,7 +77,7 @@
                 <div class="dropdown">
                     <select class="dropdown-menu category-dropdown" name="category">
                         <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on') && (app('request')->input('vacancy') == 'on'))? 'selected': ''}} value="offers">@lang('header.categories')</option>
-                        <option {{((app('request')->input('vacancy') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="vacancy">@lang('header.navlink_6')</option>
+                        <!--<option {{((app('request')->input('vacancy') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="vacancy">@lang('header.navlink_6')</option>-->
                         <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">@lang('header.navlink_1')</option>
                         <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">@lang('header.navlink_2')</option>
                         <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">@lang('header.navlink_3')</option>
@@ -127,7 +127,7 @@
                             <input type="hidden" name="category" value="offers">
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="internship" value="on">
-                            <input type="hidden" name="vacancy" value="on">
+                            <!--<input type="hidden" name="vacancy" value="on">-->
                         @elseif(app('request')->input('volunteering') == 'on')
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="category" value="offers">
@@ -135,7 +135,7 @@
                             <input type="hidden" name="internship" value="on">
                             <input type="hidden" name="category" value="offers">
                         @elseif(app('request')->input('vacancy') == 'on')
-                            <input type="hidden" name="vacancy" value="on">
+                        <!--<input type="hidden" name="vacancy" value="on">-->
                             <input type="hidden" name="category" value="offers">
                         @elseif(request()->routeIs('site.events'))
                             <input type="hidden" name="category" value="events">
@@ -150,7 +150,7 @@
                         @elseif(request()->routeIs('site.events'))
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_3')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(request()->routeIs('site.vacancy'))
-                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_4')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <!--<input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_4')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">-->
                         @endif
 
                         <div class="input-group-append">
