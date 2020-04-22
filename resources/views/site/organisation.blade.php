@@ -221,7 +221,7 @@
                                                 @if($internship->status == 1)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('internship.edit', $internship->id) }}">{{ $internship->title }}</a>
+                                                            <a class="internship-name" href="{{ route('internships-for-teens.edit', $internship->id) }}">{{ $internship->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
@@ -247,7 +247,7 @@
                                             @if($internship->status == 0)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('internship.edit', $internship->id) }}">{{ $internship->title }}</a>
+                                                        <a class="internship-name" href="{{ route('internships-for-teens.edit', $internship->id) }}">{{ $internship->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">
@@ -273,7 +273,7 @@
                                             @if($internship->status == 2)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('internship.edit', $internship->id) }}">{{ $internship->title }}</a>
+                                                        <a class="internship-name" href="{{ route('internships-for-teens.edit', $internship->id) }}">{{ $internship->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">

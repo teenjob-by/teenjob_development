@@ -8,7 +8,7 @@
                 <h2 class="display-5">@lang('content.volunteering.edit.title')</h2>
 
 
-                <form method="post" action="{{ route('volunteering.update', $volunteering->id) }}">
+                <form method="post" action="{{ route('volunteering-for-teens.update', $volunteering->id) }}">
                     @method('PATCH')
                     @csrf
                     <input type="hidden" name="organisation" value="{{ $volunteering->organisation_id }}"/>
