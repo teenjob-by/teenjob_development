@@ -209,7 +209,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-orange btn-create {{ (count($internships) > 0)?'':'disable' }}" href="{{ route('account.internshipForm') }}" role="button">@lang('content.organisation.internships.create')</a>
+                                <a class="btn btn-success btn-create {{ (count($internships) > 0)?'':'disable' }}" href="{{ route('account.internshipForm') }}" role="button">@lang('content.organisation.internships.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
@@ -302,7 +302,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-orange btn-create {{ (count($volunteerings) > 0)?'':'disable' }}" href=" {{ route('account.volunteeringForm') }}" role="button">@lang('content.organisation.volunteering.create')</a>
+                                <a class="btn btn-success btn-create {{ (count($volunteerings) > 0)?'':'disable' }}" href=" {{ route('account.volunteeringForm') }}" role="button">@lang('content.organisation.volunteering.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
@@ -391,7 +391,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-orange btn-create {{ (count($events) > 0)?'':'disable' }}" href="{{ route('account.eventForm') }}" role="button">@lang('content.organisation.events.create')</a>
+                                <a class="btn btn-success btn-create {{ (count($events) > 0)?'':'disable' }}" href="{{ route('account.eventForm') }}" role="button">@lang('content.organisation.events.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
