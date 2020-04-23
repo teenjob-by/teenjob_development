@@ -1104,19 +1104,32 @@ h2 {
     }
   }
   .footer {
-    height: 270px !important;
+    height: 320px !important;
+
+    ul {
+      height: auto !important;
+      flex-wrap: nowrap;
+    }
+
+
     div > div {
       width: auto;
       padding-right: 0;
     }
     &-social {
-      margin-left: 119px;
+      margin-left: 79px;
     }
   }
-  .footer .logo-footer {
+  .footer .logo-footer-mobile {
     width: 48px;
     height: 48px;
+    display: block;
   }
+
+  .footer .logo-footer-desktop {
+    display: none;
+  }
+
 }
 
 .card-event {
