@@ -1,15 +1,21 @@
 <?php
 
+
+
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+ * Redirects
+ * */
+Route::get('support', function(){
+    return redirect('/feedback', 301);
+});
+
+Route::get('contacts', function(){
+    return redirect('/feedback', 301);
+});
+
+Route::get('offers', function(){
+    return redirect('volunteering', 301);
+});
 
 Route::get('/', function () {
     return view('site.home');
