@@ -79,7 +79,7 @@ Route::resource('volunteering-for-teens', 'VolunteeringController', [
     'only' => ['index', 'show']
 ]);
 
-Route::resource('internship-for-teens', 'InternshipController', [
+Route::resource('internships-for-teens', 'InternshipController', [
     'names' => [
         'index' => 'site.internship'
     ],
@@ -129,7 +129,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         'except' => ['index', 'show']
     ]);
 
-    Route::resource('internship-for-teens', 'InternshipController', [
+    Route::resource('internships-for-teens', 'InternshipController', [
         'names' => [
             'index' => 'site.internship'
         ],
