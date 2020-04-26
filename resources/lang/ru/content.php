@@ -45,11 +45,12 @@ return [
             'text' => 'Включить в свою деятельность мотивированных и креативных подростков',
         ],
         'card_3' => [
-            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Поможем найти</a> и подобрать волонтеров, стажеров и участников мероприятия',
+            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Поможем найти</a> и подобрать волонтеров, стажеров и участников мероприятия <br> <a class="rules-link" href="/rules-for-employers">Справка организациям</a>',
         ],
         'buttonSubtitle' => 'Мы готовы рассказать больше',
         'button' => 'Оставить заявку',
         'needHelp' => 'Вам тоже нужен помощник?',
+        'link' => 'Справка организациям'
     ],
     'partners' => [
         'title' => 'Наша команда',

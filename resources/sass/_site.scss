@@ -108,6 +108,22 @@ h2 {
 
   .organisations-block-title {
     text-align: center;
+    margin-top: 70px;
+
+    @media all and (max-width: 1023px){
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 120%;
+      margin-top: 0px;
+    }
+  }
+
+  .organisations-block {
+    text-align: center;
+
+    @media all and (max-width: 1023px){
+      margin-top: 40px;
+    }
   }
 
   .row {
