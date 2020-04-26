@@ -3,7 +3,7 @@
     <meta name="description" content="Ограниченная во времени занятость, во время которой вы пробуете и приобретаете навыки на практике как часть какой-либо организации."/>
     <meta name="language" content="RU"/>
 
-    <title>Правила трудоустройства для подростков - teenjob.by</title>
+    <title>Информация для организаций - teenjob.by</title>
 @endsection
 
 @section('og_meta')
@@ -18,18 +18,18 @@
     <div class="container-fluid">
         <div class="container info-page">
             <div class="content-section">
-                <h3 class="info-page-title">@lang('content.vacancyRules.title')</h3>
+                <h3 class="info-page-title">@lang('content.rulesForEmployers.title')</h3>
 
                 <div class="text-section">
-                    @for ($i = 1; $i <= 8; $i++)
+                    @for ($i = 1; $i <= 4; $i++)
                         <div class="article">
                             <div class="article-heading">
-                                <img src="{{url('/')}}/images/rules-block-{{ $i }}-icon.svg">
-                                <h4>@lang('content.vacancyRules.text.section_'. $i .'.title')</h4>
+                                <img src="{{url('/')}}/images/organisations/rules-block-{{ $i }}-icon.svg">
+                                <h4>@lang('content.rulesForEmployers.text.section_'. $i .'.title')</h4>
                             </div>
                             <div class="article-description">
                                 <ul>
-                                    @lang('content.vacancyRules.text.section_'. $i .'.description')
+                                    @lang('content.rulesForEmployers.text.section_'. $i .'.description')
                                 </ul>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
 
                     <div class="article">
                         <div class="article-description">
-                           @lang('content.vacancyRules.text.notification')
+                           @lang('content.rulesForEmployers.text.notification')
                         </div>
                     </div>
 
@@ -46,6 +46,20 @@
                             @lang('content.rulesForEmployers.text.info') <a href="{{ route('site.whoisvolunteer') }}">@lang('content.volunteerRules.title')</a> <a href="{{ route('site.whoisintern') }}">@lang('content.internRules.title')</a>
                         </div>
                     </div>
+
+                    <div class="organisations-block">
+                        <h4 class="organisations-block-title">@lang('content.rulesForEmployers.text.assistantNeeded')</h4>
+                        <div class="organisations-block-description">
+                            <img src="/images/partners/organisation-1.png">
+                        </div>
+                        <h5 class="organisations-block-subtitle">@lang('content.rulesForEmployers.text.needHelp')</h5>
+                        <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+                            <span>
+                                @lang('content.rulesForEmployers.text.button')
+                            </span>
+                        </a>
+                    </div>
+
                 </div>
             </div>
 

@@ -51,6 +51,11 @@ class RulesPagesController extends Controller
         return view('site.termsOfUse');
     }
 
+    public function rulesForEmployers()
+    {
+        return view('site.rulesForEmployers');
+    }
+
     public function getInternRules()
     {
         return view('site.internRules');

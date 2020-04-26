@@ -22,7 +22,7 @@
 
                 <div id="faq-accordion" class="accordion">
 
-                    @for ($i = 1; $i <= 7; $i++)
+                    @for ($i = 1; $i <= 8; $i++)
                         <div class="card">
                             <div class="card-header" id="heading_{{ $i }}">
                                 <button class="btn btn-link faq-btn" data-toggle="collapse" data-target="#collapse_{{ $i }}" aria-expanded="false" aria-controls="collapse_{{ $i }}">
