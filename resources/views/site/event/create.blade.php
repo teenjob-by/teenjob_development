@@ -125,7 +125,7 @@
                             <input type="hidden" name="location" id="event-location">
 
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">@lang('content.event.create.moderate')</button>
+                                <button type="submit" class="btn btn-success btn-orange">@lang('content.event.create.moderate')</button>
                             </div>
                             <p class="notification">@lang('content.event.create.notification')</p>
                         </form>

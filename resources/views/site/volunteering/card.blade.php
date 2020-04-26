@@ -28,7 +28,7 @@
                     <a class="btn btn-info offer-button" href="{{ route("site.whoisvolunteer") }}">@lang('content.volunteering.card.whatIs')</a>
                     <div class="offer-card-footer">
                         <p class="offer-card-date">@lang('content.volunteering.card.published') {{ $volunteering->published_at->format('d.m.Y') }}</p>
-                        <a href="/support?abuse=on" class="offer-card-abuse">@lang('content.volunteering.card.abuse')</a>
+                        <a href="{{ route("site.feedback") }}?abuse=on" class="offer-card-abuse">@lang('content.volunteering.card.abuse')</a>
                     </div>
                 </div>
             </div>

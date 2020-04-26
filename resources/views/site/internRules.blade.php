@@ -22,6 +22,12 @@
                     @lang('content.internRules.subtitle')
                     @lang('content.internRules.description')
                 </div>
+
+                <div class="article-info">
+                    <div class="article-info-description">
+                        @lang('content.rulesForEmployers.text.info') <a href="{{ route('site.whoisvolunteer') }}">@lang('content.volunteerRules.title')</a> <a href="{{ route('site.whatisvacancy') }}">@lang('content.vacancyRules.title')</a>
+                    </div>
+                </div>
             </div>
 
             <div class="menu-section">

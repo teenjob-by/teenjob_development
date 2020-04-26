@@ -4,15 +4,16 @@
             <a class="navbar-brand" href="{{ route('home') }}" alt="{{ config('app.name', 'teenjob') }}"><img src="/images/logo.png"></a>
             <div class="collapse menu-collapse navbar-collapse" id="navbarsMain">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-link {{ ((app('request')->input('vacancy') == 'on') || (app('request')->input('internship') == 'on') || (app('request')->input('volunteering') == 'on')) ? 'active' : '' }}" href="{{ route('site.offers') }}">
-                        @lang('header.navlink_7')
-                    </a>
+
+                    <a class="nav-link {{ request()->routeIs('site.internship') ? 'active' : '' }}"
+                       href="/volunteering?internship=on">@lang('header.navlink_1')</a>
+                    <a class="nav-link {{ request()->routeIs('site.volunteering') ? 'active' : '' }}"
+                       href="/volunteering?volunteering=on">@lang('header.navlink_2')</a>
                     <a class="nav-link {{ request()->routeIs('site.events') ? 'active' : '' }}"
                        href="{{ route('site.events') }}">@lang('header.navlink_3')</a>
                     <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
                        href="{{ route('site.howsupport') }}">@lang('header.navlink_4')</a>
-                    <a class="nav-link {{ request()->routeIs('site.support') ? 'active' : '' }}"
-                       href="{{ route('site.support') }}">@lang('header.navlink_8')</a>
+
 
                     @guest
                         <div class="nav-item">
@@ -76,7 +77,7 @@
                 <div class="dropdown">
                     <select class="dropdown-menu category-dropdown" name="category">
                         <option selected class="dropdown-item" {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') == 'on') && (app('request')->input('vacancy') == 'on'))? 'selected': ''}} value="offers">@lang('header.categories')</option>
-                        <option {{((app('request')->input('vacancy') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="vacancy">@lang('header.navlink_6')</option>
+                        <!--<option {{((app('request')->input('vacancy') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('volunteering') !== 'on'))? 'selected': ''}} class="dropdown-item" value="vacancy">@lang('header.navlink_6')</option>-->
                         <option {{((app('request')->input('internship') == 'on') && (app('request')->input('volunteering') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="internship">@lang('header.navlink_1')</option>
                         <option {{((app('request')->input('volunteering') == 'on') && (app('request')->input('internship') !== 'on') && (app('request')->input('vacancy') !== 'on'))? 'selected': ''}} class="dropdown-item" value="volunteering">@lang('header.navlink_2')</option>
                         <option {{request()->routeIs('site.events')? 'selected': ''}} class="dropdown-item" value="events">@lang('header.navlink_3')</option>
@@ -104,9 +105,15 @@
 
                     <div class="mobile-categories">
 
-                        <a class="mobile-categories-button" href="/offers">
+                        <a class="mobile-categories-button" href="/volunteering?internship=on">
                             <span>
-                                @lang('header.navlink_7')
+                                @lang('header.navlink_1')
+                            </span>
+                        </a>
+
+                        <a class="mobile-categories-button" href="/volunteering?volunteering=on">
+                            <span>
+                                @lang('header.navlink_2')
                             </span>
                         </a>
 
@@ -126,7 +133,7 @@
                             <input type="hidden" name="category" value="offers">
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="internship" value="on">
-                            <input type="hidden" name="vacancy" value="on">
+                            <!--<input type="hidden" name="vacancy" value="on">-->
                         @elseif(app('request')->input('volunteering') == 'on')
                             <input type="hidden" name="volunteering" value="on">
                             <input type="hidden" name="category" value="offers">
@@ -134,7 +141,7 @@
                             <input type="hidden" name="internship" value="on">
                             <input type="hidden" name="category" value="offers">
                         @elseif(app('request')->input('vacancy') == 'on')
-                            <input type="hidden" name="vacancy" value="on">
+                        <!--<input type="hidden" name="vacancy" value="on">-->
                             <input type="hidden" name="category" value="offers">
                         @elseif(request()->routeIs('site.events'))
                             <input type="hidden" name="category" value="events">
@@ -149,7 +156,7 @@
                         @elseif(request()->routeIs('site.events'))
                             <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_3')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
                         @elseif(request()->routeIs('site.vacancy'))
-                            <input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_4')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                            <!--<input type="text" class="form-control search-input" name="query" placeholder="@lang('header.placeholder_4')" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">-->
                         @endif
 
                         <div class="input-group-append">

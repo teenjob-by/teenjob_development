@@ -8,7 +8,7 @@
                     <h2 class="display-5">@lang('content.vacancy.create.title')</h2>
 
 
-                        <form method="post" action="{{ route('vacancy.store') }}">
+                        <form method="post" action="{{ route('jobs-for-teens.store') }}">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
@@ -69,7 +69,7 @@
                                 <input type="text" class="form-control" name="alt_phone"/>
                             </div>
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">@lang('content.vacancy.create.moderate')</button>
+                                <button type="submit" class="btn btn-success btn-orange">@lang('content.vacancy.create.moderate')</button>
                             </div>
                             <p class="notification">@lang('content.vacancy.create.notification')</p>
                         </form>

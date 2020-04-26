@@ -8,7 +8,7 @@
                     <h2 class="display-5">@lang('content.internship.create.title')</h2>
 
 
-                        <form method="post" action="{{ route('internship.store') }}">
+                        <form method="post" action="{{ route('internships-for-teens.store') }}">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
@@ -70,7 +70,7 @@
                                 <input type="text" class="form-control" name="alt_phone"/>
                             </div>
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">@lang('content.internship.create.moderate')</button>
+                                <button type="submit" class="btn btn-success btn-orange">@lang('content.internship.create.moderate')</button>
                             </div>
                             <p class="notification">@lang('content.internship.create.notification')</p>
                         </form>

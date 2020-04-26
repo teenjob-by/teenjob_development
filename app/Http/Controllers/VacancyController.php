@@ -126,7 +126,7 @@ class VacancyController extends Controller
             'organisation_id' => $organisation,
         ]);
         $vacancy->save();
-        return redirect('/organisation#vacancy')->with('success', 'Offer saved!');
+        return redirect('/organisation#jobs-for-teens')->with('success', 'Offer saved!');
 
     }
 
@@ -176,7 +176,7 @@ class VacancyController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.vacancy.edit')->with('vacancy', $vacancy)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.jobs-for-teens.edit')->with('vacancy', $vacancy)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**
@@ -202,7 +202,7 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect('/vacancy/'.$id);
+        return redirect('/jobs-for-teens/'.$id);
     }
 
     /**
@@ -216,7 +216,7 @@ class VacancyController extends Controller
         $vacancy = Offer::find($id);
         $vacancy->delete();
 
-        return redirect('/vacancies')->with('success', 'Offer deleted!');
+        return redirect('/jobs-for-teens')->with('success', 'Offer deleted!');
     }
 
 

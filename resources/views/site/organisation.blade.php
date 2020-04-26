@@ -10,9 +10,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#account">@lang('content.organisation.title')</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#vacancy">@lang('content.organisation.vacancyTab')</a>
-                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#jobs-for-teens">@lang('content.organisation.vacancyTab')</a>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#internship">@lang('content.organisation.internTab')</a>
                         </li>
@@ -104,19 +104,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <a class="btn btn-success ml-auto" href="{{ '/organisation/edit' }} " role="button">@lang('content.organisation.account.editPersonalInfo')</a>
+                                <a class="btn btn-success btn-orange ml-auto" href="{{ '/organisation/edit' }} " role="button">@lang('content.organisation.account.editPersonalInfo')</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="vacancy">
+                <!--<div class="tab-pane fade" id="vacancy">
 
 
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="row justify-content-end">
-                                <a class="btn btn-success btn-create {{ (count($vacancies) > 0)?'':'disable' }}" href="{{ route('account.vacancyForm') }}" role="button">@lang('content.organisation.vacancies.create')</a>
+                                <a class="btn btn-success btn-orange btn-create {{ (count($vacancies) > 0)?'':'disable' }}" href="{{ route('account.vacancyForm') }}" role="button">@lang('content.organisation.vacancies.create')</a>
                             </div>
 
                             <div class="row justify-content-start">
@@ -128,11 +128,11 @@
                                                 @if($vacancy->status == 1)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
+                                                            <a href="/jobs-for-teens/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive') </a>
                                                             <span>@lang('content.organisation.vacancies.publishedBefore') {{ $vacancy->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
@@ -154,11 +154,11 @@
                                                 @if($vacancy->status == 0)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
+                                                            <a href="/jobs-for-teens/archive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.archive')</a>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -180,11 +180,11 @@
                                                 @if($vacancy->status == 2)
                                                     <div class="internship-item">
                                                         <div class="internship-title">
-                                                            <a class="internship-name" href="{{ route('vacancy.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
+                                                            <a class="internship-name" href="{{ route('jobs-for-teens.edit', $vacancy->id) }}">{{ $vacancy->title }}</a>
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/vacancy/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
+                                                            <a href="/jobs-for-teens/unarchive/{{ $vacancy->id }}">@lang('content.organisation.vacancies.unarchive')</a>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -201,7 +201,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>-->
 
                 <div class="tab-pane fade" id="internship">
 
@@ -225,7 +225,7 @@
                                                         </div>
 
                                                         <div class="internship-actions">
-                                                            <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive') </a>
+                                                            <a href="/internships-for-teens/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive') </a>
                                                             <span>@lang('content.organisation.internships.publishedBefore') {{ $internship->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                         </div>
                                                     </div>
@@ -251,7 +251,7 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive')</a>
+                                                        <a href="/internships-for-teens/archive/{{ $internship->id }}">@lang('content.organisation.internships.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -277,7 +277,7 @@
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/internship/unarchive/{{ $internship->id }}">@lang('content.organisation.internships.unarchive')</a>
+                                                        <a href="/internships-for-teens/unarchive/{{ $internship->id }}">@lang('content.organisation.internships.unarchive')</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -314,11 +314,11 @@
                                             @if($volunteering->status == 1)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                        <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
+                                                        <a href="/volunteering-for-teens/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
                                                         <span>@lang('content.organisation.volunteering.archiveBefore') {{ $volunteering->getTimeBeforeArchiving()->format('d.m.Y') }}</span>
                                                     </div>
                                                 </div>
@@ -341,11 +341,11 @@
                                             @if($volunteering->status == 0)
                                                 <div class="internship-item">
                                                     <div class="internship-title">
-                                                        <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                        <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                     </div>
 
                                                     <div class="internship-actions">
-                                                        <a href="/volunteering/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
+                                                        <a href="/volunteering-for-teens/archive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.archive')</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -367,11 +367,11 @@
                                             @if($volunteering->status == 2)
                                             <div class="internship-item">
                                                 <div class="internship-title">
-                                                    <a class="internship-name" href="{{ route('volunteering.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
+                                                    <a class="internship-name" href="{{ route('volunteering-for-teens.edit', $volunteering->id) }}">{{ $volunteering->title }}</a>
                                                 </div>
 
                                                 <div class="internship-actions">
-                                                    <a href="/volunteering/unarchive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.unarchive')</a>
+                                                    <a href="/volunteering-for-teens/unarchive/{{ $volunteering->id }}">@lang('content.organisation.volunteering.unarchive')</a>
                                                 </div>
                                             </div>
                                             @endif

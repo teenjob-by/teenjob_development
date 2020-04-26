@@ -2,24 +2,28 @@
     <div class="container wrapper">
         <div class="row">
             <div class="col-lg-1">
-                <a href="/"><img class="logo-footer" src="/images/footer-logo.svg"></a>
+                <a href="/"><img class="logo-footer-mobile" src="/images/footer-logo-mobile.svg"></a>
+                <a href="/"><img class="logo-footer-desktop" src="/images/footer-logo-desktop.svg"></a>
             </div>
-            <div class="offset-lg-3 col-lg-5">
+            <div class="offset-lg-2 col-lg-6">
                 <ul>
+                    <li>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.about') }}">@lang('footer.navlink_1')</a>
+                    </li>
                     <li>
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.howsupport') }}">@lang('footer.navlink_2')</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.termsofuse') }}">@lang('footer.navlink_1')</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.feedback') }}">@lang('footer.navlink_3')</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.conditions') }}">@lang('footer.navlink_3')</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.faq') }}">@lang('footer.navlink_4')</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.faq') }}">@lang('footer.navlink_5')</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.termsofuse') }}">@lang('footer.navlink_5')</a>
                     </li>
                     <li>
-                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.contacts') }}">@lang('footer.navlink_4')</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('site.conditions') }}">@lang('footer.navlink_6')</a>
                     </li>
                 </ul>
             </div>

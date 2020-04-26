@@ -7,6 +7,11 @@
 
   ul {
     list-style: none;
+    display: flex;
+    height: 90px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-inline-start: 0;
     margin-top: -7px;
 
     .nav-link {
@@ -36,6 +41,7 @@
       margin-top: 30px;
       width: 28px;
       height: auto;
+      margin-right: 15px;
     }
 
     @media (max-width: 640px) {
@@ -46,7 +52,7 @@
 
    .social-icons-row {
       align-items: center;
-      justify-content: space-between;
+      flex-wrap: nowrap;
     }
 
     p {
@@ -67,9 +73,16 @@
   }
 }
 
-.logo-footer {
+.logo-footer-mobile {
   width: 92px;
   height: 95px;
+  display: none;
+}
+
+.logo-footer-desktop {
+  width: 129px;
+  height: 34px;
+  display: block;
 }
 
 

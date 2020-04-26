@@ -187,7 +187,7 @@ class VolunteeringController extends Controller
         ];
 
         $specialities = OfferSpecialization::all();
-        return view('site.volunteering.edit')->with('volunteering', $volunteering)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
+        return view('site.volunteering-for-teens.edit')->with('volunteering', $volunteering)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
     /**
@@ -228,7 +228,7 @@ class VolunteeringController extends Controller
         $volunteering = Offer::find($id);
         $volunteering->delete();
 
-        return redirect('/volunteerings')->with('success', 'Offer deleted!');
+        return redirect('/volunteering')->with('success', 'Offer deleted!');
     }
 
     public function archive($id)

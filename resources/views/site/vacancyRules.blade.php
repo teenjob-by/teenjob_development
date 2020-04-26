@@ -40,6 +40,12 @@
                            @lang('content.vacancyRules.text.notification')
                         </div>
                     </div>
+
+                    <div class="article-info">
+                        <div class="article-info-description">
+                            @lang('content.rulesForEmployers.text.info') <a href="{{ route('site.whoisvolunteer') }}">@lang('content.volunteerRules.title')</a> <a href="{{ route('site.whoisintern') }}">@lang('content.internRules.title')</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

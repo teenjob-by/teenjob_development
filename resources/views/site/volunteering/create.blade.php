@@ -8,7 +8,7 @@
                     <h2 class="display-5">@lang('content.volunteering.create.title')</h2>
 
 
-                        <form method="post" action="{{ route('volunteering.store') }}">
+                        <form method="post" action="{{ route('volunteering-for-teens.store') }}">
                             @csrf
                             <input type="hidden" name="organisation" value="{{ $organisation }}"/>
                             <div class="form-group">
@@ -69,7 +69,7 @@
                                 <input type="text" class="form-control" name="alt_phone"/>
                             </div>
                             <div class="form-group m-n">
-                                <button type="submit" class="btn btn-success">@lang('content.volunteering.create.moderate')</button>
+                                <button type="submit" class="btn btn-success btn-orange">@lang('content.volunteering.create.moderate')</button>
                             </div>
                             <p class="notification">@lang('content.volunteering.create.notification')</p>
                         </form>

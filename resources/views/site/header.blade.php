@@ -12,7 +12,7 @@
                     <a class="nav-link {{ request()->routeIs('site.howsupport') ? 'active' : '' }}"
                        href="{{ route('site.howsupport') }}">@lang('header.navlink_4')</a>
                     <a class="nav-link {{ request()->routeIs('site.support') ? 'active' : '' }}"
-                       href="{{ route('site.support') }}">@lang('header.navlink_8')</a>
+                       href="{{ route('site.feedback') }}">@lang('header.navlink_8')</a>
 
                     @guest
                         <div class="nav-item">
@@ -104,7 +104,7 @@
 
                     <div class="mobile-categories">
 
-                        <a class="mobile-categories-button" href="/offers">
+                        <a class="mobile-categories-button" href="/volunteering-for-teens">
                             <span>
                                 @lang('header.navlink_7')
                             </span>

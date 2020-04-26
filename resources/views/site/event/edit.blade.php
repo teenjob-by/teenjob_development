@@ -123,7 +123,7 @@
                 <input type="hidden" name="location" id="event-location">
 
                 <div class="form-group m-n">
-                    <button type="submit" class="btn btn-success">@lang('content.event.edit.save')</button>
+                    <button type="submit" class="btn btn-success btn-orange">@lang('content.event.edit.save')</button>
                 </div>
                 <p class="notification">@lang('content.event.edit.notification')</p>
             </form>

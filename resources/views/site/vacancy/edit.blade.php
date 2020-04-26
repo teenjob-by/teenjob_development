@@ -8,7 +8,7 @@
                 <h2 class="display-5">@lang('content.vacancy.edit.title')</h2>
 
 
-                <form method="post" action="{{ route('vacancy.update', $vacancy->id) }}">
+                <form method="post" action="{{ route('jobs-for-teens.update', $vacancy->id) }}">
                     @method('PATCH')
                     @csrf
                     <input type="hidden" name="organisation" value="{{ $vacancy->organisation_id }}"/>
@@ -70,7 +70,7 @@
                         <input type="text" class="form-control" name="alt_phone" value="{{ $vacancy->alt_phone }}"/>
                     </div>
                     <div class="form-group m-n">
-                        <button type="submit" class="btn btn-success">@lang('content.vacancy.edit.moderate')</button>
+                        <button type="submit" class="btn btn-success btn-orange">@lang('content.vacancy.edit.moderate')</button>
                     </div>
                     <p class="notification">@lang('content.vacancy.edit.notification')</p>
                 </form>
