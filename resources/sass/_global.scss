@@ -44,6 +44,26 @@ h2, h3, h4 {
     }
 }
 
+.rules-link {
+    margin-top: 20px;
+
+    text-align: right;
+    display: block;
+    @media all and (max-width:1023px) {
+        display: none;
+    }
+}
+
+.rules-link-mobile {
+    margin-top: 15px;
+
+    text-align: center;
+    display: none;
+    @media all and (max-width:1023px) {
+        display: block;
+    }
+}
+
 .organisations-block {
     margin-top: 85px;
 
@@ -78,7 +98,7 @@ h2, h3, h4 {
         justify-content: center;
         display: flex;
         flex-direction: row;
-        margin-top: 50px;
+        margin-top: 20px;
     }
 
 

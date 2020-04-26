@@ -50,7 +50,9 @@
                     <div class="organisations-block">
                         <h4 class="organisations-block-title">@lang('content.rulesForEmployers.text.assistantNeeded')</h4>
                         <div class="organisations-block-description">
-                            <img src="/images/partners/organisation-1.png">
+                            <a href="https://iqido.biz/">
+                                <img src="/images/partners/organisation-1.png">
+                            </a>
                         </div>
                         <h5 class="organisations-block-subtitle">@lang('content.rulesForEmployers.text.needHelp')</h5>
                         <a class="btn btn-success btn-orange mx-auto" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">

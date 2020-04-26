@@ -27,11 +27,12 @@ return [
             'text' => 'Уключыць у сваю дзейнасць матываваных і крэатыўных падлеткаў',
         ],
         'card_3' => [
-            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Дапаможам знайсці</a> і адабраць валанцёраў, стажораў і ўдзельнікаў падзей',
+            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Дапаможам знайсці</a> і адабраць валанцёраў, стажораў і ўдзельнікаў падзей <br> <a class="rules-link" href="/rules-for-employers">Даведка арганізацыям</a>',
         ],
         'buttonSubtitle' => 'Мы гатовыя распавесці больш',
         'button' => 'Пакінуць заяву',
         'needHelp' => 'Вам таксама патрэбен памочнік?',
+        'link' => 'Даведка арганізацыям'
     ],
     'partners' => [
         'title' => 'Наша каманда',
