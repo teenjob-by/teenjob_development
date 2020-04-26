@@ -43,3 +43,49 @@ h2, h3, h4 {
         color: #000 !important;
     }
 }
+
+.organisations-block {
+    margin-top: 85px;
+
+    .organisations-block-title {
+        font-family: Open Sans, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 42px;
+        line-height: 57px;
+
+        color: #121212;
+    }
+
+    @media all and (max-width:1023px) {
+        text-align: center;
+    }
+
+    .organisations-block-subtitle {
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+        margin-top: 60px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #000000;
+    }
+
+    .organisations-block-description {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+        margin-top: 50px;
+    }
+
+
+
+
+
+    .btn-orange {
+        margin-top: 0px;
+    }
+}

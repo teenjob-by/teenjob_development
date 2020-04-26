@@ -48,6 +48,7 @@ Route::get('/who-is-intern', 'RulesPagesController@getInternRules')->name('site.
 Route::get('/terms-of-use', 'RulesPagesController@getTermsOfUse')->name('site.termsofuse');
 Route::get('/employment-law-for-teens', 'RulesPagesController@getVacancyRules')->name('site.whatisvacancy');
 Route::get('/faq', 'RulesPagesController@getFAQ')->name('site.faq');
+Route::get('/rules-for-employers', 'RulesPagesController@rulesForEmployers')->name('site.rulesForEmployers');
 Route::get('/conditions', 'RulesPagesController@conditions')->name('site.conditions');
 Route::get('/about-us', 'RulesPagesController@about')->name('site.about');
 
