@@ -248,7 +248,7 @@ return [
         'title' => 'Организациям',
         'text' => [
             'section_1' => [
-                'title' => 'Отличия при оформлении',
+                'title' => 'Отличия при оформлении на работу',
                 'description' => '
                     <li>
                       <p> <strong>если подростку 14-15 лет</strong>, для заключения договора понадобится письменное разрешение одного из родителей в свободной форме (<a class="vacancy-rules-link" href="https://drive.google.com/file/d/1Lh3UtILOqCUg4_9sFLB-JLnwz7sTrvYu/view?usp=sharing">пример тут</a>).</p>
