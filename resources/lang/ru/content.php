@@ -45,7 +45,7 @@ return [
             'text' => 'Включить в свою деятельность мотивированных и креативных подростков',
         ],
         'card_3' => [
-            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Поможем найти</a> и подобрать волонтеров, стажеров и участников мероприятия',
+            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Поможем найти</a> и подобрать помощников под Ваш запрос за отзыв на сайте',
         ],
         'buttonSubtitle' => 'Мы готовы рассказать больше',
         'button' => 'Оставить заявку',
