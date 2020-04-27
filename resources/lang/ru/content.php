@@ -134,7 +134,7 @@ return [
                         <p> <strong>если вам от 14 до 15 лет</strong> для заключения договора понадобится письменное разрешение одного из родителей (<a class="vacancy-rules-link" href="https://drive.google.com/file/d/1Lh3UtILOqCUg4_9sFLB-JLnwz7sTrvYu/view?usp=sharing">пример тут</a>).</p>
                     </li>
                     <li>
-                        <p> <strong>медицинская справка о состоянии здоровья</strong> — это тот документ, который вы должны предоставить работодателю, перед подписанием любого вида договора. Справка берется в поликлинике по месту жительства, для ее получения нужно предоставить паспорт и 2 фото 3 на 4 см <a class="vacancy-rules-link" href="https://www.25gdp.by/patsientam/vydacha-meditsinskoj-spravki-o-sostoyanii-zdorovya">источник</a>)</p>
+                        <p> <strong>медицинская справка о состоянии здоровья</strong> — это тот документ, который вы должны предоставить работодателю, перед подписанием любого вида договора. Справка берется в поликлинике по месту жительства, для ее получения нужно предоставить паспорт и 2 фото 3 на 4 см (<a class="vacancy-rules-link" href="https://www.25gdp.by/patsientam/vydacha-meditsinskoj-spravki-o-sostoyanii-zdorovya">источник</a>)</p>
                     </li>'
             ],
             'section_2' => [
@@ -250,7 +250,7 @@ return [
                 'title' => 'Отличия при оформлении',
                 'description' => '
                     <li>
-                      <p> <strong>если подростку 14-15 лет</strong>, для заключения договора понадобится письменное разрешение одного из родителей в свободной форме(<a class="vacancy-rules-link" href="https://drive.google.com/file/d/1Lh3UtILOqCUg4_9sFLB-JLnwz7sTrvYu/view?usp=sharing">пример тут</a>).</p>
+                      <p> <strong>если подростку 14-15 лет</strong>, для заключения договора понадобится письменное разрешение одного из родителей в свободной форме (<a class="vacancy-rules-link" href="https://drive.google.com/file/d/1Lh3UtILOqCUg4_9sFLB-JLnwz7sTrvYu/view?usp=sharing">пример тут</a>).</p>
                     </li>
                     <li>
                         <p> <strong>с 16 лет</strong> подросток имеет право самостоятельно заключать как трудовой, так и гражданско-правовой договор.</p>
