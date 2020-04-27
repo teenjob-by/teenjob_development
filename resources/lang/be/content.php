@@ -27,7 +27,7 @@ return [
             'text' => 'Уключыць у сваю дзейнасць матываваных і крэатыўных падлеткаў',
         ],
         'card_3' => [
-            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Дапаможам знайсці</a> і адабраць валанцёраў, стажораў і ўдзельнікаў падзей',
+            'text' => '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">Дапаможам знайсці</a> і адабраць памочнікаў пад Ваш запыт за водгук на сайцей',
         ],
         'buttonSubtitle' => 'Мы гатовыя распавесці больш',
         'button' => 'Пакінуць заяву',
