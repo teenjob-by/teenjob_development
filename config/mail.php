@@ -2,6 +2,7 @@
 
 return [
 
+
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
@@ -59,6 +60,8 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'team@teenjob.by'),
         'name' => env('MAIL_FROM_NAME', 'Teenjob.by'),
     ],
+
+    'to' => 'teenjob.by@gmail.com',
 
     /*
     |--------------------------------------------------------------------------

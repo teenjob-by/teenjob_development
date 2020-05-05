@@ -1,7 +1,7 @@
-@extends('layouts.site')
+@extends('layouts.frontend')
 @section('seo_meta')
     <meta name="description" content="Войдите, чтобы опубликовать объявление, или зарегистрируйтесь."/>
-    <meta name="language" content="RU"/>
+
 
     <title>teenjob.by - Вход в личный кабинет </title>
 @endsection
@@ -13,88 +13,73 @@
 @endsection
 
 @section('content')
-<div class="container-fluid login">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0">
-                <h3>@lang('auth.login.title')</h3>
-                <p>@lang('auth.login.subtitle')</p>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
 
-                        <div class="form-group flex-column row">
-                            <div >
-                                <label for="email" class="col-form-label text-md-left">@lang('auth.login.email')</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+<section class="login_section">
+    <div class="content-wrapper">
 
-                        <div class="form-group flex-column row mb-0">
-                            <div class="">
-                                <label for="password" class="col-form-label text-md-left">@lang('auth.login.password')</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+        <h3 class="login_title">@lang('auth.login.title')</h3>
+        <p class="login_subtitle">@lang('auth.login.subtitle')</p>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+        <form class="login_form" method="POST" action="{{ route('auth.login') }}">
+            @csrf
 
-                        <div class="form-group flex-column row mb-4">
-                            <!--<div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                    <label class="form-check-label" for="remember">
-                                        Запомнить меня
-                                    </label>
-                                </div>
-                            </div>-->
-                            <div>
-                                @if (Route::has('password.request'))
-                                    <a class="btn remind-password btn-link text-md-left" href="{{ route('password.request') }}">
-                                        @lang('auth.login.remember')
-                                    </a>
-                                @endif
-                            </div>
+            <div class="login_form-group">
+                <label for="email" class="login_form-group-label">@lang('auth.login.email')</label>
+                <input id="email" class="login_form-group-input @error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
 
-                        </div>
-
-                        <div class="form-group flex-column row">
-                            <div class="text-center ">
-                                <button type="submit" class="btn btn-success btn-orange">
-                                    @lang('auth.login.signin')
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="form-group flex-column row">
-                            <div class="col-md-2 text-center">
-                                <hr>
-                                <p class="mb-0">@lang('auth.login.or')</p>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="form-group flex-column row">
-                        <div class="text-center">
-                            <a href="{{ route('register') }}" class="btn btn-success btn-orange" id="register">
-                                @lang('auth.login.register')
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @error('email')
+                    <span class="login-invalid" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
-        </div>
+
+
+            <div class="login_form-group">
+                <label for="password" class="login_form-group-label">@lang('auth.login.password')</label>
+                <input id="password" type="password" class="login_form-group-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" minlength="8">
+                <i class="show-password" onclick="showPassword('password')"></i>
+
+                @error('password')
+                    <span class="login-invalid" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+
+            <div class="login_remember-section">
+
+                {{--<label class="remember_form">Запомнить меня
+                    <input type="checkbox" class="remember_form-input" checked="checked"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <span class="checkmark"></span>
+                </label>--}}
+
+                @if (!Route::has('password.request'))
+                    <a class="remind-link" href="{{ route('auth.password.request') }}">
+                        @lang('auth.login.remember')
+                    </a>
+                @endif
+
+            </div>
+
+
+            <button type="submit" class="button-primary">
+                <span>@lang('auth.login.signin')</span>
+            </button>
+
+            <div class="login_delimeter">
+                <hr>
+                <p class="login_delimeter-text">@lang('auth.login.or')</p>
+            </div>
+
+            <a href="{{ route('auth.register') }}" class="button-primary" id="register">
+                <span>@lang('auth.login.register')</span>
+            </a>
+        </form>
+
     </div>
-</div>
+</section>
 @endsection

@@ -1,35 +1,21 @@
-// Body
-$body-bg: #fff;
+//Colors
+$white: #ffffff;
+$lightgray: #F5F5F5;
+$violet: #274684;
+$black: #000000;
+$orange: #ffbe4d;
+$blue: #0074d9;
+$darkgray: #2C2C2C;
+$gray: #2F2F2F;
+$red: #FF0000;
 
-// Typography
-$font-family-sans-serif: 'Open Sans', sans-serif;
-$font-size-base: 0.875rem;
+$header-height: 70px;
+$footer-height: 200px;
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$whiteselect: #B0B0B0;
 
-$theme-colors: (
-        "primary": #0074d9,
-        "success": #274684,
-        "danger": #ff4136
-);
+// Blocks dimensions
 
-$custom-file-text: (
-        en: "Browse",
-        ru: "Загрузить"
-);
-
-
-.select2-container {
-  display: block !important;
-  width: 100% !important;
-}
+$min-width: 290px;
+$min-breakpoint-width: 320px;
+$max-width: 960px;

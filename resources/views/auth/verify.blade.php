@@ -1,28 +1,24 @@
-@extends('layouts.site')
-
-@section('body_class', 'page-home')
+@extends('layouts.frontend')
 
 @section('content')
-    <div class="container auth">
 
-        <div class="row justify-content-center">
-            <h3>@lang('auth.verify.title')</h3>
+    <section class="login_section">
+        <div class="content-wrapper">
 
-            <hr align="center" width="627" color="lightgray" />
+            <h3 class="login_title">@lang('auth.verify.title')</h3>
 
             @if (session('resent'))
-                <div class="alert alert-success" role="alert">
+                <p class="login_subtitle">
+                    <br>
                     @lang('auth.verify.link')
-                </div>
+                </p>
             @endif
 
-            <p>
+            <p class="login_subtitle">
                 <br>@lang('auth.verify.check')<br>
                 <br>@lang('auth.verify.notAppear'), <a href="{{ route('verification.resend') }}">@lang('auth.verify.click')</a>.<br>
             </p>
         </div>
-    </div>
-
-
+    </section>
 
 @endsection

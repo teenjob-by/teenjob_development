@@ -8,7 +8,8 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    command: 'install --ignore-platform-reqs'
+    command: sh -c 'tail -F anything'
+
 
   mysql:
     build: ./docker/mysql

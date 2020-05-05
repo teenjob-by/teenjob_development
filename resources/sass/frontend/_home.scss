@@ -1,0 +1,53 @@
+.home {
+
+  &_section {
+
+    &-about {
+      @extend .section;
+    }
+
+    &-organisations {
+      @extend .section;
+
+      background: $lightgray;
+    }
+
+    &-team {
+      @extend .section;
+    }
+  }
+
+
+  &_title {
+
+    @include title($font-size-title-sm, $font-size-title-md, $font-size-title-lg, $title-margin-sm, $title-margin-md, $title-margin-lg);
+
+    &-about {
+      @extend .home_title;
+    }
+
+    &-organisations {
+      @extend .home_title;
+    }
+
+    &-team {
+      @extend .home_title;
+    }
+  }
+
+
+  &_card {
+    &-about {
+      @extend .card;
+    }
+
+    &-organisations {
+      @extend .card;
+    }
+  }
+
+  &_carousel-wrapper {
+    position: relative;
+  }
+}
+

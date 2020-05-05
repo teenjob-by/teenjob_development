@@ -1,111 +1,106 @@
-h2, h3, h4 {
-    word-wrap: break-word;
+body {
+    background: $white;
 }
 
-.modal-dialog {
-    max-width: 500px ;
-    margin: auto !important;
-}
-
-.btn-orange:not(:disabled):not(.disabled):active {
-    background: #ffbe4d;
-    color: #000000;
-    border: none;
-    outline: none;
-}
-
-.btn-orange:not(:disabled):not(.disabled):active:focus {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.btn.btn-orange {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 362px;
-    height: 50px;
-    min-height: 50px;
-    background: #ffbe4d !important;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
-    border-radius: 0;
-    color: #000000 !important;
-    border: none !important;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-
-    span {
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600 !important;
-        font-size: 18px !important;
-        line-height: 25px !important;
-        color: #000 !important;
+a {
+    text-decoration: none;
+    @include text-usual(inherit, $violet, center);
+    font-weight: inherit;
+    &:focus {
+        outline: none;
     }
 }
 
-.rules-link {
-    margin-top: 20px;
+.section {
 
-    text-align: right;
-    display: block;
-    @media all and (max-width:1023px) {
-        display: none;
-    }
-}
+    padding-top: 40px;
+    padding-bottom: 80px;
 
-.rules-link-mobile {
-    margin-top: 15px;
-
-    text-align: center;
-    display: none;
-    @media all and (max-width:1023px) {
-        display: block;
-    }
-}
-
-.organisations-block {
-    margin-top: 85px;
-
-    .organisations-block-title {
-        font-family: Open Sans, sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 42px;
-        line-height: 57px;
-
-        color: #121212;
+    @include for-desktop-up {
+        padding-top: 85px;
+        padding-bottom: 105px;
     }
 
-    @media all and (max-width:1023px) {
-        text-align: center;
-    }
-
-    .organisations-block-subtitle {
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 25px;
-        margin-top: 60px;
-        margin-bottom: 10px;
-        text-align: center;
-        color: #000000;
-    }
-
-    .organisations-block-description {
+    .pagination_wrapper {
         width: 100%;
-        justify-content: center;
+        height:auto;
         display: flex;
-        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         margin-top: 20px;
     }
+}
 
+.content {
+    min-width: $min-breakpoint-width;
 
+    min-height: calc(100vh - #{$footer_height} - #{$header_height});
+}
 
+.content-wrapper {
 
+    min-width: $min-width;
+    max-width: $max-width;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
 
-    .btn-orange {
-        margin-top: 0px;
+    @include for-desktop-up {
+        padding-right: 0px;
+        padding-left: 0px;
     }
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @include for-desktop-up {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.button-subtitle {
+    @include button-text(18px, $black);
+    margin: 0px auto 10px;
+}
+
+
+.is-invalid {
+    border: 2px solid $red !important;
+}
+
+.volunteering-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    background: url("/images/volunteering.svg") 100% 100% no-repeat;
+    display: block;
+}
+
+.internship-icon {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    background: url("/images/internship.svg") 100% 100% no-repeat;
+    display: block;
+}
+
+.job-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    background: url("/images/job.svg") 100% 100% no-repeat;
+    display: block;
+}
+
+span + .job-icon {
+    margin-left: 5px;
 }

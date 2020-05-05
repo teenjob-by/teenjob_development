@@ -1,0 +1,60 @@
+// Variables
+@import "variables";
+
+// Vendor
+@import "vendor/index";
+
+// Your own, project specific styles
+@import "styles/index";
+
+.fixed-cta-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+  font-size: 14px;
+
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  i {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 13px;
+  }
+}
+
+.switch-filter-wrap{
+  vertical-align: middle !important;
+  padding: 6px 0 6px 10px;
+  display: inline-block !important;
+
+  .switch {
+    margin: 0;
+  }
+}
+
+.authors-filter {
+  position: relative;
+  bottom: 8px;
+}
+
+.github-link {
+  left: -109px;
+  top: 0;
+  position: absolute;
+}
+
+.github-link img {
+  height: 35px;
+  width: auto;
+}
+
+@media (max-width: 850px) {
+  .app-header.navbar .navbar-brand {
+    display: none;
+  }
+}
