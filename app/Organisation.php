@@ -19,7 +19,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
     protected $table = 'organisations';
 
     protected $fillable = [
-        'name', 'email', 'city_id', 'password', 'link', 'phone', 'contact', 'unique_identifier', 'type', 'role', 'request', 'alt_phone', 'alt_email', 'status',
+        'name', 'email', 'city_id', 'password', 'link', 'phone', 'contact', 'unique_identifier', 'type', 'role', 'request', 'alt_phone', 'alt_email', 'status', 'api_token',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     /**

@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.frontend')
 @section('seo_meta')
     <meta name="description" content="{!!  $event->getPreviewDesc() !!}}"/>
     <meta name="language" content="RU"/>

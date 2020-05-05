@@ -20,6 +20,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return redirect('/organisation');
+        return redirect()->route('organisation.index');
     }
 }

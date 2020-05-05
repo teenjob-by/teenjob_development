@@ -1,0 +1,68 @@
+.swiper-container {
+  width: 90%;
+  max-width: 805px;
+  height: 275px;
+  margin-bottom: 30px;
+}
+
+.swiper-button {
+  &:after {
+    font-size: 24px !important;
+    color: $violet;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.swiper-button-next {
+  @extend .swiper-button;
+}
+
+.swiper-button-prev {
+  @extend .swiper-button;
+}
+
+.swiper-slide {
+  display: flex;
+}
+
+.slide {
+
+  &-wrapper {
+    display: flex;
+    height: 275px;
+    margin: auto;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  &-header {
+    @include image-adaptive(160px, 180px);
+
+    &-image {
+      margin: auto;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-name {
+    @include text-usual(14px, $black, left);
+
+    padding-top: 9px;
+  }
+
+  &-role {
+
+    @include text-usual(14px, $black, left);
+    padding-bottom: 9px;
+    font-weight: bold;
+  }
+
+  &-social {
+    display: flex;
+    flex-direction: row;
+  }
+}

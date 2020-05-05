@@ -1,0 +1,520 @@
+.organisation {
+
+  &_section {
+    @extend .section;
+
+    .button-secondary {
+      margin-top: 40px;
+    }
+  }
+
+
+
+  &_tab-link {
+    background: none;
+    color: $violet;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+
+
+    &.current {
+      background: $violet;
+
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  &_tab-content{
+    display: none;
+    padding-bottom: 35px;
+    overflow: hidden;
+
+    .divider {
+        border:none;
+        height: 20px;
+        width: 100%;
+        height: 50px;
+        margin-top: 0;
+        border-bottom: 1px solid $violet;
+        box-shadow: 0 20px 20px -20px $violet;
+        margin: -50px auto 10px;
+    }
+
+
+
+    &.current{
+      display: inherit;
+
+      border-top: 1px solid $violet;
+      border-bottom: 1px solid $violet;
+    }
+  }
+
+  &_tab-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-top: 45px;
+  }
+
+  &_tab-lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 630px;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  &_list {
+
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    width: 100%;
+
+    &-button {
+      .button-secondary {
+        margin-right: 0;
+        margin-left: auto;
+        width: 289px;
+        height: 50px;
+      }
+    }
+
+    &-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 40px;
+    }
+
+    &-event-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      min-height: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+
+      .event_card {
+        height: 420px;
+      }
+    }
+
+
+
+
+    &-title {
+      @include text-usual(24px, $violet, left);
+      font-weight: bold;
+    }
+
+    &-item {
+      border-bottom: 1px solid gainsboro;
+      margin-bottom: 34px;
+      margin-top: 16px;
+
+      width: 100%;
+
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      position: relative;
+
+      &-title {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px;
+        word-wrap: break-word;
+
+        &-link {
+          @include text-usual(20px, $violet, left);
+          margin-right: 20px;
+          word-wrap: break-word;
+          font-weight: bold;
+        }
+      }
+
+      &-salary {
+        margin-right: 10px;
+        margin-left: auto;
+
+        @include text-usual(16px, #2F2F2F, left );
+      }
+
+      &-organisation {
+        @include text-usual(12px, $violet, left);
+        margin-bottom: 15px;
+        word-wrap: break-word;
+        font-weight: bold;
+      }
+
+      &-description {
+        @include text-usual(14px, #2F2F2F, left);
+        margin-bottom: 25px;
+      }
+
+      &-footer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+
+      &-city {
+
+        @include text-usual(12px,#2F2F2F, left);
+        position: relative;
+        padding-left: 23px;
+        margin-bottom: 35px;
+
+        &:before {
+          content: url(/images/location-point.svg);
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &-action-wrapper {
+        display: flex;
+        height: auto;
+        width: 100%;
+        flex-direction: rown;
+        margin-bottom: 6px;
+
+        @include for-desktop-up() {
+          flex-direction: row;
+        }
+
+        form {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &-action {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $white;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        background: $violet;
+
+        @include for-desktop-up() {
+          height: 40px;
+        }
+
+
+
+        span {
+          @include text-usual(18px, $white, center);
+          font-weight: bold;
+          display: none;
+          @include for-desktop-up() {
+            display: block;
+          }
+        }
+
+        .archive-icon {
+          background: url(/images/archive.svg) center center no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          display: block;
+        }
+
+        .edit-icon {
+          background: url(/images/edit.svg) center center no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          display: block;
+        }
+
+        .remove-icon {
+          background: url(/images/delete.svg) center center no-repeat;
+          background-size: contain;
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          display: block;
+        }
+      }
+
+      &-date {
+        @include text-usual(12px,#2F2F2F, left);
+      }
+    }
+
+    &-menu {
+      max-width: 250px;
+      flex-grow: 1;
+
+      display: none;
+
+      .button-secondary {
+        &:hover {
+          transform: unset;
+
+        }
+        width: 250px;
+        overflow: hidden;
+        margin: 0;
+        margin-bottom: 20px;
+      }
+
+
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+      border-radius: 3px;
+
+      @include for-desktop-up() {
+        display: flex;
+      }
+
+      &-list {
+        padding-left: 0px;
+        padding-right: 20px;
+        padding-top: 0px;
+        padding-bottom: 10px;
+      }
+
+      &-link {
+        @include text-usual(16px, #2F2F2F, left);
+        padding:  10px 0 10px 25px;
+        display: block;
+        margin-left: -5px;
+      }
+
+      &-link.active {
+        border-left: 5px solid #274684;
+        color: $violet;
+      }
+    }
+  }
+
+
+  &_form {
+
+    .tip {
+      @include text-usual(14px, $black, center);
+    }
+
+    .operation-result {
+      @include text-usual(14px, $violet, center);
+      display: none;
+      margin-top: -20px;
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .remove-account-link {
+      @include text-usual(16px, $violet, center);
+      cursor: pointer;
+      margin-top: 30px;
+
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-title {
+      @include text-usual(20px, $black, center);
+      margin-top: 35px;
+      margin-bottom: 25px;
+    }
+
+    width: 290px;
+
+    @include for-tablet-portrait-up() {
+      width: 100%;
+    }
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 24px;
+
+
+
+      .message-invalid {
+        @include text-usual(12px, $red, left);
+        position: absolute;
+        bottom: -20px;
+        left: 0px;
+
+        @include for-tablet-portrait-up() {
+          bottom: -20px;
+          left: 160px;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      @include for-tablet-portrait-up() {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 570px;
+        align-items: center;
+      }
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+
+        @include for-tablet-portrait-up() {
+          @include  text-usual(16px, $black, right);
+          padding-top: 0px;
+          padding-bottom: 0px;
+          line-height: 120%;
+        }
+      }
+
+      &-input {
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(16px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 15px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          @include text-usual(16px, #cccccc, left);
+        }
+
+        &.textarea {
+          height: 200px;
+        }
+      }
+
+      &-select ~ span{
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 30px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .show-password {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        right: 10px;
+        top: 45px;
+
+        @include for-tablet-portrait-up() {
+          right: 35px;
+          top: 12px;
+        }
+
+        background: url(/images/show-password-icon.svg);
+      }
+    }
+  }
+}
+
+
+.volunteer-icon {
+  width: 24px;
+  height: 24px;
+  background: url("/images/volunteer.svg") 100% 100% no-repeat;
+  margin-left: auto;
+  margin-top: 2px;
+}
+
+.intern-icon {
+  width: 28px;
+  height: 28px;
+  background: url("/images/internship.svg") 100% 100% no-repeat;
+  margin-left: auto;
+  margin-top: 2px;
+}
+
+.job-icon {
+  width: 24px;
+  height: 24px;
+  background: url("/images/job.svg") 100% 100% no-repeat;
+  margin-left: auto;
+  margin-top: 2px;
+}
+
+span + .job-icon {
+  margin-left: 5px;
+}

@@ -1,0 +1,355 @@
+.event {
+
+  &_card {
+    width: 200px;
+    height: 400px;
+
+    background: $white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 38px;
+    transition: box-shadow 0.1s ease-in;
+
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    @include for-desktop-up() {
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-top: 0px;
+      margin-bottom: 20px;
+    }
+
+
+    &-overlay {
+      filter: brightness(0.7);
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      justify-content: space-evenly;
+
+      @include for-desktop-up() {
+        justify-content: space-between;
+      }
+
+      .pagination {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    &:hover{
+        box-shadow: -1px 4px 12px 0px rgba(0,0,0,0.4);
+    }
+
+    &-header {
+      width: 100%;
+      height: 170px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &-time {
+        height: 50px;
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+
+        .time-wrapper {
+
+          position: relative;
+          display: block;
+          margin-right: 10px;
+          @include text-usual(14px, $white, right);
+          font-weight: bold;
+
+          &:before {
+            content: url("/images/small-calendar.svg");
+            position: absolute;
+            top: 3px;
+            left: -25px;
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+
+      &-image{
+        width: 200px;
+        height: 168px;
+        background: transparent url(/images/loading.svg) no-repeat center center;
+        background-size: 50% 50%;
+      }
+    }
+
+    &-title {
+      @include text-usual(18px, #2C2C2C, left);
+      font-weight: bold;
+      line-height: 130%;
+      padding: 5px 15px 0px;
+
+      max-height: 70px;
+      overflow: hidden;
+
+    }
+
+
+    &-description {
+      padding: 0px 15px 20px;
+      margin-top: 5px;
+      max-height: 90px;
+      overflow: hidden;
+      position: relative;
+
+      &:after{
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        left: 0;
+        box-shadow: -5px -13px 17px 8px #fff;
+        content: "";
+        height: 0px;
+      }
+
+      p {
+        @include text-usual(14px, #2F2F2F, left);
+      }
+
+      ul {
+        list-style: none !important;
+        padding-left: 10px !important;
+        margin-bottom: 0px !important;
+        li {
+          @include text-usual(14px, #2F2F2F, left);
+        }
+      }
+    }
+
+    &-location {
+      @include text-usual(14px, #2F2F2F, left);
+
+      position: relative;
+      padding-left: 35px;
+      margin-top: 8px;
+
+      &:before {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 2px;
+        left: 10px;
+        content: url("/images/location-point.svg");
+      }
+    }
+
+    &-more {
+      @include text-usual(14px, $violet, left);
+      padding-left: 15px;
+    }
+  }
+
+  &_section {
+    @extend .section;
+
+    .back-link {
+
+      @include text-usual(14px, $violet, left);
+      margin-bottom: 38px;
+      margin-top: -60px;
+      display: block;
+      position: relative;
+      padding-left: 16px;
+
+      &:before {
+        content: url(/images/arrow-left-small.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &_description {
+    &-wrapper {
+      max-width: 675px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    &-title {
+      @include text-usual(32px, #121212, left);
+      font-weight: bold;
+      margin-bottom: 24px;
+      word-wrap: break-word;
+    }
+
+    &-organisation {
+      @include text-usual(18px, $violet, left);
+      font-weight: bold;
+      margin-bottom: 8px;
+      word-wrap: break-word;
+    }
+
+    &-info {
+      @include text-usual(14px, #2F2F2F, left);
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 8px;
+
+      &:before {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 3px;
+        left: 0;
+      }
+
+      &.location {
+        &:before {
+          content: url(/images/location-point.svg);
+        }
+      }
+
+      &.portfolio {
+        &:before {
+          content: url(/images/portfolio-icon.png);
+        }
+      }
+
+      &.user {
+        &:before {
+          content: url(/images/user-icon.png);
+        }
+      }
+
+      &.profile {
+        &:before {
+          content: url(/images/profile-icon.png);
+        }
+      }
+
+      &.envelope {
+        &:before {
+          content: url(/images/envelope-icon.png);
+        }
+      }
+
+      &.telephone {
+        &:before {
+          content: url(/images/telephone-icon.png);
+        }
+      }
+
+      &.salary {
+        &:before {
+          content: url(/images/salary-icon.svg);
+        }
+      }
+
+      &.job-time {
+        &:before {
+          content: url(/images/clock-icon.svg);
+        }
+      }
+
+      &.alt-contact {
+        &:before {
+          content: url(/images/altcontact-icon.svg);
+        }
+      }
+
+      &.date {
+        &:before {
+          content: url(/images/small-calendar-gray.png);
+        }
+      }
+
+      &.type {
+        &:before {
+          content: url(/images/coin.png);
+        }
+      }
+    }
+
+    &-text {
+      margin-top: 24px;
+      margin-bottom: 40px;
+      @include text-usual(14px, #212529, left);
+    }
+
+    &-map {
+      width: 100%;
+      height:300px;
+      background: url(/images/map-background.svg) center center no-repeat;
+      margin-bottom: 40px;
+    }
+
+    &-contacts-title {
+      @include text-usual(16px, #2C2C2C, left);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    &-footer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    &-date {
+      @include text-usual(14px, #B0B0B0, left);
+      font-style: italic;
+    }
+
+    &-abuse {
+      @include text-usual(14px, #B0B0B0, left);
+      padding-left: 25px;
+      position: relative;
+      display: block;
+
+      &:before {
+        content: url(/images/flag-icon.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

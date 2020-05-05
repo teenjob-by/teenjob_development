@@ -1,28 +1,20 @@
-@extends('layouts.site')
-
-@section('body_class', 'page-home')
+@extends('layouts.frontend')
 
 @section('content')
-    <div class="container auth">
 
-        <div class="row justify-content-center">
-            <h3>@lang('auth.verified.title')</h3>
+    <section class="login_section">
+        <div class="content-wrapper">
 
-            <hr align="center" width="627" color="lightgray" />
+            <h3 class="login_title">@lang('auth.verified.title')</h3>
 
-            
-                <p>
-                    @lang('auth.verified.verified')
-                </p>
-            
+            <p class="login_subtitle">
+                @lang('auth.verified.verified')
+            </p>
 
-            <p>
-                
-                <br><a href="/organisation">@lang('auth.verified.login')</a><br>
+            <p class="login_subtitle">
+                <br><a href="{{ route('organisation.index') }}">@lang('auth.verified.login')</a><br>
             </p>
         </div>
-    </div>
-
-
+    </section>
 
 @endsection

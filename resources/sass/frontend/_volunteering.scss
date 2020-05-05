@@ -1,0 +1,464 @@
+.volunteering {
+
+  &_card-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    }
+
+  &_card {
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 34px;
+    margin-top: 16px;
+
+    width: 100%;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 15px;
+      word-wrap: break-word;
+
+      &-link {
+        @include text-usual(20px, $violet, left);
+        margin-right: 20px;
+        word-wrap: break-word;
+        font-weight: bold;
+      }
+    }
+
+    &-salary {
+      margin-right: 10px;
+      margin-left: auto;
+
+      @include text-usual(16px, #2F2F2F, left );
+    }
+
+    &-organisation {
+      @include text-usual(12px, $violet, left);
+      margin-bottom: 15px;
+      word-wrap: break-word;
+      font-weight: bold;
+    }
+
+    &-description {
+      @include text-usual(14px, #2F2F2F, left);
+      margin-bottom: 25px;
+    }
+
+    &-footer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    &-city {
+
+      @include text-usual(12px,#2F2F2F, left);
+      position: relative;
+      padding-left: 23px;
+      margin-bottom: 55px;
+
+      &:before {
+        content: url(/images/location-point.svg);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    &-date {
+      @include text-usual(12px,#2F2F2F, left);
+    }
+  }
+
+
+  &_section {
+    @extend .section;
+
+    .back-link {
+
+      @include text-usual(14px, $violet, left);
+      margin-bottom: 38px;
+      margin-top: -60px;
+      display: block;
+      position: relative;
+      padding-left: 16px;
+
+      &:before {
+        content: url(/images/arrow-left-small.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &_description {
+    &-wrapper {
+      max-width: 675px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    &-title {
+      @include text-usual(32px, #121212, left);
+      font-weight: bold;
+      margin-bottom: 24px;
+      word-wrap: break-word;
+    }
+
+    &-organisation {
+      @include text-usual(18px, $violet, left);
+      font-weight: bold;
+      margin-bottom: 8px;
+      word-wrap: break-word;
+    }
+
+    &-info {
+      @include text-usual(14px, #2F2F2F, left);
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 8px;
+
+      &:before {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 3px;
+        left: 0;
+      }
+
+      &.location {
+        &:before {
+          content: url(/images/location-point.svg);
+        }
+      }
+
+      &.portfolio {
+        &:before {
+          content: url(/images/portfolio-icon.png);
+        }
+      }
+
+      &.user {
+        &:before {
+          content: url(/images/user-icon.png);
+        }
+      }
+
+      &.profile {
+        &:before {
+          content: url(/images/profile-icon.png);
+        }
+      }
+
+      &.envelope {
+        &:before {
+          content: url(/images/envelope-icon.png);
+        }
+      }
+
+      &.telephone {
+        &:before {
+          content: url(/images/telephone-icon.png);
+        }
+      }
+
+      &.salary {
+        &:before {
+          content: url(/images/salary-icon.svg);
+        }
+      }
+
+      &.job-time {
+        &:before {
+          content: url(/images/clock-icon.svg);
+        }
+      }
+
+      &.alt-contact {
+        &:before {
+          content: url(/images/altcontact-icon.svg);
+        }
+      }
+    }
+
+    &-text {
+      margin-top: 24px;
+      margin-bottom: 50px;
+      @include text-usual(14px, #212529, left);
+    }
+
+    &-contacts-title {
+      @include text-usual(16px, #2C2C2C, left);
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    &-footer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    &-date {
+      @include text-usual(14px, #B0B0B0, left);
+      font-style: italic;
+    }
+
+    &-abuse {
+      @include text-usual(14px, #B0B0B0, left);
+      padding-left: 25px;
+      position: relative;
+      display: block;
+
+      &:before {
+        content: url(/images/flag-icon.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &_form {
+
+    .tip {
+      @include text-usual(14px, $black, center);
+    }
+
+    .operation-result {
+      @include text-usual(14px, $violet, center);
+      display: none;
+      margin-top: -20px;
+
+      &.show {
+        display: block;
+      }
+    }
+
+    .remove-account-link {
+      @include text-usual(16px, $violet, center);
+      cursor: pointer;
+      margin-top: 30px;
+
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-title {
+      @include text-usual(20px, $black, center);
+      margin-top: 35px;
+      margin-bottom: 25px;
+    }
+
+    width: 290px;
+
+    @include for-tablet-portrait-up() {
+      width: 100%;
+    }
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 24px;
+
+
+
+      .inline-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        position: relative;
+
+
+
+        input {
+          margin-bottom: 10px;
+          @include for-desktop-up() {
+            min-width: 100px;
+            margin: 0;
+          }
+        }
+
+        .select2 {
+          @include for-desktop-up() {
+            min-width: 200px;
+            margin-right: 0;
+          }
+        }
+
+        @include for-desktop-up() {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          min-width: 385px;
+          max-width: 385px;
+          margin-left: 30px;
+          margin-right: 25px;
+        }
+
+      }
+
+      &.description {
+        @include for-desktop-up() {
+          flex-direction: column;
+          align-items: start;
+          padding-right: 25px;
+          .trumbowyg-box {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+
+          }
+        }
+
+      }
+
+      .message-invalid {
+        @include text-usual(12px, $red, left);
+        position: absolute;
+        bottom: -20px;
+        left: 0px;
+
+        @include for-tablet-portrait-up() {
+          bottom: -20px;
+          left: 160px;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      @include for-tablet-portrait-up() {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 570px;
+        align-items: center;
+      }
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+
+        @include for-tablet-portrait-up() {
+          @include  text-usual(16px, $black, right);
+          padding-top: 0px;
+          padding-bottom: 0px;
+          line-height: 120%;
+        }
+      }
+
+      &-input {
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(16px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 15px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          @include text-usual(16px, #cccccc, left);
+        }
+
+        &.textarea {
+          height: 200px;
+        }
+      }
+
+      &-select ~ span{
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 30px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .show-password {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        right: 10px;
+        top: 45px;
+
+        @include for-tablet-portrait-up() {
+          right: 35px;
+          top: 12px;
+        }
+
+        background: url(/images/show-password-icon.svg);
+      }
+    }
+  }
+}

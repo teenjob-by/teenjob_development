@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.frontend')
 
 @section('content')
     <div class="container-fluid internship-form">

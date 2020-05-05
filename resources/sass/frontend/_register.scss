@@ -1,0 +1,173 @@
+.register {
+
+  &_section {
+    @extend .section;
+
+    .button-primary {
+      max-width: 385px;
+
+      @include for-tablet-portrait-up() {
+        margin-right: 25px;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &_title {
+    @include title($font-size-title-sm, $font-size-title-md, $font-size-title-lg, 8px, 8px, 8px);
+  }
+
+  &_subtitle {
+    @include text-usual(16px, $black, center);
+    margin-top: 15px;
+  }
+
+  &_form {
+
+    &-title {
+      @include text-usual(20px, $black, center);
+      margin-top: 35px;
+      margin-bottom: 25px;
+    }
+
+    width: 290px;
+
+    @include for-tablet-portrait-up() {
+      width: 100%;
+    }
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+
+      @include for-tablet-portrait-up() {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 570px;
+        align-items: center;
+      }
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+
+        @include for-tablet-portrait-up() {
+          @include  text-usual(16px, $black, right);
+          padding-top: 0px;
+          padding-bottom: 0px;
+          line-height: 120%;
+        }
+      }
+
+      &-input {
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(16px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 15px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          @include text-usual(14px, #cccccc, left);
+        }
+      }
+
+      &-select ~ span{
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          margin-left: 30px;
+          margin-right: 25px;
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .show-password {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        right: 10px;
+        top: 45px;
+
+        @include for-tablet-portrait-up() {
+          right: 35px;
+          top: 12px;
+        }
+
+        background: url(/images/show-password-icon.svg);
+      }
+    }
+  }
+
+  &-invalid {
+    @include text-usual(12px, $red, left);
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+
+    @include for-tablet-portrait-up() {
+      bottom: -20px;
+      left: 160px;
+    }
+  }
+
+
+  &_terms {
+    max-width: 385px;
+
+    @include text-usual(14px, $black, left);
+    line-height: 150%;
+
+    @include for-tablet-portrait-up() {
+      margin-right: 25px;
+    }
+  }
+}
+

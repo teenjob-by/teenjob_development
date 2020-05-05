@@ -1,0 +1,9 @@
+.textarea {
+  @extend .textfield;
+}
+
+.trumbowyg-box {
+  @extend .textfield;
+  padding: 0;
+  height: auto;
+}
