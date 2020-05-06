@@ -4,6 +4,54 @@
   &_section {
     @extend .section;
 
+    .organisations {
+      &-block {
+        text-align: center;
+        margin-top: 85px;
+
+        .rules-link-mobile {
+
+          display: block;
+          margin-top: 15px;
+          text-align: center;
+
+          @include for-desktop-up() {
+            display: none;
+          }
+        }
+
+        &-title {
+          @include text-usual(28px, #2C2C2C, center);
+          font-weight: 600;
+          margin-bottom: 8px;
+
+          @include for-desktop-up() {
+            @include text-usual(42px, #121212, left);
+            font-weight: 600;
+          }
+        }
+
+        &-description {
+          margin-top: 20px;
+          width: 100%;
+          justify-content: center;
+          display: flex;
+          flex-direction: row;
+        }
+
+        &-subtitle {
+          @include text-usual(18px, $black, center);
+          font-weight: 600;
+          margin-top: 60px;
+          margin-bottom: 10px;
+          text-align: center;
+          color: #000000;
+        }
+      }
+
+
+    }
+
     .notification {
 
       @include text-usual(16px, $black, center);

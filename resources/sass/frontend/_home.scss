@@ -86,6 +86,7 @@
 
       @include for-desktop-up() {
         @include text-usual(42px, #121212, center);
+        font-weight: 600;
       }
     }
 
