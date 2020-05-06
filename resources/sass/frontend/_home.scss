@@ -43,11 +43,68 @@
 
     &-organisations {
       @extend .card;
+
+      .rules-link {
+        display: none;
+
+        @include for-desktop-up() {
+          margin-top: 20px;
+          text-align: right;
+          display: block;
+        }
+      }
     }
   }
 
   &_carousel-wrapper {
     position: relative;
+  }
+
+  &_organisations {
+    &-block {
+      text-align: center;
+      margin-top: 40px;
+
+      .rules-link-mobile {
+
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+
+        @include for-desktop-up() {
+          display: none;
+        }
+      }
+    }
+
+
+
+    &-title {
+      @include text-usual(28px, #2C2C2C, center);
+      font-weight: 600;
+      margin-bottom: 30px;
+
+      @include for-desktop-up() {
+        @include text-usual(42px, #121212, center);
+      }
+    }
+
+    &-description {
+      margin-top: 50px;
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    &-subtitle {
+      @include text-usual(18px, $black, center);
+      font-weight: 600;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #000000;
+    }
   }
 }
 

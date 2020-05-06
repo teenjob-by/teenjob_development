@@ -26,7 +26,7 @@
 
                 <div class="article-info">
                     <div class="article-info-description">
-                        @lang('content.rulesForEmployers.text.info') <a href="{{ route('site.whatisvacancy') }}">@lang('content.vacancyRules.title')</a> <a href="{{ route('site.whoisintern') }}">@lang('content.internRules.title')</a>
+                        @lang('content.rulesForEmployers.text.info') <a href="{{ route('frontend.employmentLaw') }}">@lang('content.jobRules.title')</a> <a href="{{ route('frontend.whoIsIntern') }}">@lang('content.internRules.title')</a>
                     </div>
                 </div>
             </div>

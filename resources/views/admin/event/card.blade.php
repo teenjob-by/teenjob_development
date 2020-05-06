@@ -27,7 +27,7 @@
 
                     <div class="event-card-footer">
                         <p class="event-card-date">@lang('content.event.card.published') {{ $event->published_at->format('d.m.Y') }}</p>
-                        <a href="{{ route("site.feedback") }}?abuse=on" class="event-card-abuse">@lang('content.event.card.abuse')</a>
+                        <a href="{{ route("frontend.feedback") }}?abuse=on" class="event-card-abuse">@lang('content.event.card.abuse')</a>
                     </div>
                 </div>
             </div>
