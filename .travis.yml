@@ -10,11 +10,10 @@ addons:
 # Keep the cache between builds to speed up installs
 cache:
   directories:
-    - $HOME/.composer/cache
     - $HOME/.npm
     - node_modules
 php:
-  - 7.2.5
+  - 7.4.5
 
 before_install: 
   - travis_retry composer self-update && composer --version
