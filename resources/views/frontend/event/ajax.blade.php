@@ -27,6 +27,6 @@
                 {{ $data->appends($_GET)->links() }}
             </div>
     @else
-        @include("frontend.chunks.notfoundMessage")
+        @include("frontend.chunks.notFoundMessage")
     @endif
 </div>

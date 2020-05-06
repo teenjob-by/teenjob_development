@@ -34,6 +34,6 @@
 
 
     @else
-        @include("frontend.chunks.notfoundMessage")
+        @include("frontend.chunks.notFoundMessage")
     @endif
 </div>
