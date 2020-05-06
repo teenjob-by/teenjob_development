@@ -299,7 +299,7 @@
                             //location.href = location.href.replace( /#.*/, "");
                             window.history.pushState({"html":data, "pageTitle":document.title},"", url);
                             $(".content-loader").toggleClass('active');
-                            $(".card-wrapper").empty().html('@include("frontend.chunks.notfoundMessage")');
+                            $(".card-wrapper").empty().html('@include("frontend.chunks.notFoundMessage")');
                     });
         }
 
