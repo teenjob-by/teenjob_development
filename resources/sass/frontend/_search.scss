@@ -91,6 +91,14 @@
     }
   }
 
+  &_card-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   &_content-wrapper {
     max-width: 630px;
     width: 100%;
@@ -98,15 +106,7 @@
     align-items: center;
     flex-direction: column;
 
-    .card-wrapper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
 
-    }
 
     .content-loader {
       width: 75px;

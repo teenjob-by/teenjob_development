@@ -10,6 +10,7 @@ addons:
 # Keep the cache between builds to speed up installs
 cache:
   directories:
+    - $HOME/.composer/cache
     - $HOME/.npm
     - node_modules
 php:
