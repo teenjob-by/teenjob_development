@@ -236,29 +236,27 @@ class Event extends Controller
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
-        return view('site.event.create')->with("organisation", $organisation)->with('types', $types)->with('cities', $cities);
-    }
 
-    public function archive($id)
-    {
-        $events = Event::find($id);
-        if($events->organisation_id == Auth::user()->id) {
-            $events->status = 2;
-            $events->save();
-        }
+        $ages = collect([
+            (object)[
+                'id' => 14,
+                'name'=>'14'
+            ],
+            (object)[
+                'id' => 15,
+                'name'=>'15'
+            ],
+            (object)[
+                'id' => 16,
+                'name'=>'16'
+            ],
+            (object)[
+                'id' => 17,
+                'name'=>'17'
+            ]
+        ]);
 
-        return redirect()->back();
-    }
-
-    public function unarchive($id)
-    {
-        $events = Event::find($id);
-        if($events->organisation_id == Auth::user()->id) {
-            $events->status = 0;
-            $events->save();
-        }
-
-        return redirect()->back();
+        return view('frontend.'. $this->item_type .'.create')->with("organisation", $organisation)->with('types', $types)->with('cities', $cities)->with('ages', $ages);
     }
 
     /**
@@ -271,7 +269,8 @@ class Event extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'address' => 'required|max:255'
         ]);
 
         $imageName = time().'.'.request()->image->getClientOriginalExtension();

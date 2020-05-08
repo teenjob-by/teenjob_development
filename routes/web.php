@@ -206,10 +206,54 @@ Route::name('organisation.')->group(function () {
     });
 });
 
+/* - routes only for admin */
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', 'Admin\AdminController@index')->name('admin.index');
+    /*Route::get('/admin/organisations/approve/{id}', 'Admin\AdminOrganisationsController@approve')->name('admin.organisations.approve');
+    Route::get('/admin/organisations/remove/{id}', 'Admin\AdminOrganisationsController@remove')->name('admin.organisations.remove');
+    Route::get('/admin/organisations/ban/{id}', 'Admin\AdminOrganisationsController@ban')->name('admin.organisations.ban');
+    Route::get('/admin/organisations', 'Admin\AdminOrganisationsController@index')->name('admin.organisation');
+    Route::get('/admin/organisations/moderation', 'Admin\AdminOrganisationsController@showUnapproved')->name('admin.organisation.moderation');
+    Route::get('/admin/organisation/edit/{id}', 'Admin\AdminOrganisationsController@getOrganisationForm')->name('admin.organisationForm');
+    Route::post('/admin/organisation/update', 'Admin\AdminOrganisationsController@update')->name('admin.organisation.update');
+    Route::get('/admin/organisation/destroy', 'Admin\AdminOrganisationsController@destroy')->name('admin.organisation.destroy');
 
-/*
- * Routes available to admins only
- */
+    Route::get('/admin/volunteering-for-teens/approve/{id}', 'Admin\AdminVolunteeringsController@approve')->name('admin.volunteerings.approve');
+    Route::get('/admin/volunteering-for-teens/remove/{id}', 'Admin\AdminVolunteeringsController@remove')->name('admin.volunteerings.remove');
+    Route::get('/admin/volunteering-for-teens/ban/{id}', 'Admin\AdminVolunteeringsController@ban')->name('admin.volunteerings.ban');
+    Route::get('/admin/volunteering-for-teens', 'Admin\AdminVolunteeringsController@index')->name('admin.volunteering');
+    Route::get('/admin/volunteering-for-teens/moderation', 'Admin\AdminVolunteeringsController@showUnapproved')->name('admin.volunteering.moderation');
+    Route::get('/admin/volunteering-for-teens/edit/{id}', 'Admin\AdminVolunteeringsController@edit')->name('admin.volunteeringForm');
+    Route::post('/admin/volunteering-for-teens/update', 'Admin\AdminVolunteeringsController@update')->name('admin.volunteering.update');
+    Route::get('/admin/volunteering-for-teens/destroy', 'Admin\AdminVolunteeringsController@destroy')->name('admin.volunteering.destroy');
+
+    Route::get('/admin/jobs-for-teens/approve/{id}', 'Admin\AdminVacanciesController@approve')->name('admin.vacancies.approve');
+    Route::get('/admin/jobs-for-teens/remove/{id}', 'Admin\AdminVacanciesController@remove')->name('admin.vacancies.remove');
+    Route::get('/admin/jobs-for-teens/ban/{id}', 'Admin\AdminVacanciesController@ban')->name('admin.vacancies.ban');
+    Route::get('/admin/jobs-for-teens', 'Admin\AdminVacanciesController@index')->name('admin.vacancy');
+    Route::get('/admin/jobs-for-teens/moderation', 'Admin\AdminVacanciesController@showUnapproved')->name('admin.vacancy.moderation');
+    Route::get('/admin/jobs-for-teens/edit/{id}', 'Admin\AdminVacanciesController@edit')->name('admin.vacancyForm');
+    Route::post('/admin/jobs-for-teens/update', 'Admin\AdminVacanciesController@update')->name('admin.vacancy.update');
+    Route::get('/admin/jobs-for-teens/destroy', 'Admin\AdminVacanciesController@destroy')->name('admin.vacancy.destroy');
+
+    Route::get('/admin/internships-for-teens/approve/{id}', 'Admin\AdminInternshipsController@approve')->name('admin.internships-for-teens.approve');
+    Route::get('/admin/internships-for-teens/remove/{id}', 'Admin\AdminInternshipsController@remove')->name('admin.internships-for-teens.remove');
+    Route::get('/admin/internships-for-teens/ban/{id}', 'Admin\AdminInternshipsController@ban')->name('admin.internships-for-teens.ban');
+    Route::get('/admin/internships-for-teens', 'Admin\AdminInternshipsController@index')->name('admin.internship');
+    Route::get('/admin/internships-for-teens/moderation', 'Admin\AdminInternshipsController@showUnapproved')->name('admin.internships-for-teens.moderation');
+    Route::get('/admin/internships-for-teens/edit/{id}', 'Admin\AdminInternshipsController@edit')->name('admin.internshipForm');
+    Route::post('/admin/internships-for-teens/update', 'Admin\AdminInternshipsController@update')->name('admin.internships-for-teens.update');
+    Route::get('/admin/internships-for-teens/destroy', 'Admin\AdminInternshipsController@destroy')->name('admin.internships-for-teens.destroy');
+
+    Route::get('/admin/events/approve/{id}', 'Admin\AdminEventsController@approve')->name('admin.events.approve');
+    Route::get('/admin/events/remove/{id}', 'Admin\AdminEventsController@remove')->name('admin.events.remove');
+    Route::get('/admin/events/ban/{id}', 'Admin\AdminEventsController@ban')->name('admin.events.ban');
+    Route::get('/admin/events', 'Admin\AdminEventsController@index')->name('admin.events');
+    Route::get('/admin/events/moderation', 'Admin\AdminEventsController@showUnapproved')->name('admin.events.moderation');
+    Route::get('/admin/events/edit/{id}', 'Admin\AdminEventsController@edit')->name('admin.eventsForm');
+    Route::post('/admin/events/update/{id}', 'Admin\AdminEventsController@update')->name('admin.events.update');
+    Route::get('/admin/events/destroy', 'Admin\AdminEventsController@destroy')->name('admin.events.destroy');*/
+});
 
 
 
