@@ -14,6 +14,7 @@ use Jenssegers\Date\Date;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
 
 
@@ -267,11 +268,21 @@ class Event extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'title' => 'required|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'date_start' => 'required',
+            'time_start' => 'required',
+            'date_finish' => 'required',
+            'time_finish' => 'required',
             'address' => 'required|max:255'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 200);
+        }
+
+        $organisation = Auth::user()->id;
 
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
@@ -306,22 +317,28 @@ class Event extends Controller
             })->blur(1)->save($tiny_image_storage.$imageName,85);
 
 
-        $date = $request->input('date_start').' '.$request->input('time_start');
-        $event = new Event([
+        $date_start = $request->input('date_start').' '.$request->input('time_start');
+        $date_finish = $request->input('date_finish').' '.$request->input('time_finish');
+        $event = new EventModel([
             'title' => $request->input('title'),
             'city_id' => $request->input('city'),
             'address' => $request->input('address'),
-            'date_start' => \Carbon\Carbon::parse($date),
-            'date_finish' => \Carbon\Carbon::parse($request->input('date_finish')),
+            'date_start' => \Carbon\Carbon::parse($date_start),
+            'date_finish' => \Carbon\Carbon::parse($date_finish),
             'age' => $request->input('age'),
             'type_id' => $request->input('type'),
             'description' => $request->input('description'),
             'image' => '/upload/images/thumbnails/'.$imageName,
             'location' => $request->input('location'),
-            'organisation_id' => $request->input('organisation')
+            'organisation_id' => $organisation
         ]);
         $event->save();
-        return redirect('/organisation#events')->with('success', 'Event saved!');
+
+        if($request->ajax()){
+            return response()->json([ "message" => "Объявление создано" ], 200);
+        }
+
+        return redirect()->route('organisation.events.create');
 
     }
 
@@ -346,30 +363,39 @@ class Event extends Controller
      */
     public function edit($id)
     {
-        $event = Event::find($id);
-        $cities = City::all();
-        $lastCity = $cities->pop();
-        $cities = $cities->prepend($lastCity);
-        $ages = [
-            [
-                'value' => 14,
-                'name'=>'14'
-            ],
-            [
-                'value' => 15,
-                'name'=>'15'
-            ],
-            [
-                'value' => 16,
-                'name'=>'16'
-            ],
-            [
-                'value' => 17,
-                'name'=>'17'
-            ]
-        ];
-        $types = EventType::all();
-        return view('site.event.edit')->with('event', $event)->with('cities', $cities)->with('ages', $ages)->with('types', $types);
+        $event = EventModel::findOrFail($id);
+
+        if((($event->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
+            $cities = City::all();
+            $lastCity = $cities->pop();
+            $cities = $cities->prepend($lastCity);
+            $types = EventType::all();
+
+
+            $ages = collect([
+                (object)[
+                    'id' => 14,
+                    'name'=>'14'
+                ],
+                (object)[
+                    'id' => 15,
+                    'name'=>'15'
+                ],
+                (object)[
+                    'id' => 16,
+                    'name'=>'16'
+                ],
+                (object)[
+                    'id' => 17,
+                    'name'=>'17'
+                ]
+            ]);
+
+            return view('frontend.event.edit')->with('event', $event)->with('cities', $cities)->with('ages', $ages)->with('types', $types);
+        }
+        else {
+            return response()->json([ "message" => "Редактирование запрещено" ], 403);
+        }
     }
 
     /**
@@ -379,74 +405,94 @@ class Event extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-
-        $request->validate([
-            'title' => 'required|max:255'
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|max:255',
+            'date_start' => 'required',
+            'time_start' => 'required',
+            'date_finish' => 'required',
+            'time_finish' => 'required',
+            'address' => 'required|max:255'
         ]);
-        if(!empty(request()->image)){
-            $imageName = time() . '.' . request()->image->getClientOriginalExtension();
-
-            request()->image->move(public_path('upload/images'), $imageName);
-
-            $original_image_storage = public_path('upload/images/original/');
-            $large_image_storage = public_path('upload/images/large/');
-            $medium_image_storage = public_path('upload/images/medium/');
-            $small_image_storage = public_path('upload/images/small/');
-            $tiny_image_storage = public_path('upload/images/tiny/');
-            $thumbnails_image_storage = public_path('upload/images/thumbnails/');
-
-            //$file = request()-> file('image');
 
 
-            $image = Image::make(public_path('upload/images') . '/' . $imageName);
-            $image->save($original_image_storage . $imageName, 100)
-                ->resize(860, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($large_image_storage . $imageName, 85)
-                ->resize(640, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($medium_image_storage . $imageName, 85)
-                ->resize(420, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($small_image_storage . $imageName, 85)
-                ->resize(200, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($thumbnails_image_storage . $imageName, 85)
-                ->resize(10, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->blur(1)->save($tiny_image_storage . $imageName, 85);
 
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 200);
         }
 
+        $event = EventModel::findOrFail($id);
+
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
 
 
-        $event = Event::find($id);
-        $date = $request->input('date_start').' '.$request->input('time_start');
-        $event->title =  $request->input('title');
-        $event->city_id = $request->input('city');
-        $event->address = $request->input('address');
-        $event->date_start = \Carbon\Carbon::parse($date);
-        $event->date_finish = \Carbon\Carbon::parse($request->input('date_finish'));
-        $event->age = $request->input('age');
-        if(!empty(request()->image)){
-            $event->image = '/upload/images/thumbnails/'.$imageName;
+
+            $date_start = $request->input('date_start').' '.$request->input('time_start');
+            $date_finish = $request->input('date_finish').' '.$request->input('time_finish');
+            $event->title =  $request->input('title');
+            $event->city_id = $request->input('city');
+            $event->address = $request->input('address');
+            $event->date_start = \Carbon\Carbon::parse($date_start);
+            $event->date_finish = \Carbon\Carbon::parse($date_finish);
+            $event->age = $request->input('age');
+
+            if(!empty(request()->image)){
+                $imageName = time() . '.' . request()->image->getClientOriginalExtension();
+
+                request()->image->move(public_path('upload/images'), $imageName);
+
+                $original_image_storage = public_path('upload/images/original/');
+                $large_image_storage = public_path('upload/images/large/');
+                $medium_image_storage = public_path('upload/images/medium/');
+                $small_image_storage = public_path('upload/images/small/');
+                $tiny_image_storage = public_path('upload/images/tiny/');
+                $thumbnails_image_storage = public_path('upload/images/thumbnails/');
+
+                //$file = request()-> file('image');
+
+
+                $image = Image::make(public_path('upload/images') . '/' . $imageName);
+                $image->save($original_image_storage . $imageName, 100)
+                    ->resize(860, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($large_image_storage . $imageName, 85)
+                    ->resize(640, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($medium_image_storage . $imageName, 85)
+                    ->resize(420, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($small_image_storage . $imageName, 85)
+                    ->resize(200, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($thumbnails_image_storage . $imageName, 85)
+                    ->resize(10, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->blur(1)->save($tiny_image_storage . $imageName, 85);
+                $event->image = '/upload/images/thumbnails/'.$imageName;
+            }
+
+
+            $event->type_id = $request->input('type');
+            $event->description = $request->input('description');
+            $event->location = $request->input('location');
+
+            if(Auth::user()->role !== 0) {
+                $event->status = 0;
+            }
+
+            $event->save();
+
+            if($request->ajax()){
+                return response()->json([ "message" => "Объявление сохранено" ], 200);
+            }
+
+            return redirect()->route('organisation.index');
         }
         else {
-            $event->image = $request->input('image-path');
+            return response()->json([ "message" => "Редактирование запрещено" ], 403);
         }
 
-        $event->type_id = $request->input('type');
-        $event->description = $request->input('description');
-        $event->location = $request->input('location');
-
-        $event->status = 0;
-        //$event->image = $request->input('image');
-        //$event->location = $request->input('location');
-        $event->save();
-
-        return redirect('/events/'.$id);
     }
 
     /**
@@ -457,9 +503,46 @@ class Event extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::find($id);
-        $event->delete();
+        $event = EventModel::findOrFail($id);
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
 
-        return redirect('/events')->with('success', 'Event deleted!');
+            $event->delete();
+            return response()->json([ "message" => "Объявление удалено" ], 200);
+
+        }else {
+            return response()->json([ "message" => "Удаление запрещено" ], 403);
+        }
+    }
+
+
+    public function archive($id)
+    {
+        $event = EventModel::findOrFail($id);
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+
+            $event->status = 2;
+            $event->save();
+
+
+            return response()->json([ "message" => "Объявление заархивировано" ], 200);
+
+        }else {
+            return response()->json([ "message" => "Архивация запрещена" ], 403);
+        }
+    }
+
+    public function unarchive($id)
+    {
+        $event = EventModel::findOrFail($id);
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+
+            $event->status = 0;
+            $event->save();
+
+            return response()->json([ "message" => "Объявление разархивировано" ], 200);
+
+        }else {
+            return response()->json([ "message" => "Разархивация запрещена" ], 403);
+        }
     }
 }

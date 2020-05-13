@@ -84,8 +84,9 @@ class Register extends Controller
                 'password' => Hash::make($data['password']),
                 'role' => 1,
                 'api_token' => Str::random(60),
-            ]);
+            ])->createToken('Teenjob');
         }
+
         return redirect()->route('auth.registration');
     }
 

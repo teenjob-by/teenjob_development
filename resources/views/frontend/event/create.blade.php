@@ -10,6 +10,8 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
     <script src="/js/micromodal.min.js"></script>
     <script src="/js/trumbowyg/trumbowyg.min.js"></script>
     <script src="/js/trumbowyg/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
@@ -29,6 +31,40 @@
     <script type="text/javascript" src="/js/trumbowyg/langs/ru.min.js"></script>
 
     <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.image-upload-wrap').hide();
+
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+
+                    $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+                console.log(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
 
 
         function initMap() {
@@ -164,6 +200,70 @@
                     console.log(e)
                 }
             }
+            var momentFormat = 'DD/MM/YYYY';
+            var dateInputs = document.getElementsByClassName("datePicker");
+            for (var i = 0; i < dateInputs.length; i++) {
+                new IMask(dateInputs[i], {
+
+                    mask: Date,
+                    pattern: momentFormat,
+                    lazy: false,
+                    min: new Date(1970, 0, 1),
+                    max: new Date(2030, 0, 1),
+
+                    format: function (date) {
+                        return moment(date).format(momentFormat);
+                    },
+                    parse: function (str) {
+                        return moment(str, momentFormat);
+                    },
+
+                    blocks: {
+                        YYYY: {
+                            mask: IMask.MaskedRange,
+                            from: 1970,
+                            to: 2030
+                        },
+                        MM: {
+                            mask: IMask.MaskedRange,
+                            from: 1,
+                            to: 12
+                        },
+                        DD: {
+                            mask: IMask.MaskedRange,
+                            from: 1,
+                            to: 31
+                        }
+                    }
+                });
+            }
+
+
+            var timeInputs = document.getElementsByClassName("timePicker");
+            for (var i = 0; i < timeInputs.length; i++) {
+                new IMask(timeInputs[i], {
+                    overwrite: true,
+                    autofix: true,
+                    mask: 'HH:MM',
+                    pattern: 'HH:`MM',
+                    blocks: {
+                        HH: {
+                            mask: IMask.MaskedRange,
+                            placeholderChar: 'HH',
+                            from: 0,
+                            to: 23,
+                            maxLength: 2
+                        },
+                        MM: {
+                            mask: IMask.MaskedRange,
+                            placeholderChar: 'MM',
+                            from: 0,
+                            to: 59,
+                            maxLength: 2
+                        }
+                    }
+                });
+            }
 
 
             try {
@@ -187,12 +287,14 @@
             });
 
             $("#submit").toggleClass('loading');
-
+            var form = $('#form')[0];
             $.ajax(
                 {
                     url: '{{ route('organisation.events.store') }}',
                     type: "POST",
-                    data: $('#form').serialize(),
+                    data: new FormData(form),
+                    processData: false,
+                    contentType: false,
                     dataType: 'text'
                 })
                 .done(
@@ -306,9 +408,18 @@
                 <div class="event_form-group">
                     <label class="event_form-group-label" for="date_start">@lang('content.event.create.dateStart')</label>
                     <div class="event_form-date-group">
-                        <input type="text" required class="event_form-group-input datePicker"id="date_start" name="date_start"/>
+                        <input type="text" required class="event_form-group-input datePicker" id="date_start" name="date_start"/>
                         <label for="date_start" class="event_form-group-label">@lang('content.event.create.timeStart')</label>
-                        <input required type="text" class="event_form-group-input timePicker" name="time_start"/>
+                        <input required type="text" class="event_form-group-input timePicker" id="time_start" name="time_start"/>
+                    </div>
+                </div>
+
+                <div class="event_form-group">
+                    <label class="event_form-group-label" for="date_finish">@lang('content.event.create.dateFinish')</label>
+                    <div class="event_form-date-group">
+                        <input type="text" required class="event_form-group-input datePicker" id="date_finish" name="date_finish"/>
+                        <label for="date_finish" class="event_form-group-label">@lang('content.event.create.timeFinish')</label>
+                        <input required type="text" class="event_form-group-input timePicker" id="time_finish" name="time_finish"/>
                     </div>
                 </div>
 
@@ -355,7 +466,28 @@
 
 
                 <div class="event_form-group">
-                    <label for="event-image">@lang('content.event.create.loadPreview')</label>
+                    <p for="event-image">@lang('content.event.create.loadPreview')</p>
+
+                    <div class="file-upload">
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Добавить изображение</button>
+
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
+                            <div class="drag-text">
+                                <h3>Drag and drop a file or select add Image</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    {{--<label for="event-image">@lang('content.event.create.loadPreview')</label>
                     <div class="custom-file">
                         <label class="custom-file-label" for="event-image">png, jpg, jpeg</label>
                         <input type="file" class="custom-file-input" value="{{ old('image') }}" name="image" id="event-image" required accept="image/gif, image/jpeg, image/jpg, image/png">
@@ -363,8 +495,8 @@
                         <p>
                             <span id="imageerror" style="font-weight: bold; color: red"></span>
                         </p>
-                    </div>
-                </div>
+                    </div>--}}
+
 
                 <div class="event_form-group event_form-map-group">
                     <p class="map-title">@lang('content.event.create.map')</p>

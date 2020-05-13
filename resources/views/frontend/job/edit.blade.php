@@ -242,7 +242,7 @@
         <div class="content-wrapper">
 
 
-            <form id="form" method="PATCH" class="job_form">
+            <form id="form" method="PATCH"  action="{{ route('organisation.jobs.update', $job->id) }}" class="job_form">
                 @csrf
                 @method('PATCH')
 

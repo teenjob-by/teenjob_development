@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Organisation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 class Admin extends Controller
 {
     /**
@@ -25,10 +25,11 @@ class Admin extends Controller
      */
     public function index()
     {
-        $organisations = Organisation::where('role', '>', 0)
-            ->where('status', '1')
-            ->orderBy('created_at', 'desc')
-            ->get();
-        return view('admin.organisation.index')->with('organisations', $organisations);
+        $user = Auth::user();
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->token;
+        $token->save();
+
+        return view('admin.home')->with('access_token', $tokenResult->accessToken);
     }
 }

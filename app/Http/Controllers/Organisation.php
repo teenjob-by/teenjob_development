@@ -120,8 +120,6 @@ class Organisation extends Controller
             }
             else {
 
-
-
                 if($request->ajax()){
                     return response()->json([ "password" => "Пароли не совпадают" ], 200);
                 }
@@ -157,8 +155,14 @@ class Organisation extends Controller
 
     public function getAllOrganisations()
     {
-        $organisations = OrganisationModel::all();
-        return $organisations;
+        if( Auth::user()->role == 0) {
+            $organisations = OrganisationModel::all();
+            return $organisations;
+        }
+        else {
+            return null;
+        }
+
     }
 
 }
