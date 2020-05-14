@@ -7,9 +7,7 @@
 @endsection
 
 @section('scripts')
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap">
-    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
 
     <script src="/js/micromodal.min.js"></script>
@@ -345,6 +343,9 @@
             });
         });
 */
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap">
     </script>
 @endsection
 

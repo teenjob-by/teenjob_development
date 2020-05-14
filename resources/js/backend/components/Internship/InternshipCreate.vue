@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <b-card class="mt-3 " header="Создание работы">
+        <b-card class="mt-3 " header="Создание стажировки">
 
             <b-card-body>
                 <b-form @submit="onSubmit" >
@@ -41,35 +41,6 @@
                         ></b-form-select>
                     </b-form-group>
 
-                    <b-form-group id="workTimeType" label="Тип подработки*:" label-for="workTimeType-input">
-                        <b-form-select
-                                id="workTimeType-input"
-                                v-model="form.work_time_type_id"
-                                :options="workTimeTypes"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
-
-                    <b-form-group id="salary" label="Зарплата*:" label-for="salary-input">
-                        <b-form-input
-                                id="salary-input"
-                                v-model="form.salary"
-                                type="text"
-                                required
-                                placeholder="От*"
-                        ></b-form-input>
-
-                        <b-form-select
-                                id="salary_type-input"
-                                v-model="form.salary_type_id"
-                                :options="salaryTypes"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
 
                     <b-form-group id="speciality" label="Область*:" label-for="speciality-input">
                         <b-form-select
@@ -163,7 +134,7 @@
     import 'trumbowyg/dist/ui/trumbowyg.css';
 
     export default {
-        name: "JobCreate",
+        name: "InternshipCreate",
 
         components: {
             Trumbowyg
@@ -200,25 +171,23 @@
         mounted() {
             var app = this;
 
-            axios.get('/api/v1/jobs/create', { headers: {
+            axios.get('/api/v1/internships/create', { headers: {
                     'Authorization': `Bearer ` + localStorage.getItem('access_token')
                 }})
                 .then(function (resp) {
                     app.specialities = resp.data.specialities
                     app.ages = resp.data.ages
-                    app.workTimeTypes = resp.data.workTimeTypes
-                    app.salaryTypes = resp.data.salaryTypes
                     app.cities = resp.data.cities
                 })
                 .catch(function (resp) {
 
-                    alert("Could not load jobs");
+                    alert("Could not load Internships");
                 });
         },
         methods: {
             save() {
                 var app = this;
-                axios.post('/api/v1/jobs', qs.stringify(app.form) , { headers: {
+                axios.post('/api/v1/internships', qs.stringify(app.form) , { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {

@@ -7,10 +7,23 @@ import Dashboard from './components/Dashboard'
 import OrganisationIndex from './components/Organisation/OrganisationIndex'
 import OrganisationEdit from './components/Organisation/OrganisationEdit'
 import OrganisationCreate from './components/Organisation/OrganisationCreate'
+
 import JobIndex from './components/Job/JobIndex'
 import JobEdit from './components/Job/JobEdit'
 import JobCreate from './components/Job/JobCreate'
-import Jobs from './components/Jobs'
+
+import VolunteeringIndex from './components/Volunteering/VolunteeringIndex'
+import VolunteeringEdit from './components/Volunteering/VolunteeringEdit'
+import VolunteeringCreate from './components/Volunteering/VolunteeringCreate'
+
+import EventIndex from './components/Event/EventIndex'
+import EventEdit from './components/Event/EventEdit'
+import EventCreate from './components/Event/EventCreate'
+
+import InternshipIndex from './components/Internship/InternshipIndex'
+import InternshipEdit from './components/Internship/InternshipEdit'
+import InternshipCreate from './components/Internship/InternshipCreate'
+
 import Layout from './components/Layout'
 import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue';
@@ -21,6 +34,7 @@ Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(Vuex)
 Vue.use(VModal, { dialog: true })
+
 
 const router = new VueRouter({
     mode: 'history',
@@ -56,7 +70,7 @@ const router = new VueRouter({
             props: true
         },
         {
-            path: '/admin/jobs',
+            path: '/admin/jobs/show/:scope',
             name: 'jobIndex',
             component: JobIndex,
             props: true
@@ -71,6 +85,63 @@ const router = new VueRouter({
             path: '/admin/jobs/create',
             name: 'jobCreate',
             component: JobCreate,
+            props: true
+        },
+
+        {
+            path: '/admin/volunteerings/show/:scope',
+            name: 'volunteeringIndex',
+            component: VolunteeringIndex,
+            props: true
+        },
+        {
+            path: '/admin/volunteerings/:id/edit',
+            name: 'volunteeringEdit',
+            component: VolunteeringEdit,
+            props: true
+        },
+        {
+            path: '/admin/volunteerings/create',
+            name: 'volunteeringCreate',
+            component: VolunteeringCreate,
+            props: true
+        },
+
+        {
+            path: '/admin/internships/show/:scope',
+            name: 'internshipIndex',
+            component: InternshipIndex,
+            props: true
+        },
+        {
+            path: '/admin/internships/:id/edit',
+            name: 'internshipEdit',
+            component: InternshipEdit,
+            props: true
+        },
+        {
+            path: '/admin/internships/create',
+            name: 'internshipCreate',
+            component: InternshipCreate,
+            props: true
+        },
+
+        {
+            path: '/admin/events/show/:scope',
+            name: 'eventIndex',
+            component: EventIndex,
+            props: true
+        },
+        {
+            path: '/admin/events/:id/edit',
+            name: 'eventEdit',
+            component: EventEdit,
+            props: true
+        },
+        {
+            path: '/admin/events/create',
+            name: 'eventCreate',
+            component: EventCreate,
             props: true
         },
     ],

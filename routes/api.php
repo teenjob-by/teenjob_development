@@ -38,6 +38,7 @@ Route::namespace('Api')->group(function () {
                 Route::delete('organisations/{id}', 'OrganisationApi@destroy');
 
                 Route::get('jobs', 'JobApi@index');
+                Route::get('jobs/show/{status}', 'JobApi@indexFilter');
                 Route::post('jobs', 'JobApi@store');
                 Route::get('jobs/create', 'JobApi@create');
                 Route::get('jobs/{id}/edit', 'JobApi@edit');
@@ -45,6 +46,36 @@ Route::namespace('Api')->group(function () {
                 Route::patch('jobs/{id}/approve', 'JobApi@approve');
                 Route::patch('jobs/{id}', 'JobApi@update');
                 Route::delete('jobs/{id}', 'JobApi@destroy');
+
+                Route::get('volunteerings', 'VolunteeringApi@index');
+                Route::get('volunteerings/show/{status}', 'VolunteeringApi@indexFilter');
+                Route::post('volunteerings', 'VolunteeringApi@store');
+                Route::get('volunteerings/create', 'VolunteeringApi@create');
+                Route::get('volunteerings/{id}/edit', 'VolunteeringApi@edit');
+                Route::patch('volunteerings/{id}/ban', 'VolunteeringApi@ban');
+                Route::patch('volunteerings/{id}/approve', 'VolunteeringApi@approve');
+                Route::patch('volunteerings/{id}', 'VolunteeringApi@update');
+                Route::delete('volunteerings/{id}', 'VolunteeringApi@destroy');
+
+                Route::get('internships', 'InternshipApi@index');
+                Route::get('internships/show/{status}', 'InternshipApi@indexFilter');
+                Route::post('internships', 'InternshipApi@store');
+                Route::get('internships/create', 'InternshipApi@create');
+                Route::get('internships/{id}/edit', 'InternshipApi@edit');
+                Route::patch('internships/{id}/ban', 'InternshipApi@ban');
+                Route::patch('internships/{id}/approve', 'InternshipApi@approve');
+                Route::patch('internships/{id}', 'InternshipApi@update');
+                Route::delete('internships/{id}', 'InternshipApi@destroy');
+
+                Route::get('events', 'EventApi@index');
+                Route::get('events/show/{status}', 'EventApi@indexFilter');
+                Route::post('events', 'EventApi@store');
+                Route::get('events/create', 'EventApi@create');
+                Route::get('events/{id}/edit', 'EventApi@edit');
+                Route::patch('events/{id}/ban', 'EventApi@ban');
+                Route::patch('events/{id}/approve', 'EventApi@approve');
+                Route::patch('events/{id}', 'EventApi@update');
+                Route::delete('events/{id}', 'EventApi@destroy');
 
             });
         });

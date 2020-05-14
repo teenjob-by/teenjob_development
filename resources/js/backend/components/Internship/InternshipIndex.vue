@@ -2,7 +2,7 @@
     <div>
         <b-card>
             <b-card-body>
-                <router-link :to="{name: 'jobCreate'}">
+                <router-link :to="{name: 'internshipCreate'}">
                     <b-button class="ml-auto mb-3" id="new">Создать</b-button>
                 </router-link>
                 <datatable :data="data" :columns="columns" :actions="actions"></datatable>
@@ -16,7 +16,7 @@
 <script>
 
     export default {
-        name: "JobIndex",
+        name: "InternshipIndex",
         props: ['scope'],
 
         data: function () {
@@ -28,7 +28,7 @@
                 columns: [
                     {name: "id", th: "id", show: false},
                     {th: "Заголовок", render: function (row, cell, index) {
-                            return `<a href="/admin/jobs/${row.id}/edit">${row.title}</a>`;
+                            return `<a href="/admin/internships/${row.id}/edit">${row.title}</a>`;
                         }},
                     {th: "Создано", render: function (row, cell, index) {
                             console.log(this)
@@ -119,7 +119,7 @@
                     },
                     {
                         text: "Править", color: "danger", action: (row, index) => {
-                            this.$router.push({name: 'jobEdit', params: { id: row.id }})
+                            this.$router.push({name: 'internshipEdit', params: { id: row.id }})
                         }
                     }
                 ]
@@ -131,7 +131,7 @@
         mounted() {
             var app = this;
 
-            axios.get('/api/v1/jobs/show/' + app.scope, { headers: {
+            axios.get('/api/v1/internships/show/' + app.scope, { headers: {
                     'Authorization': `Bearer ` + localStorage.getItem('access_token')
                 }})
                 .then(function (resp) {
@@ -155,7 +155,7 @@
             load() {
                 var app = this;
 
-                axios.get('/api/v1/jobs/show/' + app.scope, { headers: {
+                axios.get('/api/v1/internships/show/' + app.scope, { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {
@@ -169,7 +169,7 @@
             },
             delete(id, index) {
                     var app = this;
-                    axios.delete('/api/v1/jobs/' + id, { headers: {
+                    axios.delete('/api/v1/internships/' + id, { headers: {
                             'Authorization': `Bearer ` + localStorage.getItem('access_token')
                         }})
                         .then(function (resp) {
@@ -199,7 +199,7 @@
             },
             ban(id, index) {
                 var app = this;
-                axios.patch('/api/v1/jobs/' + id + '/ban', {}, { headers: {
+                axios.patch('/api/v1/internships/' + id + '/ban', {}, { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {
@@ -229,7 +229,7 @@
             },
             approve(id, index) {
                 var app = this;
-                axios.patch('/api/v1/jobs/' + id + '/approve',{}, { headers: {
+                axios.patch('/api/v1/internships/' + id + '/approve',{}, { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {

@@ -134,7 +134,7 @@
             load() {
                 var app = this;
 
-                axios.get('/api/v1/organisations', { headers: {
+                axios.get('/api/v1/jobs', { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {
@@ -143,7 +143,7 @@
                     })
                     .catch(function (resp) {
 
-                        alert("Could not load organisations");
+                        alert("Could not load jobs");
                     });
             },
             delete(id, index) {
@@ -208,7 +208,7 @@
             },
             approve(id, index) {
                 var app = this;
-                axios.patch('/api/v1/organisations/' + id + '/approve', { headers: {
+                axios.patch('/api/v1/organisations/' + id + '/approve', {}, { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {

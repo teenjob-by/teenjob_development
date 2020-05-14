@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <b-card class="mt-3 " header="Создание работы">
+        <b-card class="mt-3 " header="Редактирование волонтерства">
 
             <b-card-body>
                 <b-form @submit="onSubmit" >
@@ -41,35 +41,6 @@
                         ></b-form-select>
                     </b-form-group>
 
-                    <b-form-group id="workTimeType" label="Тип подработки*:" label-for="workTimeType-input">
-                        <b-form-select
-                                id="workTimeType-input"
-                                v-model="form.work_time_type_id"
-                                :options="workTimeTypes"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
-
-                    <b-form-group id="salary" label="Зарплата*:" label-for="salary-input">
-                        <b-form-input
-                                id="salary-input"
-                                v-model="form.salary"
-                                type="text"
-                                required
-                                placeholder="От*"
-                        ></b-form-input>
-
-                        <b-form-select
-                                id="salary_type-input"
-                                v-model="form.salary_type_id"
-                                :options="salaryTypes"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
 
                     <b-form-group id="speciality" label="Область*:" label-for="speciality-input">
                         <b-form-select
@@ -163,7 +134,7 @@
     import 'trumbowyg/dist/ui/trumbowyg.css';
 
     export default {
-        name: "JobCreate",
+        name: "VolunteeringEdit",
 
         components: {
             Trumbowyg
@@ -178,9 +149,8 @@
                     link: '',
                     type: '',
                     age: '',
-                    work_time_type_id: '',
-                    salary_type_id: '',
-                    city_id: '',
+                    workTimeType: '',
+                    salaryType: '',
                     salary: '',
                     phone: '',
                     alt_phone: '',
@@ -200,25 +170,26 @@
         mounted() {
             var app = this;
 
-            axios.get('/api/v1/jobs/create', { headers: {
+            axios.get('/api/v1/volunteerings/' + this.id + '/edit', { headers: {
                     'Authorization': `Bearer ` + localStorage.getItem('access_token')
                 }})
                 .then(function (resp) {
+                    console.log(resp);
+                    app.form = resp.data.data;
                     app.specialities = resp.data.specialities
                     app.ages = resp.data.ages
-                    app.workTimeTypes = resp.data.workTimeTypes
-                    app.salaryTypes = resp.data.salaryTypes
                     app.cities = resp.data.cities
+                    console.log(app.types)
                 })
                 .catch(function (resp) {
 
-                    alert("Could not load jobs");
+                    alert("Could not load volunteerings");
                 });
         },
         methods: {
             save() {
                 var app = this;
-                axios.post('/api/v1/jobs', qs.stringify(app.form) , { headers: {
+                axios.patch('/api/v1/volunteerings/' + app.id, qs.stringify(app.form) , { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {

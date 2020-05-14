@@ -1,61 +1,89 @@
 <template>
     <div>
 
-        <b-card class="mt-3 " header="Редактирование организации">
+        <b-card class="mt-3 " header="Редактирование работы">
 
             <b-card-body>
                 <b-form @submit="onSubmit" >
                     <b-form-group
-                            id="name"
+                            id="title"
                             label="Название:"
-                            label-for="name-input"
+                            label-for="title-input"
                     >
                         <b-form-input
-                                id="name-input"
-                                v-model="form.name"
+                                id="title-input"
+                                v-model="form.title"
                                 type="text"
                                 required
                                 placeholder="Название (офиц.)*"
                         ></b-form-input>
                     </b-form-group>
 
-                    <b-form-group
-                            id="link"
-                            label="Сайт/группа в соц. сети*:"
-                            label-for="link-input"
-                    >
-                        <b-form-input
-                                id="link-input"
-                                v-model="form.link"
-                                type="text"
-                                required
-                                placeholder="Сайт организации"
-                        ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group id="type" label="Тип*:" label-for="type-input">
+                    <b-form-group id="city" label="Город*:" label-for="city-input">
                         <b-form-select
-                                id="type-input"
-                                v-model="form.type"
-                                :options="types"
+                                id="city-input"
+                                v-model="form.city_id"
+                                :options="cities"
                                 required
                                 value-field="id"
                                 text-field="name"
                         ></b-form-select>
                     </b-form-group>
 
-                    <b-form-group
-                            id="unique_identifier"
-                            label="УНП*:"
-                            label-for="unique_identifier-input"
-                    >
+                    <b-form-group id="age" label="Возраст*:" label-for="age-input">
+                        <b-form-select
+                                id="age-input"
+                                v-model="form.age"
+                                :options="ages"
+                                required
+                                value-field="id"
+                                text-field="name"
+                        ></b-form-select>
+                    </b-form-group>
+
+                    <b-form-group id="workTimeType" label="Тип подработки*:" label-for="workTimeType-input">
+                        <b-form-select
+                                id="workTimeType-input"
+                                v-model="form.work_time_type_id"
+                                :options="workTimeTypes"
+                                required
+                                value-field="id"
+                                text-field="name"
+                        ></b-form-select>
+                    </b-form-group>
+
+                    <b-form-group id="salary" label="Зарплата*:" label-for="salary-input">
                         <b-form-input
-                                id="unique_identifier-input"
-                                v-model="form.unique_identifier"
+                                id="salary-input"
+                                v-model="form.salary"
                                 type="text"
                                 required
-                                placeholder="УНП"
+                                placeholder="От*"
                         ></b-form-input>
+
+                        <b-form-select
+                                id="salary_type-input"
+                                v-model="form.salary_type_id"
+                                :options="salaryTypes"
+                                required
+                                value-field="id"
+                                text-field="name"
+                        ></b-form-select>
+                    </b-form-group>
+
+                    <b-form-group id="speciality" label="Область*:" label-for="speciality-input">
+                        <b-form-select
+                                id="speciality-input"
+                                v-model="form.speciality"
+                                :options="specialities"
+                                required
+                                value-field="id"
+                                text-field="name"
+                        ></b-form-select>
+                    </b-form-group>
+
+                    <b-form-group id="description" label="Описание*:" label-for="description-input">
+                        <trumbowyg v-model="form.description" class="form-control" id="description" required></trumbowyg>
                     </b-form-group>
 
                     <b-form-group
@@ -113,18 +141,6 @@
                         ></b-form-input>
                     </b-form-group>
 
-                    <b-form-group
-                            id="alt_email"
-                            label="Дополнительный email*:"
-                            label-for="email-input"
-                    >
-                        <b-form-input
-                                id="alt_email-input"
-                                v-model="form.alt_email"
-                                type="text"
-                                placeholder="Дополнительный email"
-                        ></b-form-input>
-                    </b-form-group>
 
 
                     <b-button type="submit" variant="primary">Сохранить</b-button>
@@ -142,51 +158,69 @@
 <script>
     var qs = require('qs');
 
+    import Trumbowyg from 'vue-trumbowyg';
+    // Import editor css
+    import 'trumbowyg/dist/ui/trumbowyg.css';
+
     export default {
-        name: "OrganisationEdit",
+        name: "JobEdit",
+
+        components: {
+            Trumbowyg
+        },
 
         props: ['id'],
         data() {
             return {
                 form: {
                     id: '',
-                    name: '',
+                    title: '',
                     link: '',
                     type: '',
-                    unique_identifier: '',
-                    contactPerson: '',
+                    age: '',
+                    workTimeType: '',
+                    salaryType: '',
+                    salary: '',
                     phone: '',
                     alt_phone: '',
+                    contact: '',
                     email: '',
-                    alt_email: ''
+                    alt_email: '',
+                    speciality: ''
                 },
-                types: [],
+                specialities: [],
                 cities: [],
+                workTimeTypes: [],
+                salaryTypes: [],
+                ages: [],
                 show: true
             }
         },
         mounted() {
             var app = this;
 
-            axios.get('/api/v1/organisations/' + this.id + '/edit', { headers: {
+            axios.get('/api/v1/jobs/' + this.id + '/edit', { headers: {
                     'Authorization': `Bearer ` + localStorage.getItem('access_token')
                 }})
                 .then(function (resp) {
                     console.log(resp);
                     app.form = resp.data.data;
-                    app.types = resp.data.types
+                    app.specialities = resp.data.specialities
+                    app.ages = resp.data.ages
+                    app.workTimeTypes = resp.data.workTimeTypes
+                    app.salaryTypes = resp.data.salaryTypes
                     app.cities = resp.data.cities
                     console.log(app.types)
                 })
                 .catch(function (resp) {
 
-                    alert("Could not load organisations");
+                    alert("Could not load jobs");
                 });
         },
         methods: {
             save() {
                 var app = this;
-                axios.patch('/api/v1/organisations/' + app.id, qs.stringify(app.form) , { headers: {
+                axios.patch('/api/v1/jobs/' + app.id, qs.stringify(app.form) , { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token')
                     }})
                     .then(function (resp) {

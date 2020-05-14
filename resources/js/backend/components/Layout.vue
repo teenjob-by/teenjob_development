@@ -53,17 +53,74 @@
                 <p class="side-menu-header">Работа</p>
                 <ul>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex' }">
+                        <router-link :to="{ name: 'jobIndex', params: {scope: 'all'}  }">
                             Все
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex' }">
+                        <router-link :to="{ name: 'jobIndex', params: {scope: 'unapproved'} }">
                             Новые
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex' }">
+                        <router-link :to="{ name: 'jobIndex', params: { scope: 'archived'} }">
+                            В архиве
+                        </router-link>
+                    </li>
+                </ul>
+
+                <p class="side-menu-header">Волонтерство</p>
+                <ul>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'all'}  }">
+                            Все
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'unapproved'} }">
+                            Новые
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'archived'} }">
+                            В архиве
+                        </router-link>
+                    </li>
+                </ul>
+
+                <p class="side-menu-header">Стажировки</p>
+                <ul>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'all'}  }">
+                            Все
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'unapproved'} }">
+                            Новые
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'internshipIndex', params: { scope: 'archived'} }">
+                            В архиве
+                        </router-link>
+                    </li>
+                </ul>
+
+                <p class="side-menu-header">Мероприятия</p>
+                <ul>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'eventIndex', params: {scope: 'all'}  }">
+                            Все
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'eventIndex', params: {scope: 'unapproved'} }">
+                            Новые
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'eventIndex', params: { scope: 'archived'} }">
                             В архиве
                         </router-link>
                     </li>
@@ -124,6 +181,7 @@
         height: 100%;
         min-width: 200px;
         padding: 20px;
+        box-shadow: -1px 1px 9px 0px gainsboro;
         p {
             font-weight: bold;
             font-size: 18px;

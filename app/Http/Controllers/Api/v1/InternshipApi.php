@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Internship;
-use App\Offer as JobModel;
+use App\Offer as InternshipModel;
 use App\Offer;
 use App\Event;
 use App\City;
@@ -22,7 +22,7 @@ use Illuminate\Support\Carbon;
 
 use function PHPSTORM_META\type;
 
-class JobApi extends Controller
+class InternshipApi extends Controller
 {
 
 
@@ -47,11 +47,11 @@ class JobApi extends Controller
     public function index()
     {
         if( /*Auth::user()->role == 0*/ true) {
-            $jobs = JobModel::where('offer_type', 2)->with('city')->with('organisation')->get();
+            $internships =InternshipModel::where('offer_type', 1)->with('city')->with('organisation')->get();
 
 
 
-            return response()->json([ "data" => $jobs ], 200);
+            return response()->json([ "data" => $internships ], 200);
         }
     }
 
@@ -59,13 +59,13 @@ class JobApi extends Controller
     {
         if( /*Auth::user()->role == 0*/ true) {
             if($status == 'unapproved')
-             $jobs = JobModel::where('status', 0)->where('offer_type', 2)->with('city')->with('organisation')->get();
+             $internships = InternshipModel::where('status', 0)->where('offer_type', 1)->with('city')->with('organisation')->get();
             if($status == 'all')
-                $jobs = JobModel::where('offer_type', 2)->with('city')->with('organisation')->get();
+                $internships = InternshipModel::where('offer_type', 1)->with('city')->with('organisation')->get();
 
 
 
-            return response()->json([ "data" => $jobs ], 200);
+            return response()->json([ "data" => $internships ], 200);
         }
     }
 
@@ -96,10 +96,8 @@ class JobApi extends Controller
     public function edit($id)
     {
         $cities = City::all();
-        $salaryTypes = SalaryType::all();
-        $workTimeTypes = WorkTimeType::all();
         $specialities = OfferSpecialization::all();
-        $organisation = JobModel::findorFail($id);
+        $organisation = InternshipModel::findorFail($id);
         $ages = collect([
             (object)[
                 'id' => 14,
@@ -118,7 +116,7 @@ class JobApi extends Controller
                 'name'=>'17'
             ]
         ]);
-        return response()->json([ "data" => $organisation, "specialities" => $specialities, "cities" => $cities, "salaryTypes" => $salaryTypes, "workTimeTypes" => $workTimeTypes, 'ages' => $ages], 200);
+        return response()->json([ "data" => $organisation, "specialities" => $specialities, "cities" => $cities, 'ages' => $ages], 200);
     }
 
     public function update(Request $request)
@@ -133,38 +131,30 @@ class JobApi extends Controller
             'contact' => ['required', 'min:3','max:255'],
             'phone' => ['required', 'min:3','max:255'],
             'email' => ['email', 'max:255'],
-            'salary' => ['integer'],
-            'salary_type_id' => ['required'],
-            'work_time_type_id' => ['required']
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
         }
 
-        $job = Offer::findOrFail($request->input('id'));
-        $job->title = $request->input('title');
-        $job->city_id = $request->input('city_id');
-        $job->age = $request->input('age');
-        $job->speciality = $request->input('speciality');
-        $job->contact = $request->input('contact');
-        $job->description = $request->input('description');
-        $job->phone = $request->input('phone');
-        $job->email = $request->input('email');
-        $job->alt_phone = $request->input('alt_phone');
-        $job->salary = $request->input('salary');
-        $job->salary_type_id = $request->input('salary_type_id');
-        $job->work_time_type_id = $request->input('work_time_type_id');
+        $internship = Offer::findOrFail($request->input('id'));
+        $internship->title = $request->input('title');
+        $internship->city_id = $request->input('city_id');
+        $internship->age = $request->input('age');
+        $internship->speciality = $request->input('speciality');
+        $internship->contact = $request->input('contact');
+        $internship->description = $request->input('description');
+        $internship->phone = $request->input('phone');
+        $internship->email = $request->input('email');
+        $internship->alt_phone = $request->input('alt_phone');
 
-        $job->save();
+        $internship->save();
         return response()->json(["message" => "Информация сохранена"], 201);
     }
 
     public function create()
     {
         $cities = City::all();
-        $salaryTypes = SalaryType::all();
-        $workTimeTypes = WorkTimeType::all();
         $specialities = OfferSpecialization::all();
         $ages = collect([
             (object)[
@@ -184,7 +174,7 @@ class JobApi extends Controller
                 'name'=>'17'
             ]
         ]);
-        return response()->json([ "specialities" => $specialities, "cities" => $cities, "salaryTypes" => $salaryTypes, "workTimeTypes" => $workTimeTypes, 'ages' => $ages], 200);
+        return response()->json([ "specialities" => $specialities, "cities" => $cities, 'ages' => $ages], 200);
 
     }
 
@@ -200,40 +190,34 @@ class JobApi extends Controller
             'contact' => ['required', 'min:3','max:255'],
             'phone' => ['required', 'min:3','max:255'],
             'email' => ['email', 'max:255'],
-            'salary' => ['integer'],
-            'salary_type_id' => ['required'],
-            'work_time_type_id' => ['required']
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
         }
 
-        $job = new Offer([
+        $internship = new Offer([
             'title' => $request->input('title'),
             'city_id' => $request->input('city_id'),
             'age' => $request->input('age'),
             'speciality' => $request->input('speciality'),
             'contact' => $request->input('contact'),
-            'offer_type' => 2,
+            'offer_type' => 1,
             'description' => $request->input('description'),
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
             'alt_phone' => $request->input('alt_phone'),
-            'salary' => $request->input('salary'),
-            'salary_type_id' => $request->input('salary_type_id'),
-            'work_time_type_id' => $request->input('work_time_type_id'),
             'organisation_id' => Auth::user()->id,
         ]);
 
-        $job->save();
+        $internship->save();
         return response()->json(["message" => "Информация сохранена"], 201);
     }
 
 
     public function destroy($id)
     {
-        $organisation = JobModel::findOrFail($id);
+        $organisation = InternshipModel::findOrFail($id);
         $organisation->delete();
 
         return response()->json([
@@ -243,9 +227,9 @@ class JobApi extends Controller
 
     public function ban($id)
     {
-        $jobs = JobModel::findOrFail($id);
-        $jobs->status = 3;
-        $jobs->save();
+        $internships = InternshipModel::findOrFail($id);
+        $internships->status = 3;
+        $internships->save();
 
         return response()->json([
             'message' => 'Успешно заблокировано',
@@ -254,9 +238,9 @@ class JobApi extends Controller
 
     public function approve($id)
     {
-        $jobs = JobModel::findOrFail($id);
-        $jobs->status = 1;
-        $jobs->save();
+        $internships = InternshipModel::findOrFail($id);
+        $internships->status = 1;
+        $internships->save();
 
         return response()->json([
             'message' => 'Успешно одобрено',
@@ -264,34 +248,34 @@ class JobApi extends Controller
         ]);
     }
 
-    public function getAllJobs()
+    public function getAllInternships()
     {
 
-        $jobs = JobModel::all();
+        $internships = InternshipModel::all();
         return response()->json([
-            $jobs
+            $internships
         ], $this->successStatus);
     }
 
     public function showUnapproved()
     {
-        $jobs = JobModel::whereIn('status', [0, 3])
+        $internships = InternshipModel::whereIn('status', [0, 3])
             ->orderBy('status', 'asc')
             ->get();
 
         return response()->json([
-            $jobs
+            $internships
         ], $this->successStatus);
     }
 
     public function showArchived()
     {
-        $jobs = JobModel::whereIn('status', 2)
+        $internships = InternshipModel::whereIn('status', 2)
             ->orderBy('status', 'asc')
             ->get();
 
         return response()->json([
-            $jobs
+            $internships
         ], $this->successStatus);
     }
 }
