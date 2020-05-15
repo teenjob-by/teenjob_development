@@ -19,7 +19,7 @@ before_install:
 install:
   - cp .env.example .env
   - npm install --no-audit --no-progress --quiet
-  - npm run dev
+  - npm run prod
   
             
 after_success: 
