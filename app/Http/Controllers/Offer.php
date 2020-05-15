@@ -28,6 +28,7 @@ class Offer extends Controller
 
             ->where(function ($query) use ($request) {
 
+
                 if($request->has('section')) {
                     $sections = explode(',', trim($request->input('section'), '[]'));
 
@@ -80,7 +81,6 @@ class Offer extends Controller
                 $date_filter=[
                     ['published_at', '<=', $now]
                 ];
-
 
                 if($request->has('publish_date')) {
 
