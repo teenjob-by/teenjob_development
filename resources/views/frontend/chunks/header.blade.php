@@ -1,4 +1,4 @@
-<header class="header {{ request()->routeIs('frontend.home') ? 'header_bg-desktop' : 'header-compact' }} ">
+<header class="header {{ (request()->routeIs('frontend.home')) ? 'header_bg-desktop' : '' }} {{ (request()->routeIs('auth.login') || request()->routeIs('auth.register')) ? 'header-compact': '' }}">
     <section class="header_menu-wrapper">
         <div class="header_wrapper">
             <h1 class="header_logo">
@@ -81,7 +81,7 @@
         </div>
     </section>
 
-    @if (request()->routeIs('frontend.home'))
+    @if (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register'))
         <section class="header_search-wrapper">
 
             @if (request()->routeIs('frontend.home'))
@@ -89,30 +89,40 @@
                     @lang('header.title')
                 </h2>
             @endif
+            <div class="search-form-wrapper">
+                <select id="search-select" class="justselect search-form-wrapper_select" name="category">
+                    <option {{ (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register') || request()->routeIs('frontend.jobs-for-teens'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens">@lang('header.search.navlink_1')</option>
+                    <option {{ (request()->get('section') == 'volunteering')? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens?section=voluneering">@lang('header.search.navlink_2')</option>
+                    <option {{ (request()->get('section') == 'internship')? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens?section=internship">@lang('header.search.navlink_3')</option>
+                    <option {{ request()->routeIs('frontend.events')? 'selected': ''}} class="dropdown-item" value="/events">@lang('header.search.navlink_4')</option>
+                </select>
 
-            <form id="desktop-search" class="header_search-form desktop-search" method="get" action="{{ route('frontend.searchs.index') }}">
+                <form id="desktop-search" class="header_search-form desktop-search" method="get">
 
-                <input type="text" minlength="3" class="textfield-search search-form_input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                    <input type="text" minlength="3" class="textfield-search search-form-wrapper_input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
 
-                <button class="button-secondary search-form_button" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+                    <button class="button-secondary search-form-wrapper_button" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+
 
             @if(Route::getCurrentRoute()->uri() == '/')
                 <div class='buttons-wrapper'>
-                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform"><span>@lang('header.navlink_5')</span></a>
+                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform"><span>@lang('header.navlink_4')</span></a>
                     <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform"><span>@lang('header.navlink_9')</span></a>
                 </div>
             @endif
         </section>
 
         @if(Route::getCurrentRoute()->uri() == '/')
-            <a class="button-primary button-mobile-first" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform " >
-                <span>@lang('header.navlink_5')</span>
-            </a>
             <a class="button-primary button-mobile-second" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" >
                 <span>@lang('header.navlink_9')</span>
+            </a>
+            <a class="button-primary button-mobile-first" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform " >
+                <span>@lang('header.navlink_4')</span>
             </a>
         @endif
     @endif

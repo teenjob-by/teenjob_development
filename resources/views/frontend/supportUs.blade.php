@@ -13,6 +13,49 @@
     <meta property="vk:image" content="{{url('/')}}/images/support.png">
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{url('/')}}/css/swiper.min.css">
+@endsection
+
+
+@section('scripts')
+    <script src="{{url('/')}}/js/swiper.min.js"></script>
+    <script src="{{url('/')}}/js/swiper.min.js"></script>
+
+    <script>
+
+        var swiperSlider = new Swiper ('.swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView : 3,
+
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 2,
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 3,
+                },
+
+                1024: {
+                    slidesPerView: 3,
+                }
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        })
+    </script>
+
+@endsection
 
 @section('content')
     <section class="info-page_section">
@@ -50,18 +93,32 @@
                         <p>@lang('content.help.column-3-text')</p>
                     </div>
                 </div>
-                <h2 class="partners_title">@lang('content.help.partner')</h2>
-                <div class="partners_wrapper">
-                    <a class="partners_card" href="https://hoster.by" target="_blank">
-                        <img src="images/section-team/partner-logo-1.png">
-                    </a>
-                    <a class="partners_card" href="https://www.facebook.com/TerytoryjaPravou/" target="_blank">
-                        <img src="images/section-team/partner-logo-2.png">
-                    </a>
-                    <a class="partners_card" href="http://eduexpo.by/" target="_blank">
-                        <img src="images/section-team/partner-logo-3.png">
-                    </a>
-                </div>
+
+                <section class="partners">
+                        <h3 class="partners_title">@lang('content.help.partner')</h3>
+
+                        <section class="partners_wrapper">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+
+                                    @for ($i = 1; $i <= 3; $i++)
+                                        <div class="swiper-slide">
+                                            <div class="slide-wrapper">
+                                                <a href="@lang("content.partners_".$i.".link")">
+                                                    <img class="slide-image" src="images/section-partners/partner-logo-{{ $i }}.png">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endfor
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </section>
+
+                </section>
             </div>
         </div>
     </section>

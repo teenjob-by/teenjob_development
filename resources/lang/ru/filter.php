@@ -36,6 +36,11 @@ return [
         'payment' => 'Платно',
         'free' => 'Бесплатно',
         'donate' => 'За донейт',
+    ],
+    'section' => [
+        'label' => 'Тип',
+        'volunteering'  => 'Волонтерство',
+        'internship'  => 'Стажировка',
     ]
 
 

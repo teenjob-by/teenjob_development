@@ -243,8 +243,8 @@
                 </h3>
 
                 <div class="volunteering_form-group">
-                    <label for="title" class="volunteering_form-group-label">@lang('content.volunteering.create.title')</label>
-                    <input id="title" required type="text" class="volunteering_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.create.titlePlaceholder')" minlength="3" value="{{ old('title') }}" autofocus>
+                    <label for="title" class="volunteering_form-group-label">@lang('content.volunteering.create.name')</label>
+                    <input id="title" required type="text" class="volunteering_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
 
                     @error('title')
                         <span class="message-invalid" role="alert">
@@ -256,7 +256,7 @@
                 <div class="volunteering_form-group">
                     <label for="city" class="volunteering_form-group-label">@lang('content.volunteering.create.city')</label>
                     <select id="city" class="custom-select volunteering_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.cityPlaceholder')</option>
+                        <option selected value>@lang('content.volunteering.create.city')</option>
                         @foreach($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
@@ -272,7 +272,7 @@
                 <div class="volunteering_form-group">
                     <label for="age" class="volunteering_form-group-label">@lang('content.volunteering.create.age')</label>
                     <select id="age" class="custom-select volunteering_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.agePlaceholder')</option>
+                        <option selected value>@lang('content.volunteering.create.age')</option>
                         @foreach($ages as $age)
                             <option value="{{ $age->id }}">{{ $age->name }}</option>
                         @endforeach
@@ -290,7 +290,7 @@
                 <div class="volunteering_form-group">
                     <label for="speciality" class="volunteering_form-group-label">@lang('content.volunteering.create.speciality')</label>
                     <select id="speciality" class="custom-select volunteering_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.specialityPlaceholder')</option>
+                        <option selected value>@lang('content.volunteering.create.speciality')</option>
                         @foreach($specialities as $speciality)
                             <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
                         @endforeach
@@ -306,7 +306,7 @@
 
                 <div class="volunteering_form-group description">
                     <label for="description" class="volunteering_form-group-label">@lang('content.volunteering.create.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="volunteering_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.create.descriptionPlaceholder')" value="{{ old('description') }}"></textarea>
+                    <textarea id="description" name="description" required minlength="20" type="text" class="volunteering_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.create.description')" value="{{ old('description') }}"></textarea>
 
                     @error('description')
                     <span class="message-invalid" role="alert">
@@ -316,13 +316,13 @@
                 </div>
 
                 <h3 class="volunteering_form-title">
-                    <strong>@lang('content.volunteering.create.create.contactsTitle')</strong>
+                    <strong>@lang('content.volunteering.create.contactsTitle')</strong>
                 </h3>
 
 
                 <div class="volunteering_form-group">
                     <label for="contactPerson" class="volunteering_form-group-label">@lang('content.volunteering.create.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.create.contactPersonPlaceholder')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
+                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.create.contactPerson')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
 
                     @error('contactPerson')
                     <span class="message-invalid" role="alert">
@@ -333,7 +333,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="phone" class="volunteering_form-group-label">@lang('content.volunteering.create.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.create.phonePlaceholder')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
+                    <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.create.phone')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
 
                     @error('phone')
                     <span class="message-invalid" role="alert">
@@ -344,7 +344,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="alt_phone" class="volunteering_form-group-label">@lang('content.volunteering.create.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.create.alt_phonePlaceholder')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
+                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.create.alt_phone')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
 
                     @error('alt_phone')
                     <span class="message-invalid" role="alert">
@@ -355,7 +355,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="email" class="volunteering_form-group-label">@lang('content.volunteering.create.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.create.emailPlaceholder')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
+                    <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.create.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
 
                     @error('email')
                     <span class="message-invalid" role="alert">

@@ -166,7 +166,7 @@ class Job extends Controller
         $filters = array();
         $filters['cities'] = array('data' => $cities, 'type' => 'select', 'name' => 'city');
         $filters['specialities'] = array('data' => $specialities, 'type' => 'select', 'name' => 'speciality');
-        $filters['salary'] = array('data' => array(), 'type' => 'interval', 'name' => 'salary');
+        //$filters['salary'] = array('data' => array(), 'type' => 'interval', 'name' => 'salary');
         $filters['workTime'] = array('data' => $workTime, 'type' => 'select', 'name' => 'workTime');
         $filters['age'] = array('data' => $ages, 'type' => 'select', 'name' => 'age');
         $filters['date'] = array('data' => $date, 'type' => 'radio', 'name' => 'publish_date');

@@ -101,7 +101,7 @@
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
 
-                                    @for ($i = 1; $i <= 6; $i++)
+                                    @for ($i = 1; $i <= 5; $i++)
                                         <div class="swiper-slide">
                                             <div class="slide-wrapper">
                                                 <div class="slide-header">

@@ -85,6 +85,15 @@ class Offer extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function type()
+    {
+        if($this->offer_type == 0)
+            return 'volunteering';
+        if($this->offer_type == 1)
+            return 'internship';
+        return 'job';
+    }
+
     public function salaryType()
     {
         return $this->belongsTo(SalaryType::class);

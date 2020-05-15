@@ -252,7 +252,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="title" class="volunteering_form-group-label">@lang('content.volunteering.update.title')</label>
-                    <input id="title" required type="text" class="volunteering_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.update.titlePlaceholder')" minlength="3" value="{{ $volunteering->title }}" autofocus>
+                    <input id="title" required type="text" class="volunteering_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.update.title')" minlength="3" value="{{ $volunteering->title }}" autofocus>
 
                     @error('title')
                     <span class="message-invalid" role="alert">
@@ -309,7 +309,7 @@
 
                 <div class="volunteering_form-group description">
                     <label for="description" class="volunteering_form-group-label">@lang('content.volunteering.update.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="volunteering_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.update.descriptionPlaceholder')" >{{ $volunteering->description }}</textarea>
+                    <textarea id="description" name="description" required minlength="20" type="text" class="volunteering_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.update.description')" >{{ $volunteering->description }}</textarea>
 
                     @error('description')
                     <span class="message-invalid" role="alert">
@@ -319,13 +319,13 @@
                 </div>
 
                 <h3 class="volunteering_form-title">
-                    <strong>@lang('content.volunteering.update.create.contactsTitle')</strong>
+                    <strong>@lang('content.volunteering.update.contactsTitle')</strong>
                 </h3>
 
 
                 <div class="volunteering_form-group">
                     <label for="contactPerson" class="volunteering_form-group-label">@lang('content.volunteering.update.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.update.contactPersonPlaceholder')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ $volunteering->contact }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
+                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.update.contactPerson')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ $volunteering->contact }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
 
                     @error('contactPerson')
                     <span class="message-invalid" role="alert">
@@ -336,7 +336,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="phone" class="volunteering_form-group-label">@lang('content.volunteering.update.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.update.phonePlaceholder')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ $volunteering->phone }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
+                    <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.update.phone')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ $volunteering->phone }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
 
                     @error('phone')
                     <span class="message-invalid" role="alert">
@@ -347,7 +347,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="alt_phone" class="volunteering_form-group-label">@lang('content.volunteering.update.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.update.alt_phonePlaceholder')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $volunteering->alt_phone }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
+                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.update.alt_phone')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $volunteering->alt_phone }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
 
                     @error('alt_phone')
                     <span class="message-invalid" role="alert">
@@ -358,7 +358,7 @@
 
                 <div class="volunteering_form-group">
                     <label for="email" class="volunteering_form-group-label">@lang('content.volunteering.update.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.update.emailPlaceholder')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ $volunteering->email }}" required autocomplete="email" autofocus minlength="3">
+                    <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.update.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ $volunteering->email }}" required autocomplete="email" autofocus minlength="3">
 
                     @error('email')
                     <span class="message-invalid" role="alert">

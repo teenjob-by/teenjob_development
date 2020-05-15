@@ -16,14 +16,14 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{url('/')}}/css/swiper.min.css">
-    <link href="css/justselect.min.css" rel="stylesheet" />
+
 
 @endsection
 
 
 @section('scripts')
     <script src="{{url('/')}}/js/swiper.min.js"></script>
-    <script src="{{url('/')}}/js/justselect.min.js"></script>
+
 
     <script>
 
@@ -56,11 +56,87 @@
                 prevEl: '.swiper-button-prev',
             },
         })
+
+        var a = 0;
+        $(window).scroll(function() {
+
+            var oTop = $('#counter').offset().top - window.innerHeight;
+            if (a == 0 && $(window).scrollTop() > oTop) {
+                $('.counter-value').each(function() {
+                    var $this = $(this),
+                        countTo = $this.attr('data-count');
+                    $({
+                        countNum: $this.text()
+                    }).animate({
+                            countNum: countTo
+                        },
+
+                        {
+
+                            duration: 2000,
+                            easing: 'swing',
+                            step: function() {
+                                $this.text(Math.floor(this.countNum));
+                            },
+                            complete: function() {
+                                $this.text(this.countNum);
+                                //alert('finished');
+                            }
+
+                        });
+                });
+                a = 1;
+            }
+
+        });
     </script>
 
 @endsection
 
 @section('content')
+
+    <section class="home_section-achievements">
+        <div class="content-wrapper">
+            <h3 class="home_title-about">@lang('content.counter.title')</h3>
+
+            <section id="counter" class="card-wrapper counter-value-wrapper">
+
+                @for($i = 1; $i <= 3; $i++)
+
+                    <div class="home_card-counter-value">
+                        <div class="card-header">
+                            @if($i == 1)
+                                <span>></span>
+                            @endif
+                            <div class="counter-value" data-count="@lang('content.counter.card_'. $i .'.value')">0</div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-body-text">@lang('content.counter.card_'. $i .'.text')</p>
+                        </div>
+                    </div>
+                @endfor
+            </section>
+        </div>
+    </section>
+
+    <section class="home_section-for-teens">
+        <div class="content-wrapper">
+            <h3 class="home_title-about">@lang('content.teens.title')</h3>
+
+            <section class="card-wrapper">
+                @for($i = 1; $i <= 3; $i++)
+                    <div class="home_card-for-teens">
+                        <div class="card-body">
+                            <img class="card-header-image" src="images/section-about/teens-{{ $i }}.png">
+                            <h4 class="card-body-title">@lang('content.teens.card_'. $i .'.title')</h4>
+                            <p class="card-body-text">@lang('content.teens.card_'. $i .'.text')</p>
+                        </div>
+                    </div>
+                @endfor
+            </section>
+
+        </div>
+    </section>
 
     <section class="home_section-about">
         <div class="content-wrapper">
@@ -106,32 +182,12 @@
                 @endfor
             </section>
 
-            {{--
 
-            <p class="button-subtitle">@lang('content.organisations.buttonSubtitle')</p>
             <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                 <span>
-                    @lang('content.organisations.button')
+                    @lang('content.rulesForEmployers.text.button')
                 </span>
             </a>
-
-            --}}
-
-            <div class="home_organisations-block">
-                <h4 class="home_organisations-title">@lang('content.rulesForEmployers.text.assistantNeeded')</h4>
-                <div class="home_organisations-description">
-                    <a href="https://iqido.biz/">
-                        <img src="/images/partners/organisation-1.png">
-                    </a>
-                </div>
-                <h4 class="home_organisations-subtitle">@lang('content.organisations.needHelp')</h4>
-                <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
-                            <span>
-                                @lang('content.rulesForEmployers.text.button')
-                            </span>
-                </a>
-                <a class="rules-link-mobile" href="/rules-for-employers">@lang('content.organisations.link')</a>
-            </div>
 
 
         </div>
@@ -145,7 +201,7 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 
-                        @for ($i = 1; $i <= 6; $i++)
+                        @for ($i = 1; $i <= 5; $i++)
                             <div class="swiper-slide">
                                 <div class="slide-wrapper">
                                     <div class="slide-header">

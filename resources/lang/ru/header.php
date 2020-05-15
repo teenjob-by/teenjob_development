@@ -19,20 +19,17 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'navlink_1' => 'Подработка',
+    'navlink_1' => 'Работа',
     'link_1' => '/jobs-for-teens',
-    'navlink_2' => 'Стажировки',
-    'link_2' => '/internships-for-teens',
-    'navlink_3' => 'Волонтерство',
-    'link_3' => '/volunteerings-for-teens',
-    'navlink_4' => 'Мероприятия',
-    'link_4' => '/events',
-    'navlink_5' => 'Поддержать проект',
-    'link_5' => '/support-us',
-    'navlink_6' => 'Создать резюме',
-    'navlink_7' => 'Подработка',
+    'navlink_2' => 'Волонтерство',
+    'link_2' => '/volunteerings-for-teens',
+    'navlink_3' => 'Мероприятия',
+    'link_3' => '/events',
+    'navlink_4' => '<strong>Создать резюме</strong>',
+    'link_4' => 'https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform" target=_blank',
+    'navlink_7' => 'Работа',
     'navlink_8' => 'Активности',
-    'navlink_9' => 'Контакты',
+    'navlink_9' => 'Компаниям',
     'navlink_10' => 'Компаниям',
     'navlink_11' => 'Добавить объявление',
     'title' => 'Подросткам от 14',
@@ -44,10 +41,17 @@ return [
     'placeholder_1' => 'Поиск стажировок',
     'placeholder_2' => 'Поиск волонтерства',
     'placeholder_3' => 'Поиск мероприятий',
-    'placeholder_4' => 'Поиск подработок',
+    'placeholder_4' => 'Поиск работы',
     'quit' => 'Выйти',
     'enter' => 'вход для организаций',
     'cabinet' => 'Личный кабинет',
-    'panel' => 'Панель управления'
+    'panel' => 'Панель управления',
+
+    'search' => [
+        'navlink_1' => 'Работа',
+        'navlink_2' => 'Стажировка',
+        'navlink_3' => 'Волонтерство',
+        'navlink_4' => 'Мероприятие',
+    ],
 
 ];

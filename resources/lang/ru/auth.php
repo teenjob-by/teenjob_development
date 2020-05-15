@@ -37,7 +37,7 @@ return [
         'link' => 'Сайт/группа в соц. сети',
         'linkPlaceholder' => 'www.hello1everyone.com',
         'type' => 'Тип*',
-        'city' => 'Город',
+        'city' => 'Город (гл.офиc)*',
         'unique_identifier' => 'УНП*',
         'unique_identifierPlaceholder' => 'Для проверки статуса организации',
         'contactPerson' => 'Контактное лицо',

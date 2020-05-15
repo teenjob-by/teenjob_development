@@ -1,5 +1,8 @@
 .support-us {
 
+    .partner_section {
+        @extend .section;
+    }
     .info-page-title {
         text-align: center;
         margin-bottom: 45px;
@@ -80,16 +83,55 @@
         &_wrapper {
             display: flex;
             flex-direction: column;
+            position: relative;
+            margin-bottom: 30px;
 
             @include for-desktop-up() {
                 flex-direction: row;
+            }
+
+            .swiper-button-prev {
+                left: -5px;
+            }
+
+            .swiper-button-next {
+                right: -5px;
+            }
+
+            @include for-desktop-up() {
+                .swiper-button-prev {
+                    left: 0px;
+                }
+
+                .swiper-button-next {
+                    right: 0px;
+                }
             }
         }
 
         &_title {
             margin-bottom: 62px;
-            @include text-usual(42px, #2C2C2C, center);
-            font-weight: bold;
+            @include text-usual(28px, #2C2C2C, center);
+            font-weight: 600;
+
+
+            @include for-desktop-up() {
+                @include text-usual(42px, #121212, center);
+                font-weight: 600;
+            }
+        }
+
+        .swiper-container {
+            height: 130px;
+            margin-bottom: 0;
+
+            .slide-wrapper {
+                height: auto;
+
+                img {
+                    width: 100%;
+                }
+            }
         }
 
         &_card {

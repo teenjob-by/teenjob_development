@@ -8,6 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="language" content="{{ app()->getLocale() }}"/>
         <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link href="/css/justselect.min.css" rel="stylesheet" />
+        @yield('styles')
+
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/fonts/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
 
         @yield('seo_meta')
         @yield('og_meta')
@@ -26,16 +34,15 @@
 
         <!--styles and scripts section -->
 
-        @yield('styles')
 
-        <link rel="stylesheet" href="/css/app.css">
-        <link rel="stylesheet" href="/fonts/all.min.css">
+
         <script
           src="https://code.jquery.com/jquery-3.5.0.min.js"
               integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
               crossorigin="anonymous"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148157210-1"></script>
+
         <script src="/js/swiped-events.min.js"></script>
+        <script src="{{url('/')}}/js/justselect.min.js"></script>
         <script>
             function showPassword(element) {
 
@@ -50,7 +57,7 @@
 
         </script>
         <script src="https://unpkg.com/imask"></script>
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/i18n/ru.js"></script>
         <script>
@@ -73,6 +80,11 @@
 
             });
 
+            $('#desktop-search').on('submit',function(event){
+                console.log( $('#search-select option:selected').val());
+                $('#desktop-search').attr('action',  $('#search-select option:selected').val());
+            });
+
             $(window).scroll(function() {
                 if($(".burger").hasClass('open')) {
                     $(".burger").removeClass('open');
@@ -83,6 +95,8 @@
             $('.header_menu').scroll(function(event){
                 event.stopPropagation();
             });
+
+
 
 
             $(".burger").click(function(event) {
@@ -101,6 +115,9 @@
 
 
         </script>
+
+        @yield('scripts')
+
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -108,9 +125,10 @@
 
             gtag('config', 'UA-148157210-1');
         </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148157210-1"></script>
         <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(55651210, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script>
 
-        @yield('scripts')
+
 
     </body>
 </html>

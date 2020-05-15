@@ -243,8 +243,8 @@
                 </h3>
 
                 <div class="internship_form-group">
-                    <label for="title" class="internship_form-group-label">@lang('content.internship.create.title')</label>
-                    <input id="title" required type="text" class="internship_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.create.titlePlaceholder')" minlength="3" value="{{ old('title') }}" autofocus>
+                    <label for="title" class="internship_form-group-label">@lang('content.internship.create.name')</label>
+                    <input id="title" required type="text" class="internship_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
 
                     @error('title')
                         <span class="message-invalid" role="alert">
@@ -256,7 +256,7 @@
                 <div class="internship_form-group">
                     <label for="city" class="internship_form-group-label">@lang('content.internship.create.city')</label>
                     <select id="city" class="custom-select internship_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.internship.create.cityPlaceholder')</option>
+                        <option selected value>@lang('content.internship.create.city')</option>
                         @foreach($cities as $city)
                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
@@ -272,7 +272,7 @@
                 <div class="internship_form-group">
                     <label for="age" class="internship_form-group-label">@lang('content.internship.create.age')</label>
                     <select id="age" class="custom-select internship_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                        <option selected value>@lang('content.internship.create.agePlaceholder')</option>
+                        <option selected value>@lang('content.internship.create.age')</option>
                         @foreach($ages as $age)
                             <option value="{{ $age->id }}">{{ $age->name }}</option>
                         @endforeach
@@ -290,7 +290,7 @@
                 <div class="internship_form-group">
                     <label for="speciality" class="internship_form-group-label">@lang('content.internship.create.speciality')</label>
                     <select id="speciality" class="custom-select internship_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
-                        <option selected value>@lang('content.internship.create.specialityPlaceholder')</option>
+                        <option selected value>@lang('content.internship.create.speciality')</option>
                         @foreach($specialities as $speciality)
                             <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
                         @endforeach
@@ -306,7 +306,7 @@
 
                 <div class="internship_form-group description">
                     <label for="description" class="internship_form-group-label">@lang('content.internship.create.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="internship_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.internship.create.descriptionPlaceholder')" value="{{ old('description') }}"></textarea>
+                    <textarea id="description" name="description" required minlength="20" type="text" class="internship_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.internship.create.description')" value="{{ old('description') }}"></textarea>
 
                     @error('description')
                     <span class="message-invalid" role="alert">
@@ -316,13 +316,13 @@
                 </div>
 
                 <h3 class="internship_form-title">
-                    <strong>@lang('content.internship.create.create.contactsTitle')</strong>
+                    <strong>@lang('content.internship.create.contactsTitle')</strong>
                 </h3>
 
 
                 <div class="internship_form-group">
                     <label for="contactPerson" class="internship_form-group-label">@lang('content.internship.create.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.internship.create.contactPersonPlaceholder')" class="internship_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
+                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.internship.create.contactPerson')" class="internship_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
 
                     @error('contactPerson')
                     <span class="message-invalid" role="alert">
@@ -333,7 +333,7 @@
 
                 <div class="internship_form-group">
                     <label for="phone" class="internship_form-group-label">@lang('content.internship.create.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.internship.create.phonePlaceholder')" class="internship_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
+                    <input id="phone" type="text" name="phone" placeholder="@lang('content.internship.create.phone')" class="internship_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
 
                     @error('phone')
                     <span class="message-invalid" role="alert">
@@ -344,7 +344,7 @@
 
                 <div class="internship_form-group">
                     <label for="alt_phone" class="internship_form-group-label">@lang('content.internship.create.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.internship.create.alt_phonePlaceholder')" class="internship_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
+                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.internship.create.alt_phone')" class="internship_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
 
                     @error('alt_phone')
                     <span class="message-invalid" role="alert">
@@ -355,7 +355,7 @@
 
                 <div class="internship_form-group">
                     <label for="email" class="internship_form-group-label">@lang('content.internship.create.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.internship.create.emailPlaceholder')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
+                    <input id="email" type="email" name="email" placeholder="@lang('content.internship.create.email')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
 
                     @error('email')
                     <span class="message-invalid" role="alert">

@@ -29,9 +29,31 @@ class Volunteering extends Controller
          *
          */
 
+
+
         $data = Offer::where('status', 1)
 
-            ->where('offer_type', 0)
+            ->when($request->has('section'), function ($query) use ($request) {
+
+                $sections = explode(',', trim($request->input('section'), '[]'));
+
+                $sections_filter = [];
+                foreach ($sections as $section) {
+
+                    if($section == 'volunteering') {
+                        $sections_filter[] = 0;
+                    }
+
+                    if($section == 'internship') {
+                        $sections_filter[] = 1;
+                    }
+                }
+
+                //dd($sections_filter);
+
+                $sections_filter = array(1);
+                return $query->whereIn('offer_type', $sections_filter);
+            })
 
             ->when($request->has('city'), function ($query) use ($request) {
                 return $query->where('city_id', $request->input('city'));
@@ -141,12 +163,26 @@ class Volunteering extends Controller
             ]
         ];
 
+        $section = [
+            [
+                'value' => 'volunteering',
+                'name'=>'volunteering'
+            ],
+            [
+                'value' => 'internship',
+                'name'=>'internship'
+            ],
+
+        ];
+
         $specialities = OfferSpecialization::all();
         $cities = City::all();
 
         $workTime = WorkTimeType::all();
 
         $filters = array();
+
+        $filters['section'] = array('data' => $section, 'type' => 'checkbox', 'name' => 'section');
         $filters['cities'] = array('data' => $cities, 'type' => 'select', 'name' => 'city');
         $filters['specialities'] = array('data' => $specialities, 'type' => 'select', 'name' => 'speciality');
         $filters['age'] = array('data' => $ages, 'type' => 'select', 'name' => 'age');

@@ -25,7 +25,7 @@ class Search extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    /*public function index(Request $request)
     {
         $dataOffers = Offer::where('status', 1)
             ->join('cities', 'offers.city_id', '=', 'cities.id')
@@ -210,5 +210,7 @@ class Search extends Controller
 
         return view ( 'frontend.search' )->with('data', $data)->with('dataEvents', $dataEvents)->with('filters', $filters)->with('item_type', $this->item_type)->with('not_empty', $notEmpty);
 
-    }
+    }*/
+
+
 }

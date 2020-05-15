@@ -28,6 +28,8 @@ Route::get('jobs', function(){
 Route::get('offers', function(){
     return redirect('volunteerings-for-teens', 301);
 });
+
+
 /*
  * Authorization routes
  */
@@ -100,11 +102,10 @@ Route::name('frontend.')->group(function () {
     /*
      * Volunteering routes
      */
-
+    Route::get('volunteerings-for-teens', 'Offer@index')->name('volunteerings.index');
     Route::resource('volunteerings-for-teens', 'Volunteering', [
-        'only' => ['index', 'show'],
+        'only' => ['show'],
         'names' => [
-            'index' => 'volunteerings.index',
             'show' => 'volunteerings.show'
         ],
         'parameters' => [

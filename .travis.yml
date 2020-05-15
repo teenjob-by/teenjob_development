@@ -1,5 +1,4 @@
 sudo: required
-language: php
 dist: trusty
 
 addons:
@@ -10,20 +9,15 @@ addons:
 # Keep the cache between builds to speed up installs
 cache:
   directories:
-    - $HOME/.composer/cache
     - $HOME/.npm
     - node_modules
-php:
-  - 7.4
 
-before_install: 
-  - travis_retry composer self-update && composer --version
+before_install:
   - nvm install 'lts/*'
   - npm i -g npm
 
 install:
   - cp .env.example .env
-  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
   - npm install --no-audit --no-progress --quiet
   - npm run dev
   

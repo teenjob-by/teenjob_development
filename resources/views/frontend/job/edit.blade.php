@@ -251,8 +251,8 @@
                 </h3>
 
                 <div class="job_form-group">
-                    <label for="title" class="job_form-group-label">@lang('content.job.update.title')</label>
-                    <input id="title" required type="text" class="job_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.update.titlePlaceholder')" minlength="3" value="{{ $job->title }}" autofocus>
+                    <label for="title" class="job_form-group-label">@lang('content.job.update.name')</label>
+                    <input id="title" required type="text" class="job_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.update.name')" minlength="3" value="{{ $job->title }}" autofocus>
 
                     @error('title')
                     <span class="message-invalid" role="alert">
@@ -295,7 +295,7 @@
                     <label for="salary" class="job_form-group-label">@lang('content.job.update.salary')</label>
 
                     <div class="inline-group">
-                        <input id="salary" required type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.update.salaryPlaceholder')" minlength="3" value="{{ $job->salary }}" autofocus>
+                        <input id="salary" required type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.update.salary')" minlength="3" value="{{ $job->salary }}" autofocus>
 
                         @error('salary')
                         <span class="message-invalid" role="alert">
@@ -351,7 +351,7 @@
 
                 <div class="job_form-group description">
                     <label for="description" class="job_form-group-label">@lang('content.job.update.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="job_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.update.descriptionPlaceholder')" >{{ $job->description }}</textarea>
+                    <textarea id="description" name="description" required minlength="20" type="text" class="job_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.update.description')" >{{ $job->description }}</textarea>
 
                     @error('description')
                     <span class="message-invalid" role="alert">
@@ -361,13 +361,13 @@
                 </div>
 
                 <h3 class="job_form-title">
-                    <strong>@lang('content.job.update.create.contactsTitle')</strong>
+                    <strong>@lang('content.job.update.contactsTitle')</strong>
                 </h3>
 
 
                 <div class="job_form-group">
                     <label for="contactPerson" class="job_form-group-label">@lang('content.job.update.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.job.update.contactPersonPlaceholder')" class="job_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ $job->contact }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
+                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.job.update.contactPerson')" class="job_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ $job->contact }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
 
                     @error('contactPerson')
                     <span class="message-invalid" role="alert">
@@ -378,7 +378,7 @@
 
                 <div class="job_form-group">
                     <label for="phone" class="job_form-group-label">@lang('content.job.update.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.job.update.phonePlaceholder')" class="job_form-group-input @error('phone') is-invalid @enderror" value="{{ $job->phone }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
+                    <input id="phone" type="text" name="phone" placeholder="@lang('content.job.update.phone')" class="job_form-group-input @error('phone') is-invalid @enderror" value="{{ $job->phone }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
 
                     @error('phone')
                     <span class="message-invalid" role="alert">
@@ -389,7 +389,7 @@
 
                 <div class="job_form-group">
                     <label for="alt_phone" class="job_form-group-label">@lang('content.job.update.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.job.update.alt_phonePlaceholder')" class="job_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $job->alt_phone }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
+                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.job.update.alt_phone')" class="job_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $job->alt_phone }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
 
                     @error('alt_phone')
                     <span class="message-invalid" role="alert">
@@ -400,7 +400,7 @@
 
                 <div class="job_form-group">
                     <label for="email" class="job_form-group-label">@lang('content.job.update.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.job.update.emailPlaceholder')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ $job->email }}" required autocomplete="email" autofocus minlength="3">
+                    <input id="email" type="email" name="email" placeholder="@lang('content.job.update.email')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ $job->email }}" required autocomplete="email" autofocus minlength="3">
 
                     @error('email')
                     <span class="message-invalid" role="alert">

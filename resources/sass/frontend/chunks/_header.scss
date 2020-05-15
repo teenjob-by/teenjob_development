@@ -1,11 +1,18 @@
 $header-height: 70px;
 
-.header_bg-desktop {
-  background-image: url(/images/header-3.png);
+.header.header_bg-desktop {
+
+    background-image: url(/images/header-3.png);
+    height: calc(var(--vh, 1vh) * 100);
+
 }
 .header.header-compact {
-  height: auto;
-  min-height: 70px;
+
+  @include for-desktop-up() {
+    height: 280px;
+    background-image: url(/images/header-3.png);
+    padding-top: 70px;
+  }
 }
 
 
@@ -38,19 +45,18 @@ $header-height: 70px;
 
 .header {
 
-  @extend .content;
-
+  height: 70px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: calc(var(--vh, 1vh) * 100);
+
   position: relative;
   display: flex;
 
   &_menu-wrapper {
     height: $header-height;
-    background: rgba(18, 18, 18, 0.8);
+    background: rgba(18, 18, 18, 0.6);
     position: fixed;
     top: 0;
     right: 0;
@@ -91,7 +97,7 @@ $header-height: 70px;
     align-items: center;
 
 
-    background: rgba(18, 18, 18, 0.8);
+    background: rgba(18, 18, 18, 0.6);
 
     @include for-desktop-up() {
       position: unset;
@@ -209,7 +215,37 @@ $header-height: 70px;
 .header_search-wrapper {
   @extend .content-wrapper;
   flex-grow: 1;
+  .search-form-wrapper {
+    display: none;
+    width: 100%;
+    max-width: 645px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
+    @include for-desktop-up() {
+      display: flex;
+    }
+
+    &_button {
+      width: 56px;
+      height: 56px;
+      font-size: 30px;
+    }
+
+    &_input {
+      @extend .textfield-search;
+    }
+
+    &_select {
+      @extend .select;
+      width: 170px;
+    }
+
+  }
   .buttons-wrapper {
 
     display: none;
@@ -259,34 +295,8 @@ $header-height: 70px;
 }
 
 .search-form {
-  display: none;
-  width: 100%;
-  max-width: 645px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 60px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  @include for-desktop-up() {
-    display: flex;
-  }
-
-  &_button {
-    width: 56px;
-    height: 56px;
-    font-size: 30px;
-  }
-
-  &_input {
-    @extend .textfield-search;
-  }
-
-  &_select {
-    @extend .select;
-    width: 170px;
-  }
+  display: flex;
+  flex-grow: 1;
 }
 
 

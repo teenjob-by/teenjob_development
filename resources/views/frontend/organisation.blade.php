@@ -270,7 +270,7 @@
                             <div class="organisation_tab-lists">
                                 @foreach($section_data as $item_group => $items)
                                     <div class="organisation_list" id="{{ $section_name.'_'.$item_group }}">
-                                        <h3 class="organisation_list-title">@lang('content.organisation.'. $item_group . '.create')</h3>
+                                        <h3 class="organisation_list-title">@lang('content.organisation.'.$section_name.'.'. $item_group)</h3>
 
                                         @if($section_name !== "event")
                                             <div class="organisation_list-wrapper" >

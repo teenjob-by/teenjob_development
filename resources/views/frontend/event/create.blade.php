@@ -364,8 +364,8 @@
                 </h3>
 
                 <div class="event_form-group">
-                    <label for="title" class="event_form-group-label">@lang('content.event.create.title')</label>
-                    <input id="title" required type="text" class="event_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.titlePlaceholder')" minlength="3" value="{{ old('title') }}" autofocus>
+                    <label for="title" class="event_form-group-label">@lang('content.event.create.name')</label>
+                    <input id="title" required type="text" class="event_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
 
                     @error('title')
                     <span class="message-invalid" role="alert">
@@ -377,7 +377,7 @@
                 <div class="event_form-group">
                     <label for="city" class="event_form-group-label">@lang('content.event.create.city')</label>
                     <select id="city" class="custom-select event_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.event.create.cityPlaceholder')</option>
+                        <option selected value>@lang('content.event.create.city')</option>
                         @foreach($cities as $city)
                             <option value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
@@ -393,7 +393,7 @@
                 <div class="event_form-group">
                     <label for="age" class="event_form-group-label">@lang('content.event.create.age')</label>
                     <select id="age" class="custom-select event_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                        <option selected value>@lang('content.event.create.agePlaceholder')</option>
+                        <option selected value>@lang('content.event.create.age')</option>
                         @foreach($ages as $age)
                             <option value="{{ $age->id }}">{{ $age->name }}</option>
                         @endforeach
@@ -426,7 +426,7 @@
 
                 <div class="event_form-group">
                     <label for="address" class="event_form-group-label">@lang('content.event.create.address')</label>
-                    <input id="address" required type="text" class="event_form-group-input @error('address') is-invalid @enderror" name="address" placeholder="@lang('content.event.create.addressPlaceholder')" minlength="3" value="{{ old('address') }}" autofocus>
+                    <input id="address" required type="text" class="event_form-group-input @error('address') is-invalid @enderror" name="address" placeholder="@lang('content.event.create.address')" minlength="3" value="{{ old('address') }}" autofocus>
 
                     @error('address')
                     <span class="message-invalid" role="alert">
@@ -439,7 +439,7 @@
                 <div class="event_form-group">
                     <label for="type" class="event_form-group-label">@lang('content.event.create.type')</label>
                     <select id="type" class="custom-select event_form-group-select @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autofocus>
-                        <option selected value>@lang('content.event.create.typePlaceholder')</option>
+                        <option selected value>@lang('content.event.create.type')</option>
                         @foreach($types as $type)
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
@@ -455,7 +455,7 @@
 
                 <div class="event_form-group description">
                     <label for="description" class="event_form-group-label">@lang('content.event.create.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="event_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.event.create.descriptionPlaceholder')" value="{{ old('description') }}"></textarea>
+                    <textarea id="description" name="description" required minlength="20" type="text" class="event_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.event.create.description')" value="{{ old('description') }}"></textarea>
 
                     @error('description')
                     <span class="message-invalid" role="alert">
@@ -470,18 +470,18 @@
                     <p for="event-image">@lang('content.event.create.loadPreview')</p>
 
                     <div class="file-upload">
-                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Добавить изображение</button>
+                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">@lang('content.event.create.addImage')</button>
 
                         <div class="image-upload-wrap">
                             <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
                             <div class="drag-text">
-                                <h3>Drag and drop a file or select add Image</h3>
+                                <h3>@lang('content.event.create.loadImage')</h3>
                             </div>
                         </div>
                         <div class="file-upload-content">
                             <img class="file-upload-image" src="#" alt="your image" />
                             <div class="image-title-wrap">
-                                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                <button type="button" onclick="removeUpload()" class="remove-image">@lang('content.event.create.removeImage') <span class="image-title">@lang('content.event.create.uploadImage')</span></button>
                             </div>
                         </div>
                     </div>

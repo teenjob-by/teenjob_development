@@ -3,6 +3,15 @@
 return [
 
     'team_1' => [
+        'name' => 'Валерия',
+        'surname' => 'Омелюсик',
+        'role' => 'Идея и координация',
+        'social' => [
+            'link_1' => 'https://www.facebook.com/valeriya.omeliusik',
+        ]
+    ],
+
+    'team_2' => [
         'name' => 'Алексей',
         'surname' => 'Кирпиченков',
         'role' => 'Разработчик',
@@ -12,25 +21,7 @@ return [
         ]
     ],
 
-    'team_2' => [
-        'name' => 'Валерия',
-        'surname' => 'Омелюсик',
-        'role' => 'Идея и координация',
-        'social' => [
-            'link_1' => 'https://www.facebook.com/valeriya.omeliusik',
-        ]
-    ],
-
     'team_3' => [
-        'name' => 'Елизавета',
-        'surname' => 'Индушко',
-        'role' => 'Представитель Гродно',
-        'social' => [
-            'link_1' => 'https://www.facebook.com/profile.php?id=100034265058592',
-        ]
-    ],
-
-    'team_4' => [
         'name' => 'Анастасия',
         'surname' => 'Морозова',
         'role' => 'UI/UX дизайнер',
@@ -39,7 +30,7 @@ return [
         ]
     ],
 
-    'team_5' => [
+    'team_4' => [
         'name' => "Дарья",
         'surname' => 'Чернухина',
         'role' => 'Коммуникации и PR',
@@ -48,7 +39,7 @@ return [
         ]
     ],
 
-    'team_6' => [
+    'team_5' => [
         'name' => 'Ярослава',
         'surname' => 'Голубова',
         'role' => 'Дизайн-концепт',
