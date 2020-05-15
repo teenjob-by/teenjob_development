@@ -33,7 +33,7 @@
                     content: "@lang('content.job.modal.destroy.content')",
                     buttons: {
                         confirm: "@lang('content.job.modal.destroy.confirm')",
-                        refuse: "@lang('content.ojob.modal.destroy.refuse')"
+                        refuse: "@lang('content.job.modal.destroy.refuse')"
                     },
                     action: function (form) {
                         callAjax(form)
@@ -86,8 +86,9 @@
                 console.log(e)
             }
 
-
-             $('.organisation_tab-link[data-tab=' + window.location.hash.substr(1) + ']').click();
+            var anchor =  window.location.hash.substr(1);
+            if( anchor)
+             $('.organisation_tab-link[data-tab=' + anchor + ']').click();
 
 
 
@@ -300,7 +301,7 @@
                                                         <div class="organisation_list-item-action-wrapper">
 
                                                             @if($item_group == 'archived')
-                                                                <form method="patch" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
+                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
@@ -311,7 +312,7 @@
                                                                 </form>
 
                                                             @else
-                                                                <form method="patch" action="{{ route('organisation.' .$section_name. 's.archive', $item->id) }}" id="form_archive_{{ $item->id }}" class="form_archive">
+                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.archive', $item->id) }}" id="form_archive_{{ $item->id }}" class="form_archive">
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
@@ -369,7 +370,7 @@
                                                         <div class="card-action-wrapper">
 
                                                             @if($item_group == 'archived')
-                                                                <form method="patch" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
+                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
@@ -380,7 +381,7 @@
                                                                 </form>
 
                                                             @else
-                                                                <form method="patch" action="{{ route('organisation.' .$section_name. 's.archive', $item->id) }}" id="form_archive_{{ $item->id }}" class="form_archive">
+                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.archive', $item->id) }}" id="form_archive_{{ $item->id }}" class="form_archive">
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">

@@ -210,7 +210,7 @@
                 <div class="organisation_form-group">
                     <label for="city" class="organisation_form-group-label">@lang('auth.register.city')</label>
                     <select id="city" class="custom-select organisation_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.organisationForm.cityPlaceholder')</option>
+                        <option selected value>@lang('auth.register.city')</option>
                         @foreach($cities as $city)
                             @isset($organisation->city)
                                 <option {{ ($city->id == $organisation->city->id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -305,8 +305,8 @@
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="password_old" class="organisation_form-group-label">@lang('auth.register.passwordOld')</label>
-                    <input id="password_old" type="password" name="password_old" placeholder="@lang('auth.register.password_confirmationPlaceholder')" class="organisation_form-group-input @error('password_old') is-invalid @enderror" required autofocus minlength="8">
+                    <label for="password_old" class="organisation_form-group-label">@lang('content.organisationForm.passwordOld')</label>
+                    <input id="password_old" type="password" name="password_old" placeholder="@lang('content.organisationForm.passwordOld')" class="organisation_form-group-input @error('password_old') is-invalid @enderror" required autofocus minlength="8">
                     <i class="show-password" onclick="showPassword('password_old')"></i>
                     @error('password_old')
                         <span class="message-invalid" role="alert">
