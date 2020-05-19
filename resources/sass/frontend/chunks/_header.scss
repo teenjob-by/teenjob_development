@@ -2,7 +2,7 @@ $header-height: 70px;
 
 .header.header_bg-desktop {
 
-    background-image: url(/images/header-3.png);
+    background-image: url(/images/header-bg.png);
     height: calc(var(--vh, 1vh) * 100);
 
 }
@@ -10,7 +10,7 @@ $header-height: 70px;
 
   @include for-desktop-up() {
     height: 280px;
-    background-image: url(/images/header-3.png);
+    background-image: url(/images/header-bg.png);
     padding-top: 70px;
   }
 }
@@ -56,7 +56,11 @@ $header-height: 70px;
 
   &_menu-wrapper {
     height: $header-height;
-    background: rgba(18, 18, 18, 0.6);
+    background: rgba(18, 18, 18, 0.9);
+
+    @include for-desktop-up() {
+      background: rgba(18, 18, 18, 0.6);
+    }
     position: fixed;
     top: 0;
     right: 0;
@@ -95,9 +99,12 @@ $header-height: 70px;
     right: 0;
     flex-direction: column;
     align-items: center;
+    background: rgba(18, 18, 18, 0.9);
 
+    @include for-desktop-up() {
+      background: rgba(18, 18, 18, 0.6);
+    }
 
-    background: rgba(18, 18, 18, 0.6);
 
     @include for-desktop-up() {
       position: unset;
@@ -208,7 +215,12 @@ $header-height: 70px;
 }
 
 .header_slogan {
-  @include title($font-size-menu-slogan-sm, $font-size-menu-slogan-md, $font-size-menu-slogan-lg, $font-size-margin-slogan-sm, $font-size-margin-slogan-md, $font-size-margin-slogan-lg);
+  @include title($font-size-menu-slogan-sm, $font-size-menu-slogan-md, $font-size-menu-slogan-lg, 16px, 16px, 16px);
+  color: $white;
+}
+
+.header_subtitle {
+  @include title($font-size-menu-slogan-sm, $font-size-menu-slogan-md, 40px, $font-size-margin-slogan-sm, $font-size-margin-slogan-md, 90px);
   color: $white;
 }
 
@@ -218,7 +230,7 @@ $header-height: 70px;
   .search-form-wrapper {
     display: none;
     width: 100%;
-    max-width: 645px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
     height: 60px;
@@ -253,17 +265,42 @@ $header-height: 70px;
     align-items: center;
     margin: 0 auto;
     flex-wrap: wrap;
+    width: 720px;
+    justify-content: space-between;
+    margin-top: 105px;
 
     @include for-desktop-up() {
       display: flex;
     }
 
     .button {
-      width: 210px;
-      height: 48px;
-      margin-top: 33px;
-      margin-left: 10px;
-      margin-right: 10px;
+      width: 280px;
+      height: 159px;
+      margin-left: 0;
+      margin-right: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      padding-left: 0;
+      padding-right: 0;
+
+      span {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+        padding-bottom: 10px;
+        max-width: 240px;
+      }
+
+      .button-title {
+        font-size: 16px;
+      }
+
+      box-shadow: 0px 1px 16px rgba(1, 2, 22, 0.18);
     }
   }
 }

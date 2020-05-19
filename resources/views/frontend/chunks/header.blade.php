@@ -88,6 +88,9 @@
                 <h2 class="header_slogan">
                     @lang('header.title')
                 </h2>
+                <h2 class="header_subtitle">
+                    @lang('header.subtitle')
+                </h2>
             @endif
             <div class="search-form-wrapper">
                 <select id="search-select" class="justselect search-form-wrapper_select" name="category">
@@ -111,8 +114,8 @@
 
             @if(Route::getCurrentRoute()->uri() == '/')
                 <div class='buttons-wrapper'>
-                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform"><span>@lang('header.navlink_4')</span></a>
-                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform"><span>@lang('header.navlink_9')</span></a>
+                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform"><span class="button-title">@lang('header.button_1.title')</span><span>@lang('header.button_1.text')</span></a>
+                    <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform"><span class="button-title">@lang('header.button_2.title')</span><span>@lang('header.button_2.text')</span></a>
                 </div>
             @endif
         </section>

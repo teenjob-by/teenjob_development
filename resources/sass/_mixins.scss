@@ -16,7 +16,7 @@
 @mixin title ($font-size-sm, $font-size-md, $font-size-lg, $margin-bottom-sm, $margin-bottom-md, $margin-bottom-lg) {
   text-align: center;
   font-size: $font-size-sm;
-  font-family: $font-family-primary;
+  font-family: $font-family-heading;
   font-style: normal;
   font-weight: 600;
   color: $font-title-color;

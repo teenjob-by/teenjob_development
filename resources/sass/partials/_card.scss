@@ -4,6 +4,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   margin-bottom: 30px;
+  border-radius: 4px;
 
   &-header {
     @include image-adaptive(80px, 80px);

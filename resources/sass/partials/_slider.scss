@@ -6,6 +6,9 @@
 }
 
 .swiper-button {
+  width: auto;
+  height: auto;
+
 
 
   &:focus {
@@ -17,7 +20,17 @@
   @extend .swiper-button;
 
   &:after {
-    content: url(/images/arrow-right.svg);
+    content: " ";
+    width: 40px;
+    height: 40px;
+    display: block;
+    background: url(/images/arrow-right.svg) center center no-repeat;
+    background-size: contain;
+
+    @include for-desktop-up() {
+      width: 48px;
+      height: 48px;
+    }
     color: $violet;
   }
 }
@@ -26,7 +39,17 @@
   @extend .swiper-button;
 
   &:after {
-    content: url(/images/arrow-left.svg);
+    content: " ";
+    display: block;
+    background: url(/images/arrow-left.svg) center center no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+
+    @include for-desktop-up() {
+      width: 48px;
+      height: 48px;
+    }
     color: $violet;
   }
 }
