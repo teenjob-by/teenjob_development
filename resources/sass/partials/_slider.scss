@@ -6,10 +6,7 @@
 }
 
 .swiper-button {
-  &:after {
-    font-size: 24px !important;
-    color: $violet;
-  }
+
 
   &:focus {
     outline: none;
@@ -18,10 +15,20 @@
 
 .swiper-button-next {
   @extend .swiper-button;
+
+  &:after {
+    content: url(/images/arrow-right.svg);
+    color: $violet;
+  }
 }
 
 .swiper-button-prev {
   @extend .swiper-button;
+
+  &:after {
+    content: url(/images/arrow-left.svg);
+    color: $violet;
+  }
 }
 
 .swiper-slide {

@@ -82,7 +82,7 @@
     </section>
 
     @if (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register'))
-        <section class="header_search-wrapper">
+        <section id="header" class="header_search-wrapper">
 
             @if (request()->routeIs('frontend.home'))
                 <h2 class="header_slogan">

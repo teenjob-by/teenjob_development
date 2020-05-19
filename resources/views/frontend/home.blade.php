@@ -27,10 +27,39 @@
 
     <script>
 
-        var swiperSlider = new Swiper ('.swiper-container', {
+        var swiperSlider = new Swiper ('#reviews', {
             direction: 'horizontal',
             loop: true,
-            slidesPerView : 4,
+            slidesPerView : 1,
+
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 1,
+                },
+
+                1024: {
+                    slidesPerView: 1,
+                }
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next-reviews',
+                prevEl: '.swiper-button-prev-reviews',
+            },
+        })
+        var swiperSlider2 = new Swiper ('#partners', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView : 3,
 
             breakpoints: {
                 // when window width is >= 320px
@@ -47,16 +76,15 @@
                 },
 
                 1024: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                 }
             },
 
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next-partners',
+                prevEl: '.swiper-button-prev-partners',
             },
         })
-
         var a = 0;
         $(window).scroll(function() {
 
@@ -119,38 +147,19 @@
         </div>
     </section>
 
-    <section class="home_section-for-teens">
+    <section class="home_section-for-teens section_gray">
         <div class="content-wrapper">
             <h3 class="home_title-about">@lang('content.teens.title')</h3>
 
             <section class="card-wrapper">
                 @for($i = 1; $i <= 3; $i++)
                     <div class="home_card-for-teens">
+                        <div class="card-header">
+                            <img class="card-header-image" src="images/section-about/for-teens-{{ $i }}.svg" alt="@lang('content.about.card_1.imgAlt')">
+                        </div>
                         <div class="card-body">
-                            <img class="card-header-image" src="images/section-about/teens-{{ $i }}.png">
                             <h4 class="card-body-title">@lang('content.teens.card_'. $i .'.title')</h4>
                             <p class="card-body-text">@lang('content.teens.card_'. $i .'.text')</p>
-                        </div>
-                    </div>
-                @endfor
-            </section>
-
-        </div>
-    </section>
-
-    <section class="home_section-about">
-        <div class="content-wrapper">
-            <h3 class="home_title-about">@lang('content.about.title')</h3>
-
-            <section class="card-wrapper">
-                @for($i = 1; $i <= 3; $i++)
-                    <div class="home_card-about">
-                        <div class="card-header">
-                            <img class="card-header-image" src="images/section-about/card_{{ $i }}.svg" alt="@lang('content.about.card_1.imgAlt')">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-body-title">@lang('content.about.card_'. $i .'.title')</h4>
-                            <p class="card-body-text">@lang('content.about.card_'. $i .'.text')</p>
                         </div>
                     </div>
                 @endfor
@@ -173,7 +182,7 @@
                 @for($i = 1; $i <= 3; $i++)
                     <div class="home_card-organisations">
                         <div class="card-header">
-                            <img class="card-header-image" src="images/section-organisations/card_{{ $i }}.svg" alt="@lang('content.organisations.card_1.imgAlt')">
+                            <img class="card-header-image" src="images/section-about/for-companies-{{ $i }}.svg" alt="@lang('content.organisations.card_1.imgAlt')">
                         </div>
                         <div class="card-body">
                             <p class="card-body-text">@lang('content.organisations.card_'. $i .'.text')</p>
@@ -181,6 +190,8 @@
                     </div>
                 @endfor
             </section>
+
+            <p class="home_organisations-subtitle">@lang('content.organisations.buttonSubtitle')</p>
 
 
             <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
@@ -193,28 +204,45 @@
         </div>
     </section>
 
-    <section class="home_section-team">
+    <section class="home_section-important section_gray">
         <div class="content-wrapper">
-            <h3 class="home_title-team">@lang('content.partners.title')</h3>
+            <div class="important-description">
+                <div class="important-text">
+                    <h3 class="home_title-organisations">@lang('content.important.title')</h3>
+                    <p class="home_organisations-subtitle">@lang('content.important.subtitle')</p>
+                    <p class="card-body-text">@lang('content.important.text')</p>
+                </div>
 
-            <section class="home_carousel-wrapper">
-                <div class="swiper-container">
+                <div class="important-image">
+                    <img src="/images/important.svg">
+                </div>
+            </div>
+
+            <p class="home_organisations-subtitle">@lang('content.organisations.buttonSubtitle')</p>
+
+            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+                <span>
+                    @lang('content.rulesForEmployers.text.button')
+                </span>
+            </a>
+        </div>
+    </section>
+
+
+    <section class="home_section-partners">
+        <div class="content-wrapper">
+            <h3 class="home_title-partners">@lang('content.partners.title')</h3>
+
+            <section class="partners_wrapper">
+                <div id="partners" class="swiper-container">
                     <div class="swiper-wrapper">
 
-                        @for ($i = 1; $i <= 5; $i++)
+                        @for ($i = 1; $i <= 3; $i++)
                             <div class="swiper-slide">
                                 <div class="slide-wrapper">
-                                    <div class="slide-header">
-                                        <img class="slide-header-image" src="images/section-team/image-{{ $i }}.png">
-                                    </div>
-
-                                    <p class="slide-name">@lang("team.team_".$i.".name") @lang("team.team_".$i.".surname")</p>
-                                    <p class="slide-role">@lang("team.team_".$i.".role")</p>
-                                    <div class="slide-social">
-                                        <a href="@lang('team.team_'.$i.'.social.link_1')" target="_blank">
-                                            <img class="social-icon" src="images/section-team/fb.svg">
-                                        </a>
-                                    </div>
+                                    <a href="@lang("content.partners_".$i.".link")">
+                                        <img class="slide-image" src="images/home/companies/companies-{{ $i }}.png">
+                                    </a>
                                 </div>
                             </div>
                         @endfor
@@ -222,13 +250,51 @@
                     </div>
                 </div>
 
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev-partners swiper-button-prev"></div>
+                <div class="swiper-button-next-partners swiper-button-next"></div>
             </section>
 
             <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform">
                 <span>
                     @lang('content.partners.button')
+                </span>
+            </a>
+
+        </div>
+    </section>
+
+
+    <section class="home_section-reviews section_gray">
+        <div class="content-wrapper">
+            <h3 class="home_title-reviews">@lang('content.reviews.title')</h3>
+
+            <section class="reviews_wrapper">
+                <div id="reviews" class="swiper-container reviews-container">
+                    <div class="swiper-wrapper">
+
+                        @for ($i = 1; $i <= 2; $i++)
+                            <div class="swiper-slide">
+                                <div class="slide-wrapper">
+                                    <div class="slide-image-wrapper">
+                                        <img class="slide-image" src="images/home/reviews/review-{{ $i }}.png">
+                                    </div>
+
+                                   <p class="slide-name">@lang('content.reviews.card_'.$i.'.name')</p>
+                                   <p class="slide-text">@lang('content.reviews.card_'.$i.'.text')</p>
+                                </div>
+                            </div>
+                        @endfor
+
+                    </div>
+                </div>
+
+                <div class="swiper-button-prev-reviews swiper-button-prev"></div>
+                <div class="swiper-button-next-reviews swiper-button-next"></div>
+            </section>
+
+            <a role="button" class="button-primary" href="#header">
+                <span>
+                    @lang('content.reviews.button')
                 </span>
             </a>
 
