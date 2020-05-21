@@ -103,11 +103,11 @@
 
                                     @for ($i = 1; $i <= 3; $i++)
                                         <div class="swiper-slide">
-                                            <div class="slide-wrapper">
-                                                <a href="@lang("content.partners_".$i.".link")">
+                                            <a href="@lang("content.help.link_".$i)" class="slide-wrapper">
+                                                <div class="image-wrapper" >
                                                     <img class="slide-image" src="images/section-partners/partner-logo-{{ $i }}.png">
-                                                </a>
-                                            </div>
+                                                </div>
+                                            </a>
                                         </div>
                                     @endfor
 

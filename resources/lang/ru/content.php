@@ -57,17 +57,17 @@ return [
         'title' => 'Подросткам',
         'card_1' => [
             'image' => '/images/section-about/teens-1.png',
-            'title' => 'Работа',
+            'title' => '<a href="/jobs-for-teens">Работа</a>',
             'text' => 'Работа для тебя. Получи опыт и первые деньги. Горящие возможности в <a class="link" href="https://t.me/teenjob_by">телеграм-канале</a>',
         ],
         'card_2' => [
             'image' => '/images/section-about/teens-2.png',
-            'title' => 'Волонтерство',
+            'title' => '<a href="/volunteerings-for-teens">Волонтерство</a>',
             'text' => 'Это возможность получить опыт и присоединиться к инициативам своего города',
         ],
         'card_3' => [
             'image' => '/images/section-about/teens-3.png',
-            'title' => 'Мероприятия',
+            'title' => '<a href="/events">Мероприятия</a>',
             'text' => 'Научись маркетингу, окунись в основы веб-дизайна, развивай коммуникационные навыки, участвуй в стартапах',
         ],
     ],
@@ -78,7 +78,10 @@ return [
         'button' => 'Оставить заявку',
         'needHelp' => 'Вам тоже нужен помощник?',
         'link' => 'Справка организациям',
-        'button' => 'Оставить заявку'
+        'button' => 'Оставить заявку',
+        'link_1' => 'https://iqido.biz/',
+        'link_2' => 'https://hospice.by/',
+        'link_3' => 'https://www.sos-villages.by/',
     ],
 
 
@@ -131,7 +134,10 @@ return [
         'column-2-text' => 'Мы готовы к сотрудничеству с различными организациями. Напишите ваше предложение нам на почту <a href="mailto:teenjob.by@gmail.com">teenjob.by@gmail.com</a><br> Расскажите о себе и как мы можем сотрудничать!',
         'column-3' => 'Лайк',
         'column-3-text' => 'Расшарьте информацию о нашем проекте в социальных сетях, чтобы платформа становилась все более популярной и заполняемой!',
-        'partner' => 'Партнеры'
+        'partner' => 'Партнеры',
+        'link_1' => 'https://hoster.by/',
+        'link_2' => 'https://www.facebook.com/TerytoryjaPravou/',
+        'link_3' => 'http://eduexpo.by/',
     ],
     'internRules' => [
         'title' => 'Что такое стажировка?',

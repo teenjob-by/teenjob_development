@@ -218,8 +218,6 @@
                 </div>
             </div>
 
-            <p class="home_organisations-subtitle">@lang('content.organisations.buttonSubtitle')</p>
-
             <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                 <span>
                     @lang('content.rulesForEmployers.text.button')
@@ -239,11 +237,11 @@
 
                         @for ($i = 1; $i <= 3; $i++)
                             <div class="swiper-slide">
-                                <div class="slide-wrapper">
-                                    <a href="@lang("content.partners_".$i.".link")">
+                                <a href="@lang('content.partners.link_'.$i)" class="slide-wrapper">
+                                    <div class="image-wrapper">
                                         <img class="slide-image" src="images/home/companies/companies-{{ $i }}.png">
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         @endfor
 
