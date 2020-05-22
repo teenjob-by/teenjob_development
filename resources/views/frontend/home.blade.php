@@ -218,11 +218,11 @@
                 </div>
             </div>
 
-            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+            {{--<a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
                 <span>
                     @lang('content.rulesForEmployers.text.button')
                 </span>
-            </a>
+            </a>--}}
         </div>
     </section>
 
@@ -237,7 +237,7 @@
 
                         @for ($i = 1; $i <= 3; $i++)
                             <div class="swiper-slide">
-                                <a href="@lang('content.partners.link_'.$i)" class="slide-wrapper">
+                                <a href="@lang('content.partners.link_'.$i)" target="_blank" class="slide-wrapper">
                                     <div class="image-wrapper">
                                         <img class="slide-image" src="images/home/companies/companies-{{ $i }}.png">
                                     </div>

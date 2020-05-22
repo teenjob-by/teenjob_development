@@ -528,7 +528,6 @@
       text-align: center;
       @include for-desktop-up() {
         text-align: left;
-        padding-left: 20px;
       }
     }
     p {

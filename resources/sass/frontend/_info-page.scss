@@ -1,9 +1,24 @@
 .info-page {
 
 
+
   &_section {
     @extend .section;
 
+    .home_title-team {
+
+
+        @include text-usual(28px, #2C2C2C, center);
+        font-weight: 600;
+        margin-bottom: 30px;
+
+        @include for-desktop-up() {
+          @include text-usual(42px, #121212, center);
+          font-weight: 600;
+        }
+
+
+    }
     .organisations {
       &-block {
         text-align: center;

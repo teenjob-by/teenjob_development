@@ -95,7 +95,7 @@
 
                 <section class="home_section-team">
                     <div class="content-wrapper">
-                        <h3 class="home_title-team">@lang('content.partners.title')</h3>
+                        <h3 class="home_title-team">@lang('team.title')</h3>
 
                         <section class="home_carousel-wrapper">
                             <div class="swiper-container">
