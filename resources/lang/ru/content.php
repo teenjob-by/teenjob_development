@@ -82,6 +82,7 @@ return [
         'link_1' => 'https://iqido.biz/',
         'link_2' => 'https://hospice.by/',
         'link_3' => 'https://www.sos-villages.by/',
+        'link_4' => 'https://www.geko.by/',
     ],
 
 
