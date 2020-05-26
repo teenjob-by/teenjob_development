@@ -7,10 +7,9 @@
 @section('scripts')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-
     <script src="/js/micromodal.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
     <script>
 
 

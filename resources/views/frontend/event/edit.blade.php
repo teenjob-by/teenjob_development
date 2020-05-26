@@ -9,9 +9,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-
     <script src="/js/micromodal.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
 
@@ -33,8 +31,6 @@
         });
 
     </script>
-
-
     <script>
 
         function readURL(input) {
@@ -70,29 +66,31 @@
         $('.image-upload-wrap').bind('dragleave', function () {
             $('.image-upload-wrap').removeClass('image-dropping');
         });
+    </script>
 
+    <script>
 
         function initMap() {
-            // The location of Uluru
-                    @if($event->location[0])
 
-            var lat_p = '{{ $event->location[0] }}';
-            var lng_p = '{{ $event->location[1] }}';
+            @if($event->location[0])
 
-            var LatLng = {lat: parseFloat(lat_p), lng: parseFloat(lng_p)};
+                var lat_p = '{{ $event->location[0] }}';
+                var lng_p = '{{ $event->location[1] }}';
 
-            $('#event-location').attr('value', '('+ lat_p +',' + lng_p + ')')
+                var LatLng = {lat: parseFloat(lat_p), lng: parseFloat(lng_p)};
+
+                $('#event-location').attr('value', '('+ lat_p +',' + lng_p + ')')
 
 
-            var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center: LatLng});
+                var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center: LatLng});
 
-            var marker = new google.maps.Marker({
-                position: LatLng,
-                map: map
-            });
-                    @else
-            var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 53.890763, lng: 27.565134}});
-            var marker;
+                var marker = new google.maps.Marker({
+                    position: LatLng,
+                    map: map
+                });
+            @else
+                var map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: {lat: 53.890763, lng: 27.565134}});
+                var marker;
             @endif
 
             google.maps.event.addListener(map, 'click', function(event) {

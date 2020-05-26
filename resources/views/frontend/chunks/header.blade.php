@@ -1,4 +1,4 @@
-<header class="header {{ (request()->routeIs('frontend.home')) ? 'header_bg-desktop' : '' }} {{ (request()->routeIs('auth.login') || request()->routeIs('auth.register')) ? 'header-compact': '' }}">
+<header id="header" class="header {{ (request()->routeIs('frontend.home')) ? 'header_bg-desktop' : '' }} {{ (request()->routeIs('auth.login') || request()->routeIs('auth.register')) ? 'header-compact': '' }}">
     <section class="header_menu-wrapper">
         <div class="header_wrapper">
             <h1 class="header_logo">
@@ -82,7 +82,7 @@
     </section>
 
     @if (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register'))
-        <section id="header" class="header_search-wrapper">
+        <section class="header_search-wrapper">
 
             @if (request()->routeIs('frontend.home'))
                 <h2 class="header_slogan">

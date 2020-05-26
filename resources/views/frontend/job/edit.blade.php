@@ -1,77 +1,81 @@
 @extends('layouts.frontend')
 
 @section('styles')
-    <link rel="stylesheet" href="/js/trumbowyg/ui/trumbowyg.min.css">
-    <link rel="stylesheet" href="/js/trumbowyg/plugins/emoji/ui/trumbowyg.emoji.min.css">
-    <link rel="stylesheet" href="/js/trumbowyg/plugins/giphy/ui/trumbowyg.giphy.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
+
 
 @section('scripts')
     <script src="/js/micromodal.min.js"></script>
-    <script src="/js/trumbowyg/trumbowyg.min.js"></script>
-    <script src="/js/trumbowyg/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
-    <script src="/js/trumbowyg/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
-    <script src="/js/trumbowyg/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
-    <script src="/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
-    <script src="/js/trumbowyg/plugins/colors/trumbowyg.colors.min.js"></script>
-    <script src="/js/trumbowyg/plugins/emoji/trumbowyg.emoji.min.js"></script>
-    <script src="/js/trumbowyg/plugins/giphy/trumbowyg.giphy.min.js"></script>
-    <script src="/js/trumbowyg/plugins/history/trumbowyg.history.min.js"></script>
-    <script src="/js/trumbowyg/plugins/insertAudio/trumbowyg.insertAudio.min.js"></script>
-    <script src="/js/trumbowyg/plugins/lineheight/trumbowyg.lineheight.min.js"></script>
-    <script src="/js/trumbowyg/plugins/noembed/trumbowyg.noembed.min.js"></script>
-    <script src="/js/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js"></script>
-    <script src="/js/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js"></script>
-    <script type="text/javascript" src="/js/trumbowyg/langs/be.min.js"></script>
-    <script type="text/javascript" src="/js/trumbowyg/langs/ru.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
 
-        $('#description').trumbowyg({
-            btns: [['strong', 'em',], ['insertImage'], ['foreColor', 'backColor'], ['emoji'], ['fontfamily'], ['fontsize'],['historyUndo', 'historyRedo'],['lineheight'],['noembed'], ],
-            autogrow: true,
-            lang: 'ru',
+
+        $('#description').summernote({
+            placeholder: 'Введите описание',
+            tabsize: 2,
+            height: 300,
+            maxWidth: 543,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
         });
+
+    </script>
+    <script>
+
+
 
         function showModal(name) {
 
             var modals = {
-                remove: {
-                    title: "@lang('content.job.modal.remove.title')",
-                    content: "@lang('content.job.modal.remove.content')",
+
+                success: {
+                    title: "@lang('content.job.update.modal.success.title')",
+                    content: "@lang('content.job.update.modal.success.content')",
                     buttons: {
-                        confirm: "@lang('content.job.modal.remove.confirm')",
-                        refuse: "@lang('content.job.modal.remove.refuse')"
+                        confirm: "@lang('content.job.update.modal.success.confirm')",
                     },
                     action: function () {
-                        window.location.replace("{{ route('organisation.destroy') }}");
+                        location.href = "/organisation#jobs-for-teens";
                     }
                 },
-                send: {
-                    title: "@lang('content.job.modal.send.title')",
-                    content: "@lang('content.job.modal.send.content')",
+
+                error: {
+                    title: "@lang('content.job.update.modal.error.title')",
+                    content: "@lang('content.job.update.modal.error.content')",
                     buttons: {
-                        confirm: "@lang('content.job.modal.send.confirm')",
-                        refuse: "@lang('content.job.modal.send.refuse')"
-                    },
-                    action: function () {
-                        callAjax()
+                        confirm: "@lang('content.job.update.modal.error.confirm')",
+                    }
+                },
+
+                fail: {
+                    title: "@lang('content.job.update.modal.fail.title')",
+                    content: "@lang('content.job.update.modal.fail.content')",
+                    buttons: {
+                        confirm: "@lang('content.job.update.modal.fail.confirm')",
                     }
                 }
             };
 
-            $(".modal").attr("id", "modal_" + name + "_confirmation");
-            $("#modal_confirmation-title").empty().append(modals[name].title);
-            $("#modal_confirmation-content").empty().append("<p>" + modals[name].content + "</p>");
-            $("#modal_confirmation-confirm").empty().append(modals[name].buttons.confirm);
-            $("#modal_confirmation-refuse").empty().append(modals[name].buttons.refuse);
-            $("#modal_confirmation-confirm").unbind('click');
-            $("#modal_confirmation-confirm").unbind('click');             $("#modal_confirmation-confirm").click( function (e) {
-                MicroModal.close("modal_" + name + "_confirmation")
+            $(".modal").attr("id", "modal_" + name);
+            $("#modal-title").empty().append(modals[name].title);
+            $("#modal-content").empty().append("<p>" + modals[name].content + "</p>");
+            $("#modal-confirm").empty().append(modals[name].buttons.confirm);
+            $("#modal-confirm").unbind('click');
+
+            $("#modal-confirm").click( function (e) {
+                MicroModal.close("modal_" + name)
                 modals[name].action();
             });
 
-            MicroModal.show("modal_" + name + "_confirmation")
+            MicroModal.show("modal_" + name)
         }
 
 
@@ -202,8 +206,8 @@
                 })
                 .done(
                     function(data){
+                        console.log(data)
 
-                        data = JSON.parse(data);
                         $("#submit").toggleClass('loading');
 
                         for (var prop in data) {
@@ -213,22 +217,19 @@
                         for (let [key, value] of Object.entries(data)) {
 
                             if(key == 'message') {
-                                $(".operation-result").toggleClass('show');
-                                $(".operation-result").empty().append(value);
+                                showModal('success');
                             }
                             else {
+                                showModal('error');
                                 $("#" + key).addClass('is-invalid').after(
                                     "<span class=\"message-invalid\" role=\"alert\"><strong>" + value + "</strong></span>" );
                             }
                         }
-
-                        $("#"+btn).unbind('click');
                     })
                 .fail(
                     function(jqXHR, ajaxOptions, thrownError) {
 
-                        $(".operation-result").toggleClass('show');
-                        $(".operation-result").empty().append("Сохранение не удалось");
+                        showModal('fail');
                         $("#submit").toggleClass('loading');
 
                     });
@@ -350,7 +351,7 @@
                 </div>
 
                 <div class="job_form-group description">
-                    <label for="description" class="job_form-group-label">@lang('content.job.update.description')</label>
+
                     <textarea id="description" name="description" required minlength="20" type="text" class="job_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.update.description')" >{{ $job->description }}</textarea>
 
                     @error('description')
@@ -430,17 +431,14 @@
 
     <div class="modal micromodal-slide" aria-hidden="true">
         <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal_confirmation-title">
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                 <header class="modal__header">
-                    <h2 class="modal__title" id="modal_confirmation-title">
-                    </h2>
                     <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
                 </header>
-                <main class="modal__content" id="modal_confirmation-content">
+                <main class="modal__content" id="modal-content">
                 </main>
                 <footer class="modal__footer">
-                    <button class="modal__btn modal__btn-primary" id="modal_confirmation-confirm"></button>
-                    <button class="modal__btn" id="modal_confirmation-refuse" data-micromodal-close aria-label="Close this dialog window"></button>
+                    <button class="modal__btn modal__btn-primary" id="modal-confirm" data-micromodal-close aria-label="Close this dialog window"></button>
                 </footer>
             </div>
         </div>
