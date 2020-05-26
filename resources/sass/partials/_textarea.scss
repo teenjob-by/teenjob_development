@@ -1,5 +1,8 @@
 .textarea {
   @extend .textfield;
+
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .trumbowyg-box {

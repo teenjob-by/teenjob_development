@@ -31,7 +31,30 @@ class Job extends Controller
 
         $data = Offer::where('status', 1)
 
-            ->where('offer_type', 2)
+            ->where(function ($query) use ($request) {
+
+
+                if($request->has('section')) {
+                    $sections = explode(',', trim($request->input('section'), '[]'));
+
+                    $sections_filter = [];
+                    foreach ($sections as $section) {
+
+                        if($section == 'job') {
+                            $sections_filter[] = 2;
+                        }
+
+                        if($section == 'internship') {
+                            $sections_filter[] = 1;
+                        }
+                    }
+
+                    return $query->whereIn('offer_type', $sections_filter);
+                }
+                else {
+                    return $query->whereIn('offer_type', [1, 2]);
+                }
+            })
 
             ->when($request->has('city'), function ($query) use ($request) {
                 return $query->where('city_id', $request->input('city'));
@@ -164,6 +187,18 @@ class Job extends Controller
         $workTime = WorkTimeType::all();
 
         $filters = array();
+        $section = [
+            [
+                'value' => 'job',
+                'name'=>'job'
+            ],
+            [
+                'value' => 'internship',
+                'name'=>'internship'
+            ],
+
+        ];
+        $filters['section'] = array('data' => $section, 'type' => 'checkbox', 'name' => 'section');
         $filters['cities'] = array('data' => $cities, 'type' => 'select', 'name' => 'city');
         $filters['specialities'] = array('data' => $specialities, 'type' => 'select', 'name' => 'speciality');
         //$filters['salary'] = array('data' => array(), 'type' => 'interval', 'name' => 'salary');

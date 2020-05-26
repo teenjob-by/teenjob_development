@@ -1,9 +1,7 @@
 @extends('layouts.frontend')
 
 @section('styles')
-    <link rel="stylesheet" href="/js/trumbowyg/ui/trumbowyg.min.css">
-    <link rel="stylesheet" href="/js/trumbowyg/plugins/emoji/ui/trumbowyg.emoji.min.css">
-    <link rel="stylesheet" href="/js/trumbowyg/plugins/giphy/ui/trumbowyg.giphy.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 
 @section('scripts')
@@ -13,22 +11,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
 
     <script src="/js/micromodal.min.js"></script>
-    <script src="/js/trumbowyg/trumbowyg.min.js"></script>
-    <script src="/js/trumbowyg/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
-    <script src="/js/trumbowyg/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
-    <script src="/js/trumbowyg/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js"></script>
-    <script src="/js/trumbowyg/plugins/cleanpaste/trumbowyg.cleanpaste.min.js"></script>
-    <script src="/js/trumbowyg/plugins/colors/trumbowyg.colors.min.js"></script>
-    <script src="/js/trumbowyg/plugins/emoji/trumbowyg.emoji.min.js"></script>
-    <script src="/js/trumbowyg/plugins/giphy/trumbowyg.giphy.min.js"></script>
-    <script src="/js/trumbowyg/plugins/history/trumbowyg.history.min.js"></script>
-    <script src="/js/trumbowyg/plugins/insertAudio/trumbowyg.insertAudio.min.js"></script>
-    <script src="/js/trumbowyg/plugins/lineheight/trumbowyg.lineheight.min.js"></script>
-    <script src="/js/trumbowyg/plugins/noembed/trumbowyg.noembed.min.js"></script>
-    <script src="/js/trumbowyg/plugins/pasteembed/trumbowyg.pasteembed.min.js"></script>
-    <script src="/js/trumbowyg/plugins/pasteimage/trumbowyg.pasteimage.min.js"></script>
-    <script type="text/javascript" src="/js/trumbowyg/langs/be.min.js"></script>
-    <script type="text/javascript" src="/js/trumbowyg/langs/ru.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+
+
+        $('#description').summernote({
+            placeholder: 'Введите описание',
+            tabsize: 2,
+            height: 300,
+            maxWidth: 543,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+
+    </script>
+
 
     <script>
 
@@ -115,50 +120,51 @@
         }
 
 
-        $('#description').trumbowyg({
-            btns: [['strong', 'em',], ['insertImage'], ['foreColor', 'backColor'], ['emoji'], ['fontfamily'], ['fontsize'],['historyUndo', 'historyRedo'],['lineheight'],['noembed'], ],
-            autogrow: true,
-            lang: 'ru',
-        });
 
         function showModal(name) {
 
             var modals = {
-                remove: {
-                    title: "@lang('content.event.modal.remove.title')",
-                    content: "@lang('content.event.modal.remove.content')",
+
+                success: {
+                    title: "@lang('content.event.update.modal.success.title')",
+                    content: "@lang('content.event.update.modal.success.content')",
                     buttons: {
-                        confirm: "@lang('content.event.modal.remove.confirm')",
-                        refuse: "@lang('content.event.modal.remove.refuse')"
+                        confirm: "@lang('content.event.update.modal.success.confirm')",
                     },
                     action: function () {
-                        window.location.replace("{{ route('organisation.destroy') }}");
+                        location.href = "/organisation#events";
                     }
                 },
-                send: {
-                    title: "@lang('content.event.modal.send.title')",
-                    content: "@lang('content.event.modal.send.content')",
+
+                error: {
+                    title: "@lang('content.event.update.modal.error.title')",
+                    content: "@lang('content.event.update.modal.error.content')",
                     buttons: {
-                        confirm: "@lang('content.event.modal.send.confirm')",
-                        refuse: "@lang('content.event.modal.send.refuse')"
-                    },
-                    action: function () {
-                        callAjax()
+                        confirm: "@lang('content.event.update.modal.error.confirm')",
+                    }
+                },
+
+                fail: {
+                    title: "@lang('content.event.update.modal.fail.title')",
+                    content: "@lang('content.event.update.modal.fail.content')",
+                    buttons: {
+                        confirm: "@lang('content.event.update.modal.fail.confirm')",
                     }
                 }
             };
 
-            $(".modal").attr("id", "modal_" + name + "_confirmation");
-            $("#modal_confirmation-title").empty().append(modals[name].title);
-            $("#modal_confirmation-content").empty().append("<p>" + modals[name].content + "</p>");
-            $("#modal_confirmation-confirm").empty().append(modals[name].buttons.confirm);
-            $("#modal_confirmation-refuse").empty().append(modals[name].buttons.refuse);
-            $("#modal_confirmation-confirm").unbind('click');             $("#modal_confirmation-confirm").click( function (e) {
-                MicroModal.close("modal_" + name + "_confirmation")
+            $(".modal").attr("id", "modal_" + name);
+            $("#modal-title").empty().append(modals[name].title);
+            $("#modal-content").empty().append("<p>" + modals[name].content + "</p>");
+            $("#modal-confirm").empty().append(modals[name].buttons.confirm);
+            $("#modal-confirm").unbind('click');
+
+            $("#modal-confirm").click( function (e) {
+                MicroModal.close("modal_" + name)
                 modals[name].action();
             });
 
-            MicroModal.show("modal_" + name + "_confirmation")
+            MicroModal.show("modal_" + name)
         }
         $(document).ready(function () {
 
@@ -271,7 +277,7 @@
 
                 $('#form').on('submit', function(ev){
                     ev.preventDefault();
-                    showModal("send");
+                    callAjax();
                 });
 
             }catch(e) {
@@ -314,10 +320,10 @@
                             for (let [key, value] of Object.entries(data)) {
 
                                 if(key == 'message') {
-                                    $(".operation-result").toggleClass('show');
-                                    $(".operation-result").empty().append(value);
+                                    showModal('success');
                                 }
                                 else {
+                                    showModal('error');
                                     $("#" + key).addClass('is-invalid').after(
                                         "<span class=\"message-invalid\" role=\"alert\"><strong>" + value + "</strong></span>" );
                                 }
@@ -326,8 +332,7 @@
                     .fail(
                         function(jqXHR, ajaxOptions, thrownError) {
 
-                            $(".operation-result").toggleClass('show');
-                            $(".operation-result").empty().append("Сохранение не удалось");
+                            showModal('fail');
                             $("#submit").toggleClass('loading');
 
                         });
@@ -418,23 +423,25 @@
                     @enderror
                 </div>
 
-                <div class="event_form-group">
-                    <label class="event_form-group-label" for="date_start">@lang('content.event.create.dateStart')</label>
+                <div class="event_form-group date-group">
                     <div class="event_form-date-group">
+                        <label class="event_form-group-label" for="date_start">@lang('content.event.create.dateStart')</label>
                         <input type="text" required class="event_form-group-input datePicker" id="date_start" name="date_start" value="{{ $event->date_start->format('d/m/Y') }}"/>
+                    </div>
+                    <div class="event_form-date-group">
                         <label for="date_start" class="event_form-group-label">@lang('content.event.create.timeStart')</label>
                         <input required type="text" class="event_form-group-input timePicker" id="time_start" name="time_start" value="{{ $event->date_start->format('H:i') }}"/>
                     </div>
                 </div>
 
-                <div class="event_form-group">
+                {{--<div class="event_form-group">
                     <label class="event_form-group-label" for="date_finish">@lang('content.event.create.dateFinish')</label>
                     <div class="event_form-date-group">
                         <input type="text" required class="event_form-group-input datePicker" id="date_finish" name="date_finish" value="{{ $event->date_finish->format('d/m/Y') }}"/>
                         <label for="date_finish" class="event_form-group-label">@lang('content.event.create.timeFinish')</label>
                         <input required type="text" class="event_form-group-input timePicker" id="time_finish" name="time_finish" value="{{ $event->date_finish->format('H:i') }}"/>
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="event_form-group">
                     <label for="address" class="event_form-group-label">@lang('content.event.create.address')</label>
@@ -466,7 +473,7 @@
 
 
                 <div class="event_form-group description">
-                    <label for="description" class="event_form-group-label">@lang('content.event.create.description')</label>
+
                     <textarea id="description" name="description" required minlength="20" type="text" class="event_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.event.create.description')">{{ $event->description }}</textarea>
 
                     @error('description')
@@ -479,10 +486,9 @@
 
 
                 <div class="event_form-group">
-                    <p for="event-image">@lang('content.event.create.loadPreview')</p>
 
                     <div class="file-upload">
-                        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">@lang('content.event.create.addImage')</button>
+                        <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>@lang('content.event.create.addImage')</span></button>
 
                         <div class="image-upload-wrap">
                             <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
@@ -493,7 +499,7 @@
                         <div class="file-upload-content">
                             <img class="file-upload-image" src="" alt="your image" />
                             <div class="image-title-wrap">
-                                <button type="button" onclick="removeUpload()" class="remove-image">@lang('content.event.create.removeImage') <span class="image-title">@lang('content.event.create.uploadImage')</span></button>
+                                <button type="button" onclick="removeUpload()" class="button-secondary"><span>@lang('content.event.create.removeImage') &nbsp;</span> <span class="image-title">@lang('content.event.create.uploadImage')</span></button>
                             </div>
                         </div>
                     </div>
@@ -539,17 +545,14 @@
 
     <div class="modal micromodal-slide" aria-hidden="true">
         <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal_confirmation-title">
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                 <header class="modal__header">
-                    <h2 class="modal__title" id="modal_confirmation-title">
-                    </h2>
                     <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
                 </header>
-                <main class="modal__content" id="modal_confirmation-content">
+                <main class="modal__content" id="modal-content">
                 </main>
                 <footer class="modal__footer">
-                    <button class="modal__btn modal__btn-primary" id="modal_confirmation-confirm"></button>
-                    <button class="modal__btn" id="modal_confirmation-refuse" data-micromodal-close aria-label="Close this dialog window"></button>
+                    <button class="modal__btn modal__btn-primary" id="modal-confirm" data-micromodal-close aria-label="Close this dialog window"></button>
                 </footer>
             </div>
         </div>

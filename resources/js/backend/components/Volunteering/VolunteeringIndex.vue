@@ -235,7 +235,7 @@
                     .then(function (resp) {
                         app.$modal.show('dialog', {
                             title: 'Информация',
-                            text: 'Успешно заблокировано',
+                            text: 'Успешно опубликовано',
                             buttons: [
                                 {
                                     title: 'Закрыть'

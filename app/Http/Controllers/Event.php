@@ -273,8 +273,6 @@ class Event extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'date_start' => 'required',
             'time_start' => 'required',
-            'date_finish' => 'required',
-            'time_finish' => 'required',
             'address' => 'required|max:255'
         ]);
 
@@ -411,8 +409,6 @@ class Event extends Controller
             'title' => 'required|max:255',
             'date_start' => 'required',
             'time_start' => 'required',
-            'date_finish' => 'required',
-            'time_finish' => 'required',
             'address' => 'required|max:255'
         ]);
 

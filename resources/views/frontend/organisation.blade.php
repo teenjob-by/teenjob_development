@@ -182,7 +182,7 @@
     <section class="organisation_section">
         <div class="content-wrapper">
             <div id="account_tabs" class="organisation_tabs">
-                <ul>
+                <ul class="organisation_tabs-list">
                     <li class="organisation_tab-link current" data-tab="account"><a href="#account">@lang('content.organisation.title')</a></li>
                     <li class="organisation_tab-link" data-tab="jobs-for-teens"><a href="#jobs-for-teens">@lang('content.organisation.jobTab')</a></li>
                     <li class="organisation_tab-link" data-tab="internships-for-teens"><a href="#internships-for-teens">@lang('content.organisation.internTab')</a></li>
@@ -193,7 +193,7 @@
 
 
                 <div id="account" class="organisation_tab-content current">
-                    <hr class="divider"/>
+
                     <h3 class="organisation_form-title">
                         <strong>@lang('content.organisation.account.title')</strong>
                     </h3>
@@ -262,41 +262,30 @@
                 @foreach($data as $section_name => $section_data)
 
 
-
-                        <div id="{{ $section_name }}s-for-teens" class="organisation_tab-content">
-                        <hr class="divider"/>
-
+                    <div id="{{ $section_name }}s-for-teens" class="organisation_tab-content">
                         <div class="organisation_tab-wrapper">
+
+                            <a class="button-secondary" href="{{ route('organisation.'. $section_name .'s.create') }}" role="button">
+                                <span>
+                                    @lang('content.organisation.'. $section_name . '.create')
+                                </span>
+                            </a>
 
                             <div class="organisation_tab-lists">
                                 @foreach($section_data as $item_group => $items)
-                                    <div class="organisation_list" id="{{ $section_name.'_'.$item_group }}">
-                                        <h3 class="organisation_list-title">@lang('content.organisation.'.$section_name.'.'. $item_group)</h3>
+                                <div class="organisation_list" id="{{ $section_name.'_'.$item_group }}">
+                                    <h3 class="organisation_list-title">@lang('content.organisation.'.$section_name.'.'. $item_group)</h3>
 
-                                        @if($section_name !== "event")
-                                            <div class="organisation_list-wrapper" >
+
+                                        <div class="organisation_list-wrapper" >
+
+                                            @if(count($items) > 0)
                                                 @foreach($items as $item)
-                                                    <div class="organisation_list-item " >
+                                                    <div class="organisation_list-item" >
                                                         <h3 class="organisation_list-item-title">
-                                                            @if(false)
-                                                                <span class="organisation_list-item-approved"></span>
-                                                            @endif
                                                             <a class="organisation_list-item-title-link" href="{{ route('organisation.' .$section_name. 's.update', $item->id) }}"><strong>{{$item->title}}</strong></a>
-
-                                                            @if($item->salary)
-                                                                <span class="organisation_list-item-salary">{{ $item->salary }} {{ $item->salaryType->name}}</span>
-                                                            @endif
-
-                                                            <span class="{{ $section_name  }}-icon"></span>
-
                                                         </h3>
-                                                        <h4 class="organisation_list-item-organisation"><a href="{{ $item->organisation['link'] }}" target="_blank">{{$item->organisation['name']}}</a></h4>
-                                                        <div class="organisation_list-item-description">{!! $item->getPreviewDesc() !!}</div>
 
-                                                        <div class="organisation_list-item-footer">
-                                                            <p class="organisation_list-item-city">{{$item->city->name}}</p>
-                                                            <p class="organisation_list-item-date">{{$item->published_at->format('j F')}}</p>
-                                                        </div>
 
                                                         <div class="organisation_list-item-action-wrapper">
 
@@ -344,115 +333,17 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            </div>
-                                        @else
-
-                                            <div class="organisation_list-{{ $section_name }}-wrapper" >
-                                                @foreach($items as $item)
-                                                    <div class="{{ $section_name }}_card {{ ($item->status == 2)? "card-overlay":"" }}">
-
-                                                        <div class="{{ $section_name }}_card-header">
-                                                            <div class="{{ $section_name }}_card-header-time">
-                                                                <span class="time-wrapper">{{$item->date_start->format('d.m.Y')}}, <span>{{$item->date_start->format('H:i')}}</span></span>
-                                                            </div>
-                                                            <img src="{{$item->image}}" class="{{ $section_name }}_card-header-image" onError='this.onerror=null;this.src="/images/noimg.png";'>
-                                                        </div>
-
-                                                        <p class="{{ $section_name }}_card-location">{{$item->city->name}}</p>
-                                                        <h3 class="{{ $section_name }}_card-title trimmed">{{$item->title}}</h3>
-                                                        <div class="{{ $section_name }}_card-description trimmed">
-                                                            {!!  $item->getPreviewDesc() !!}
-                                                        </div>
-                                                        <div class="{{ $section_name }}_card-more" href="{{ route('frontend.' . $section_name . 's.show', $item->id) }}">
-                                                            Читать больше
-                                                        </div>
-
-                                                        <div class="card-action-wrapper">
-
-                                                            @if($item_group == 'archived')
-                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
-                                                                    @csrf
-                                                                    @method('patch')
-                                                                    <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                    <button type="submit" class="organisation_list-item-action">
-                                                                        <i class="archive-icon"></i>
-                                                                        <span>На модерацию</span>
-                                                                    </button>
-                                                                </form>
-
-                                                            @else
-                                                                <form method="post" action="{{ route('organisation.' .$section_name. 's.archive', $item->id) }}" id="form_archive_{{ $item->id }}" class="form_archive">
-                                                                    @csrf
-                                                                    @method('patch')
-                                                                    <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                    <button type="submit" class="organisation_list-item-action">
-                                                                        <i class="archive-icon"></i>
-                                                                        <span>В архив</span>
-                                                                    </button>
-                                                                </form>
-                                                            @endif
+                                            @else
+                                                <p class="message">Объявлений не найдено</p>
+                                            @endif
+                                        </div>
 
 
-                                                            <a class="organisation_list-item-action" href="{{ route('organisation.' .$section_name. 's.edit', $item->id) }}">
-                                                                <i class="edit-icon"></i>
-                                                                <span>Редактировать</span>
-                                                            </a>
-
-                                                            <form method="delete" action="{{ route('organisation.' .$section_name. 's.destroy', $item->id) }}" id="form_destroy_{{ $item->id }}" class="form_destroy">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                <button class="organisation_list-item-action">
-                                                                    <i class="remove-icon"></i>
-                                                                    <span>Удалить</span>
-                                                                </button>
-                                                            </form>
-
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        @endif
-
-
-                                    </div>
-                                @endforeach
-                            </div>
-
-                            <div class="organisation_list-menu">
-
-                                    <ul class="organisation_list-menu-list">
-                                        <li class="organisation_list-menu-item">
-                                            <a class="button-secondary" href="{{ route('organisation.'. $section_name .'s.create') }}" role="button">
-                                                <span>
-                                                    @lang('content.organisation.'. $section_name . '.create')
-                                                </span>
-                                            </a>
-                                        </li>
-
-                                        <li class="organisation_list-menu-item" >
-                                            <a class="organisation_list-menu-link active" data-id="{{$section_name}}_published" href="#">
-                                                Опубликовано
-                                            </a>
-                                        </li>
-
-                                        <li class="organisation_list-menu-item">
-                                            <a class="organisation_list-menu-link" data-id="{{$section_name}}_pending" href="#">
-                                                На модерации
-                                            </a>
-                                        </li>
-
-                                        <li class="organisation_list-menu-item">
-                                            <a class="organisation_list-menu-link" data-id="{{$section_name}}_archived" href="#">
-                                                Архив
-                                            </a>
-                                        </li>
-                                    </ul>
-                            </div>
-
-
+                                </div>
+                            @endforeach
                         </div>
 
+                        </div>
                     </div>
 
                 @endforeach

@@ -21,7 +21,7 @@
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
+  padding: 15px;
   max-width: 500px;
   max-height: 100vh;
   overflow-y: auto;
@@ -47,6 +47,12 @@
 .modal__close {
   background: transparent;
   border: 0;
+  margin-right: 0;
+  margin-left: auto;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .modal__header .modal__close:before { content: "\2715"; }
@@ -56,6 +62,15 @@
   margin-bottom: 2rem;
   line-height: 1.5;
   color: rgba(0,0,0,.8);
+  padding-right: 30px;
+  padding-left: 50px;
+}
+
+.modal__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal__btn {
@@ -67,6 +82,9 @@
   background-color: #e6e6e6;
   color: rgba(0,0,0,.8);
 
+  margin-left: 20px;
+  margin-right: 20px;
+
   border-style: none;
   border-width: 0;
   cursor: pointer;
@@ -74,7 +92,7 @@
   text-transform: none;
   overflow: visible;
   line-height: 1.15;
-  margin: 0;
+
   will-change: transform;
   -moz-osx-font-smoothing: grayscale;
   -webkit-backface-visibility: hidden;

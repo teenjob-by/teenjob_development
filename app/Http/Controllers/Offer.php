@@ -26,31 +26,7 @@ class Offer extends Controller
 
         $data = OfferModel::where('status', 1)
 
-            ->where(function ($query) use ($request) {
-
-
-                if($request->has('section')) {
-                    $sections = explode(',', trim($request->input('section'), '[]'));
-
-                    $sections_filter = [];
-                    foreach ($sections as $section) {
-
-                        if($section == 'volunteering') {
-                            $sections_filter[] = 0;
-                        }
-
-                        if($section == 'internship') {
-                            $sections_filter[] = 1;
-                        }
-                    }
-
-                    return $query->whereIn('offer_type', $sections_filter);
-                }
-                else {
-                    return $query->whereIn('offer_type', [0, 1]);
-                }
-            })
-
+            ->where('offer_type', 0)
 
             ->when($request->has('city'), function ($query) use ($request) {
                 return $query->where('city_id', $request->input('city'));
@@ -178,7 +154,7 @@ class Offer extends Controller
 
         $filters = array();
 
-        $filters['section'] = array('data' => $section, 'type' => 'checkbox', 'name' => 'section');
+
         $filters['cities'] = array('data' => $cities, 'type' => 'select', 'name' => 'city');
         $filters['specialities'] = array('data' => $specialities, 'type' => 'select', 'name' => 'speciality');
         $filters['age'] = array('data' => $ages, 'type' => 'select', 'name' => 'age');

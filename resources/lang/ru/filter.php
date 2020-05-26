@@ -41,6 +41,7 @@ return [
         'label' => 'Тип',
         'volunteering'  => 'Волонтерство',
         'internship'  => 'Стажировка',
+        'job'  => 'Работа',
     ]
 
 
