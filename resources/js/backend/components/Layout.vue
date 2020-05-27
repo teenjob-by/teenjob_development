@@ -33,9 +33,10 @@
 
         <section class="content">
             <nav class="side-menu">
+
                 <p class="side-menu-header">Организации</p>
                 <ul>
-                    <li  class="side-menu-link">
+                    <li class="side-menu-link">
                         <router-link :to="{ name: 'organisationIndex' }">
                             Все
                         </router-link>
@@ -50,7 +51,7 @@
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'jobIndex', params: {scope: 'unapproved'} }">
-                            Новые
+                            На модерацию
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -69,7 +70,7 @@
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'unapproved'} }">
-                            Новые
+                            На модерацию
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -88,7 +89,7 @@
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'internshipIndex', params: {scope: 'unapproved'} }">
-                            Новые
+                            На модерацию
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -107,7 +108,7 @@
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'eventIndex', params: {scope: 'unapproved'} }">
-                            Новые
+                            На модерацию
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -160,6 +161,11 @@
         box-shadow: -2px -9px 20px 2px $violet;
     }
 
+    .card {
+        position: relative;
+        z-index: 1;
+    }
+
     .content {
         display: flex;
         flex-direction: row;
@@ -171,7 +177,7 @@
     .side-menu {
         height: 100%;
         min-width: 200px;
-        padding: 20px;
+
         box-shadow: -1px 1px 9px 0px gainsboro;
         p {
             font-weight: bold;
@@ -183,14 +189,38 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-left: 20px;
+            padding-left: 0px;
             li {
                 a {
-                    font-weight: bold;
-                    font-size: 16px;
-                    color: black;
+                    background-color: #fff;
+                    display: block;
+                    padding: 0.75rem 1.75rem;
+                    margin-bottom: -1px;
+                    border: 1px solid rgba(0, 0, 0, 0.125);
+                    width: 100%;
+                    color: #495057;
+                    text-align: inherit;
+
+                    &:hover {
+                        background-color: #fff4f4;
+                    }
+
+                    &.active {
+
+                    }
                 }
             }
+        }
+
+        .side-menu-header {
+            background-color: #fff4f4;
+            display: block;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: -1px;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            width: 100%;
+            color: #495057;
+            text-align: inherit;
         }
     }
 
@@ -202,6 +232,14 @@
 
     .btn {
         margin: 5px;
+    }
+
+    .router-link-active {
+        margin-right: -10px;
+        position: relative;
+        margin-left: 1px;
+        z-index: 2;
+        border-right: none !important;
     }
 </style>
 

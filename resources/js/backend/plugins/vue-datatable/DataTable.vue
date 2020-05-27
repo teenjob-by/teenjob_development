@@ -74,7 +74,7 @@
 								v-if="th.show"
 							>{{ th.th }}</th>
 							<!-- Display Actions If Provided -->
-							<th v-if="actions.length">Actions</th>
+							<th v-if="actions.length">Действия</th>
 						</tr>
 					</thead>
 					<tbody v-if="paginatedItems.length">
@@ -119,7 +119,7 @@
 					<tbody v-else>
 						<!-- Display Empty Message If No Items Are Rendered -->
 						<tr>
-							<td align="center" :colspan="headers.length + (actions.length ? 1 : 0) + (index ? 1 : 0)">No results</td>
+							<td align="center" :colspan="headers.length + (actions.length ? 1 : 0) + (index ? 1 : 0)">Не найдено</td>
 						</tr>
 					</tbody>
 				</table>
