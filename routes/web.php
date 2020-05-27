@@ -14,20 +14,34 @@ Route::get('contacts', function(){
 
 
 Route::get('volunteering', function(){
-    return redirect('feedback', 301);
+    return redirect('volunteerings-for-teens', 301);
 });
+
+Route::any('volunteering/{restOfURL}', function ($restOfURL) {
+    return redirect("/volunteerings-for-teens/$restOfURL", 301);
+})->where('restOfURL', '.*');
 
 Route::get('internship', function(){
     return redirect('internships-for-teens', 301);
 });
 
+Route::any('internship/{restOfURL}', function ($restOfURL) {
+    return redirect("/internships-for-teens/$restOfURL", 301);
+})->where('restOfURL', '.*');
+
 Route::get('jobs', function(){
     return redirect('jobs-for-teens', 301);
 });
 
+Route::any('jobs/{restOfURL}', function ($restOfURL) {
+    return redirect("/jobs-for-teens/$restOfURL", 301);
+})->where('restOfURL', '.*');
+
 Route::get('offers', function(){
     return redirect('volunteerings-for-teens', 301);
 });
+
+
 
 
 /*
