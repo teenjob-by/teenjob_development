@@ -10,40 +10,73 @@
 
             var modals = {
                 remove: {
-                    title: "@lang('content.organisationForm.modal.remove.title')",
-                    content: "@lang('content.organisationForm.modal.remove.content')",
+                    content: "@lang('content.organisationForm.remove.modal.message.content')",
                     buttons: {
-                        confirm: "@lang('content.organisationForm.modal.remove.confirm')",
-                        refuse: "@lang('content.organisationForm.modal.remove.refuse')"
+                        confirm: {
+                            text: "@lang('content.organisationForm.remove.modal.message.confirm')",
+                            action: function () {
+                                window.location.replace("{{ route('organisation.destroy') }}");
+                            }
+                        },
+                        refuse: {
+                            text: "@lang('content.organisationForm.remove.modal.message.refuse')",
+                            action: function () {
+                                MicroModal.close("modal_remove");
+                            }
+                        }
                     },
-                    action: function () {
-                        window.location.replace("{{ route('organisation.destroy') }}");
+                },
+                success: {
+                    content: "@lang('content.organisationForm.update.modal.success.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.organisationForm.update.modal.success.confirm')",
+                            action: function(){
+                                location.href = "/organisation#account";
+                            }
+                        },
+                    },
+                },
+
+                error: {
+                    content: "@lang('content.organisationForm.update.modal.error.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.organisationForm.update.modal.error.confirm')",
+                            action: function () {
+                                MicroModal.close("modal_error");
+                            }
+                        },
                     }
                 },
-                send: {
-                    title: "@lang('content.organisationForm.modal.send.title')",
-                    content: "@lang('content.organisationForm.modal.send.content')",
+
+                fail: {
+                    content: "@lang('content.organisationForm.update.modal.fail.content')",
                     buttons: {
-                        confirm: "@lang('content.organisationForm.modal.send.confirm')",
-                        refuse: "@lang('content.organisationForm.modal.send.refuse')"
-                    },
-                    action: function () {
-                        callAjax()
+                        confirm: {
+                            text: "@lang('content.organisationForm.update.modal.fail.confirm')",
+                            action: function (name) {
+
+                                MicroModal.close("modal_fail");
+                            }
+                        },
                     }
                 }
             };
 
-            $(".modal").attr("id", "modal_" + name + "_confirmation");
-            $("#modal_confirmation-title").empty().append(modals[name].title);
-            $("#modal_confirmation-content").empty().append("<p>" + modals[name].content + "</p>");
-            $("#modal_confirmation-confirm").empty().append(modals[name].buttons.confirm);
-            $("#modal_confirmation-refuse").empty().append(modals[name].buttons.refuse);
-            $("#modal_confirmation-confirm").unbind('click');             $("#modal_confirmation-confirm").click( function (e) {
-                MicroModal.close("modal_" + name + "_confirmation")
-                modals[name].action();
-            });
+            $(".modal").attr("id", "modal_" + name);
 
-            MicroModal.show("modal_" + name + "_confirmation")
+            $("#modal-content").empty().append("<p>" + modals[name].content + "</p>");
+
+            $(".modal__footer").empty();
+            for (let [key, value] of  Object.entries(modals[name].buttons)) {
+
+                $(".modal__footer").append( '<button class="modal__btn modal__btn-primary" id="modal-' + key + '">' + value.text + '</button>');
+                $("#modal-" + key).unbind()
+                $("#modal-" + key).bind("click", value.action)
+            }
+
+            MicroModal.show("modal_" + name)
         }
         $(document).ready(function () {
 
@@ -136,7 +169,7 @@
 
                 $('#form').on('submit', function(ev){
                     ev.preventDefault();
-                    showModal("send");
+                    callAjax();
                 });
 
             }catch(e) {
@@ -162,32 +195,30 @@
                     dataType: 'text'
                 })
                 .done(
-                    function(data){
+                function(data){
 
-                        data = JSON.parse(data);
-                        $("#submit").toggleClass('loading');
+                    $("#submit").toggleClass('loading');
 
-                        for (var prop in data) {
-                            $(".operation-result").append(prop.va);
+                    data = JSON.parse(data)
+
+
+                    for (let [key, value] of Object.entries(data)) {
+
+                        if(key == 'message') {
+                            showModal('success');
+
                         }
-
-                        for (let [key, value] of Object.entries(data)) {
-
-                            if(key == 'message') {
-                                $(".operation-result").toggleClass('show');
-                                $(".operation-result").empty().append(value);
-                            }
-                            else {
-                                $("#" + key).addClass('is-invalid').after(
-                                    "<span class=\"message-invalid\" role=\"alert\"><strong>" + value + "</strong></span>" );
-                            }
+                        else {
+                            showModal('error');
+                            $("#" + key).addClass('is-invalid').after(
+                                "<span class=\"message-invalid\" role=\"alert\"><strong>" + value + "</strong></span>" );
                         }
-                    })
+                    }
+                })
                 .fail(
                     function(jqXHR, ajaxOptions, thrownError) {
 
-                        $(".operation-result").toggleClass('show');
-                        $(".operation-result").empty().append("Сохранение не удалось");
+                        showModal('fail');
                         $("#submit").toggleClass('loading');
 
                     });
@@ -206,6 +237,7 @@
 
             <form id="form" method="POST" class="organisation_form" action="{{ route('organisation.update') }}">
                 @csrf
+                @method('PATCH')
 
                 <div class="organisation_form-group">
                     <label for="city" class="organisation_form-group-label">@lang('auth.register.city')</label>
@@ -329,7 +361,7 @@
                 <div class="content-loader"></div>
                 <p class="operation-result">
                 </p>
-                <a class="remove-account-link" onclick='showModal("remove"); return false;'>@lang('content.organisationForm.remove')</a>
+                <a class="remove-account-link" onclick='showModal("remove"); return false;'>@lang('content.organisationForm.remove.button')</a>
 
             </form>
         </div>
@@ -338,23 +370,16 @@
 
     <div class="modal micromodal-slide" aria-hidden="true">
         <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal_confirmation-title">
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                 <header class="modal__header">
-                    <h2 class="modal__title" id="modal_confirmation-title">
-                    </h2>
                     <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
                 </header>
-                <main class="modal__content" id="modal_confirmation-content">                
+                <main class="modal__content" id="modal-content">
                 </main>
                 <footer class="modal__footer">
-                    <button class="modal__btn modal__btn-primary" id="modal_confirmation-confirm"></button>
-                    <button class="modal__btn" id="modal_confirmation-refuse" data-micromodal-close aria-label="Close this dialog window"></button>
                 </footer>
             </div>
         </div>
     </div>
-
-
-
 
 @endsection

@@ -239,6 +239,7 @@ class VolunteeringApi extends Controller
     public function approve($id)
     {
         $volunteerings = VolunteeringModel::findOrFail($id);
+        $volunteerings->published_at = Carbon::now();
         $volunteerings->status = 1;
         $volunteerings->save();
 

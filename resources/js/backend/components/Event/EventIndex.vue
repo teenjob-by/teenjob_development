@@ -71,50 +71,12 @@
                     },
                     {
                         text: "Заблокировать", color: "danger", action: (row, index) => {
-                            this.$modal.show('dialog', {
-                                title: 'Подтверждение',
-                                text: 'Действительно хотите заблокировать запись?',
-                                buttons: [
-                                    {
-                                        title: 'Да',
-                                        handler: () => {
-                                            this.ban(row.id, index);
-                                            this.$modal.hide('dialog');
-                                        },
-                                        default: true,
-                                    },
-                                    {
-                                        title: 'Нет',
-                                    },
-                                    {
-                                        title: 'Отмена'
-                                    }
-                                ]
-                            })
+                            this.ban(row.id, index);
                         }
                     },
                     {
                         text: "Опубликовать", color: "danger", action: (row, index) => {
-                            this.$modal.show('dialog', {
-                                title: 'Подтверждение',
-                                text: 'Действительно хотите опубликовать запись?',
-                                buttons: [
-                                    {
-                                        title: 'Да',
-                                        handler: () => {
-                                            this.approve(row.id, index);
-                                            this.$modal.hide('dialog');
-                                        },
-                                        default: true,
-                                    },
-                                    {
-                                        title: 'Нет',
-                                    },
-                                    {
-                                        title: 'Отмена'
-                                    }
-                                ]
-                            })
+                            this.approve(row.id, index);
                         }
                     },
                     {
@@ -213,7 +175,7 @@
                                 }
                             ]
                         })
-                        load()
+                        app.load()
                     })
                     .catch(function (resp) {
                         app.$modal.show('dialog', {
@@ -235,19 +197,19 @@
                     .then(function (resp) {
                         app.$modal.show('dialog', {
                             title: 'Информация',
-                            text: 'Успешно заблокировано',
+                            text: 'Успешно опубликовано',
                             buttons: [
                                 {
                                     title: 'Закрыть'
                                 }
                             ]
                         })
-                        load()
+                        app.load()
                     })
                     .catch(function (resp) {
                         app.$modal.show('dialog', {
                             title: 'Информация',
-                            text: 'При блокировке возникла ошибка, обратитесь к разработчику',
+                            text: 'При публикации возникла ошибка, обратитесь к разработчику',
                             buttons: [
                                 {
                                     title: 'Закрыть'

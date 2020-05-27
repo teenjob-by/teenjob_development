@@ -307,6 +307,7 @@ class EventApi extends Controller
     public function approve($id)
     {
         $events = EventModel::findOrFail($id);
+        $events->published_at = Carbon::now();
         $events->status = 1;
         $events->save();
 

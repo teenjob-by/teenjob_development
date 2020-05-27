@@ -239,6 +239,7 @@ class InternshipApi extends Controller
     public function approve($id)
     {
         $internships = InternshipModel::findOrFail($id);
+        $internships->published_at = Carbon::now();
         $internships->status = 1;
         $internships->save();
 

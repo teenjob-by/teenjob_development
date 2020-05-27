@@ -137,12 +137,19 @@ $header-height: 70px;
       }
     }
 
+
+    &-item-admin {
+      width: 100%;
+    }
+
     &-item.active {
 
       margin-top: 4px;
       height: calc(#{$header-height} - 4px);
       border-bottom: 4px solid $white;
     }
+
+
 
     &-link {
       @include text-usual(inherit, inherit, center);

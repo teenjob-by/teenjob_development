@@ -61,50 +61,12 @@
                     },
                     {
                         text: "Заблокировать", color: "danger", action: (row, index) => {
-                            this.$modal.show('dialog', {
-                                title: 'Подтверждение',
-                                text: 'Действительно хотите заблокировать организацию?',
-                                buttons: [
-                                    {
-                                        title: 'Да',
-                                        handler: () => {
-                                            this.ban(row.id, index);
-                                            this.$modal.hide('dialog');
-                                        },
-                                        default: true,
-                                    },
-                                    {
-                                        title: 'Нет',
-                                    },
-                                    {
-                                        title: 'Отмена'
-                                    }
-                                ]
-                            })
+                            this.ban(row.id, index);
                         }
                     },
                     {
                         text: "Разблокировать", color: "danger", action: (row, index) => {
-                            this.$modal.show('dialog', {
-                                title: 'Подтверждение',
-                                text: 'Действительно хотите разблокировать организацию?',
-                                buttons: [
-                                    {
-                                        title: 'Да',
-                                        handler: () => {
-                                            this.approve(row.id, index);
-                                            this.$modal.hide('dialog');
-                                        },
-                                        default: true,
-                                    },
-                                    {
-                                        title: 'Нет',
-                                    },
-                                    {
-                                        title: 'Отмена'
-                                    }
-                                ]
-                            })
+                            this.approve(row.id, index);
                         }
                     },
                     {
@@ -139,7 +101,7 @@
                     }})
                     .then(function (resp) {
                         app.data = resp.data.data;
-                        console.log(app.data);
+
                     })
                     .catch(function (resp) {
 
@@ -192,7 +154,7 @@
                                 }
                             ]
                         })
-                        load()
+                        app.load()
                     })
                     .catch(function (resp) {
                         app.$modal.show('dialog', {
@@ -214,19 +176,19 @@
                     .then(function (resp) {
                         app.$modal.show('dialog', {
                             title: 'Информация',
-                            text: 'Успешно заблокировано',
+                            text: 'Успешно опубликовано',
                             buttons: [
                                 {
                                     title: 'Закрыть'
                                 }
                             ]
                         })
-                        load()
+                        app.load()
                     })
                     .catch(function (resp) {
                         app.$modal.show('dialog', {
                             title: 'Информация',
-                            text: 'При блокировке возникла ошибка, обратитесь к разработчику',
+                            text: 'При публикации возникла ошибка, обратитесь к разработчику',
                             buttons: [
                                 {
                                     title: 'Закрыть'

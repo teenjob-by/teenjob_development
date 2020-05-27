@@ -66,10 +66,10 @@ class Organisation extends Controller
         foreach ($collection as $item) {
             switch ($item->status) {
                 case 0:
-                    array_push($sorted['published'], $item);
+                    array_push($sorted['pending'], $item);
                     break;
                 case 1:
-                    array_push($sorted['pending'], $item);
+                    array_push($sorted['published'], $item);
                     break;
                 case 2:
                     array_push($sorted['archived'], $item);
@@ -150,7 +150,7 @@ class Organisation extends Controller
         Auth::logout();
         $organisation->delete();
 
-        return redirect()->route("frontend.index");
+        return redirect()->route("frontend.home");
     }
 
     public function getAllOrganisations()

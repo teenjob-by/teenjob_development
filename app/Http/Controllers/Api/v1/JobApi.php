@@ -255,6 +255,7 @@ class JobApi extends Controller
     public function approve($id)
     {
         $jobs = JobModel::findOrFail($id);
+        $jobs->published_at = Carbon::now();
         $jobs->status = 1;
         $jobs->save();
 
