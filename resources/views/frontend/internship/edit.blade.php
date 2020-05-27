@@ -36,45 +36,55 @@
         function showModal(name) {
 
             var modals = {
-
                 success: {
-                    title: "@lang('content.internship.update.modal.success.title')",
-                    content: "@lang('content.internship.update.modal.success.content')",
+                    content: "@lang('content.internship.update..modal.success.content')",
                     buttons: {
-                        confirm: "@lang('content.internship.update.modal.success.confirm')",
+                        confirm: {
+                            text: "@lang('content.internship.update..modal.success.confirm')",
+                            action: function(){
+                                location.href = "/organisation#internships-for-teens";
+                            }
+                        },
                     },
-                    action: function () {
-                        location.href = "/organisation#internships-for-teens";
-                    }
                 },
 
                 error: {
-                    title: "@lang('content.internship.update.modal.error.title')",
-                    content: "@lang('content.internship.update.modal.error.content')",
+                    content: "@lang('content.internship.update..modal.error.content')",
                     buttons: {
-                        confirm: "@lang('content.internship.update.modal.error.confirm')",
+                        confirm: {
+                            text: "@lang('content.internship.update..modal.error.confirm')",
+                            action: function () {
+                                MicroModal.close("modal_error");
+                            }
+                        },
                     }
                 },
 
                 fail: {
-                    title: "@lang('content.internship.update.modal.fail.title')",
-                    content: "@lang('content.internship.update.modal.fail.content')",
+                    content: "@lang('content.internship.update..modal.fail.content')",
                     buttons: {
-                        confirm: "@lang('content.internship.update.modal.fail.confirm')",
+                        confirm: {
+                            text: "@lang('content.internship.update..modal.fail.confirm')",
+                            action: function (name) {
+
+                                MicroModal.close("modal_fail");
+                            }
+                        },
                     }
                 }
             };
 
             $(".modal").attr("id", "modal_" + name);
-            $("#modal-title").empty().append(modals[name].title);
-            $("#modal-content").empty().append("<p>" + modals[name].content + "</p>");
-            $("#modal-confirm").empty().append(modals[name].buttons.confirm);
-            $("#modal-confirm").unbind('click');
 
-            $("#modal-confirm").click( function (e) {
-                MicroModal.close("modal_" + name)
-                modals[name].action();
-            });
+            $("#modal-content").empty().append("<p>" + modals[name].content + "</p>");
+
+            $(".modal__footer").empty();
+            for (let [key, value] of  Object.entries(modals[name].buttons)) {
+
+                $(".modal__footer").append( '<button class="modal__btn modal__btn-primary" id="modal-' + key + '">' + value.text + '</button>');
+                $("#modal-" + key).unbind()
+                $("#modal-" + key).bind("click", value.action)
+            }
 
             MicroModal.show("modal_" + name)
         }
@@ -94,7 +104,7 @@
 
                 $('#form').on('submit', function(ev){
 
-                    showModal("send");
+                    callAjax()
                     return false;
                 });
 
@@ -211,10 +221,8 @@
 
                         $("#submit").toggleClass('loading');
 
-                        for (var prop in data) {
-                            $(".operation-result").append(prop.va);
-                        }
 
+                        data = JSON.parse(data)
                         for (let [key, value] of Object.entries(data)) {
 
                             if(key == 'message') {
@@ -396,7 +404,6 @@
                 <main class="modal__content" id="modal-content">
                 </main>
                 <footer class="modal__footer">
-                    <button class="modal__btn modal__btn-primary" id="modal-confirm" data-micromodal-close aria-label="Close this dialog window"></button>
                 </footer>
             </div>
         </div>
