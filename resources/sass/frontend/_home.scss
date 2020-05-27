@@ -4,6 +4,7 @@
 
   &_section {
 
+
     &-about {
       @extend .section;
 
@@ -14,6 +15,11 @@
       }
 
 
+      .button-primary {
+        @include for-tablet-portrait-up() {
+          width: auto;
+        }
+      }
     }
 
     &-organisations {
@@ -21,6 +27,12 @@
       @include for-desktop-up() {
         .button-primary {
           min-width: 270px;
+        }
+      }
+
+      .button-primary {
+        @include for-tablet-portrait-up() {
+          width: auto;
         }
       }
     }
@@ -32,6 +44,12 @@
           min-width: 270px;
         }
       }
+
+      .button-primary {
+        @include for-tablet-portrait-up() {
+          width: auto;
+        }
+      }
     }
 
     &-partners {
@@ -41,6 +59,12 @@
           min-width: 270px;
         }
       }
+
+      .button-primary {
+        @include for-tablet-portrait-up() {
+          width: auto;
+        }
+      }
     }
 
     &-reviews {
@@ -48,6 +72,12 @@
       @include for-desktop-up() {
         .button-primary {
           min-width: 270px;
+        }
+      }
+
+      .button-primary {
+        @include for-tablet-portrait-up() {
+          width: auto;
         }
       }
 
