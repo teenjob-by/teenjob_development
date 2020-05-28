@@ -55,9 +55,8 @@
         }
         $(document).ready(function () {
 
-            $( 'a[href*="#"]' ).click( function(e) {
-                e.preventDefault();
-            } );
+
+
 
 
             $('.organisation_tab-link').click(function(){
@@ -67,18 +66,8 @@
                 $('.organisation_tab-content').removeClass('current');
 
                 $(this).addClass('current');
-                $("#"+tab_id).addClass('current');
+                $("#"+tab_id + "-tab").addClass('current');
 
-            })
-
-            $('.organisation_list-menu-link').click(function(){
-                var tab_id = $(this).attr('data-id');
-
-                $(this).parent().parent().children().children().removeClass('active');
-                $('.organisation_list').removeClass('active');
-
-                $(this).addClass('active');
-                $("#"+tab_id).addClass('active');
             })
 
 
@@ -197,68 +186,139 @@
 
 
 
-                <div id="account" class="organisation_tab-content current">
+                <div id="account-tab" class="organisation_tab-content current">
 
-                    <h3 class="organisation_form-title">
-                        <strong>@lang('content.organisation.account.title')</strong>
-                    </h3>
+
 
                     <div class="organisation_form-group">
-                        <label for="title" class="organisation_form-group-label">@lang('content.organisation.account.orgName')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="name" value="{{ $organisation->name }}">
-                    </div>
-
-                    <div class="organisation_form-group">
-                        <label for="link" class="organisation_form-group-label">@lang('content.organisation.account.orgSite')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="link" value="{{ $organisation->link }}">
-                    </div>
-
-                    <div class="organisation_form-group">
-                        <label for="type" class="organisation_form-group-label">@lang('content.organisation.account.orgType')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="type" value="{{ $organisation->type }}">
-                    </div>
-
-                    <div class="organisation_form-group">
-                        <label for="unique_identifier" class="organisation_form-group-label">@lang('content.organisation.account.orgID')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="unique_identifier" value="{{ $organisation->unique_identifier }}">
+                        <div class="left-aligned">
+                        </div>
+                        <div class="right-aligned">
+                            <h3 class="organisation_form-title">
+                                <strong>@lang('content.organisation.account.title')</strong>
+                            </h3>
+                        </div>
                     </div>
 
 
-                    <h3 class="organisation_form-title">
-                        <strong>@lang('content.organisation.account.contactsTitle')</strong>
-                    </h3>
+                    <div class="organisation_form-group">
+                        <div class="left-aligned">
+                            <label for="title" class="organisation_form-group-label">@lang('content.organisation.account.orgName')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="name" value="{{ $organisation->name }}">
+                        </div>
+                    </div>
+
+
 
                     <div class="organisation_form-group">
-                        <label for="contact" class="organisation_form-group-label">@lang('content.organisation.account.contactsPerson')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="contact" value="{{ $organisation->contact }}">
+                        <div class="left-aligned">
+                            <label for="link" class="organisation_form-group-label">@lang('content.organisation.account.orgSite')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="link" value="{{ $organisation->link }}">
+                        </div>
                     </div>
 
                     <div class="organisation_form-group">
-                        <label for="phone" class="organisation_form-group-label">@lang('content.organisation.account.contactsPhone')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="phone" value="{{ $organisation->phone }}">
+                        <div class="left-aligned">
+                            <label for="type" class="organisation_form-group-label">@lang('content.organisation.account.orgType')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="type" value="{{ $organisation->type }}">
+                        </div>
                     </div>
 
                     <div class="organisation_form-group">
-                        <label for="alt_phone" class="organisation_form-group-label">@lang('content.organisation.account.contactsAdditionalPhone')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="alt_phone" value="{{ $organisation->alt_phone }}">
+
+                        <div class="left-aligned">
+                            <label for="unique_identifier" class="organisation_form-group-label">@lang('content.organisation.account.orgID')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="unique_identifier" value="{{ $organisation->unique_identifier }}">
+                        </div>
                     </div>
 
                     <div class="organisation_form-group">
-                        <label for="email" class="organisation_form-group-label">@lang('content.organisation.account.contactsEmail')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                        <div class="left-aligned">
+                        </div>
+                        <div class="right-aligned">
+                            <h3 class="organisation_form-title">
+                                <strong>@lang('content.organisation.account.contactsTitle')</strong>
+                            </h3>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="organisation_form-group">
+                        <div class="left-aligned">
+                            <label for="contact" class="organisation_form-group-label">@lang('content.organisation.account.contactsPerson')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="contact" value="{{ $organisation->contact }}">
+                        </div>
                     </div>
 
                     <div class="organisation_form-group">
-                        <label for="alt_email" class="organisation_form-group-label">@lang('content.organisation.account.contactsadditionalEmail')</label>
-                        <input readonly type="text" class="organisation_form-group-input" name="alt_email" value="{{ $organisation->alt_email }}">
+
+                        <div class="left-aligned">
+                            <label for="phone" class="organisation_form-group-label">@lang('content.organisation.account.contactsPhone')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="phone" value="{{ $organisation->phone }}">
+                        </div>
                     </div>
 
                     <div class="organisation_form-group">
-                        <a class="button-secondary" href="{{ route('organisation.update') }}" role="button">
-                            <span>
-                                @lang('content.organisation.account.editPersonalInfo')
-                            </span>
-                        </a>
+                        <div class="left-aligned">
+                            <label for="alt_phone" class="organisation_form-group-label">@lang('content.organisation.account.contactsAdditionalPhone')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="alt_phone" value="{{ $organisation->alt_phone }}">
+                        </div>
+                    </div>
+
+                    <div class="organisation_form-group">
+                        <div class="left-aligned">
+                            <label for="email" class="organisation_form-group-label">@lang('content.organisation.account.contactsEmail')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                        </div>
+                    </div>
+
+                    <div class="organisation_form-group">
+                        <div class="left-aligned">
+                            <label for="alt_email" class="organisation_form-group-label">@lang('content.organisation.account.contactsadditionalEmail')</label>
+                        </div>
+
+                        <div class="right-aligned">
+                            <input readonly type="text" class="organisation_form-group-input" name="alt_email" value="{{ $organisation->alt_email }}">
+                        </div>
+                    </div>
+
+                    <div class="organisation_form-group">
+                        <div class="left-aligned">
+
+                        </div>
+                        <div class="right-aligned">
+                            <a class="button-secondary" href="{{ route('organisation.update') }}" role="button">
+                                <span>
+                                    @lang('content.organisation.account.editPersonalInfo')
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -267,7 +327,7 @@
                 @foreach($data as $section_name => $section_data)
 
 
-                    <div id="{{ $section_name }}s-for-teens" class="organisation_tab-content">
+                    <div id="{{ $section_name }}s-for-teens-tab" class="organisation_tab-content">
                         <div class="organisation_tab-wrapper">
 
                             <a class="button-secondary" href="{{ route('organisation.'. $section_name .'s.create') }}" role="button">

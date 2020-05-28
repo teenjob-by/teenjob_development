@@ -37,12 +37,11 @@
     padding-bottom: 35px;
     overflow: hidden;
 
-
-
-
+    align-items: center;
 
     &.current{
-      display: inherit;
+      display: flex;
+      flex-direction: column;
 
       border-top: 1px solid transparent;
       border-top-left-radius: 0.25rem;
@@ -366,7 +365,7 @@
     }
 
     &-title {
-      @include text-usual(20px, $black, center);
+      @include text-usual(20px, $black, left);
       margin-top: 35px;
       margin-bottom: 25px;
     }
@@ -386,13 +385,46 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 100%;
       position: relative;
-      margin-left: auto;
-      margin-right: auto;
+
+      @include for-tablet-portrait-up() {
+        width: 100%;
+      }
+
       margin-bottom: 24px;
 
+      .right-aligned {
+        width: auto;
+        min-width: 290px;
+        max-width: 510px;
 
+        @include for-tablet-portrait-up() {
+          width: 100%;
+        }
+      }
+
+      .left-aligned {
+        width: 180px;
+        min-width: 180px;
+        display: flex;
+        justify-content: flex-start;
+
+        @include for-tablet-portrait-up() {
+          justify-content: flex-end;
+        }
+      }
+
+      .button-secondary {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+
+        max-width: 290px;
+
+        @include for-tablet-portrait-up {
+          max-width: 385px;
+        }
+      }
 
       .message-invalid {
         @include text-usual(12px, $red, left);
@@ -413,7 +445,6 @@
       @include for-tablet-portrait-up() {
         flex-direction: row;
         justify-content: flex-end;
-        width: 570px;
         align-items: center;
       }
 
@@ -421,7 +452,7 @@
         @include  text-usual(14px, $black, left);
         padding-top: 7px;
         padding-bottom: 7px;
-
+        padding-right: 20px;
 
         @include for-tablet-portrait-up() {
           @include  text-usual(16px, $black, right);
@@ -434,6 +465,7 @@
       &-input {
         height: 42px;
         width: 100%;
+        min-width: 290px;
         max-width: 385px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
@@ -442,12 +474,6 @@
 
         @include text-usual(16px, $black, left);
         padding: 3px 20px;
-
-        @include for-tablet-portrait-up() {
-          margin-left: 15px;
-          margin-right: 25px;
-          min-width: 385px;
-        }
 
         &:focus {
           outline: none;
