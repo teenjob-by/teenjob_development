@@ -338,7 +338,7 @@
   &_form {
 
     .tip {
-      @include text-usual(14px, $black, center);
+      @include text-usual(14px, $black, left);
     }
 
     .operation-result {
@@ -355,9 +355,7 @@
       @include text-usual(16px, $violet, center);
       cursor: pointer;
       margin-top: 30px;
-
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 385px;
       display: block;
       &:hover {
         text-decoration: underline;
@@ -432,10 +430,6 @@
         bottom: -20px;
         left: 0px;
 
-        @include for-tablet-portrait-up() {
-          bottom: -20px;
-          left: 160px;
-        }
       }
 
       &:last-child {
@@ -503,8 +497,6 @@
         padding: 3px 20px;
 
         @include for-tablet-portrait-up() {
-          margin-left: 30px;
-          margin-right: 25px;
           min-width: 385px;
         }
 
@@ -513,19 +505,19 @@
         }
       }
 
+      .inner-icon {
+        position: relative;
+        max-width: 385px;
+      }
+
       .show-password {
         position: absolute;
         width: 20px;
         height: 20px;
         cursor: pointer;
 
-        right: 10px;
-        top: 45px;
-
-        @include for-tablet-portrait-up() {
-          right: 35px;
-          top: 12px;
-        }
+        right: 15px;
+        top: 12px;
 
         background: url(/images/show-password-icon.svg);
       }

@@ -231,138 +231,207 @@
 
     <section class="organisation_section">
         <div class="content-wrapper">
-            <h3 class="organisation_form-title">
-                <strong>@lang('content.organisationForm.title')</strong>
-            </h3>
+
 
             <form id="form" method="POST" class="organisation_form" action="{{ route('organisation.update') }}">
                 @csrf
                 @method('PATCH')
 
                 <div class="organisation_form-group">
-                    <label for="city" class="organisation_form-group-label">@lang('auth.register.city')</label>
-                    <select id="city" class="custom-select organisation_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('auth.register.city')</option>
-                        @foreach($cities as $city)
-                            @isset($organisation->city)
-                                <option {{ ($city->id == $organisation->city->id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
-                            @else
-                                <option value="{{ $city->id }}">{{ $city->name }}</option>
-                            @endisset
-                        @endforeach
-                    </select>
-
-
-                    @error('city')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-
-                <div class="organisation_form-group">
-                    <label for="email" class="organisation_form-group-label">@lang('content.organisationForm.email')</label>
-                    <input id="email" readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <h3 class="organisation_form-title">
+                            <strong>@lang('content.organisationForm.title')</strong>
+                        </h3>
+                    </div>
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="alt_email" class="organisation_form-group-label">@lang('content.organisationForm.additionalEmail')</label>
-                    <input id="alt_email" type="email" class="organisation_form-group-input @error('alt_email') is-invalid @enderror" name="alt_email" value="{{ $organisation->alt_email }}">
+                    <div class="left-aligned">
+                        <label for="city" class="organisation_form-group-label">@lang('auth.register.city')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="city" class="custom-select organisation_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
+                                <option selected value>@lang('auth.register.city')</option>
+                                @foreach($cities as $city)
+                                    @isset($organisation->city)
+                                        <option {{ ($city->id == $organisation->city->id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @else
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endisset
+                                @endforeach
+                            </select>
 
-                    @error('alt_email')
+                            @error('city')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                        <label for="email" class="organisation_form-group-label">@lang('content.organisationForm.email')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="email" readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                        <label for="alt_email" class="organisation_form-group-label">@lang('content.organisationForm.additionalEmail')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="alt_email" type="email" class="organisation_form-group-input @error('alt_email') is-invalid @enderror" name="alt_email" value="{{ $organisation->alt_email }}">
+
+                        @error('alt_email')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="phone" class="organisation_form-group-label">@lang('content.organisationForm.phone')</label>
-                    <input type="text" class="organisation_form-group-input @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ $organisation->phone }}" required>
+                    <div class="left-aligned">
+                        <label for="phone" class="organisation_form-group-label">@lang('content.organisationForm.phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input type="text" class="organisation_form-group-input @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ $organisation->phone }}" required>
 
-                    @error('phone')
+                        @error('phone')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="alt_phone" class="organisation_form-group-label">@lang('content.organisationForm.alt_phone')</label>
-                    <input type="text" class="organisation_form-group-input @error('alt_phone') is-invalid @enderror" name="alt_phone" id="alt_phone" value="{{ $organisation->alt_phone }}">
+                    <div class="left-aligned">
+                        <label for="alt_phone" class="organisation_form-group-label">@lang('content.organisationForm.alt_phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input type="text" class="organisation_form-group-input @error('alt_phone') is-invalid @enderror" name="alt_phone" id="alt_phone" value="{{ $organisation->alt_phone }}">
 
-                    @error('alt_phone')
+                        @error('alt_phone')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="request" class="organisation_form-group-label">@lang('content.organisationForm.request')</label>
-                    <textarea name="request" required type="text" maxlength="250" class="organisation_form-group-input textarea @error('request') is-invalid @enderror"  name="request" placeholder="@lang('content.organisationForm.requestPlaceholder')">{{ $organisation->request }}</textarea>
+                    <div class="left-aligned">
+                        <label for="request" class="organisation_form-group-label">@lang('content.organisationForm.request')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <textarea name="request" required type="text" maxlength="250" class="organisation_form-group-input textarea @error('request') is-invalid @enderror"  name="request" placeholder="@lang('content.organisationForm.requestPlaceholder')">{{ $organisation->request }}</textarea>
 
-                    @error('request')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <h3 class="organisation_form-title">
-                    <strong>@lang('content.organisationForm.passwordTitle')</strong>
-                </h3>
-
-                <div class="organisation_form-group">
-                    <label for="password" class="organisation_form-group-label">@lang('content.organisationForm.passwordNew')</label>
-                    <input id="password" type="password" name="password" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password') is-invalid @enderror" required autofocus minlength="8">
-                    <i class="show-password" onclick="showPassword('password')"></i>
-                    @error('password')
+                        @error('request')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="organisation_form-group">
-                    <label for="password_repeat" class="organisation_form-group-label">@lang('content.organisationForm.passwordRepeat')</label>
-                    <input id="password_repeat" type="password" name="password_repeat" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password_repeat') is-invalid @enderror" required autofocus minlength="8">
-                    <i class="show-password" onclick="showPassword('password_repeat')"></i>
-                    @error('password_repeat')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <h3 class="organisation_form-title">
+                            <strong>@lang('content.organisationForm.passwordTitle')</strong>
+                        </h3>
+                    </div>
                 </div>
 
+
                 <div class="organisation_form-group">
-                    <label for="password_old" class="organisation_form-group-label">@lang('content.organisationForm.passwordOld')</label>
-                    <input id="password_old" type="password" name="password_old" placeholder="@lang('content.organisationForm.passwordOld')" class="organisation_form-group-input @error('password_old') is-invalid @enderror" required autofocus minlength="8">
-                    <i class="show-password" onclick="showPassword('password_old')"></i>
-                    @error('password_old')
+                    <div class="left-aligned">
+                        <label for="password" class="organisation_form-group-label">@lang('content.organisationForm.passwordNew')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <input id="password" type="password" name="password" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password') is-invalid @enderror" required autofocus minlength="8">
+                            <i class="show-password" onclick="showPassword('password')"></i>
+                        </div>
+                        @error('password')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
-
-                <p class="tip">@lang('content.organisationForm.remind')</p>
-
 
                 <div class="organisation_form-group">
-                    <button id="submit" class="button-secondary" role="button" type="submit">
-                        <span>
-                            @lang('content.organisationForm.save')
+                    <div class="left-aligned">
+                        <label for="password_repeat" class="organisation_form-group-label">@lang('content.organisationForm.passwordRepeat')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <input id="password_repeat" type="password" name="password_repeat" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password_repeat') is-invalid @enderror" required autofocus minlength="8">
+                            <i class="show-password" onclick="showPassword('password_repeat')"></i>
+                        </div>
+                        @error('password_repeat')
+                        <span class="message-invalid" role="alert">
+                            <strong>{{ $message }}</strong>
                         </span>
-                        <div class="loading-icon"></div>
-                    </button>
+                        @enderror
+                    </div>
                 </div>
-                <div class="content-loader"></div>
-                <p class="operation-result">
-                </p>
-                <a class="remove-account-link" onclick='showModal("remove"); return false;'>@lang('content.organisationForm.remove.button')</a>
 
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                        <label for="password_old" class="organisation_form-group-label">@lang('content.organisationForm.passwordOld')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <input id="password_old" type="password" name="password_old" placeholder="@lang('content.organisationForm.passwordOld')" class="organisation_form-group-input @error('password_old') is-invalid @enderror" required autofocus minlength="8">
+                            <i class="show-password" onclick="showPassword('password_old')"></i>
+                        </div>
+                        @error('password_old')
+                        <span class="message-invalid" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <p class="tip">@lang('content.organisationForm.remind')</p>
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <button id="submit" class="button-secondary" role="button" type="submit">
+                            <span>
+                                @lang('content.organisationForm.save')
+                            </span>
+                            <div class="loading-icon"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <a class="remove-account-link" onclick='showModal("remove"); return false;'>@lang('content.organisationForm.remove.button')</a>
+                    </div>
+                </div>
             </form>
         </div>
     </section>

@@ -23,8 +23,6 @@
   padding: 3px 20px;
 
   @include for-tablet-portrait-up() {
-    margin-left: 15px;
-    margin-right: 25px;
     min-width: 385px;
   }
 
