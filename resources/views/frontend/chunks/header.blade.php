@@ -14,7 +14,7 @@
                 <ul class="header_menu">
 
                     @for($i = 1; $i <= 4; $i++)
-                        <li class="header_menu-item">
+                        <li class="header_menu-item {{ request()->is(__('header.link_'.$i))? 'active' : '' }}">
                             <a class="header_menu-link" href="@lang('header.link_'.$i)">@lang('header.navlink_'.$i)</a>
                         </li>
                     @endfor

@@ -160,6 +160,7 @@ $header-height: 70px;
       justify-content: center;
       align-items: center;
       white-space: nowrap;
+      transition: color 0.2s ease-in;
 
       &.account-delimiter {
         padding: 5px;
@@ -167,7 +168,8 @@ $header-height: 70px;
       }
 
       &:hover {
-          color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease-in;
       }
     }
   }
@@ -203,6 +205,8 @@ $header-height: 70px;
     margin-left: 15px;
     margin-right: 15px;
 
+    transition: color 0.2s ease-in;
+
 
     @include for-desktop-up() {
       margin-left: 0px;
@@ -217,6 +221,7 @@ $header-height: 70px;
 
     &:hover {
       color: rgba(255, 255, 255, 0.6);
+      transition: color 0.2s ease-in;
     }
   }
 }

@@ -20,11 +20,11 @@ return [
     |
     */
     'navlink_1' => 'Работа',
-    'link_1' => '/jobs-for-teens',
+    'link_1' => 'jobs-for-teens',
     'navlink_2' => 'Волонтерство',
-    'link_2' => '/volunteerings-for-teens',
+    'link_2' => 'volunteerings-for-teens',
     'navlink_3' => 'Мероприятия',
-    'link_3' => '/events',
+    'link_3' => 'events',
     'navlink_4' => 'Создать резюме',
     'link_4' => 'https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform" target=_blank',
     'navlink_7' => 'Работа',
