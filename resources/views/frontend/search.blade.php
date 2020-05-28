@@ -5,7 +5,7 @@
     <meta name="language" content="RU"/>
     <meta name="keywords" content="">
 
-    <title>@lang('content.'. $item_type .'.title')y</title>
+    <title>@lang('content.'. $item_type .'.title')</title>
 @endsection
 
 @section('og_meta')
