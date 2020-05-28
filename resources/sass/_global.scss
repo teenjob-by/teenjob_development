@@ -87,6 +87,7 @@ a {
     height: 24px;
     background: url("/images/volunteering.svg") 100% 100% no-repeat;
     display: block;
+    margin-top: 5px;
 }
 
 .internship-icon {
@@ -95,6 +96,7 @@ a {
     height: 28px;
     background: url("/images/internship.svg") 100% 100% no-repeat;
     display: block;
+    margin-top: 5px;
 }
 
 .job-icon {
@@ -103,6 +105,7 @@ a {
     height: 24px;
     background: url("/images/job.svg") 100% 100% no-repeat;
     display: block;
+    margin-top: 5px;
 }
 
 span + .job-icon {
