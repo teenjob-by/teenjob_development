@@ -36,10 +36,10 @@
             <p class="footer_social-title">@lang('footer.social.title')</p>
 
             <div class="footer_social-icons-wrapper">
-                <a href="https://t.me/teenjob_by"><img class="social-icon" src="/images/telegram-icon.svg" alt="telegram icon"></a>
-                <a href="https://www.instagram.com/teenjob.by/?hl=ru"><img class="social-icon" src="/images/instagram-icon.svg" alt="instagram icon"></a>
-                <a href="https://vk.com/teenjob_by"><img class="social-icon" src="/images/vk-icon.svg" alt="vkontakte icon"></a>
-                <a href="https://www.facebook.com/teenjob.by/"><img class="social-icon" src="/images/fb-icon.svg" alt="facebook icon"></a>
+                <a class="social-icon-link" href="https://t.me/teenjob_by"><img class="social-icon" src="/images/telegram-icon.svg" alt="telegram icon"></a>
+                <a class="social-icon-link" href="https://www.instagram.com/teenjob.by/?hl=ru"><img class="social-icon" src="/images/instagram-icon.svg" alt="instagram icon"></a>
+                <a class="social-icon-link" href="https://vk.com/teenjob_by"><img class="social-icon" src="/images/vk-icon.svg" alt="vkontakte icon"></a>
+                <a class="social-icon-link" href="https://www.facebook.com/teenjob.by/"><img class="social-icon" src="/images/fb-icon.svg" alt="facebook icon"></a>
             </div>
         </div>
     </div>
