@@ -55,6 +55,11 @@
         }
         $(document).ready(function () {
 
+            $( 'a[href*="#"]' ).click( function(e) {
+                e.preventDefault();
+            } );
+
+
             $('.organisation_tab-link').click(function(){
                 var tab_id = $(this).attr('data-tab');
 
@@ -64,7 +69,6 @@
                 $(this).addClass('current');
                 $("#"+tab_id).addClass('current');
 
-                $("#"+tab_id).find('.organisation_tab-lists').children(':first-child').addClass('active');
             })
 
             $('.organisation_list-menu-link').click(function(){
@@ -172,6 +176,7 @@
                     });
 
         }
+
 
 
     </script>
