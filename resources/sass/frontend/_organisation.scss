@@ -40,9 +40,9 @@
     align-items: center;
 
     &.current{
+
       display: flex;
       flex-direction: column;
-
       border-top: 1px solid transparent;
       border-top-left-radius: 0.25rem;
       border-top-right-radius: 0.25rem;
@@ -50,10 +50,14 @@
     }
   }
 
+
+
+
   &_tab-wrapper {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    width: 100%;
 
     justify-content: space-between;
     align-items: flex-start;
