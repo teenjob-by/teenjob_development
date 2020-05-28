@@ -278,7 +278,9 @@
                         <label for="email" class="organisation_form-group-label">@lang('content.organisationForm.email')</label>
                     </div>
                     <div class="right-aligned">
-                        <input id="email" readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                        <div class="inner-icon">
+                            <input id="email" readonly type="text" class="organisation_form-group-input" name="email" value="{{ $organisation->email }}">
+                        </div>
                     </div>
                 </div>
 
@@ -287,13 +289,15 @@
                         <label for="alt_email" class="organisation_form-group-label">@lang('content.organisationForm.additionalEmail')</label>
                     </div>
                     <div class="right-aligned">
-                        <input id="alt_email" type="email" class="organisation_form-group-input @error('alt_email') is-invalid @enderror" name="alt_email" value="{{ $organisation->alt_email }}">
+                        <div class="inner-icon">
+                            <input id="alt_email" type="email" class="organisation_form-group-input @error('alt_email') is-invalid @enderror" name="alt_email" value="{{ $organisation->alt_email }}">
 
-                        @error('alt_email')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                            @error('alt_email')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
@@ -302,13 +306,15 @@
                         <label for="phone" class="organisation_form-group-label">@lang('content.organisationForm.phone')</label>
                     </div>
                     <div class="right-aligned">
-                        <input type="text" class="organisation_form-group-input @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ $organisation->phone }}" required>
+                        <div class="inner-icon">
+                            <input type="text" class="organisation_form-group-input @error('phone') is-invalid @enderror" name="phone" id="phone" value="{{ $organisation->phone }}" required>
 
-                        @error('phone')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                            @error('phone')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
@@ -317,13 +323,15 @@
                         <label for="alt_phone" class="organisation_form-group-label">@lang('content.organisationForm.alt_phone')</label>
                     </div>
                     <div class="right-aligned">
-                        <input type="text" class="organisation_form-group-input @error('alt_phone') is-invalid @enderror" name="alt_phone" id="alt_phone" value="{{ $organisation->alt_phone }}">
+                        <div class="inner-icon">
+                            <input type="text" class="organisation_form-group-input @error('alt_phone') is-invalid @enderror" name="alt_phone" id="alt_phone" value="{{ $organisation->alt_phone }}">
 
-                        @error('alt_phone')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                            @error('alt_phone')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
@@ -332,13 +340,15 @@
                         <label for="request" class="organisation_form-group-label">@lang('content.organisationForm.request')</label>
                     </div>
                     <div class="right-aligned">
-                        <textarea name="request" required type="text" maxlength="250" class="organisation_form-group-input textarea @error('request') is-invalid @enderror"  name="request" placeholder="@lang('content.organisationForm.requestPlaceholder')">{{ $organisation->request }}</textarea>
+                        <div class="inner-icon">
+                            <textarea name="request" required type="text" maxlength="250" class="organisation_form-group-input textarea @error('request') is-invalid @enderror"  name="request" placeholder="@lang('content.organisationForm.requestPlaceholder')">{{ $organisation->request }}</textarea>
 
-                        @error('request')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                            @error('request')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
 
