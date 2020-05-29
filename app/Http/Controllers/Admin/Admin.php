@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Organisation;
-use Illuminate\Http\Request;
+
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
 class Admin extends Controller
 {
+
+
+
     /**
      * Create a new controller instance.
      *

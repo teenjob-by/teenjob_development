@@ -26,8 +26,10 @@ Route::namespace('Api')->group(function () {
 
             Route::namespace('v1')->group(function () {
 
-
                 Route::group(['middleware' => 'auth:api'], function(){
+
+                Route::get('counters', 'AdminApi@getCounters')->name('counters');
+
                 Route::get('organisations', 'OrganisationApi@index');
                 Route::get('organisations/show/{status}', 'OrganisationApi@indexFilter');
                 Route::post('organisations', 'OrganisationApi@store');

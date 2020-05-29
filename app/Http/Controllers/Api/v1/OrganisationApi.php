@@ -166,7 +166,7 @@ class OrganisationApi extends Controller
     public function approve($id)
     {
         $organisations = OrganisationModel::findOrFail($id);
-        $organisations->published_at = Carbon::now();
+
         $organisations->status = 1;
         $organisations->save();
 

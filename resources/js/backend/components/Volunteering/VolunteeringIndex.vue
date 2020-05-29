@@ -44,49 +44,7 @@
                             return `<a href="/admin/organisations/${row.organisation.id}/edit">${row.organisation.name}</a>`;
                         }}
                 ],
-                actions: [
-                    {
-                        text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {
-                            this.approve(row.id, index);
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
-                            this.ban(row.id, index);
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-edit" aria-hidden="true"></i>', color: "info", action: (row, index) => {
-                            this.$router.push({name: 'volunteeringEdit', params: { id: row.id }})
-                        }
-                    },
-                    {
-                        text: '<i class="fa fa-trash" aria-hidden="true"></i>', color: "danger", action: (row, index) => {
-
-
-                            this.$modal.show('dialog', {
-                                title: 'Подтверждение',
-                                text: 'Действительно хотите удалить запись?',
-                                buttons: [
-                                    {
-                                        title: 'Да',
-                                        handler: () => {
-                                            this.delete(row.id, index);
-                                            this.$modal.hide('dialog');
-                                        },
-                                        default: true,
-                                    },
-                                    {
-                                        title: 'Нет',
-                                    },
-                                    {
-                                        title: 'Отмена'
-                                    }
-                                ]
-                            })
-                        }
-                    },
-                ],
+                actions: [],
 
                 token: "",
                 tablekey: 0,
@@ -96,18 +54,78 @@
 
         created() {
             this.token = localStorage.getItem('access_token')
+            this.addActions()
         },
         watch: {
             "$route.params.scope"(val) {
+                this.addActions()
                 this.load();
             },
         },
         methods: {
+            addActions() {
+
+                this.actions = [];
+
+                this.actions.unshift({
+                    text: '<i class="fa fa-edit" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                        this.$router.push({name: 'volunteeringEdit', params: { id: row.id }})
+                    }
+                },{
+                    text: '<i class="fa fa-trash" aria-hidden="true"></i>', color: "danger", action: (row, index) => {
+
+
+                        this.$modal.show('dialog', {
+                            title: 'Подтверждение',
+                            text: 'Действительно хотите удалить запись?',
+                            buttons: [
+                                {
+                                    title: 'Да',
+                                    handler: () => {
+                                        this.delete(row.id, index);
+                                        this.$modal.hide('dialog');
+                                    },
+                                    default: true,
+                                },
+                                {
+                                    title: 'Нет',
+                                },
+                                {
+                                    title: 'Отмена'
+                                }
+                            ]
+                        })
+                    }
+                },)
+
+
+
+                if((this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'admin')) {
+                    this.actions.unshift(
+                        {
+                            text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                                this.ban(row.id, index);
+                            }
+                        }
+                    )
+                }
+
+
+                if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin')) {
+
+                    this.actions.unshift( {
+                        text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {
+                            this.approve(row.id, index);
+                        }
+                    })
+                }
+            },
             dateFormat(val) {
               return this.$moment(val).format("DD/MM/YY hh:mm");
             },
             load() {
                 this.tablekey += 1
+                this.$store.commit('count')
             },
             delete(id, index) {
                     var app = this;

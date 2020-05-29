@@ -32,127 +32,8 @@
         </b-navbar>
 
         <section class="content">
-            <nav class="side-menu">
+            <side-menu></side-menu>
 
-                <p class="side-menu-header">Организации</p>
-                <ul>
-                    <li class="side-menu-link">
-                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'published'} }">
-                            Активные
-                        </router-link>
-                    </li>
-                    <li class="side-menu-link">
-                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'unapproved'} }">
-                            На модерацию
-                        </router-link>
-                    </li>
-                    <li class="side-menu-link">
-                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'banned'} }">
-                            Заблокированные
-                        </router-link>
-                    </li>
-                    <li class="side-menu-link">
-                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'admin'} }">
-                            Администраторы
-                        </router-link>
-                    </li>
-                </ul>
-                <p class="side-menu-header">Работа</p>
-                <ul>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex', params: {scope: 'published'}  }">
-                            Опубликованные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex', params: {scope: 'unapproved'} }">
-                            На модерацию
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex', params: { scope: 'banned'} }">
-                            Заблокированные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex', params: { scope: 'archived'} }">
-                            В архиве
-                        </router-link>
-                    </li>
-                </ul>
-
-                <p class="side-menu-header">Волонтерство</p>
-                <ul>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'published'}  }">
-                            Опубликованные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'unapproved'} }">
-                            На модерацию
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'banned'} }">
-                            Заблокированные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'archived'} }">
-                            В архиве
-                        </router-link>
-                    </li>
-                </ul>
-
-                <p class="side-menu-header">Стажировки</p>
-                <ul>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'published'}  }">
-                            Опубликованные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'unapproved'} }">
-                            На модерацию
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'internshipIndex', params: { scope: 'banned'} }">
-                            Заблокированные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'internshipIndex', params: { scope: 'archived'} }">
-                            В архиве
-                        </router-link>
-                    </li>
-                </ul>
-
-                <p class="side-menu-header">Мероприятия</p>
-                <ul>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'eventIndex', params: {scope: 'published'}  }">
-                            Опубликованные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'eventIndex', params: {scope: 'unapproved'} }">
-                            На модерацию
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'eventIndex', params: { scope: 'banned'} }">
-                            Заблокированные
-                        </router-link>
-                    </li>
-                    <li  class="side-menu-link">
-                        <router-link :to="{ name: 'eventIndex', params: { scope: 'archived'} }">
-                            В архиве
-                        </router-link>
-                    </li>
-                </ul>
-            </nav>
 
             <div>
                 <router-view></router-view>
@@ -165,6 +46,8 @@
     export default {
         name: "Layout",
         props: ['userName', 'userId', 'userToken'],
+
+
         data() {
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -277,14 +160,7 @@
         margin: 5px;
     }
 
-    .router-link-active {
-        color: #fff !important;
-        background-color: #274684 !important;
-        border-color: #274684 !important;
-        box-shadow: inset 3px 4px 5px -2px black;
-        padding-left: 40px !important;
-        transition: all 0.15s ease-in;
-    }
+
 </style>
 
 
