@@ -37,21 +37,41 @@
                 <p class="side-menu-header">Организации</p>
                 <ul>
                     <li class="side-menu-link">
-                        <router-link :to="{ name: 'organisationIndex' }">
-                            Все
+                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'published'} }">
+                            Активные
+                        </router-link>
+                    </li>
+                    <li class="side-menu-link">
+                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'unapproved'} }">
+                            На модерацию
+                        </router-link>
+                    </li>
+                    <li class="side-menu-link">
+                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'banned'} }">
+                            Заблокированные
+                        </router-link>
+                    </li>
+                    <li class="side-menu-link">
+                        <router-link :to="{ name: 'organisationIndex', params: {scope: 'admin'} }">
+                            Администраторы
                         </router-link>
                     </li>
                 </ul>
                 <p class="side-menu-header">Работа</p>
                 <ul>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'jobIndex', params: {scope: 'all'}  }">
-                            Все
+                        <router-link :to="{ name: 'jobIndex', params: {scope: 'published'}  }">
+                            Опубликованные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'jobIndex', params: {scope: 'unapproved'} }">
                             На модерацию
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'jobIndex', params: { scope: 'banned'} }">
+                            Заблокированные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -64,13 +84,18 @@
                 <p class="side-menu-header">Волонтерство</p>
                 <ul>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'all'}  }">
-                            Все
+                        <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'published'}  }">
+                            Опубликованные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'volunteeringIndex', params: {scope: 'unapproved'} }">
                             На модерацию
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'banned'} }">
+                            Заблокированные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -83,13 +108,18 @@
                 <p class="side-menu-header">Стажировки</p>
                 <ul>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'all'}  }">
-                            Все
+                        <router-link :to="{ name: 'internshipIndex', params: {scope: 'published'}  }">
+                            Опубликованные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'internshipIndex', params: {scope: 'unapproved'} }">
                             На модерацию
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'internshipIndex', params: { scope: 'banned'} }">
+                            Заблокированные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -102,13 +132,18 @@
                 <p class="side-menu-header">Мероприятия</p>
                 <ul>
                     <li  class="side-menu-link">
-                        <router-link :to="{ name: 'eventIndex', params: {scope: 'all'}  }">
-                            Все
+                        <router-link :to="{ name: 'eventIndex', params: {scope: 'published'}  }">
+                            Опубликованные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
                         <router-link :to="{ name: 'eventIndex', params: {scope: 'unapproved'} }">
                             На модерацию
+                        </router-link>
+                    </li>
+                    <li  class="side-menu-link">
+                        <router-link :to="{ name: 'eventIndex', params: { scope: 'banned'} }">
+                            Заблокированные
                         </router-link>
                     </li>
                     <li  class="side-menu-link">
@@ -185,6 +220,7 @@
 
         }
         ul {
+            margin: 0;
             list-style: none;
             display: flex;
             flex-direction: column;
@@ -192,7 +228,7 @@
             padding-left: 0px;
             li {
                 a {
-                    background-color: #fff;
+                    background-color: #f8f9fa;
                     display: block;
                     padding: 0.75rem 1.75rem;
                     margin-bottom: -1px;
@@ -200,9 +236,12 @@
                     width: 100%;
                     color: #495057;
                     text-align: inherit;
+                    text-decoration: none;
+                    transition: all 0.15s ease-in;
 
                     &:hover {
-                        background-color: #fff4f4;
+                        background-color: #dae0e5;
+                        transition: all 0.15s ease-in;
                     }
 
                     &.active {
@@ -213,7 +252,7 @@
         }
 
         .side-menu-header {
-            background-color: #fff4f4;
+            background-color: #e9ecef;
             display: block;
             padding: 0.75rem 1.25rem;
             margin-bottom: -1px;
@@ -227,7 +266,11 @@
     .table th, .table td {
         word-break: break-word;
         white-space: normal;
-        max-width: 300px;
+        max-width: 250px;
+    }
+
+    .action-col {
+        width: 230px;
     }
 
     .btn {
@@ -235,11 +278,12 @@
     }
 
     .router-link-active {
-        margin-right: -10px;
-        position: relative;
-        margin-left: 1px;
-        z-index: 2;
-        border-right: none !important;
+        color: #fff !important;
+        background-color: #274684 !important;
+        border-color: #274684 !important;
+        box-shadow: inset 3px 4px 5px -2px black;
+        padding-left: 40px !important;
+        transition: all 0.15s ease-in;
     }
 </style>
 

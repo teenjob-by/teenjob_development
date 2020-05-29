@@ -50,6 +50,33 @@ class OrganisationApi extends Controller
         }
     }
 
+    public function indexFilter($status)
+    {
+        if( /*Auth::user()->role == 0*/ true) {
+            $organisations = [];
+
+            switch ($status) {
+                case 'unapproved':
+                    $organisations = OrganisationModel::where('status', 0)->where('role', 1)->with('types')->get();
+                    break;
+                case 'published':
+                    $organisations = OrganisationModel::where('status', 1)->where('role', 1)->with('types')->get();
+                    break;
+                case 'archived':
+                    $organisations = OrganisationModel::where('status', 2)->where('role', 1)->with('types')->get();
+                    break;
+                case 'banned':
+                    $organisations = OrganisationModel::where('status', 3)->where('role', 1)->with('types')->get();
+                    break;
+                case 'admin':
+                    $organisations = OrganisationModel::where('role', 0)->with('types')->get();
+                    break;
+            }
+
+            return response()->json([ "data" => $organisations ], 200);
+        }
+    }
+
     public function sortItems ($collection){
         $sorted = array(
             "published" => [],

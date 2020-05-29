@@ -58,10 +58,22 @@ class VolunteeringApi extends Controller
     public function indexFilter($status)
     {
         if( /*Auth::user()->role == 0*/ true) {
-            if($status == 'unapproved')
-             $volunteerings = VolunteeringModel::where('status', 0)->where('offer_type', 0)->with('city')->with('organisation')->get();
-            if($status == 'all')
-                $volunteerings = VolunteeringModel::where('offer_type', 0)->with('city')->with('organisation')->get();
+            $volunteerings = [];
+
+            switch ($status) {
+                case 'unapproved':
+                    $volunteerings = VolunteeringModel::where('offer_type', 0)->where('status', 0)->with('city')->with('organisation')->get();
+                    break;
+                case 'published':
+                    $volunteerings = VolunteeringModel::where('offer_type', 0)->where('status', 1)->with('city')->with('organisation')->get();
+                    break;
+                case 'archived':
+                    $volunteerings = VolunteeringModel::where('offer_type', 0)->where('status', 2)->with('city')->with('organisation')->get();
+                    break;
+                case 'banned':
+                    $volunteerings = VolunteeringModel::where('offer_type', 0)->where('status', 3)->with('city')->with('organisation')->get();
+                    break;
+            }
 
 
 

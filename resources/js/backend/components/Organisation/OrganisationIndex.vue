@@ -2,10 +2,12 @@
     <div>
         <b-card>
             <b-card-body>
-                <!--<router-link :to="{name: 'organisationCreate'}">
-                    <b-button class="ml-auto mb-3" id="new">Зарегистрировать новую организацию</b-button>
-                </router-link>-->
-                <datatable :data="data" :columns="columns" :actions="actions"></datatable>
+                <router-link :to="{name: 'organisationCreate'}">
+                    <b-button class="ml-auto mb-3" id="new">Зарегистрировать организацию</b-button>
+                </router-link>
+                <datatable :key='tablekey' :data="data" :columns="columns" :ajax="true" :url="url + scope" :AjaxHeaders="{ headers: {
+                    'Authorization': `Bearer ` + token
+                }}" :actions="actions"></datatable>
             </b-card-body>
         </b-card>
         <v-dialog>
@@ -17,7 +19,7 @@
 
     export default {
         name: "OrganisationIndex",
-
+        props: ['scope'],
         data: function () {
             return {
                 data: [],
@@ -26,7 +28,9 @@
                 columns: [
                     {name: "id", th: "id", show: false},
                     {name: "name", th: "Название"},
-                    {name: "type", th: "Тип"},
+                    {th: "Тип", render: function (row, cell, index) {
+                            return `${row.types.name}`;
+                     }},
                     {name: "unique_identifier", th: "УНП"},
                     {name: "contact", th: "Представитель"},
                     {name: "email", th: "Email"},
@@ -34,12 +38,27 @@
                 ],
                 actions: [
                     {
-                        text: "Удалить", color: "danger", action: (row, index) => {
+                        text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {
+                            this.approve(row.id, index);
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                            this.ban(row.id, index);
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-edit" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                            this.$router.push({name: 'organisationEdit', params: { id: row.id }})
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-trash" aria-hidden="true"></i>', color: "danger", action: (row, index) => {
 
 
                             this.$modal.show('dialog', {
                                 title: 'Подтверждение',
-                                text: 'Действительно хотите удалить организацию?',
+                                text: 'Действительно хотите удалить запись?',
                                 buttons: [
                                     {
                                         title: 'Да',
@@ -59,54 +78,26 @@
                             })
                         }
                     },
-                    {
-                        text: "Заблокировать", color: "danger", action: (row, index) => {
-                            this.ban(row.id, index);
-                        }
-                    },
-                    {
-                        text: "Разблокировать", color: "danger", action: (row, index) => {
-                            this.approve(row.id, index);
-                        }
-                    },
-                    {
-                        text: "Править", color: "danger", action: (row, index) => {
-                            this.$router.push({name: 'organisationEdit', params: { id: row.id }})
-                        }
-                    }
-                ]
+                ],
+                token: "",
+                tablekey: 0,
+                url: '/api/v1/organisations/show/'
             }
         },
-        mounted() {
-            var app = this;
 
-            axios.get('/api/v1/organisations', { headers: {
-                    'Authorization': `Bearer ` + localStorage.getItem('access_token')
-                }})
-                .then(function (resp) {
-                    app.data = resp.data.data;
-                    console.log(app.data);
-                })
-                .catch(function (resp) {
+        created() {
+            this.token = localStorage.getItem('access_token')
+        },
 
-                    alert("Could not load organisations");
-                });
+
+        watch: {
+            "$route.params.scope"(val) {
+                this.load();
+            },
         },
         methods: {
             load() {
-                var app = this;
-
-                axios.get('/api/v1/jobs', { headers: {
-                        'Authorization': `Bearer ` + localStorage.getItem('access_token')
-                    }})
-                    .then(function (resp) {
-                        app.data = resp.data.data;
-
-                    })
-                    .catch(function (resp) {
-
-                        alert("Could not load jobs");
-                    });
+                this.tablekey += 1
             },
             delete(id, index) {
                     var app = this;

@@ -5,7 +5,9 @@
                 <router-link :to="{name: 'internshipCreate'}">
                     <b-button class="ml-auto mb-3" id="new">Создать</b-button>
                 </router-link>
-                <datatable :data="data" :columns="columns" :actions="actions"></datatable>
+                <datatable :key='tablekey' :data="data" :columns="columns" :ajax="true" :url="url + scope" :AjaxHeaders="{ headers: {
+                    'Authorization': `Bearer ` + token
+                }}" :actions="actions"></datatable>
             </b-card-body>
         </b-card>
         <v-dialog>
@@ -44,7 +46,22 @@
                 ],
                 actions: [
                     {
-                        text: "Удалить", color: "danger", action: (row, index) => {
+                        text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {
+                            this.approve(row.id, index);
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                            this.ban(row.id, index);
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-edit" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                            this.$router.push({name: 'internshipEdit', params: { id: row.id }})
+                        }
+                    },
+                    {
+                        text: '<i class="fa fa-trash" aria-hidden="true"></i>', color: "danger", action: (row, index) => {
 
 
                             this.$modal.show('dialog', {
@@ -69,42 +86,17 @@
                             })
                         }
                     },
-                    {
-                        text: "Заблокировать", color: "danger", action: (row, index) => {
-                            this.ban(row.id, index);
-                        }
-                    },
-                    {
-                        text: "Опубликовать", color: "danger", action: (row, index) => {
-                            this.approve(row.id, index);
-                        }
-                    },
-                    {
-                        text: "Править", color: "danger", action: (row, index) => {
-                            this.$router.push({name: 'internshipEdit', params: { id: row.id }})
-                        }
-                    }
-                ]
+                ],
+                token: "",
+                tablekey: 0,
+                url: '/api/v1/internships/show/'
             }
         },
 
-
-
-        mounted() {
-            var app = this;
-
-            axios.get('/api/v1/internships/show/' + app.scope, { headers: {
-                    'Authorization': `Bearer ` + localStorage.getItem('access_token')
-                }})
-                .then(function (resp) {
-                    app.data = resp.data.data;
-                    console.log(app.data);
-                })
-                .catch(function (resp) {
-
-                    alert("Could not load organisations");
-                });
+        created() {
+            this.token = localStorage.getItem('access_token')
         },
+
         watch: {
             "$route.params.scope"(val) {
                 this.load();
@@ -115,19 +107,7 @@
               return this.$moment(val).format("DD/MM/YY hh:mm");
             },
             load() {
-                var app = this;
-
-                axios.get('/api/v1/internships/show/' + app.scope, { headers: {
-                        'Authorization': `Bearer ` + localStorage.getItem('access_token')
-                    }})
-                    .then(function (resp) {
-                        app.data = resp.data.data;
-                        console.log(app.data);
-                    })
-                    .catch(function (resp) {
-
-                        alert("Could not load organisations");
-                    });
+                this.tablekey += 1
             },
             delete(id, index) {
                     var app = this;

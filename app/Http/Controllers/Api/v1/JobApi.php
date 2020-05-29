@@ -58,12 +58,23 @@ class JobApi extends Controller
     public function indexFilter($status)
     {
         if( /*Auth::user()->role == 0*/ true) {
-            if($status == 'unapproved')
-             $jobs = JobModel::where('status', 0)->where('offer_type', 2)->with('city')->with('organisation')->get();
-            if($status == 'all')
-                $jobs = JobModel::where('offer_type', 2)->with('city')->with('organisation')->get();
 
+            $jobs = [];
 
+            switch ($status) {
+                case 'unapproved':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 0)->with('city')->with('organisation')->get();
+                    break;
+                case 'published':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 1)->with('city')->with('organisation')->get();
+                    break;
+                case 'archived':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 2)->with('city')->with('organisation')->get();
+                    break;
+                case 'banned':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 3)->with('city')->with('organisation')->get();
+                    break;
+            }
 
             return response()->json([ "data" => $jobs ], 200);
         }

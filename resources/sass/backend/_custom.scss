@@ -7,7 +7,11 @@ $blue: #0074d9;
 $darkgray: #2C2C2C;
 $gray: #2F2F2F;
 $red: #FF0000;
+$green: #c0ffb0;
 
 $theme-colors: (
-        primary: $violet
+        primary: $violet,
+        info: $lightgray,
+        approve: $green
 );
+

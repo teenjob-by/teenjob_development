@@ -58,10 +58,23 @@ class InternshipApi extends Controller
     public function indexFilter($status)
     {
         if( /*Auth::user()->role == 0*/ true) {
-            if($status == 'unapproved')
-             $internships = InternshipModel::where('status', 0)->where('offer_type', 1)->with('city')->with('organisation')->get();
-            if($status == 'all')
-                $internships = InternshipModel::where('offer_type', 1)->with('city')->with('organisation')->get();
+
+            $internships = [];
+
+            switch ($status) {
+                case 'unapproved':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 0)->with('city')->with('organisation')->get();
+                    break;
+                case 'published':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 1)->with('city')->with('organisation')->get();
+                    break;
+                case 'archived':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 2)->with('city')->with('organisation')->get();
+                    break;
+                case 'banned':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 3)->with('city')->with('organisation')->get();
+                    break;
+            }
 
 
 

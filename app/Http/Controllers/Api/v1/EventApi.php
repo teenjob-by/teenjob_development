@@ -53,12 +53,22 @@ class EventApi extends Controller
     public function indexFilter($status)
     {
         if( /*Auth::user()->role == 0*/ true) {
-            if($status == 'unapproved')
-             $events = EventModel::where('status', 0)->with('city')->with('organisation')->get();
-            if($status == 'all')
-                $events = EventModel::with('city')->with('organisation')->get();
+            $events = [];
 
-
+            switch ($status) {
+                case 'unapproved':
+                    $events = EventModel::where('status', 0)->with('city')->with('organisation')->get();
+                    break;
+                case 'published':
+                    $events = EventModel::where('status', 1)->with('city')->with('organisation')->get();
+                    break;
+                case 'archived':
+                    $events = EventModel::where('status', 2)->with('city')->with('organisation')->get();
+                    break;
+                case 'banned':
+                    $events = EventModel::where('status', 3)->with('city')->with('organisation')->get();
+                    break;
+            }
 
             return response()->json([ "data" => $events ], 200);
         }

@@ -29,6 +29,7 @@ Route::namespace('Api')->group(function () {
 
                 Route::group(['middleware' => 'auth:api'], function(){
                 Route::get('organisations', 'OrganisationApi@index');
+                Route::get('organisations/show/{status}', 'OrganisationApi@indexFilter');
                 Route::post('organisations', 'OrganisationApi@store');
                 Route::get('organisations/create', 'OrganisationApi@create');
                 Route::get('organisations/{id}/edit', 'OrganisationApi@edit');

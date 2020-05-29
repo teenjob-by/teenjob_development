@@ -8,14 +8,14 @@
 	<div class="data-table">
 		<div class="data-table-loading" v-if="loading || ajaxLoading">
 			<div class="data-table-loading-spinner"></div>
-			<div class="data-table-loading-text">Loading Data</div>
+			<div class="data-table-loading-text">Загрузка данных</div>
 		</div>
 		<div class="data-table-inner" v-else>
 			<div class="row data-table-control" v-if="header">
 				<div class="col-md-6" v-if="limitable">
 					<div class="form-group">
 						<label>
-							Show 
+							Показать
 							<select  class="custom-select custom-select-sm" v-model="itemsPerPage">
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -28,17 +28,17 @@
 								<option value="75">75</option>
 								<option value="100">100</option>
 							</select> 
-							rows
+							сторок
 						</label>
 					</div>
 				</div>
 				<div class="col-md-6" v-if="searchable">
 					<div class="form-group">
-						<input type="text" class="form-control form-control-sm" placeholder="Search Records" @keyup="search(query)" v-model="query">
+						<input type="text" class="form-control form-control-sm" placeholder="Поиск" @keyup="search(query)" v-model="query">
 					</div>
 				</div>
 				<div class="col-auto ml-auto" v-if="showFilters">
-					Filters: 
+					Фильтры:
 					<div class="table-filters d-inline-block">
 						<div class="table-filter" v-for="option in filters" @click="filter(option)">
 							<span>{{ option.title }}</span>
@@ -74,7 +74,7 @@
 								v-if="th.show"
 							>{{ th.th }}</th>
 							<!-- Display Actions If Provided -->
-							<th v-if="actions.length">Действия</th>
+							<th class="action-col" v-if="actions.length">Действия</th>
 						</tr>
 					</thead>
 					<tbody v-if="paginatedItems.length">
@@ -109,9 +109,9 @@
 									v-for="(button, j) in item.buttons" 
 									@click="button.action(item.row, item.index)"
 									v-if="button.show"
+								 	v-html="button.text"
 									:disabled="button.disabled"
 								>
-									{{ button.text }}
 								</button>
 							</td>
 						</tr>
@@ -127,27 +127,27 @@
 			<div class="row" v-if="footer">
 				<div class="col-md-6" v-if="pageDetails">
 					<div class="showing">
-						Showing 
+						Показано
 						<!-- Current Page Starting Index -->
 						{{ paginatedItems.length ? (itemsPerPage * (currentPage - 1)) + 1 : 0 }} 
-						to 
+						по
 						<!-- Current Page End Index -->
 						{{ (itemsPerPage * (currentPage -1 )) + paginatedItems.length }}  
-						of 
+						из
 						<!-- All Items Provided -->
-						{{ renderedItems.length }} items
+						{{ renderedItems.length }} записей
 					</div>
 				</div>
 				<div class="col-md-6" v-if="paginate">
 					<ul class="pagination" v-if="paginateLinks.length">
 						<li class="page-item" v-if="pages && currentPage != 1">
-							<span class="page-link" @click="prev">Prev</span>
+							<span class="page-link" @click="prev">Предыдущая</span>
 						</li>
 						<li class="page-item" v-bind:key="item.page" v-for="item in paginateLinks" :class="{active: currentPage == item.page}">
 							<span class="page-link" @click="paginate(item.page)">{{ item.page }}</span>
 						</li>
 						<li class="page-item" v-if="pages && currentPage < pages">
-							<span class="page-link" @click="next">Next</span>
+							<span class="page-link" @click="next">Следующая</span>
 						</li>
 					</ul>
 				</div>
@@ -623,17 +623,19 @@ export default {
 		}else {
 			// Get Data From Server Using Ajax
 			this.ajaxLoading = true;
+			console.log(this.url);
+            console.log(this.AjaxHeaders);
 			await Axios
-				.get(this.url)
+				.get(this.url, this.AjaxHeaders)
 				.then(response => {
 					if (!response.data.data) {
-						return this.error("Unable To Parse Data");
+						return this.error("Неправильный формат данных");
 					}
 					this.items = response.data.data;
-					this.success("Data Loaded");
+					this.success("Данные загружены");
 				})
 				.catch(error => {
-					this.error(error || "Unable To Load Data");
+					this.error(error || "Ошибка загрузки данных");
 				});
 			this.ajaxLoading = false;
 		}
@@ -644,7 +646,7 @@ export default {
 <style lang="sass">
 
 .blocked
-	background: salmon
+	background: #ffe4e1
 @keyframes spin
 	from
 		transform: rotate(0deg)
