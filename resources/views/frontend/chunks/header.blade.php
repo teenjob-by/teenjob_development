@@ -58,7 +58,7 @@
 
 
 
-                    <div class="language-panel">
+                    {{--<div class="language-panel">
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())
                                 <div>
@@ -74,7 +74,7 @@
                                 </div>
                             @endif
                         @endforeach
-                    </div>
+                    </div>--}}
 
                 </ul>
             </nav>
