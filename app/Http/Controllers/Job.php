@@ -198,8 +198,9 @@ class Job extends Controller
             ],
 
         ];
-        $filters['section'] = array('data' => $section, 'type' => 'checkbox', 'name' => 'section');
+
         $filters['cities'] = array('data' => $cities, 'type' => 'select', 'name' => 'city');
+        $filters['section'] = array('data' => $section, 'type' => 'checkbox', 'name' => 'section');
         $filters['specialities'] = array('data' => $specialities, 'type' => 'select', 'name' => 'speciality');
         //$filters['salary'] = array('data' => array(), 'type' => 'interval', 'name' => 'salary');
         $filters['workTime'] = array('data' => $workTime, 'type' => 'select', 'name' => 'workTime');
