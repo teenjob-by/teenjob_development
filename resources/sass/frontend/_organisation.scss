@@ -132,40 +132,51 @@
 
     &-item {
       height: auto;
-      min-height: 150px;
+      height: 170px;
       overflow: hidden;
-      border: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
-      padding-right: 10px;
-      padding-left: 10px;
-      padding-top: 10px;
-      padding-bottom: 10px;
+
 
       @include for-desktop-up() {
         flex-direction: row;
-        padding-right: 40px;
-        padding-left: 20px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        align-items: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
       }
 
       &-title {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        align-items: center;
-        margin-bottom: 15px;
+        align-items: flex-start;
         word-wrap: break-word;
+        padding: 15px;
+        padding-bottom: 0;
+        max-height: 90px;
+        max-width: 360px;
+        overflow: hidden;
+        margin-bottom: 0 !important;
 
         &-link {
           @include text-usual(20px, $violet, left);
-          margin-right: 20px;
           word-wrap: break-word;
           font-weight: bold;
+        }
+      }
+
+      &__footer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px;
+        margin-top: auto;
+
+        p {
+          @include text-usual(16px, $violet, left);
         }
       }
 
@@ -221,7 +232,7 @@
         min-width: 100%;
 
         @include for-desktop-up() {
-          flex-direction: column;
+          flex-direction: row;
           min-width: 220px;
         }
 
@@ -233,7 +244,8 @@
 
       &-action {
         height: 40px;
-        width: 100%;
+        width: auto;
+        padding: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
