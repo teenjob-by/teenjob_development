@@ -398,7 +398,7 @@
                                                         </div>
                                                         <div class="organisation_list-item__footer">
                                                             <p class="item__published-date">Опубликовано: {{ $item->published_at->format('d.m.Y') }}</p>
-                                                            <p class="item__archivation-date">Действительно до: {{ $item->published_at->format('d.m.Y') }}</p>
+                                                            <p class="item__archivation-date">Действительно до: {{ $item->published_at->addMonth()->format('d.m.Y') }}</p>
                                                         </div>
                                                     </div>
                                                 @endforeach
