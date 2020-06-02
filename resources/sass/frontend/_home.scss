@@ -92,6 +92,7 @@
 
       .reviews-container {
         height: auto;
+        margin-bottom: 0;
 
         .slide-wrapper {
           max-width: 720px;
@@ -143,6 +144,7 @@
           flex-direction: column;
           position: relative;
           height: auto;
+          margin-bottom: 90px;
 
           @include for-desktop-up() {
             flex-direction: row;
@@ -179,19 +181,7 @@
           }
         }
 
-        .swiper-container {
-          height: 100px;
-          margin-bottom: 0;
 
-          .slide-wrapper {
-            height: auto;
-            justify-content: center;
-
-            img {
-              width: 100%;
-            }
-          }
-        }
 
         &_card {
           display: flex;
@@ -267,6 +257,16 @@
       @extend .home_title;
     }
 
+    &-important {
+      @extend .home_title;
+
+      color: $orange;
+
+      @include for-desktop-up() {
+        color: $black;
+      }
+    }
+
     &-partners {
       @extend .home_title;
       margin-bottom: 60px;
@@ -279,6 +279,10 @@
     &-reviews {
       @extend .home_title;
       color: $violet;
+      margin-bottom: 60px;
+      @include for-desktop-up() {
+        margin-bottom: 80px;
+      }
     }
   }
 
@@ -432,7 +436,7 @@
     &-subtitle {
       @include text-usual(18px, $black, center);
       font-weight: 600;
-      margin-top: 60px;
+      line-height: 100%;
       margin-bottom: 10px;
       text-align: center;
       color: #000000;
@@ -531,12 +535,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
+
 
     margin-bottom: 30px;
 
     @include for-desktop-up() {
       margin-bottom: 0px;
+      justify-content: space-between;
     }
   }
 

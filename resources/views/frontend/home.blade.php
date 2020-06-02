@@ -117,6 +117,20 @@
             }
 
         });
+
+        $('.open-menu').click(function(e) {
+            e.preventDefault();
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+
+            setTimeout(function() {
+                $('.burger').click()
+            }, 1000);
+
+
+
+        });
+
     </script>
 
 @endsection
@@ -208,7 +222,7 @@
         <div class="content-wrapper">
             <div class="important-description">
                 <div class="important-text">
-                    <h3 class="home_title-organisations">@lang('content.important.title')</h3>
+                    <h3 class="home_title-important">@lang('content.important.title')</h3>
                     <p class="home_organisations-subtitle">@lang('content.important.subtitle')</p>
                     <p class="card-body-text">@lang('content.important.text')</p>
                 </div>
@@ -290,7 +304,7 @@
                 <div class="swiper-button-next-reviews swiper-button-next"></div>
             </section>
 
-            <a role="button" class="button-primary" href="#header">
+            <a role="button" class="button-primary open-menu">
                 <span>
                     @lang('content.reviews.button')
                 </span>

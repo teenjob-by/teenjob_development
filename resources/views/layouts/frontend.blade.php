@@ -110,6 +110,11 @@
                 if ($(window).width() >= 1024) {
                     $('.header_menu').removeAttr('style');
                 }
+
+                if($(".burger").hasClass('open')) {
+                    $(".burger").removeClass('open');
+                    $(".header_menu").slideUp('fast');
+                }
                 event.stopPropagation()
             })
 

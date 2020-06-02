@@ -4,6 +4,9 @@
   flex-direction: column;
   flex-wrap: nowrap;
   margin-bottom: 30px;
+  @include for-desktop-up() {
+    margin-bottom: 90px;
+  }
   border-radius: 4px;
 
   &-header {
@@ -13,7 +16,6 @@
 
   &-body {
     padding-top: 20px;
-    padding-bottom: 20px;
   }
 
   &-body-title {
