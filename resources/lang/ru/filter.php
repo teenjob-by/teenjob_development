@@ -38,7 +38,7 @@ return [
         'donate' => 'За донейт',
     ],
     'section' => [
-        'label' => 'Тип',
+        'label' => '&nbsp;',
         'volunteering'  => 'Волонтерство',
         'internship'  => 'Стажировка',
         'job'  => 'Работа',
