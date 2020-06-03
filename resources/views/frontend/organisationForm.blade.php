@@ -254,7 +254,7 @@
                     <div class="right-aligned">
                         <div class="inner-icon">
                             <select id="city" class="custom-select organisation_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                                <option selected value>@lang('auth.register.city')</option>
+
                                 @foreach($cities as $city)
                                     @isset($organisation->city)
                                         <option {{ ($city->id == $organisation->city->id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
@@ -426,7 +426,7 @@
                     <div class="left-aligned">
                     </div>
                     <div class="right-aligned">
-                        <button id="submit" class="button-secondary" role="button" type="submit">
+                        <button id="submit" class="button-account" role="button" type="submit">
                             <span>
                                 @lang('content.organisationForm.save')
                             </span>

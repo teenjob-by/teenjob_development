@@ -15,7 +15,7 @@
             placeholder: 'Введите описание',
             tabsize: 2,
             height: 300,
-            maxWidth: 543,
+            maxWidth: 600,
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
@@ -130,34 +130,6 @@
                     }
                 });
 
-                var phoneMaskAlt = IMask(document.getElementById('alt_phone'), {
-                    mask: [
-                        {
-                            mask: '+000 {00} 000-00-00',
-                            startsWith: '375',
-                            lazy: false,
-                            country: 'Belarus'
-                        },
-                        {
-                            mask: '+0 (000) 000-00-00',
-                            startsWith: '7',
-                            lazy: false,
-                            country: 'Russia'
-                        },
-                        {
-                            mask: '0000000000000',
-                            startsWith: '',
-                            country: 'unknown'
-                        }
-                    ],
-                    dispatch: function (appended, dynamicMasked) {
-                        var number = (dynamicMasked.value + appended).replace(/\D/g,'');
-
-                        return dynamicMasked.compiledMasks.find(function (m) {
-                            return number.indexOf(m.startsWith) === 0;
-                        });
-                    }
-                });
 
             }catch (e) {
                 console.log(e)
@@ -248,189 +220,243 @@
             <form id="form" method="POST" class="job_form" action="{{ route('organisation.jobs.store') }}">
                 @csrf
 
-                <h3 class="job_form-title">
-                    <strong>@lang('content.job.create.title')</strong>
-                </h3>
+
 
                 <div class="job_form-group">
-                    <label for="title" class="job_form-group-label">@lang('content.job.create.name')</label>
-                    <input id="title" required type="text" class="job_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <input id="title" required type="text" class="job_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.create.name')" value="{{ old('title') }}" autofocus>
 
-                    @error('title')
+                            @error('title')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="city" class="job_form-group-label">@lang('content.job.create.city')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="city" class="custom-select job_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('city')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="age" class="job_form-group-label">@lang('content.job.create.age')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="age" class="custom-select job_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
+                                @foreach($ages as $age)
+                                    <option value="{{ $age->id }}">{{ $age->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('age')
+                            <span class="message-invalid" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="salary" class="job_form-group-label">@lang('content.job.create.salary')</label>
+                    </div>
+                    <div class="right-aligned">
+
+                        <div class="inner-icon">
+                            <div class="inline-group">
+                                <input id="salary" required type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.create.salary')" minlength="3" value="{{ old('salary') }}" autofocus>
+
+                                @error('salary')
+                                    <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+
+                                <select id="salaryType" class="custom-select job_form-group-select @error('salaryType') is-invalid @enderror" name="salaryType" value="{{ old('salaryType') }}" required autofocus>
+                                    @foreach($salary_types as $salaryType)
+                                        <option value="{{ $salaryType->id }}">{{ $salaryType->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('salaryType')
+                                    <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="speciality" class="job_form-group-label">@lang('content.job.create.speciality')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="speciality" class="custom-select job_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
+                                @foreach($specialities as $speciality)
+                                    <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('speciality')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="workTime" class="job_form-group-label">@lang('content.job.create.workTime')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="workTime" class="custom-select job_form-group-select @error('workTime') is-invalid @enderror" name="workTime" value="{{ old('workTime') }}" required autofocus>
+                                @foreach($work_times as $workTime)
+                                    <option value="{{ $workTime->id }}">{{ $workTime->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('orkTime')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="job_form-group">
+                    <div class="inner-icon stretch raw-text">
+                        <textarea id="description" name="description" required type="text" class="job_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.create.description')" value="{{ old('description') }}"></textarea>
+
+                        @error('description')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="job_form-group">
-                    <label for="city" class="job_form-group-label">@lang('content.job.create.city')</label>
-                    <select id="city" class="custom-select job_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.job.create.city')</option>
-                        @foreach($cities as $city)
-                                <option value="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('city')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <h3 class="job_form-title">
+                            <strong>@lang('content.job.create.contactsTitle')</strong>
+                        </h3>
+                    </div>
                 </div>
 
                 <div class="job_form-group">
-                    <label for="age" class="job_form-group-label">@lang('content.job.create.age')</label>
-                    <select id="age" class="custom-select job_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                        <option selected value>@lang('content.job.create.age')</option>
-                        @foreach($ages as $age)
-                            <option value="{{ $age->id }}">{{ $age->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="left-aligned">
+                        <label for="contactPerson" class="job_form-group-label">@lang('content.job.create.contactPerson')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.job.create.contactPerson')" class="job_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus>
 
-                    @error('age')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        @error('contactPerson')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="job_form-group">
-                    <label for="salary" class="job_form-group-label">@lang('content.job.create.salary')</label>
-                    <div class="inline-group">
-                        <input id="salary" required type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.create.salary')" minlength="3" value="{{ old('salary') }}" autofocus>
+                    <div class="left-aligned">
+                        <label for="email" class="job_form-group-label">@lang('content.job.create.email')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="email" type="email" name="email" placeholder="@lang('content.job.create.email')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                        @error('salary')
+                        @error('email')
                         <span class="message-invalid" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
+                </div>
 
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="phone" class="job_form-group-label">@lang('content.job.create.phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="phone" type="text" name="phone" placeholder="@lang('content.job.create.phone')" class="job_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
-
-                        <select id="salaryType" class="custom-select job_form-group-select @error('salaryType') is-invalid @enderror" name="salaryType" value="{{ old('salaryType') }}" required autofocus>
-                            <option selected value>@lang('content.job.create.salaryType')</option>
-                            @foreach($salary_types as $salaryType)
-                                <option value="{{ $salaryType->id }}">{{ $salaryType->name }}</option>
-                            @endforeach
-                        </select>
-
-                        @error('salaryType')
-                        <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                        @error('phone')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
+                    </div>
+                </div>
 
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <label for="alt_phone" class="job_form-group-label">@lang('content.job.create.alt_phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.job.create.alt_phone')" class="job_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" autocomplete="alt_phone" autofocus>
+
+                        @error('alt_phone')
+                            <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
 
 
                 <div class="job_form-group">
-                    <label for="speciality" class="job_form-group-label">@lang('content.job.create.speciality')</label>
-                    <select id="speciality" class="custom-select job_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
-                        <option selected value>@lang('content.job.create.speciality')</option>
-                        @foreach($specialities as $speciality)
-                            <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('speciality')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group">
-                    <label for="workTime" class="job_form-group-label">@lang('content.job.create.workTime')</label>
-                    <select id="workTime" class="custom-select job_form-group-select @error('workTime') is-invalid @enderror" name="workTime" value="{{ old('workTime') }}" required autofocus>
-                        <option selected value>@lang('content.job.create.workTime')</option>
-                        @foreach($work_times as $workTime)
-                            <option value="{{ $workTime->id }}">{{ $workTime->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('orkTime')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group description">
-
-                    <textarea id="description" name="description" required minlength="20" type="text" class="job_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.create.description')" value="{{ old('description') }}"></textarea>
-
-                    @error('description')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <h3 class="job_form-title">
-                    <strong>@lang('content.job.create.contactsTitle')</strong>
-                </h3>
-
-
-                <div class="job_form-group">
-                    <label for="contactPerson" class="job_form-group-label">@lang('content.job.create.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.job.create.contactPerson')" class="job_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
-
-                    @error('contactPerson')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group">
-                    <label for="phone" class="job_form-group-label">@lang('content.job.create.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.job.create.phone')" class="job_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
-
-                    @error('phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group">
-                    <label for="alt_phone" class="job_form-group-label">@lang('content.job.create.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.job.create.alt_phone')" class="job_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
-
-                    @error('alt_phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group">
-                    <label for="email" class="job_form-group-label">@lang('content.job.create.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.job.create.email')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
-
-                    @error('email')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="job_form-group">
-                    <button id="submit" class="button-secondary" role="button" type="submit">
+                    <div class="centered">
+                        <button id="submit" class="button-account" role="button" type="submit">
                         <span>
                             @lang('content.job.create.save')
                         </span>
-                        <div class="loading-icon"></div>
-                    </button>
+                            <div class="loading-icon"></div>
+                        </button>
+                    </div>
                 </div>
-                <div class="content-loader"></div>
-                <p class="operation-result">
-                </p>
 
-                <p class="tip">@lang('content.job.create.notification')</p>
+
+
+                        <p class="tip">@lang('content.job.create.notification')</p>
+
 
             </form>
         </div>
