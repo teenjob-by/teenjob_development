@@ -1,6 +1,9 @@
 .select {
 
 }
+.justselect-body-overlay {
+  z-index: -1 !important;
+}
 
 .justselect {
   &-wrapper {
