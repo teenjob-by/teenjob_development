@@ -20,6 +20,13 @@
     display: inline-block;
     padding: 10px 15px;
     cursor: pointer;
+    box-sizing: border-box;
+
+    font-weight: bold;
+
+    a {
+      color: #0074d9;
+    }
 
 
 
@@ -28,7 +35,32 @@
       border-top-left-radius: 0.25rem;
       border-top-right-radius: 0.25rem;
       border-bottom: 1px solid $white;
-      margin-bottom: -1px;
+      margin: -1px;
+      a {
+        color: $black;
+      }
+
+
+      &:hover {
+        border: 1px solid #dee2e6;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom: 1px solid $white;
+
+        margin: -1px;
+
+
+
+      }
+    }
+
+    &:hover {
+      border: 1px solid #dee2e6;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+
+      margin: -1px;
+
     }
   }
 
@@ -173,11 +205,26 @@
         flex-direction: row;
         justify-content: space-between;
         padding: 15px;
-        margin-top: auto;
+
+        flex-wrap: wrap;
+        margin-top: 0;
+
+        @include for-desktop-up() {
+          margin-top: auto;
+        }
+
 
         p {
-          @include text-usual(16px, $violet, left);
+          @include text-usual(14px, $violet, left);
+          @include for-desktop-up() {
+             @include text-usual(16px, $violet, left);
+          }
         }
+
+
+
+
+
       }
 
       &-salary {
@@ -204,6 +251,7 @@
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
+
       }
 
       &-city {
@@ -230,21 +278,33 @@
         flex-wrap: nowrap;
         margin-bottom: 6px;
         min-width: 100%;
+        width: 100%;
+        justify-content: center;
+        padding-left: 15px;
+        padding-right: 15px;
 
         @include for-desktop-up() {
           flex-direction: row;
           min-width: 220px;
+          width: auto;
+          justify-content: flex-end;
+          padding-left: 0;
+          padding-right: 0;
         }
 
         form {
           width: 100%;
-          height: 100%;
+
+          @include for-desktop-up() {
+            width: auto;
+          }
         }
+
       }
 
       &-action {
         height: 40px;
-        width: auto;
+
         padding: 10px;
         display: flex;
         justify-content: center;
@@ -253,50 +313,115 @@
         border-radius: 4px;
         cursor: pointer;
         box-sizing: border-box;
+        width: 100%;
 
         background: $violet;
 
         @include for-desktop-up() {
           height: 40px;
+          width: auto;
         }
 
+        &-link {
+          height: 40px;
 
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 2px solid $white;
+          border-radius: 4px;
+          cursor: pointer;
+          box-sizing: border-box;
+          width: 100%;
 
-        span {
-          @include text-usual(18px, $white, center);
-          font-weight: bold;
-          display: none;
-          @include for-desktop-up() {
+          background: $violet;
+
+          span {
+            @include text-usual(18px, $white, center);
+            font-weight: bold;
+            display: none;
+            @include for-desktop-up() {
+              display: block;
+            }
+          }
+
+          .archive-icon {
+            background: url(/images/archive.svg) center center no-repeat;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
             display: block;
           }
+
+          .edit-icon {
+            background: url(/images/edit.svg) center center no-repeat;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: block;
+          }
+
+          .remove-icon {
+            background: url(/images/delete.svg) center center no-repeat;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: block;
+          }
+
+
+          @include for-desktop-up() {
+            background: none;
+            outline: none;
+            width: auto;
+            cursor: pointer;
+            border: none;
+            text-decoration: underline;
+
+
+            @include text-usual(16px, $blue ,center);
+            line-height: 150%;
+            padding: 0;
+
+            padding-top: 15px;
+            padding-bottom: 5px;
+            padding-right: 15px;
+            margin-bottom: 0;
+            margin-top: auto;
+
+
+            span {
+              @include text-usual(16px, $blue ,center);
+              font-weight: bold;
+              display: none;
+              @include for-desktop-up() {
+                display: block;
+              }
+            }
+
+            .archive-icon {
+              display: none;
+            }
+
+            .edit-icon {
+              display: none;
+            }
+
+            .remove-icon {
+              display: none;
+            }
+          }
+
+
         }
 
-        .archive-icon {
-          background: url(/images/archive.svg) center center no-repeat;
-          background-size: contain;
-          width: 20px;
-          height: 20px;
-          margin-right: 10px;
-          display: block;
-        }
 
-        .edit-icon {
-          background: url(/images/edit.svg) center center no-repeat;
-          background-size: contain;
-          width: 20px;
-          height: 20px;
-          margin-right: 10px;
-          display: block;
-        }
 
-        .remove-icon {
-          background: url(/images/delete.svg) center center no-repeat;
-          background-size: contain;
-          width: 20px;
-          height: 20px;
-          margin-right: 10px;
-          display: block;
-        }
+
       }
 
       &-date {
@@ -379,7 +504,11 @@
     }
 
     &-title {
-      @include text-usual(20px, $black, left);
+      @include text-usual(20px, $black, center);
+      @include for-tablet-portrait-up() {
+        @include text-usual(20px, $black, left);
+      }
+
       margin-top: 35px;
       margin-bottom: 25px;
     }

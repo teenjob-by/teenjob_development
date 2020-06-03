@@ -66,6 +66,7 @@
 </script>
 
 <style lang="scss">
+
     $white: #ffffff;
     $lightgray: #F5F5F5;
     $violet: #274684;
@@ -75,6 +76,11 @@
     $darkgray: #2C2C2C;
     $gray: #2F2F2F;
     $red: #FF0000;
+
+    #admin {
+        min-width:1280px;
+        overflow: auto;
+    }
     .navbar {
         box-shadow: -2px -9px 20px 2px $violet;
     }

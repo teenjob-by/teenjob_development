@@ -370,7 +370,7 @@
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                    <button type="submit" class="organisation_list-item-action">
+                                                                    <button type="submit" class="organisation_list-item-action-link">
                                                                         <i class="archive-icon"></i>
                                                                         <span>В архив</span>
                                                                     </button>
@@ -380,7 +380,7 @@
 
 
 
-                                                            <a class="organisation_list-item-action" href="{{ route('organisation.' .$section_name. 's.edit', $item->id) }}">
+                                                            <a class="organisation_list-item-action-link" href="{{ route('organisation.' .$section_name. 's.edit', $item->id) }}">
                                                                 <i class="edit-icon"></i>
                                                                 <span>Редактировать</span>
                                                             </a>
@@ -389,7 +389,7 @@
                                                                 @csrf
                                                                 @method('delete')
                                                                 <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                <button class="organisation_list-item-action">
+                                                                <button class="organisation_list-item-action-link">
                                                                     <i class="remove-icon"></i>
                                                                     <span>Удалить</span>
                                                                 </button>
@@ -397,8 +397,12 @@
 
                                                         </div>
                                                         <div class="organisation_list-item__footer">
-                                                            <p class="item__published-date">Опубликовано: {{ $item->published_at->format('d.m.Y') }}</p>
-                                                            <p class="item__archivation-date">Действительно до: {{ $item->published_at->addMonth()->format('d.m.Y') }}</p>
+                                                            @if($item->status == 1)
+                                                                <p class="item__published-date">Опубликовано: {{ $item->published_at->format('d.m.Y') }}</p>
+                                                                <p class="item__archivation-date">Действительно до: {{ $item->published_at->addMonth()->format('d.m.Y') }}</p>
+                                                            @else
+                                                                <p class="item__published-date">Создано: {{ $item->published_at->format('d.m.Y') }}</p>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 @endforeach
