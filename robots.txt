@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /organisation
 Disallow: /organisation/
 Disallow: /admin/
+Disallow: /specialities
+Disallow: /cities
