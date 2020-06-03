@@ -13,11 +13,15 @@
                 </a>
                 <ul class="header_menu">
 
-                    @for($i = 1; $i <= 4; $i++)
+                    @for($i = 1; $i <= 3; $i++)
                         <li class="header_menu-item {{ request()->is(__('header.link_'.$i))? 'active' : '' }}">
                             <a class="header_menu-link" href="/@lang('header.link_'.$i)">@lang('header.navlink_'.$i)</a>
                         </li>
                     @endfor
+
+                        <li class="header_menu-item">
+                            <a class="header_menu-link" href="@lang('header.link_4')">@lang('header.navlink_4')</a>
+                        </li>
 
                     @guest
                         <li class="header_menu-item">

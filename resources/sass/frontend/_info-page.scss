@@ -5,12 +5,23 @@
   &_section {
     @extend .section;
 
+    .swiper-container {
+      height: auto;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .home_carousel-wrapper {
+      margin-bottom: 50px;
+    }
+
     .home_title-team {
 
 
-        @include text-usual(28px, #2C2C2C, center);
+        @include text-usual(32px, #2C2C2C, center);
         font-weight: 600;
-        margin-bottom: 30px;
+        margin-bottom: 70px;
+        line-height: 100% !important;
 
         @include for-desktop-up() {
           @include text-usual(42px, #121212, center);
@@ -18,7 +29,9 @@
         }
 
 
+
     }
+
     .organisations {
       &-block {
         text-align: center;
