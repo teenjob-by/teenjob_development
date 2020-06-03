@@ -2,7 +2,7 @@
 
   &_filter {
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     top: 0px;
     left: 0;
     right: 0;
@@ -23,7 +23,7 @@
     }
 
     &.open {
-      height: calc(60vh - 70px);
+      height: calc(60vh - 85px);
       transition: max-height 0.3s ease-in;
       overflow: scroll;
     }
@@ -51,6 +51,7 @@
       flex-direction: column;
       align-items: center;
       position: static;
+
 
 
       @include for-desktop-up() {
@@ -105,6 +106,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    z-index: -1;
 
 
 
