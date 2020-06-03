@@ -538,8 +538,6 @@
     justify-content: center;
 
 
-    margin-bottom: 30px;
-
     @include for-desktop-up() {
       margin-bottom: 0px;
       justify-content: space-between;
