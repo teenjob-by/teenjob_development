@@ -2,7 +2,7 @@
 
   &_filter {
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     top: 0px;
     left: 0;
     right: 0;
@@ -107,7 +107,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    z-index: -1;
+    z-index: 0;
 
 
 
