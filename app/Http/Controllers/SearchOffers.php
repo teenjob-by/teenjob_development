@@ -123,7 +123,7 @@ class SearchOffers extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -245,7 +245,7 @@ class SearchOffers extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -274,7 +274,7 @@ class SearchOffers extends Controller
 
     public function getSpecialities()
     {
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $htmlOutput = "";
         foreach ($specialities as $speciality) {
             $htmlOutput = $htmlOutput."<option value=".$speciality->id.">".$speciality->name."</option>\n";

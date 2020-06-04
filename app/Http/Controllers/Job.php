@@ -181,7 +181,7 @@ class Job extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
 
         $workTime = WorkTimeType::all();
@@ -224,7 +224,7 @@ class Job extends Controller
     public function create()
     {
         $organisation = Auth::user()->id;
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -335,7 +335,7 @@ class Job extends Controller
         $job = Offer::findOrFail($id);
 
         if((($job->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
-            $specialities = OfferSpecialization::all();
+            $specialities = OfferSpecialization::orderBy('name')->get();
             $cities = City::all();
             $lastCity = $cities->pop();
             $cities = $cities->prepend($lastCity);

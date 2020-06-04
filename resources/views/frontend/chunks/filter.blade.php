@@ -13,6 +13,8 @@
             <div class="filter_form-group">
 
                 @if($filter['type'] == 'select')
+
+
                     <label class="filter_form-group-label" for="filter-{{ $filter['name'] }}">@lang('filter.'.$filter['name'])</label>
                     <select class="filter_form-group-select custom-select" id="filter-{{ $filter['name'] }}" name="{{ $filter['name'] }}">
                         <option selected value>@lang('filter.'. $filter['name'] .'Placeholder')</option>
@@ -47,8 +49,9 @@
                     </div>
 
                 @elseif($filter['type'] == 'checkbox')
-
-                    <label class="filter_form-group-label" for="filter-{{ $filter['name'] }}">@lang('filter.'.$filter['name'].'.label')</label>
+                    @if(__('filter.'.$filter['name'].'.label'))
+                        <label class="filter_form-group-label" for="filter-{{ $filter['name'] }}">@lang('filter.'.$filter['name'].'.label')</label>
+                    @endif
 
                         @foreach($filter['data'] as $item)
 

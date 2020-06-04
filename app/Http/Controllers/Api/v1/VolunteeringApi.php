@@ -108,7 +108,7 @@ class VolunteeringApi extends Controller
     public function edit($id)
     {
         $cities = City::all();
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $organisation = VolunteeringModel::findorFail($id);
         $ages = collect([
             (object)[
@@ -167,7 +167,7 @@ class VolunteeringApi extends Controller
     public function create()
     {
         $cities = City::all();
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $ages = collect([
             (object)[
                 'id' => 14,

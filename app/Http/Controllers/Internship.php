@@ -141,7 +141,7 @@ class Internship extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
 
         $workTime = WorkTimeType::all();
@@ -169,7 +169,7 @@ class Internship extends Controller
     public function create()
     {
         $organisation = Auth::user()->id;
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -274,7 +274,7 @@ class Internship extends Controller
         $internship = Offer::findOrFail($id);
 
         if((($internship->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
-            $specialities = OfferSpecialization::all();
+            $specialities = OfferSpecialization::orderBy('name')->get();
             $cities = City::all();
             $lastCity = $cities->pop();
             $cities = $cities->prepend($lastCity);

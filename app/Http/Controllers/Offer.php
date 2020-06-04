@@ -147,7 +147,7 @@ class Offer extends Controller
 
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
 
         $workTime = WorkTimeType::all();

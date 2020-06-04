@@ -175,7 +175,7 @@ class Volunteering extends Controller
 
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
 
         $workTime = WorkTimeType::all();
@@ -205,7 +205,7 @@ class Volunteering extends Controller
     public function create()
     {
         $organisation = Auth::user()->id;
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -310,7 +310,7 @@ class Volunteering extends Controller
         $volunteering = Offer::findOrFail($id);
 
         if((($volunteering->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
-            $specialities = OfferSpecialization::all();
+            $specialities = OfferSpecialization::orderBy('name')->get();
             $cities = City::all();
             $lastCity = $cities->pop();
             $cities = $cities->prepend($lastCity);

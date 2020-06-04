@@ -126,7 +126,7 @@ class Search extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
 
         $workTime = WorkTimeType::all();
 

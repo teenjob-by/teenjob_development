@@ -109,7 +109,7 @@ class JobApi extends Controller
         $cities = City::all();
         $salaryTypes = SalaryType::all();
         $workTimeTypes = WorkTimeType::all();
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $organisation = JobModel::findorFail($id);
         $ages = collect([
             (object)[
@@ -176,7 +176,7 @@ class JobApi extends Controller
         $cities = City::all();
         $salaryTypes = SalaryType::all();
         $workTimeTypes = WorkTimeType::all();
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         $ages = collect([
             (object)[
                 'id' => 14,

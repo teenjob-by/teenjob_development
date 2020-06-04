@@ -36,7 +36,7 @@ class AdminVolunteerings extends Controller
             ->paginate(30)
             ->onEachSide(1);
 
-        $specializations = OfferSpecialization::all();
+        $specializations = OfferSpecialization::orderBy('name')->get();
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -117,7 +117,7 @@ class AdminVolunteerings extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::all();
+        $specialities = OfferSpecialization::orderBy('name')->get();
         return view('admin.volunteerings.edit')->with('volunteering', $volunteering)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 
