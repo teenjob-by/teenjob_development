@@ -12,6 +12,58 @@
     <meta property="vk:image" content="{{url('/')}}/images/main_vk.png">
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{url('/')}}/css/swiper.min.css">
+
+
+@endsection
+
+
+@section('scripts')
+    <script src="{{url('/')}}/js/swiper.min.js"></script>
+
+
+    <script>
+
+
+        var swiperSlider2 = new Swiper ('#partners', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView : 1,
+
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 1,
+                },
+
+                1024: {
+                    slidesPerView: 1,
+                }
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next-partners',
+                prevEl: '.swiper-button-prev-partners',
+            },
+        })
+
+
+
+
+
+    </script>
+
+@endsection
+
 @section('content')
 
     <section class="info-page_section">
@@ -48,11 +100,32 @@
 
                     <div class="organisations-block">
                         <h4 class="organisations-block-title">@lang('content.rulesForEmployers.text.assistantNeeded')</h4>
-                        <div class="organisations-block-description">
-                            <img src="/images/partners/organisation-1.png">
-                        </div>
+
+                        <section class="partners_wrapper">
+                            <div id="partners" class="swiper-container">
+                                <div class="swiper-wrapper">
+
+                                    @for ($i = 1; $i <= 4; $i++)
+                                        <div class="swiper-slide">
+                                            <a href="@lang('content.partners.link_'.$i)" target="_blank" class="slide-wrapper">
+                                                <div class="image-wrapper">
+                                                    <img class="slide-image" src="images/home/companies/companies-{{ $i }}.png">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endfor
+
+                                </div>
+                            </div>
+
+                            <div class="swiper-button-prev-partners swiper-button-prev"></div>
+                            <div class="swiper-button-next-partners swiper-button-next"></div>
+                        </section>
+
+
+
                         <h5 class="organisations-block-subtitle">@lang('content.rulesForEmployers.text.needHelp')</h5>
-                        <a class="button-primary href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+                        <a class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" target="_blank">
                         <span>
                                 @lang('content.rulesForEmployers.text.button')
                             </span>

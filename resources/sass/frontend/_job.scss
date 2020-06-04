@@ -307,23 +307,18 @@
         width: auto;
         min-width: 290px;
         max-width: 510px;
-
-        @include for-tablet-portrait-up() {
-          width: 100%;
-        }
       }
 
 
 
       .left-aligned {
-        width: 50%;
-        min-width: 290px;
-        display: flex;
-        justify-content: flex-start;
+        width: 290px;
 
         @include for-tablet-portrait-up() {
-          justify-content: flex-end;
+          width: 180px;
         }
+        display: flex;
+        justify-content: flex-start;
       }
 
 
@@ -424,7 +419,7 @@
 
       @include for-tablet-portrait-up() {
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
       }
 

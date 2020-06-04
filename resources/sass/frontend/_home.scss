@@ -217,6 +217,11 @@
 
       .home_organisations-subtitle {
         margin-top: 0;
+        color: $orange;
+
+        @include for-desktop-up() {
+          color: $black;
+        }
       }
     }
 

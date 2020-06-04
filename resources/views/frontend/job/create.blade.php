@@ -288,7 +288,7 @@
 
                         <div class="inner-icon">
                             <div class="inline-group">
-                                <input id="salary" required type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.create.salary')" minlength="3" value="{{ old('salary') }}" autofocus>
+                                <input id="salary" type="text" class="job_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.job.create.salaryPlaceholder')" value="{{ old('salary') }}" autofocus>
 
                                 @error('salary')
                                     <span class="message-invalid" role="alert">

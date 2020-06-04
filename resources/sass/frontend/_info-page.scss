@@ -36,6 +36,13 @@
       &-block {
         text-align: center;
         margin-top: 85px;
+        width: 100%;
+        max-width: 630px;
+
+        .partners_wrapper {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
 
         .rules-link-mobile {
 
@@ -289,6 +296,8 @@
       flex-direction: row;
       margin-top: 50px;
 
+      @include text-usual(16px, $black,left);
+
       justify-content: start;
 
       @media all and (max-width:1023px) {
@@ -298,6 +307,7 @@
     }
 
     .article-description {
+      @include text-usual(16px, $black,left);
       ul {
         margin-top: 18px;
         margin-bottom: 38px;
@@ -316,12 +326,14 @@
       ul li::before {
         content: "\2022";
         @include text-usual(30px, #C4C4C4, left);
-        line-height: unset;
+        line-height: 50%;
         font-weight: bold;
         position: absolute;
         margin-left: -20px;
         margin-top: 1px;
       }
+
+
     }
 
 
@@ -508,6 +520,7 @@
 
 
     max-width: 630px;
+    width: 100%;
     &-full {
       width: 100%;
     }

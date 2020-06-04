@@ -83,7 +83,7 @@ class Job extends Controller
             ->where(function ($query) use ($request){
 
                 $now = Carbon::now()->endOfDay();
-                $last = $now;
+                $last = Carbon::now()->endOfDay();
 
                 $date_filter=[
                     ['published_at', '<=', $now]
@@ -94,12 +94,14 @@ class Job extends Controller
 
                     if($request->input('publish_date') == 3)
                         $last = $last->subDays($request->input('publish_date'));
-                    if($request->input('publish_date') == '7')
+                    if($request->input('publish_date') == 7)
                         $last = $last->subWeek();
-                    if($request->input('publish_date') == '30')
+                    if($request->input('publish_date') == 30)
                         $last = $last->subMonth();
 
                     $last = $last->startOfDay();
+
+
 
                     $date_filter=[
                         ['published_at', '<=', $now],
@@ -274,7 +276,6 @@ class Job extends Controller
             'contactPerson' => ['required'],
             'phone' => ['required', 'min:3','max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'salary' => ['integer'],
             'salaryType' => ['required'],
             'workTime' => ['required']
         ]);
@@ -390,7 +391,6 @@ class Job extends Controller
             'contactPerson' => ['required', 'min:3','max:255'],
             'phone' => ['required', 'min:3','max:255'],
             'email' => ['email', 'max:255'],
-            'salary' => ['integer'],
             'salaryType' => ['required'],
             'workTime' => ['required']
         ]);

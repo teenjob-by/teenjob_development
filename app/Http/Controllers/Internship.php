@@ -57,7 +57,7 @@ class Internship extends Controller
             ->where(function ($query) use ($request){
 
                 $now = Carbon::now()->endOfDay();
-                $last = $now;
+                $last = Carbon::now()->endOfDay();
 
                 $date_filter=[
                     ['published_at', '<=', $now]
