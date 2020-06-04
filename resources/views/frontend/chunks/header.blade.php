@@ -1,4 +1,4 @@
-<header id="header" class="header {{ (request()->routeIs('frontend.home')) ? 'header_bg-desktop' : '' }} {{ (request()->routeIs('frontend.jobs.index') || request()->routeIs('auth.register') || request()->routeIs('auth.login') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.events.index') || request()->routeIs('frontend.volunteerings.index')) ? 'header-compact': '' }}">
+<header id="header" class="header {{ (request()->routeIs('frontend.home')) ? 'header_bg-desktop' : '' }} {{ (request()->routeIs('frontend.jobs.index') || request()->routeIs('auth.register') || request()->routeIs('auth.login') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.events.index') || request()->routeIs('frontend.volunteerings.index') || request()->routeIs('frontend.internships.show') || request()->routeIs('frontend.jobs.show') || request()->routeIs('frontend.events.show') || request()->routeIs('frontend.volunteerings.show')) ? 'header-compact': '' }}">
     <section class="header_menu-wrapper">
         <div class="header_wrapper">
             <h1 class="header_logo">
@@ -85,7 +85,7 @@
         </div>
     </section>
 
-    @if (request()->routeIs('frontend.home') || request()->routeIs('frontend.jobs.index') || request()->routeIs('auth.register') || request()->routeIs('auth.login') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.events.index') || request()->routeIs('frontend.volunteerings.index'))
+    @if (request()->routeIs('frontend.home') || request()->routeIs('frontend.jobs.index') || request()->routeIs('auth.register') || request()->routeIs('auth.login') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.events.index') || request()->routeIs('frontend.volunteerings.index') || request()->routeIs('frontend.internships.show') || request()->routeIs('frontend.jobs.show') || request()->routeIs('frontend.events.show') || request()->routeIs('frontend.volunteerings.show'))
         <section class="header_search-wrapper">
 
             @if (request()->routeIs('frontend.home'))
@@ -98,10 +98,10 @@
             @endif
             <div class="search-form-wrapper">
                 <select id="search-select" class="justselect search-form-wrapper_select" name="category">
-                    <option {{ (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register') || (request()->get('section') == 'job') || request()->routeIs('frontend.jobs.index'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=job">@lang('header.search.navlink_1')</option>
-                    <option {{ ((request()->get('section') == 'internship') || request()->routeIs('frontend.internships.index'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=internship">@lang('header.search.navlink_3')</option>
-                    <option {{ (request()->routeIs('frontend.volunteerings.index'))? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens">@lang('header.search.navlink_2')</option>
-                    <option {{ (request()->routeIs('frontend.events') || request()->routeIs('frontend.events.index'))? 'selected': ''}} class="dropdown-item" value="/events">@lang('header.search.navlink_4')</option>
+                    <option {{ (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register') || (request()->get('section') == 'job') || request()->routeIs('frontend.jobs.index') || request()->routeIs('frontend.jobs.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=job">@lang('header.search.navlink_1')</option>
+                    <option {{ ((request()->get('section') == 'internship') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.internships.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=internship">@lang('header.search.navlink_3')</option>
+                    <option {{ (request()->routeIs('frontend.volunteerings.index') || request()->routeIs('frontend.volunteerings.show') )? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens">@lang('header.search.navlink_2')</option>
+                    <option {{ (request()->routeIs('frontend.events.index')  || request()->routeIs('frontend.events.show'))? 'selected': ''}} class="dropdown-item" value="/events">@lang('header.search.navlink_4')</option>
                 </select>
 
                 <form id="desktop-search" class="header_search-form desktop-search" method="get">
