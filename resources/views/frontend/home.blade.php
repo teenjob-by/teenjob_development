@@ -125,7 +125,7 @@
 
             setTimeout(function() {
                 $('.burger').click()
-            }, 1000);
+            }, 500);
 
 
 
