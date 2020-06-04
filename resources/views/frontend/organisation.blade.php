@@ -359,7 +359,7 @@
                                                                     @csrf
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
-                                                                    <button type="submit" class="organisation_list-item-action">
+                                                                    <button type="submit" class="organisation_list-item-action-link">
                                                                         <i class="archive-icon"></i>
                                                                         <span>На модерацию</span>
                                                                     </button>
