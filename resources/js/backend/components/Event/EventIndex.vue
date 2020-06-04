@@ -115,7 +115,7 @@
                 }
 
 
-                if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin')) {
+                if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived')) {
 
                     this.actions.unshift( {
                         text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {

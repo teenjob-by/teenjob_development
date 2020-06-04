@@ -179,7 +179,7 @@
                 @endfor
             </section>
 
-            <a role="button" class="button-primary" href="https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform">
+            <a role="button" class="button-primary" href="https://docs.google.com/forms/u/3/d/e/1FAIpQLScxqBqJT8hcfKPa0jzAb_XYKP8XR7HEFJe2tQFKMh3KZL2h7Q/viewform" target="_blank">
                 <span>
                     @lang('content.about.button')
                 </span>
@@ -208,7 +208,7 @@
             <p class="home_organisations-subtitle">@lang('content.organisations.buttonSubtitle')</p>
 
 
-            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" target="_blank">
                 <span>
                     @lang('content.rulesForEmployers.text.button')
                 </span>
@@ -266,7 +266,7 @@
                 <div class="swiper-button-next-partners swiper-button-next"></div>
             </section>
 
-            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform">
+            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdAYxXLNuyauPn7Bi-rhhnF9T7hnAnfCgzp7sgPW0wKRQtGmg/viewform" target="_blank">
                 <span>
                     @lang('content.partners.button')
                 </span>
