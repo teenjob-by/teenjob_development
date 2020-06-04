@@ -139,8 +139,6 @@
 
             function clearErrors() {
                 try {
-                    $(".operation-result").removeClass('show');
-                    $(".operation-result").empty();
 
                     $(".is-invalid").removeClass('is-invalid');
                     $('.message-invalid').remove();

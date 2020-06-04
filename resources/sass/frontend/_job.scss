@@ -7,7 +7,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+
+    margin-top: 40px;
+
+    @include for-desktop-up() {
+      margin-top: 0px;
     }
+  }
 
   &_card {
     border-bottom: 1px solid gainsboro;
@@ -40,6 +46,7 @@
     &-salary {
       margin-right: 10px;
       margin-left: auto;
+      white-space: nowrap;
 
       @include text-usual(16px, #2F2F2F, left );
     }

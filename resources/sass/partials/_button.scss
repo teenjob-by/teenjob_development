@@ -44,6 +44,9 @@
     background: #c0c0c0;
     transform: unset;
     opacity: 70%;
+    padding-top: 0;
+    padding-bottom: 0;
+
 
     span {
       display: none;
@@ -55,7 +58,6 @@
       margin: auto;
       width: 40px;
       height: 40px;
-      margin-top: 3px;
     }
   }
 
