@@ -15,11 +15,11 @@
 
     margin-right: 0;
     margin-left: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 20px;
 
     @include for-desktop-up() {
-      &:nth-child(2n) {
+      &:nth-child(3n + 2) {
         margin-left: 15px;
         margin-right: 15px;
       }
@@ -346,7 +346,8 @@
   &_form {
 
     .tip {
-      @include text-usual(14px, $black, center);
+      @include text-usual(14px, $black, left);
+      max-width: 385px;
     }
 
     .operation-result {
@@ -374,6 +375,9 @@
 
     &-title {
       @include text-usual(20px, $black, center);
+      @include for-tablet-portrait-up() {
+        @include text-usual(20px, $black, left);
+      }
       margin-top: 35px;
       margin-bottom: 25px;
     }
@@ -388,20 +392,45 @@
     margin-top: 20px;
 
     &-date-group {
-      margin-right: 25px;
+
       flex-direction: column;
       display: flex;
       flex-wrap: nowrap;
 
-      @include for-desktop-up() {
+
+
+
+      &.time-group {
+        margin-top: -35px;
+
+        @include for-tablet-portrait-up() {
+          margin-top: 0;
+        }
+      }
+
+
+
+
+
+      @include for-tablet-portrait-up() {
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: space-between;
+        justify-content: flex-start;
 
         max-width: 385px;
-        margin-left: 30px;
-        margin-right: 25px;
+
         align-items: center;
+      }
+
+      input {
+        max-width: 150px;
+        min-width: 140px;
+
+      }
+
+      label {
+        margin-left: 20px;
+        padding-right: 10px;
       }
     }
 
@@ -411,22 +440,59 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 100%;
       position: relative;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+
       margin-bottom: 24px;
 
+
       &.date-group {
-        flex-direction: row;
+        flex-direction: column;
+
+        @include for-tablet-portrait-up() {
+          flex-direction: row;
+        }
+
+
+
+        .inner-icon {
+          display: flex;
+          flex-direction: row;
+
+
+          justify-content: flex-start;
+        }
       }
 
+      .right-aligned {
+        width: auto;
+
+        min-width: 290px;
+        max-width: 510px;
+
+        @include for-tablet-portrait-up() {
+          width: 100%;
+        }
+      }
+
+      .left-aligned {
+        width: 180px;
+        min-width: 180px;
+        display: flex;
+        justify-content: flex-start;
+
+        @include for-tablet-portrait-up() {
+          justify-content: flex-end;
+        }
+      }
 
       .file-upload {
         background-color: #ffffff;
         width: 100%;
         margin: 0 auto;
-        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .file-upload-btn {
@@ -476,6 +542,7 @@
         margin-top: 20px;
         border: 4px dashed $violet;
         position: relative;
+        width: 100%;
       }
 
       .image-dropping,
@@ -604,20 +671,60 @@
       }
 
       &.description {
-        display: block;
+        align-items: flex-end;
+
+        .left-aligned {
+          display: none;
+        }
+
+        .inner-icon {
+          max-width: 575px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .right-aligned {
+          max-width: 290px;
+
+          @include for-tablet-portrait-up() {
+            max-width: 700px;
+          }
+
+        }
+
+        @include for-desktop-up() {
+          flex-direction: column;
+
+
+
+          .trumbowyg-box {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+
       }
 
+      .button-secondary {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+
+        max-width: 290px;
+
+        @include for-tablet-portrait-up {
+          max-width: 385px;
+        }
+      }
 
       .message-invalid {
         @include text-usual(12px, $red, left);
         position: absolute;
         bottom: -20px;
         left: 0px;
-
-        @include for-tablet-portrait-up() {
-          bottom: -20px;
-          left: 160px;
-        }
       }
 
       &:last-child {
@@ -627,7 +734,6 @@
       @include for-tablet-portrait-up() {
         flex-direction: row;
         justify-content: flex-end;
-        width: 570px;
         align-items: center;
       }
 
@@ -635,7 +741,7 @@
         @include  text-usual(14px, $black, left);
         padding-top: 7px;
         padding-bottom: 7px;
-
+        padding-right: 20px;
 
         @include for-tablet-portrait-up() {
           @include  text-usual(16px, $black, right);
@@ -648,39 +754,15 @@
       &-input {
         height: 42px;
         width: 100%;
+        min-width: 290px;
         max-width: 385px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
         box-sizing: border-box;
         border-radius: 0px;
 
-
-        &.datePicker {
-          width: 120px;
-          min-width: 120px;
-          margin: 0;
-
-          @include for-desktop-up() {
-            margin-left: 30px;
-
-            margin-right: 40px;
-          }
-        }
-
-        &.timePicker {
-          margin-right: 0;
-          width: 100px;
-          min-width: 100px;
-        }
-
         @include text-usual(16px, $black, left);
         padding: 3px 20px;
-
-        @include for-tablet-portrait-up() {
-          margin-left: 15px;
-          margin-right: 25px;
-          min-width: 385px;
-        }
 
         &:focus {
           outline: none;
@@ -692,11 +774,6 @@
 
         &.textarea {
           height: 200px;
-          width: 100%;
-
-          @include for-desktop-up() {
-            width:543px;
-          }
         }
       }
 
@@ -715,8 +792,6 @@
         padding: 3px 20px;
 
         @include for-tablet-portrait-up() {
-          margin-left: 30px;
-          margin-right: 25px;
           min-width: 385px;
         }
 
@@ -725,21 +800,9 @@
         }
       }
 
-      .show-password {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-
-        right: 10px;
-        top: 45px;
-
-        @include for-tablet-portrait-up() {
-          right: 35px;
-          top: 12px;
-        }
-
-        background: url(/images/show-password-icon.svg);
+      .inner-icon {
+        position: relative;
+        max-width: 385px;
       }
     }
   }

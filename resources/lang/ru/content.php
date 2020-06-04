@@ -19,7 +19,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'about_us' => [
+        'button' => 'Присоединиться'
+    ],
     'about' => [
         'title' => 'Что такое teenjob.by?',
         'card_1' => [
@@ -34,7 +36,7 @@ return [
             'title' => '<a href="https://teenjob.by/events">Мероприятия</a>',
             'text' => 'Узнавай максимум новой и полезной информации, участвуй и расширяй круг знакомств',
         ],
-        'button' => 'Присоединиться'
+        'button' => 'Создать резюме'
     ],
 
     'counter' => [
