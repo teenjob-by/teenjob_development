@@ -55,7 +55,7 @@
         <div class="content-wrapper">
             <div class="info-page_subsection">
                 <h3 class="info-page-title">@lang('content.support.title')</h3>
-                <p class="notification">@lang('content.support.subtitle')</p>
+                <p class="notification feedback-notification">@lang('content.support.subtitle')</p>
 
                         <form method="post" class="contact-form" action="{{ route('frontend.feedback') }}">
                             @csrf
@@ -65,7 +65,7 @@
                             @endif
 
 
-                            <div class="contact-form_form-group">
+                            <div class="contact-form_form-group subject-group">
                                 <label for="subject" class="contact-form_form-group-label">@lang('content.support.theme')</label>
                                 <input id="subject" type="text" name="subject" placeholder="" class="contact-form_form-group-input @error('subject') is-invalid @enderror" value="{{ old('subject') }}" required autocomplete="subject" autofocus minlength="3">
 
@@ -118,7 +118,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="button-secondary">
+                            <button type="submit" class="button-account">
                                  <span>
                                     @lang('content.support.send')
                                 </span>
