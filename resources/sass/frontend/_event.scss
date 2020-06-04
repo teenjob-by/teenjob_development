@@ -15,14 +15,21 @@
 
     margin-right: 0;
     margin-left: 0;
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
-    @include for-desktop-up() {
+    @media all and (min-width: 700px) {
       &:nth-child(3n + 2) {
         margin-left: 15px;
         margin-right: 15px;
       }
+    }
+
+
+
+    @include for-desktop-up() {
+      margin-top: 0px;
+      margin-bottom: 20px;
     }
 
 
@@ -32,13 +39,14 @@
 
     &-wrapper {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: wrap;
 
       justify-content: space-evenly;
 
-      @include for-desktop-up() {
+      @media all and (min-width: 700px) {
         justify-content: flex-start;
+        flex-direction: row;
       }
 
 
@@ -49,7 +57,7 @@
 
 
       align-items: flex-start;
-      width: 100%;
+      width: auto;
     }
 
     &:hover{
