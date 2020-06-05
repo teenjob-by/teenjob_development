@@ -437,7 +437,7 @@
         padding-right: 20px;
 
         @include for-tablet-portrait-up() {
-          @include  text-usual(16px, $black, right);
+          @include  text-usual(16px, $black, left);
           padding-top: 0px;
           padding-bottom: 0px;
           line-height: 120%;
