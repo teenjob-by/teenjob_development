@@ -159,7 +159,7 @@
     }
 
     .action-col {
-        width: 230px;
+        width: 280px;
     }
 
     .btn {

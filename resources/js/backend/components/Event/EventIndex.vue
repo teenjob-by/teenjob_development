@@ -114,6 +114,16 @@
                     )
                 }
 
+                if((this.scope == 'banned') || (this.scope == 'published') || (this.scope == 'unapproved')) {
+                    this.actions.unshift(
+                        {
+                            text: '<i class="fa fa-archive" aria-hidden="true"></i>', color: "info", action: (row, index) => {
+                                this.archive(row.id, index);
+                            }
+                        }
+                    )
+                }
+
 
                 if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived')) {
 
@@ -183,6 +193,35 @@
                         app.$modal.show('dialog', {
                             title: 'Информация',
                             text: 'При блокировке возникла ошибка, обратитесь к разработчику',
+                            buttons: [
+                                {
+                                    title: 'Закрыть'
+                                }
+                            ]
+                        })
+                    })
+            },
+            archive(id, index) {
+                var app = this;
+                axios.patch('/api/v1/events/' + id + '/archive',{}, { headers: {
+                        'Authorization': `Bearer ` + localStorage.getItem('access_token')
+                    }})
+                    .then(function (resp) {
+                        app.$modal.show('dialog', {
+                            title: 'Информация',
+                            text: 'Успешно заархивировано',
+                            buttons: [
+                                {
+                                    title: 'Закрыть'
+                                }
+                            ]
+                        })
+                        app.load()
+                    })
+                    .catch(function (resp) {
+                        app.$modal.show('dialog', {
+                            title: 'Информация',
+                            text: 'При архивации возникла ошибка, обратитесь к разработчику',
                             buttons: [
                                 {
                                     title: 'Закрыть'

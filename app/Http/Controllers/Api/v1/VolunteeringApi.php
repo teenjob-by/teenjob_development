@@ -261,6 +261,17 @@ class VolunteeringApi extends Controller
         ]);
     }
 
+    public function archive($id)
+    {
+        $events = VolunteeringModel::findOrFail($id);
+        $events->status = 2;
+        $events->save();
+
+        return response()->json([
+            'message' => 'Успешно заархивировано',
+        ], $this->successStatus);
+    }
+
     public function getAllVolunteerings()
     {
 

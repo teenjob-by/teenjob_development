@@ -47,6 +47,7 @@ Route::namespace('Api')->group(function () {
                 Route::get('jobs/{id}/edit', 'JobApi@edit');
                 Route::patch('jobs/{id}/ban', 'JobApi@ban');
                 Route::patch('jobs/{id}/approve', 'JobApi@approve');
+                Route::patch('jobs/{id}/archive', 'JobApi@archive');
                 Route::patch('jobs/{id}', 'JobApi@update');
                 Route::delete('jobs/{id}', 'JobApi@destroy');
 
@@ -57,6 +58,7 @@ Route::namespace('Api')->group(function () {
                 Route::get('volunteerings/{id}/edit', 'VolunteeringApi@edit');
                 Route::patch('volunteerings/{id}/ban', 'VolunteeringApi@ban');
                 Route::patch('volunteerings/{id}/approve', 'VolunteeringApi@approve');
+                Route::patch('volunteerings/{id}/archive', 'VolunteeringApi@archive');
                 Route::patch('volunteerings/{id}', 'VolunteeringApi@update');
                 Route::delete('volunteerings/{id}', 'VolunteeringApi@destroy');
 
@@ -67,6 +69,7 @@ Route::namespace('Api')->group(function () {
                 Route::get('internships/{id}/edit', 'InternshipApi@edit');
                 Route::patch('internships/{id}/ban', 'InternshipApi@ban');
                 Route::patch('internships/{id}/approve', 'InternshipApi@approve');
+                Route::patch('internships/{id}/archive', 'InternshipApi@archive');
                 Route::patch('internships/{id}', 'InternshipApi@update');
                 Route::delete('internships/{id}', 'InternshipApi@destroy');
 
@@ -77,6 +80,7 @@ Route::namespace('Api')->group(function () {
                 Route::get('events/{id}/edit', 'EventApi@edit');
                 Route::patch('events/{id}/ban', 'EventApi@ban');
                 Route::patch('events/{id}/approve', 'EventApi@approve');
+                Route::patch('events/{id}/archive', 'EventApi@archive');
                 Route::patch('events/{id}', 'EventApi@update');
                 Route::delete('events/{id}', 'EventApi@destroy');
 

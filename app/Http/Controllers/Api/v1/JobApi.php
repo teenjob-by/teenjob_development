@@ -263,6 +263,17 @@ class JobApi extends Controller
         ], $this->successStatus);
     }
 
+    public function archive($id)
+    {
+        $events = JobModel::findOrFail($id);
+        $events->status = 2;
+        $events->save();
+
+        return response()->json([
+            'message' => 'Успешно заархивировано',
+        ], $this->successStatus);
+    }
+
     public function approve($id)
     {
         $jobs = JobModel::findOrFail($id);

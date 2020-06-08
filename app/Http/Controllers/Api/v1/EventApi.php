@@ -314,6 +314,17 @@ class EventApi extends Controller
         ], $this->successStatus);
     }
 
+    public function archive($id)
+    {
+        $events = EventModel::findOrFail($id);
+        $events->status = 2;
+        $events->save();
+
+        return response()->json([
+            'message' => 'Успешно заархивировано',
+        ], $this->successStatus);
+    }
+
     public function approve($id)
     {
         $events = EventModel::findOrFail($id);
