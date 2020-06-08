@@ -66,15 +66,19 @@
                     language: "ru",
                 });
 
-                function hideSelect2Keyboard(e){
-                    $('.select2-search input').prop('focus',false).blur();
-                }
+                $('.custom-select').on('select2:open', function () {
 
-                $(".custom-select").on("select2:open", hideSelect2Keyboard);
+                    if ( $('.select2-search input').is(':focus') ) {
 
-                $(".custom-select").on("select2:close",function(){
-                    setTimeout(hideSelect2Keyboard, 50);
-                });
+                        $('.select2-search input').prop('focus', false);
+
+                    } else {
+
+                        $('.select2-search input').prop('focus', true);
+
+                    }
+
+                })
 
 
                 let vh = window.innerHeight * 0.01;

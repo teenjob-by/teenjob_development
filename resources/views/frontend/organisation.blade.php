@@ -46,7 +46,8 @@
             $("#modal_confirmation-content").empty().append("<p>" + modals[name].content + "</p>");
             $("#modal_confirmation-confirm").empty().append(modals[name].buttons.confirm);
             $("#modal_confirmation-refuse").empty().append(modals[name].buttons.refuse);
-            $("#modal_confirmation-confirm").unbind('click');             $("#modal_confirmation-confirm").click({form: form}, function (e) {
+            $("#modal_confirmation-confirm").unbind('click');
+            $("#modal_confirmation-confirm").click({form: form}, function (e) {
                 MicroModal.close("modal_" + name + "_confirmation")
                 modals[name].action(e.data.form);
             });
@@ -90,12 +91,12 @@
 
                 $('.form_archive').on('submit', function(ev){
                     ev.preventDefault();
-                    showModal("archive", this);
+                    callAjax(this)
                 });
 
                 $('.form_unarchive').on('submit', function(ev){
                     ev.preventDefault();
-                    showModal("unarchive", this);
+                    callAjax(this)
                 });
 
                 $('.form_edit').on('submit', function(ev){
@@ -135,33 +136,11 @@
                     function(data){
 
                         data = JSON.parse(data);
-                        $("#submit").toggleClass('loading');
-
-                        for (var prop in data) {
-                            $(".operation-result").append(prop.va);
-                        }
-
-                        for (let [key, value] of Object.entries(data)) {
-
-                            if(key == 'message') {
-                                $(".operation-result").toggleClass('show');
-                                $(".operation-result").empty().append(value);
-                            }
-                            else {
-                                $("#" + key).addClass('is-invalid').after(
-                                    "<span class=\"message-invalid\" role=\"alert\"><strong>" + value + "</strong></span>" );
-                            }
-                        }
                         location.reload()
 
                     })
                 .fail(
                     function(jqXHR, ajaxOptions, thrownError) {
-
-                        $(".operation-result").toggleClass('show');
-                        $(".operation-result").empty().append("Сохранение не удалось");
-                        $("#submit").toggleClass('loading');
-
                     });
 
         }

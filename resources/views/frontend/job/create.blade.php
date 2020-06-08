@@ -50,6 +50,24 @@
                     },
                 },
 
+                leave: {
+                    content: "@lang('content.job.create.modal.leave.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.job.create.modal.leave.confirm')",
+                            action: function(){
+                                location.href = "{{ url()->previous() }}";
+                            }
+                        },
+                        refuse: {
+                            text: "@lang('content.job.create.modal.leave.refuse')",
+                            action: function () {
+                                MicroModal.close("modal_leave");
+                            }
+                        },
+                    },
+                },
+
                 error: {
                     content: "@lang('content.job.create.modal.error.content')",
                     buttons: {
@@ -90,7 +108,23 @@
 
             MicroModal.show("modal_" + name)
         }
+
+
         $(document).ready(function () {
+
+            $(window).on('click', function(event) {
+                history.pushState("", "");
+            });
+
+            $(window).on('popstate', function(e) {
+                e.preventDefault()
+                showModal("leave")
+            });
+
+            $(".back-link").click(function (e) {
+                e.preventDefault()
+                showModal("leave")
+            });
 
 
 
@@ -215,9 +249,20 @@
         <div class="content-wrapper">
 
 
+
+
             <form id="form" method="POST" class="job_form" action="{{ route('organisation.jobs.store') }}">
                 @csrf
 
+
+                <div class="job_form-group">
+                    <div class="left-aligned">
+                        <a class="back-link" href="{{ url()->previous() }}">@lang('content.volunteering.card.back')</a>
+                    </div>
+                    <div class="right-aligned">
+                    </div>
+
+                </div>
 
 
                 <div class="job_form-group">
