@@ -18,7 +18,10 @@
                 <p class="job_description-info location">{{ $data->city->name }}</p>
                 <p class="job_description-info portfolio">{{ $data->speciality()->name }}</p>
                 <p class="job_description-info user">@lang('content.job.card.age') {{ $data->age }}</p>
-                <p class="job_description-info salary">@lang('content.job.card.salary') {{ $data->salary }} {{ $data->salaryType->name}}</p>
+
+                @if(!empty($data->salary))
+                    <p class="job_description-info salary">@lang('content.job.card.salary') {{ $data->salary }} {{ $data->salaryType->name}}</p>
+                @endif
                 <p class="job_description-info job-time">@lang('content.job.card.job-time') {{ $data->workTimeType->name }}</p>
                 <div class="job_description-text">{!! $data->description !!}</div>
                 <p class="job_description-contacts-title">@lang('content.job.card.contacts')</p>

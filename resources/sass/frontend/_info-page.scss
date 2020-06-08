@@ -37,7 +37,13 @@
         text-align: center;
         margin-top: 85px;
         width: 100%;
-        max-width: 630px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
         .partners_wrapper {
           margin-top: 20px;
@@ -61,8 +67,9 @@
           margin-bottom: 8px;
 
           @include for-desktop-up() {
-            @include text-usual(42px, #121212, left);
+            @include text-usual(42px, #121212, center);
             font-weight: 600;
+            margin-bottom: 80px;
           }
         }
 
@@ -81,6 +88,15 @@
           margin-bottom: 10px;
           text-align: center;
           color: #000000;
+        }
+      }
+
+      &-filler {
+        height: 400px;
+        width: 100%;
+
+        @include for-desktop-up() {
+          height: 503px;
         }
       }
 
@@ -339,7 +355,7 @@
         font-weight: bold;
         position: absolute;
         margin-left: -20px;
-        margin-top: 1px;
+        margin-top: 2px;
       }
 
 

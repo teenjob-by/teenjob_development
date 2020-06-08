@@ -7,13 +7,21 @@
                         @if(false)
                             <span class="{{ $item_type }}_card-approved"></span>
                         @endif
-                        <a class="{{ $item_type }}_card-title-link" href="{{ route('frontend.' .$item_type. 's.show', $item->id) }}"><strong>{{$item->title}}</strong></a>
 
-                        @if($item->salary)
-                            <span class="{{ $item_type }}_card-salary">{{ $item->salary }} {{ $item->salaryType->name}}</span>
+
+                        @if($item->offer_type == 1)
+                                <a class="{{ $item_type }}_card-title-link" href="{{ route('frontend.internships.show', $item->id) }}"><strong>{{$item->title}}</strong></a>
+                                @if(($item->salary) && ($item->offer_type == 1))
+                                    <span class="{{ $item_type }}_card-salary">{{ $item->salary }} {{ $item->salaryType->name}}</span>
+                                @endif
+                                <span class="internship-icon"></span>
+                        @else
+                                <a class="{{ $item_type }}_card-title-link" href="{{ route('frontend.jobs.show', $item->id) }}"><strong>{{$item->title}}</strong></a>
+                                @if(($item->salary) && ($item->offer_type == 2))
+                                    <span class="{{ $item_type }}_card-salary">{{ $item->salary }} {{ $item->salaryType->name}}</span>
+                                @endif
+                                <span class="job-icon"></span>
                         @endif
-
-                        <span class="{{ $item_type }}-icon"></span>
 
                     </h3>
                     <h4 class="{{ $item_type }}_card-organisation"><a href="{{ $item->organisation['link'] }}" target="_blank">{{$item->organisation['name']}}</a></h4>

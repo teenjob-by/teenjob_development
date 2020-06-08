@@ -63,7 +63,17 @@
         <script>
             $(document).ready(function() {
                 $('.custom-select').select2( {
-                    language: "ru"
+                    language: "ru",
+                });
+
+                function hideSelect2Keyboard(e){
+                    $('.select2-search input').prop('focus',false).blur();
+                }
+
+                $(".custom-select").on("select2:open", hideSelect2Keyboard);
+
+                $(".custom-select").on("select2:close",function(){
+                    setTimeout(hideSelect2Keyboard, 50);
                 });
 
 
@@ -115,6 +125,9 @@
                     $(".burger").removeClass('open');
                     $(".header_menu").slideUp('fast');
                 }
+
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
                 event.stopPropagation()
             })
 

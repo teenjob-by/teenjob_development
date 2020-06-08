@@ -139,7 +139,7 @@
 
     <section class="home_section-achievements">
         <div class="content-wrapper">
-            <h3 class="home_title-about">@lang('content.counter.title')</h3>
+            <h3 class="home_title-achievements">@lang('content.counter.title')</h3>
 
             <section id="counter" class="card-wrapper counter-value-wrapper">
 

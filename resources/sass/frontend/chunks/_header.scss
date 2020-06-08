@@ -8,10 +8,12 @@ $header-height: 70px;
 }
 .header.header-compact {
 
+  height: 240px;
+  background-image: url(/images/header-bg.png);
+  padding-top: 70px;
+
   @include for-desktop-up() {
     height: 280px;
-    background-image: url(/images/header-bg.png);
-    padding-top: 70px;
   }
 }
 
@@ -250,7 +252,7 @@ $header-height: 70px;
     justify-content: center;
     align-items: center;
 
-    @include for-desktop-up() {
+    @include for-tablet-landscape-up() {
       display: flex;
     }
 

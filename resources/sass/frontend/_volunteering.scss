@@ -95,11 +95,15 @@
     @extend .section;
 
     .back-link {
+      display: none;
+
+      @include for-desktop-up() {
+        display: block;
+      }
 
       @include text-usual(14px, $violet, left);
       margin-bottom: 38px;
       margin-top: -60px;
-      display: block;
       position: relative;
       padding-left: 16px;
 
@@ -217,11 +221,18 @@
       margin-bottom: 12px;
     }
 
+
     &-footer {
       display: flex;
-      flex-direction: row;
+
       flex-wrap: nowrap;
       justify-content: space-between;
+
+      flex-direction: column;
+
+      @include for-desktop-up() {
+        flex-direction: row;
+      }
     }
 
     &-date {
@@ -234,6 +245,12 @@
       padding-left: 25px;
       position: relative;
       display: block;
+
+      margin-top: 15px;
+
+      @include for-desktop-up() {
+        margin-top: 0px;
+      }
 
       &:before {
         content: url(/images/flag-icon.png);

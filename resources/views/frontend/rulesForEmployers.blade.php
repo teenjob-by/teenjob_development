@@ -42,11 +42,11 @@
                 },
                 // when window width is >= 640px
                 640: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                 },
 
                 1024: {
-                    slidesPerView: 1,
+                    slidesPerView: 3,
                 }
             },
 
@@ -96,6 +96,9 @@
                         <div class="article-info-description">
                             @lang('content.rulesForEmployers.text.info') <a href="{{ route('frontend.whoIsVolunteer') }}">@lang('content.volunteerRules.title')</a> <a href="{{ route('frontend.whoIsIntern') }}">@lang('content.internRules.title')</a>
                         </div>
+                    </div>
+
+                    <div class="organisations-filler">
                     </div>
 
                     <div class="organisations-block">

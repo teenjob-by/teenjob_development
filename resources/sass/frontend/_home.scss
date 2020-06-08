@@ -258,6 +258,16 @@
       @extend .home_title;
     }
 
+    &-achievements {
+      @extend .home_title;
+
+      font-size: 38px;
+
+      @include for-desktop-up() {
+        font-size: 52px;
+      }
+    }
+
     &-organisations {
       @extend .home_title;
     }
