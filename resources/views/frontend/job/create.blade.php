@@ -271,7 +271,7 @@
 
 
                 <div class="job_form-group">
-                    <div class="centered">
+                    <div class="centered-title">
                         <div class="inner-icon">
                             <input id="title" required type="text" class="job_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.create.name')" value="{{ old('title') }}" autofocus>
 
@@ -290,7 +290,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <select id="city" class="custom-select job_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
+                            <select id="city" class="custom-select-search job_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
                                 @foreach($cities as $city)
                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                                 @endforeach
@@ -367,7 +367,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <select id="speciality" class="custom-select job_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
+                            <select id="speciality" class="custom-select-search job_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
                                 @foreach($specialities as $speciality)
                                     <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
                                 @endforeach

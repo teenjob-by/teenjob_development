@@ -64,9 +64,14 @@
             $(document).ready(function() {
                 $('.custom-select').select2( {
                     language: "ru",
+                    minimumResultsForSearch: -1
                 });
 
-                $('.custom-select').on('select2:open', function () {
+                $('.custom-select-search').select2( {
+                    language: "ru",
+                });
+
+                $('.custom-select-search').on('select2:open', function () {
 
                     if ( $('.select2-search input').is(':focus') ) {
 

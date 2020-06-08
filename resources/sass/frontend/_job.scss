@@ -524,18 +524,31 @@
         justify-content: center;
       }
 
+      .centered-title {
+        width: 100%;
+        max-width: 470px;
+        display: flex;
+        justify-content: center;
+
+        .inner-icon {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+
       .title-input {
         border: none;
         font-weight: bold;
         font-size: 20px;
         text-align: left;
+        width: 100%;
         padding-right: 0;
         &::placeholder {
           font-weight: bold;
           font-size: 20px;
-          text-align: left;
+          text-align: center;
         }
-        padding-left: 40px;
+        padding-left: 0px;
       }
 
     }
