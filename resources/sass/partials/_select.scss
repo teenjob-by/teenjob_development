@@ -17,8 +17,12 @@
     position: relative;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
     background: $white;
-    display: flex;
+    display: none;
     align-items: center;
+
+    @include for-tablet-landscape-up() {
+      display: flex;
+    }
   }
 
   &-title {
