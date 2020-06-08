@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
+@section('seo_meta')
+    <meta name="description" content="Создание объявления"/>
+    <meta name="language" content="RU"/>
 
+    <title>Создание объявления</title>
+@endsection
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection

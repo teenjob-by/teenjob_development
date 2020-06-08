@@ -4,6 +4,13 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 
+@section('seo_meta')
+    <meta name="description" content="Создание объявления"/>
+    <meta name="language" content="RU"/>
+
+    <title>Создание объявления</title>
+@endsection
+
 @section('scripts')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>

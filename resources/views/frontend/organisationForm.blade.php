@@ -1,5 +1,10 @@
 @extends('layouts.frontend')
+@section('seo_meta')
+    <meta name="description" content="Редактирование организации"/>
+    <meta name="language" content="RU"/>
 
+    <title>Редактирование организации</title>
+@endsection
 @section('scripts')
     <script src="/js/micromodal.min.js"></script>
     <script>

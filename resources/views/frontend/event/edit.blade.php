@@ -3,7 +3,12 @@
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
+@section('seo_meta')
+    <meta name="description" content="Редактирование объявления"/>
+    <meta name="language" content="RU"/>
 
+    <title>Редактирование объявления</title>
+@endsection
 @section('scripts')
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap">
