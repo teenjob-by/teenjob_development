@@ -401,7 +401,7 @@
         @include for-tablet-portrait-up() {
           flex-direction: column;
           justify-content: flex-start;
-          width: 570px;
+          width: 100%;
           align-items: flex-start;
         }
 
