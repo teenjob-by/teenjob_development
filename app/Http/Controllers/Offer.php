@@ -147,7 +147,7 @@ class Offer extends Controller
 
         ];
 
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $cities = City::all();
 
         $workTime = WorkTimeType::all();

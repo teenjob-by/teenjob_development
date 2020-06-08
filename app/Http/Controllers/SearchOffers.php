@@ -123,7 +123,7 @@ class SearchOffers extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -245,7 +245,7 @@ class SearchOffers extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -274,7 +274,7 @@ class SearchOffers extends Controller
 
     public function getSpecialities()
     {
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $htmlOutput = "";
         foreach ($specialities as $speciality) {
             $htmlOutput = $htmlOutput."<option value=".$speciality->id.">".$speciality->name."</option>\n";

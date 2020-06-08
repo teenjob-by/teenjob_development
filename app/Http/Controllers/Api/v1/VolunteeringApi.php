@@ -108,7 +108,7 @@ class VolunteeringApi extends Controller
     public function edit($id)
     {
         $cities = City::all();
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $organisation = VolunteeringModel::findorFail($id);
         $ages = collect([
             (object)[
@@ -167,7 +167,7 @@ class VolunteeringApi extends Controller
     public function create()
     {
         $cities = City::all();
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $ages = collect([
             (object)[
                 'id' => 14,

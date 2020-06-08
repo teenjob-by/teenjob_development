@@ -85,7 +85,7 @@ class AdminVacancies extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         return view('admin.jobs.edit')->with('job', $job)->with('cities', $cities)->with('ages', $ages)->with('specialities', $specialities);
     }
 

@@ -183,7 +183,8 @@ class Job extends Controller
             ]
         ];
 
-        $specialities = OfferSpecialization::orderBy('name')->get();
+        $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
+
         $cities = City::all();
 
         $workTime = WorkTimeType::all();
@@ -230,6 +231,10 @@ class Job extends Controller
     {
         $organisation = Auth::user()->id;
         $specialities = OfferSpecialization::orderBy('name')->get();
+        $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
+
+
+
         $cities = City::all();
         $lastCity = $cities->pop();
         $cities = $cities->prepend($lastCity);
@@ -339,7 +344,7 @@ class Job extends Controller
         $job = Offer::findOrFail($id);
 
         if((($job->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
-            $specialities = OfferSpecialization::orderBy('name')->get();
+            $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
             $cities = City::all();
             $lastCity = $cities->pop();
             $cities = $cities->prepend($lastCity);
