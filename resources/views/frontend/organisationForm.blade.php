@@ -369,7 +369,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <input id="password" type="password" name="password" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password') is-invalid @enderror" required autofocus minlength="8">
+                            <input id="password" type="password" name="password" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password') is-invalid @enderror" autofocus minlength="8">
                             <i class="show-password" onclick="showPassword('password')"></i>
                         </div>
                         @error('password')
@@ -386,7 +386,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <input id="password_repeat" type="password" name="password_repeat" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password_repeat') is-invalid @enderror" required autofocus minlength="8">
+                            <input id="password_repeat" type="password" name="password_repeat" placeholder="@lang('auth.register.passwordPlaceholder')" class="organisation_form-group-input @error('password_repeat') is-invalid @enderror" autofocus minlength="8">
                             <i class="show-password" onclick="showPassword('password_repeat')"></i>
                         </div>
                         @error('password_repeat')
@@ -394,6 +394,14 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                </div>
+
+                <div class="organisation_form-group">
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <p class="tip"><b>@lang('content.organisationForm.remind')</b></p>
                     </div>
                 </div>
 
@@ -414,13 +422,6 @@
                     </div>
                 </div>
 
-                <div class="organisation_form-group">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
-                        <p class="tip">@lang('content.organisationForm.remind')</p>
-                    </div>
-                </div>
 
                 <div class="organisation_form-group">
                     <div class="left-aligned">
