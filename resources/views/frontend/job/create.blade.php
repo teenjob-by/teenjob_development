@@ -221,9 +221,7 @@
 
 
                 <div class="job_form-group">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
+                    <div class="centered">
                         <div class="inner-icon">
                             <input id="title" required type="text" class="job_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.job.create.name')" value="{{ old('title') }}" autofocus>
 
