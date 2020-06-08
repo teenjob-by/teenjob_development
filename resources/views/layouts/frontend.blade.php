@@ -104,6 +104,7 @@
                     $(".burger").removeClass('open');
                     $(".header_menu").slideUp('fast');
                 }
+                $(".justselect-list").fadeOut();
             });
 
             $('.header_menu').scroll(function(event){

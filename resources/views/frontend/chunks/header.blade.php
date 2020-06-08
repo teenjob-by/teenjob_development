@@ -99,8 +99,8 @@
             <div class="search-form-wrapper">
                 <select id="search-select" class="justselect search-form-wrapper_select" name="category">
                     <option {{ (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register') || (request()->get('section') == 'job') || request()->routeIs('frontend.jobs.index') || request()->routeIs('frontend.jobs.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=job">@lang('header.search.navlink_1')</option>
-                    <option {{ ((request()->get('section') == 'internship') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.internships.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=internship">@lang('header.search.navlink_3')</option>
-                    <option {{ (request()->routeIs('frontend.volunteerings.index') || request()->routeIs('frontend.volunteerings.show') )? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens">@lang('header.search.navlink_2')</option>
+                    <option {{ ((request()->get('section') == 'internship') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.internships.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=internship">@lang('header.search.navlink_2')</option>
+                    <option {{ (request()->routeIs('frontend.volunteerings.index') || request()->routeIs('frontend.volunteerings.show') )? 'selected': ''}} class="dropdown-item" value="/volunteerings-for-teens">@lang('header.search.navlink_3')</option>
                     <option {{ (request()->routeIs('frontend.events.index')  || request()->routeIs('frontend.events.show'))? 'selected': ''}} class="dropdown-item" value="/events">@lang('header.search.navlink_4')</option>
                 </select>
 
