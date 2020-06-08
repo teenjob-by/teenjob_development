@@ -354,6 +354,12 @@
 
                                                         <div class="organisation_list-item-action-wrapper">
 
+
+                                                            <a class="organisation_list-item-action-link" href="{{ route('organisation.' .$section_name. 's.edit', $item->id) }}">
+                                                                <i class="edit-icon"></i>
+                                                                <span>Редактировать</span>
+                                                            </a>
+
                                                             @if($item_group == 'archived')
                                                                 <form method="post" action="{{ route('organisation.' .$section_name. 's.unarchive', $item->id) }}" id="form_unarchive_{{ $item->id }}" class="form_unarchive">
                                                                     @csrf
@@ -376,14 +382,6 @@
                                                                     </button>
                                                                 </form>
                                                             @endif
-
-
-
-
-                                                            <a class="organisation_list-item-action-link" href="{{ route('organisation.' .$section_name. 's.edit', $item->id) }}">
-                                                                <i class="edit-icon"></i>
-                                                                <span>Редактировать</span>
-                                                            </a>
 
                                                             <form method="delete" action="{{ route('organisation.' .$section_name. 's.destroy', $item->id) }}" id="form_destroy_{{ $item->id }}" class="form_destroy">
                                                                 @csrf

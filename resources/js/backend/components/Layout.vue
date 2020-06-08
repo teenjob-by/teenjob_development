@@ -2,7 +2,7 @@
     <div>
 
         <b-navbar toggleable="lg" type="light">
-            <b-navbar-brand href="#">
+            <b-navbar-brand href="/">
                 <img src="/images/footer-logo-desktop.svg">
             </b-navbar-brand>
 

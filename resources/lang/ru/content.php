@@ -1306,7 +1306,7 @@ return [
             'speciality' => 'Вид деятельности',
             'workTime' => 'Занятость',
             'salary' => 'Зарплата',
-            'salaryPlaceholder' => '5',
+            'salaryPlaceholder' => '3',
             'salaryType' => 'Б.р/ч',
             'contactPerson' => ' Контактное лицо*',
             'email' => 'E-mail*',

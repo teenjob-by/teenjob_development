@@ -280,11 +280,12 @@
         min-width: 100%;
         width: 100%;
         justify-content: center;
+        align-items: flex-end;
         padding-left: 15px;
         padding-right: 15px;
 
         @include for-desktop-up() {
-          flex-direction: row;
+          flex-direction: column;
           min-width: 220px;
           width: auto;
           justify-content: flex-end;
