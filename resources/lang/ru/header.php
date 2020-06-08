@@ -19,7 +19,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'navlink_1' => 'Работа',
+    'navlink_1' => 'Работа/Cтажировки',
     'link_1' => 'jobs-for-teens',
     'navlink_2' => 'Волонтерство',
     'link_2' => 'volunteerings-for-teens',
