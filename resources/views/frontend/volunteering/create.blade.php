@@ -1,14 +1,14 @@
 @extends('layouts.frontend')
+
+@section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+@endsection
 @section('seo_meta')
     <meta name="description" content="Создание объявления"/>
     <meta name="language" content="RU"/>
 
     <title>Создание объявления</title>
 @endsection
-@section('styles')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-@endsection
-
 
 @section('scripts')
     <script src="/js/micromodal.min.js"></script>
@@ -20,7 +20,7 @@
             placeholder: 'Введите описание',
             tabsize: 2,
             height: 300,
-            maxWidth: 543,
+            maxWidth: 600,
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
@@ -40,9 +40,6 @@
 
 
 
-
-
-
         function showModal(name) {
 
             var modals = {
@@ -53,6 +50,24 @@
                             text: "@lang('content.volunteering.create.modal.success.confirm')",
                             action: function(){
                                 location.href = "/organisation#volunteerings-for-teens";
+                            }
+                        },
+                    },
+                },
+
+                leave: {
+                    content: "@lang('content.volunteering.create.modal.leave.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.volunteering.create.modal.leave.confirm')",
+                            action: function(){
+                                location.href = "{{ url()->previous() }}";
+                            }
+                        },
+                        refuse: {
+                            text: "@lang('content.volunteering.create.modal.leave.refuse')",
+                            action: function () {
+                                MicroModal.close("modal_leave");
                             }
                         },
                     },
@@ -99,7 +114,22 @@
             MicroModal.show("modal_" + name)
         }
 
+
         $(document).ready(function () {
+
+            $(window).on('load', function(event) {
+                history.pushState("", "");
+            });
+
+            $(window).on('popstate', function(e) {
+                e.preventDefault()
+                showModal("leave")
+            });
+
+            $(".back-link").click(function (e) {
+                e.preventDefault()
+                showModal("leave")
+            });
 
 
 
@@ -139,34 +169,6 @@
                     }
                 });
 
-                var phoneMaskAlt = IMask(document.getElementById('alt_phone'), {
-                    mask: [
-                        {
-                            mask: '+000 {00} 000-00-00',
-                            startsWith: '375',
-                            lazy: false,
-                            country: 'Belarus'
-                        },
-                        {
-                            mask: '+0 (000) 000-00-00',
-                            startsWith: '7',
-                            lazy: false,
-                            country: 'Russia'
-                        },
-                        {
-                            mask: '0000000000000',
-                            startsWith: '',
-                            country: 'unknown'
-                        }
-                    ],
-                    dispatch: function (appended, dynamicMasked) {
-                        var number = (dynamicMasked.value + appended).replace(/\D/g,'');
-
-                        return dynamicMasked.compiledMasks.find(function (m) {
-                            return number.indexOf(m.startsWith) === 0;
-                        });
-                    }
-                });
 
             }catch (e) {
                 console.log(e)
@@ -176,8 +178,6 @@
 
             function clearErrors() {
                 try {
-                    $(".operation-result").removeClass('show');
-                    $(".operation-result").empty();
 
                     $(".is-invalid").removeClass('is-invalid');
                     $('.message-invalid').remove();
@@ -254,148 +254,255 @@
         <div class="content-wrapper">
 
 
+
+
             <form id="form" method="POST" class="volunteering_form" action="{{ route('organisation.volunteerings.store') }}">
                 @csrf
 
-                <h3 class="volunteering_form-title">
-                    <strong>@lang('content.volunteering.create.title')</strong>
-                </h3>
 
                 <div class="volunteering_form-group">
-                    <label for="title" class="volunteering_form-group-label">@lang('content.volunteering.create.name')</label>
-                    <input id="title" required type="text" class="volunteering_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
+                    <div class="left-aligned">
+                        <a class="back-link" href="{{ url()->previous() }}">@lang('content.volunteering.card.back')</a>
+                    </div>
+                    <div class="right-aligned">
+                    </div>
 
-                    @error('title')
+                </div>
+
+
+                <div class="volunteering_form-group">
+                    <div class="centered-title">
+                        <div class="inner-icon">
+                            <input id="title" required type="text" class="volunteering_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.create.name')" value="{{ old('title') }}" autofocus>
+
+                            @error('title')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="city" class="volunteering_form-group-label">@lang('content.volunteering.create.city')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="city" class="custom-select-search volunteering_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('city')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="age" class="volunteering_form-group-label">@lang('content.volunteering.create.age')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="age" class="custom-select volunteering_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
+                                @foreach($ages as $age)
+                                    <option value="{{ $age->id }}">{{ $age->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('age')
+                            <span class="message-invalid" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                {{--<div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="salary" class="volunteering_form-group-label">@lang('content.volunteering.create.salary')</label>
+                    </div>
+                    <div class="right-aligned">
+
+                        <div class="inner-icon">
+                            <div class="inline-group">
+                                <input id="salary" type="text" class="volunteering_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.volunteering.create.salaryPlaceholder')" value="{{ old('salary') }}" autofocus>
+
+                                @error('salary')
+                                <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+
+                                <select id="salaryType" class="custom-select volunteering_form-group-select @error('salaryType') is-invalid @enderror" name="salaryType" value="{{ old('salaryType') }}" required autofocus>
+                                    @foreach($salary_types as $salaryType)
+                                        <option value="{{ $salaryType->id }}">{{ $salaryType->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('salaryType')
+                                <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                    </div>
+                </div>--}}
+
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="speciality" class="volunteering_form-group-label">@lang('content.volunteering.create.speciality')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="speciality" class="custom-select-search volunteering_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
+                                @foreach($specialities as $speciality)
+                                    <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('speciality')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="workTime" class="volunteering_form-group-label">@lang('content.volunteering.create.workTime')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="workTime" class="custom-select volunteering_form-group-select @error('workTime') is-invalid @enderror" name="workTime" value="{{ old('workTime') }}" required autofocus>
+                                @foreach($work_times as $workTime)
+                                    <option value="{{ $workTime->id }}">{{ $workTime->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('orkTime')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="volunteering_form-group">
+                    <div class="inner-icon stretch raw-text">
+                        <textarea id="description" name="description" type="text" class="volunteering_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.create.description')" value="{{ old('description') }}"></textarea>
+
+                        @error('description')
                         <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="volunteering_form-group">
-                    <label for="city" class="volunteering_form-group-label">@lang('content.volunteering.create.city')</label>
-                    <select id="city" class="custom-select volunteering_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.city')</option>
-                        @foreach($cities as $city)
-                                <option value="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <h3 class="volunteering_form-title">
+                            <strong>@lang('content.volunteering.create.contactsTitle')</strong>
+                        </h3>
+                    </div>
+                </div>
 
-                    @error('city')
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="contactPerson" class="volunteering_form-group-label">@lang('content.volunteering.create.contactPerson')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.create.contactPerson')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus>
+
+                        @error('contactPerson')
                         <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="volunteering_form-group">
-                    <label for="age" class="volunteering_form-group-label">@lang('content.volunteering.create.age')</label>
-                    <select id="age" class="custom-select volunteering_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.age')</option>
-                        @foreach($ages as $age)
-                            <option value="{{ $age->id }}">{{ $age->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="left-aligned">
+                        <label for="email" class="volunteering_form-group-label">@lang('content.volunteering.create.email')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.create.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                    @error('age')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        @error('email')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="phone" class="volunteering_form-group-label">@lang('content.volunteering.create.phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.create.phone')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                        @error('phone')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="volunteering_form-group">
+                    <div class="left-aligned">
+                        <label for="alt_phone" class="volunteering_form-group-label">@lang('content.volunteering.create.alt_phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.create.alt_phone')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" autocomplete="alt_phone" autofocus>
+
+                        @error('alt_phone')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
 
 
                 <div class="volunteering_form-group">
-                    <label for="speciality" class="volunteering_form-group-label">@lang('content.volunteering.create.speciality')</label>
-                    <select id="speciality" class="custom-select volunteering_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ old('speciality') }}" required autofocus>
-                        <option selected value>@lang('content.volunteering.create.speciality')</option>
-                        @foreach($specialities as $speciality)
-                            <option value="{{ $speciality->id }}">{{ $speciality->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('speciality')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-
-                <div class="volunteering_form-group description">
-                    <label for="description" class="volunteering_form-group-label">@lang('content.volunteering.create.description')</label>
-                    <textarea id="description" name="description" required minlength="20" type="text" class="volunteering_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.create.description')" value="{{ old('description') }}"></textarea>
-
-                    @error('description')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <h3 class="volunteering_form-title">
-                    <strong>@lang('content.volunteering.create.contactsTitle')</strong>
-                </h3>
-
-
-                <div class="volunteering_form-group">
-                    <label for="contactPerson" class="volunteering_form-group-label">@lang('content.volunteering.create.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.volunteering.create.contactPerson')" class="volunteering_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ old('contactPerson') }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
-
-                    @error('contactPerson')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="volunteering_form-group">
-                    <label for="phone" class="volunteering_form-group-label">@lang('content.volunteering.create.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.volunteering.create.phone')" class="volunteering_form-group-input @error('phone') is-invalid @enderror" value="{{ old('phone') }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
-
-                    @error('phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="volunteering_form-group">
-                    <label for="alt_phone" class="volunteering_form-group-label">@lang('content.volunteering.create.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.volunteering.create.alt_phone')" class="volunteering_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ old('alt_phone') }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
-
-                    @error('alt_phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="volunteering_form-group">
-                    <label for="email" class="volunteering_form-group-label">@lang('content.volunteering.create.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.create.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus minlength="3">
-
-                    @error('email')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="volunteering_form-group">
-                    <button id="submit" class="button-secondary" role="button" type="submit">
+                    <div class="centered">
+                        <button id="submit" class="button-account" role="button" type="submit">
                         <span>
                             @lang('content.volunteering.create.save')
                         </span>
-                        <div class="loading-icon"></div>
-                    </button>
+                            <div class="loading-icon"></div>
+                        </button>
+                    </div>
                 </div>
-                <div class="content-loader"></div>
-                <p class="operation-result">
-                </p>
+
+
 
                 <p class="tip">@lang('content.volunteering.create.notification')</p>
+
 
             </form>
         </div>

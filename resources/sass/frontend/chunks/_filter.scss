@@ -22,7 +22,7 @@
     cursor: pointer;
 
     position: absolute;
-    top: 20px;
+    top: 40px;
     right: 15px;
 
     @include for-desktop-up() {
@@ -37,15 +37,21 @@
 
   &_wrapper {
     display: flex;
-    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.08);
 
-    padding: 20px 0px 15px;
+
+
+    @include for-desktop-up() {
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.08);
+      padding: 20px 0px 15px;
+    }
+    padding: 40px 0px 15px;
     background: #fff;
-    max-height: 70px;
+    max-height: 80px;
 
     &.open {
       max-height: 1000px;
       transition: max-height 0.3s ease-in;
+      box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.08);
 
       .filter_form {
         justify-content: space-around;

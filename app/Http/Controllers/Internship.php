@@ -214,14 +214,14 @@ class Internship extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'min:3','max:255'],
+            'title' => ['required'],
             'city' => ['required'],
             'age' => ['required'],
             'speciality' => ['required'],
-            'description' => ['required','max:255'],
-            'contactPerson' => ['required', 'min:3','max:255'],
+            'description' => ['required'],
+            'contactPerson' => ['required'],
             'phone' => ['required', 'min:3','max:255'],
-            'email' => ['email', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
         ]);
 
         if ($validator->fails()) {
@@ -324,14 +324,14 @@ class Internship extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'min:3','max:255'],
+            'title' => ['required'],
             'city' => ['required'],
             'age' => ['required'],
             'speciality' => ['required'],
-            'description' => ['required','max:255'],
-            'contactPerson' => ['required', 'min:3','max:255'],
+            'description' => ['required'],
+            'contactPerson' => ['required'],
             'phone' => ['required', 'min:3','max:255'],
-            'email' => ['email', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
         ]);
 
         if ($validator->fails()) {

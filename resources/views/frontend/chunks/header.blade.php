@@ -96,7 +96,7 @@
                     @lang('header.subtitle')
                 </h2>
             @endif
-            <div class="search-form-wrapper">
+            <div class="search-form-wrapper {{ request()->routeIs('frontend.home')? "hide-mobile" : "" }}">
                 <select id="search-select" class="justselect search-form-wrapper_select" name="category">
                     <option {{ (request()->routeIs('frontend.home') || request()->routeIs('auth.login') || request()->routeIs('auth.register') || (request()->get('section') == 'job') || request()->routeIs('frontend.jobs.index') || request()->routeIs('frontend.jobs.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=job">@lang('header.search.navlink_1')</option>
                     <option {{ ((request()->get('section') == 'internship') || request()->routeIs('frontend.internships.index') || request()->routeIs('frontend.internships.show'))? 'selected': ''}} class="dropdown-item" value="/jobs-for-teens?section=internship">@lang('header.search.navlink_2')</option>

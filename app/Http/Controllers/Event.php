@@ -269,11 +269,11 @@ class Event extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'title' => 'required|max:255',
+            'title' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'date_start' => 'required',
             'time_start' => 'required',
-            'address' => 'required|max:255'
+            'address' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -406,10 +406,10 @@ class Event extends Controller
     public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'title' => 'required|max:255',
+            'title' => 'required',
             'date_start' => 'required',
             'time_start' => 'required',
-            'address' => 'required|max:255'
+            'address' => 'required'
         ]);
 
 

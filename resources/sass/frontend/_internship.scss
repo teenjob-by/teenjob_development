@@ -7,7 +7,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 40px;
+
+
 
     @include for-desktop-up() {
       margin-top: 0px;
@@ -45,6 +46,7 @@
     &-salary {
       margin-right: 10px;
       margin-left: auto;
+      white-space: nowrap;
 
       @include text-usual(16px, #2F2F2F, left );
     }
@@ -105,6 +107,7 @@
       @include text-usual(14px, $violet, left);
       margin-bottom: 38px;
       margin-top: -60px;
+
       position: relative;
       padding-left: 16px;
 
@@ -227,7 +230,6 @@
 
       flex-wrap: nowrap;
       justify-content: space-between;
-
       flex-direction: column;
 
       @include for-desktop-up() {
@@ -245,7 +247,6 @@
       padding-left: 25px;
       position: relative;
       display: block;
-
       margin-top: 15px;
 
       @include for-desktop-up() {
@@ -263,10 +264,12 @@
     }
   }
 
+
   &_form {
 
     .tip {
       @include text-usual(14px, $black, center);
+      font-weight: bold;
     }
 
     .operation-result {
@@ -294,18 +297,18 @@
 
     &-title {
       @include text-usual(20px, $black, center);
-      margin-top: 35px;
-      margin-bottom: 25px;
+      @include for-tablet-portrait-up() {
+        @include text-usual(20px, $black, left);
+      }
+
     }
 
-    width: 290px;
+    width: 100%;
+    max-width: 700px;
 
-    @include for-tablet-portrait-up() {
-      width: 100%;
-    }
 
     margin: 0 auto;
-    margin-top: 20px;
+
 
 
 
@@ -313,11 +316,33 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 100%;
       position: relative;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+      align-items: center;
+
+
+
+
+
       margin-bottom: 24px;
+
+      .right-aligned {
+        width: auto;
+        min-width: 290px;
+        max-width: 510px;
+      }
+
+
+
+      .left-aligned {
+        width: 290px;
+
+        @include for-tablet-portrait-up() {
+          width: 180px;
+        }
+        display: flex;
+        justify-content: flex-start;
+      }
 
 
 
@@ -333,14 +358,14 @@
         input {
           margin-bottom: 10px;
           @include for-desktop-up() {
-            min-width: 100px;
+            min-width: 150px;
             margin: 0;
           }
         }
 
         .select2 {
           @include for-desktop-up() {
-            min-width: 200px;
+            min-width: 100px;
             margin-right: 0;
           }
         }
@@ -349,27 +374,58 @@
           flex-direction: row;
           flex-wrap: nowrap;
           justify-content: space-between;
-          min-width: 385px;
-          max-width: 385px;
-          margin-left: 30px;
-          margin-right: 25px;
+          width: 290px;
         }
 
       }
 
       &.description {
+        align-items: flex-end;
+
+        .left-aligned {
+          display: none;
+        }
+
+        .inner-icon {
+          max-width: 575px;
+        }
+
+
+
+        .right-aligned {
+          max-width: 290px;
+
+          @include for-tablet-portrait-up() {
+            max-width: 700px;
+          }
+
+        }
+
         @include for-desktop-up() {
           flex-direction: column;
-          align-items: start;
-          padding-right: 25px;
+
+
+
           .trumbowyg-box {
             max-width: 100%;
             margin-left: 0;
             margin-right: 0;
-
           }
         }
 
+      }
+
+      .button-secondary {
+        margin-left: 0;
+        margin-right: 0;
+        width: 290px;
+      }
+
+      .button-account {
+        margin-left: 0;
+        margin-right: 0;
+        width: 290px;
+        margin-top: 50px
       }
 
       .message-invalid {
@@ -378,10 +434,6 @@
         bottom: -20px;
         left: 0px;
 
-        @include for-tablet-portrait-up() {
-          bottom: -20px;
-          left: 160px;
-        }
       }
 
       &:last-child {
@@ -390,8 +442,7 @@
 
       @include for-tablet-portrait-up() {
         flex-direction: row;
-        justify-content: flex-end;
-        width: 570px;
+        justify-content: center;
         align-items: center;
       }
 
@@ -399,10 +450,10 @@
         @include  text-usual(14px, $black, left);
         padding-top: 7px;
         padding-bottom: 7px;
-
+        padding-right: 20px;
 
         @include for-tablet-portrait-up() {
-          @include  text-usual(16px, $black, right);
+          @include  text-usual(16px, $black, left);
           padding-top: 0px;
           padding-bottom: 0px;
           line-height: 120%;
@@ -412,20 +463,16 @@
       &-input {
         height: 42px;
         width: 100%;
-        max-width: 385px;
+        width: 290px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
         box-sizing: border-box;
         border-radius: 0px;
 
+
+
         @include text-usual(16px, $black, left);
         padding: 3px 20px;
-
-        @include for-tablet-portrait-up() {
-          margin-left: 15px;
-          margin-right: 25px;
-          min-width: 385px;
-        }
 
         &:focus {
           outline: none;
@@ -440,10 +487,11 @@
         }
       }
 
+
+
       &-select ~ span{
         height: 42px;
-        width: 100%;
-        max-width: 385px;
+        width: 290px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
         box-sizing: border-box;
@@ -454,33 +502,59 @@
         @include text-usual(18px, $black, left);
         padding: 3px 20px;
 
-        @include for-tablet-portrait-up() {
-          margin-left: 30px;
-          margin-right: 25px;
-          min-width: 385px;
-        }
 
         &:focus {
           outline: none;
         }
       }
 
-      .show-password {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-
-        right: 10px;
-        top: 45px;
-
-        @include for-tablet-portrait-up() {
-          right: 35px;
-          top: 12px;
-        }
-
-        background: url(/images/show-password-icon.svg);
+      .inner-icon {
+        position: relative;
+        max-width: 290px;
       }
+
+      .stretch {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .centered {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .centered-title {
+        width: 100%;
+        max-width: 470px;
+        display: flex;
+        justify-content: center;
+
+        .inner-icon {
+          max-width: 290px;
+          width: 100%;
+
+          @include for-tablet-portrait-up() {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .title-input {
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: left;
+        width: 100%;
+        padding-right: 0;
+        &::placeholder {
+          font-weight: bold;
+          font-size: 20px;
+          text-align: center;
+        }
+        padding-left: 0px;
+      }
+
     }
   }
 }

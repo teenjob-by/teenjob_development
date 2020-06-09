@@ -70,9 +70,12 @@ a {
     padding-left: 15px;
     position: relative;
 
+
     @include for-desktop-up {
         padding-right: 0px;
         padding-left: 0px;
+        overflow: unset;
+
     }
 }
 

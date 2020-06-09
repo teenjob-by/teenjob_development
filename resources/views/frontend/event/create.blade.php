@@ -165,6 +165,24 @@
                     }
                 },
 
+                leave: {
+                    content: "@lang('content.event.create.modal.leave.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.event.create.modal.leave.confirm')",
+                            action: function(){
+                                location.href = "{{ url()->previous() }}";
+                            }
+                        },
+                        refuse: {
+                            text: "@lang('content.event.create.modal.leave.refuse')",
+                            action: function () {
+                                MicroModal.close("modal_leave");
+                            }
+                        },
+                    },
+                },
+
                 fail: {
                     content: "@lang('content.event.create.modal.fail.content')",
                     buttons: {
@@ -194,6 +212,20 @@
             MicroModal.show("modal_" + name)
         }
         $(document).ready(function () {
+
+            $(window).on('load', function(event) {
+                history.pushState("", "");
+            });
+
+            $(window).on('popstate', function(e) {
+                e.preventDefault()
+                showModal("leave")
+            });
+
+            $(".back-link").click(function (e) {
+                e.preventDefault()
+                showModal("leave")
+            });
 
             try {
                 MicroModal.init();
@@ -234,18 +266,23 @@
                     blocks: {
                         YYYY: {
                             mask: IMask.MaskedRange,
-                            from: 1970,
-                            to: 2030
+                            from: 2000,
+                            to: 2030,
+                            placeholderChar: '0',
                         },
                         MM: {
                             mask: IMask.MaskedRange,
                             from: 1,
-                            to: 12
+                            to: 12,
+
+                            placeholderChar: '0',
                         },
                         DD: {
                             mask: IMask.MaskedRange,
                             from: 1,
-                            to: 31
+                            to: 31,
+
+                            placeholderChar: '0',
                         }
                     }
                 });
@@ -352,32 +389,29 @@
     <section class="event_section">
         <div class="content-wrapper">
 
-
             <form id="form" method="POST" class="event_form" action="{{ route('organisation.events.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="event_form-group">
                     <div class="left-aligned">
+                        <a class="back-link" href="{{ url()->previous() }}">@lang('content.event.card.back')</a>
                     </div>
                     <div class="right-aligned">
-                        <h3 class="event_form-title">
-                            <strong>@lang('content.event.create.title')</strong>
-                        </h3>
                     </div>
+
                 </div>
 
+
+
                 <div class="event_form-group">
-                    <div class="left-aligned">
-                        <label for="title" class="event_form-group-label">@lang('content.event.create.name')</label>
-                    </div>
-                    <div class="right-aligned">
+                    <div class="centered-title">
                         <div class="inner-icon">
-                            <input id="title" required type="text" class="event_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.name')" minlength="3" value="{{ old('title') }}" autofocus>
+                            <input id="title" required type="text" class="event_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.name')" value="{{ old('title') }}" autofocus>
 
                             @error('title')
                             <span class="message-invalid" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
                     </div>
@@ -390,8 +424,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <select id="city" class="custom-select event_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
-                                <option selected value>@lang('content.event.create.city')</option>
+                            <select id="city" class="custom-select-search event_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autofocus>
                                 @foreach($cities as $city)
                                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                                 @endforeach
@@ -399,8 +432,8 @@
 
                             @error('city')
                             <span class="message-invalid" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
                     </div>
@@ -413,7 +446,6 @@
                     <div class="right-aligned">
                         <div class="inner-icon">
                             <select id="age" class="custom-select event_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autofocus>
-                                <option selected value>@lang('content.event.create.age')</option>
                                 @foreach($ages as $age)
                                     <option value="{{ $age->id }}">{{ $age->name }}</option>
                                 @endforeach
@@ -421,10 +453,10 @@
 
                             @error('age')
                             <span class="message-invalid" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                             @enderror
-                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -435,12 +467,12 @@
                     <div class="right-aligned">
                         <div class="inner-icon">
                             <div class="event_form-date-group">
-                                <input type="text" required class="event_form-group-input datePicker" id="date_start" name="date_start"/>
+                                <input type="text" required class="event_form-group-input datePicker" id="date_start" name="date_start" placeholder="{{ \Carbon\Carbon::now()->format('d/m/Y') }}"/>
                             </div>
 
                             <div class="event_form-date-group time-group">
                                 <label for="date_start" class="event_form-group-label">@lang('content.event.create.timeStart')</label>
-                                <input required type="text" class="event_form-group-input timePicker" id="time_start" name="time_start"/>
+                                <input required type="text" class="event_form-group-input timePicker" id="time_start" name="time_start" placeholder="{{ \Carbon\Carbon::now()->format('H:i') }}"/>
                             </div>
                         </div>
                     </div>
@@ -463,7 +495,7 @@
                     </div>
                     <div class="right-aligned">
                         <div class="inner-icon">
-                            <input id="address" required type="text" class="event_form-group-input @error('address') is-invalid @enderror" name="address" placeholder="@lang('content.event.create.address')" minlength="3" value="{{ old('address') }}" autofocus>
+                            <input id="address" required type="text" class="event_form-group-input @error('address') is-invalid @enderror" name="address" placeholder="@lang('content.event.create.address')" value="{{ old('address') }}" autofocus>
 
                             @error('address')
                             <span class="message-invalid" role="alert">
@@ -482,7 +514,6 @@
                     <div class="right-aligned">
                         <div class="inner-icon">
                             <select id="type" class="custom-select event_form-group-select @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autofocus>
-                                <option selected value>@lang('content.event.create.type')</option>
                                 @foreach($types as $type)
                                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                                 @endforeach
@@ -497,33 +528,27 @@
                     </div>
                 </div>
 
-                <div class="event_form-group  description">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
-                        <div class="inner-icon">
-                            <textarea id="description" name="description" required minlength="20" type="text" class="event_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.event.create.description')" value="{{ old('description') }}"></textarea>
+                <div class="event_form-group">
+                    <div class="inner-icon stretch raw-text">
+                        <textarea id="description" name="description" type="text" class="event_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.event.create.description')" value="{{ old('description') }}"></textarea>
 
-                            @error('description')
+                        @error('description')
                             <span class="message-invalid" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                            @enderror
-                        </div>
+                        @enderror
                     </div>
                 </div>
 
-                <div class="event_form-group description">
+                <div class="event_form-group">
 
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
+                    <div class="centered-title">
                         <div class="inner-icon">
                             <div class="file-upload">
                                 <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>@lang('content.event.create.addImage')</span></button>
 
                                 <div class="image-upload-wrap">
-                                    <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/*" />
+                                    <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/jpeg, image/png" />
                                     <div class="drag-text">
                                         <h3>@lang('content.event.create.loadImage')</h3>
                                     </div>
@@ -535,6 +560,12 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @error('image')
+                                <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -542,44 +573,36 @@
 
 
 
-                <div class="event_form-group event_form-map-group description">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
+                <div class="event_form-group event_form-map-group">
+                    <div class="centered-full">
                         <div class="inner-icon">
                             <p class="map-title">@lang('content.event.create.map')</p>
                             <div class="map" id="map">
                             </div>
                             <input type="hidden" name="location" id="event-location">
+
+                            @error('location')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
 
 
-                <div class="event_form-group description">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
-                        <div class="inner-icon">
-                            <button id="submit" class="button-secondary" role="button" type="submit">
-                            <span>
-                                @lang('content.event.create.save')
-                            </span>
-                                <div class="loading-icon"></div>
-                            </button>
-                        </div>
+                <div class="volunteering_form-group">
+                    <div class="centered">
+                        <button id="submit" class="button-account" role="button" type="submit">
+                        <span>
+                            @lang('content.volunteering.create.save')
+                        </span>
+                            <div class="loading-icon"></div>
+                        </button>
                     </div>
                 </div>
 
-                <div class="event_form-group description">
-                    <div class="left-aligned">
-                    </div>
-                    <div class="right-aligned">
-                        <div class="inner-icon">
-                            <p class="tip">@lang('content.event.create.notification')</p>
-                        </div>
-                    </div>
-                </div>
+                <p class="tip">@lang('content.volunteering.create.notification')</p>
 
             </form>
         </div>

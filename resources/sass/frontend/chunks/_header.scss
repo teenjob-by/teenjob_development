@@ -19,7 +19,6 @@ $header-height: 70px;
 }
 
 
-
 .burger {
   width: 70px;
   height: 70px;
@@ -149,7 +148,11 @@ $header-height: 70px;
 
       margin-top: 4px;
       height: calc(#{$header-height} - 4px);
-      border-bottom: 4px solid $white;
+
+      @include for-desktop-up() {
+        border-bottom: 4px solid $white;
+      }
+
     }
 
 
@@ -333,6 +336,12 @@ $header-height: 70px;
       box-shadow: 0px 1px 16px rgba(1, 2, 22, 0.18);
     }
   }
+  .hide-mobile {
+    display: none;
+    @include for-desktop-up() {
+      display: flex;
+    }
+  }
 }
 
 .button-mobile {
@@ -363,11 +372,15 @@ $header-height: 70px;
   &-second {
     @extend .button-mobile;
   }
+
+
 }
 
 .search-form {
   display: flex;
   flex-grow: 1;
 }
+
+
 
 

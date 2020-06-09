@@ -3,7 +3,6 @@
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
-
 @section('seo_meta')
     <meta name="description" content="Редактирование объявления"/>
     <meta name="language" content="RU"/>
@@ -34,7 +33,6 @@
         });
 
     </script>
-
     <script>
 
 
@@ -43,10 +41,10 @@
 
             var modals = {
                 success: {
-                    content: "@lang('content.internship.update..modal.success.content')",
+                    content: "@lang('content.internship.update.modal.success.content')",
                     buttons: {
                         confirm: {
-                            text: "@lang('content.internship.update..modal.success.confirm')",
+                            text: "@lang('content.internship.update.modal.success.confirm')",
                             action: function(){
                                 location.href = "/organisation#internships-for-teens";
                             }
@@ -54,11 +52,29 @@
                     },
                 },
 
-                error: {
-                    content: "@lang('content.internship.update..modal.error.content')",
+                leave: {
+                    content: "@lang('content.internship.create.modal.leave.content')",
                     buttons: {
                         confirm: {
-                            text: "@lang('content.internship.update..modal.error.confirm')",
+                            text: "@lang('content.internship.create.modal.leave.confirm')",
+                            action: function(){
+                                location.href = "{{ url()->previous() }}";
+                            }
+                        },
+                        refuse: {
+                            text: "@lang('content.internship.create.modal.leave.refuse')",
+                            action: function () {
+                                MicroModal.close("modal_leave");
+                            }
+                        },
+                    },
+                },
+
+                error: {
+                    content: "@lang('content.internship.update.modal.error.content')",
+                    buttons: {
+                        confirm: {
+                            text: "@lang('content.internship.update.modal.error.confirm')",
                             action: function () {
                                 MicroModal.close("modal_error");
                             }
@@ -67,10 +83,10 @@
                 },
 
                 fail: {
-                    content: "@lang('content.internship.update..modal.fail.content')",
+                    content: "@lang('content.internship.update.modal.fail.content')",
                     buttons: {
                         confirm: {
-                            text: "@lang('content.internship.update..modal.fail.confirm')",
+                            text: "@lang('content.internship.update.modal.fail.confirm')",
                             action: function (name) {
 
                                 MicroModal.close("modal_fail");
@@ -99,6 +115,20 @@
 
 
         $(document).ready(function () {
+
+            $(window).on('load', function(event) {
+                history.pushState("", "");
+            });
+
+            $(window).on('popstate', function(e) {
+                e.preventDefault()
+                showModal("leave")
+            });
+
+            $(".back-link").click(function (e) {
+                e.preventDefault()
+                showModal("leave")
+            });
 
             try {
 
@@ -158,34 +188,7 @@
                     }
                 });
 
-                var phoneMaskAlt = IMask(document.getElementById('alt_phone'), {
-                    mask: [
-                        {
-                            mask: '+000 {00} 000-00-00',
-                            startsWith: '375',
-                            lazy: false,
-                            country: 'Belarus'
-                        },
-                        {
-                            mask: '+0 (000) 000-00-00',
-                            startsWith: '7',
-                            lazy: false,
-                            country: 'Russia'
-                        },
-                        {
-                            mask: '0000000000000',
-                            startsWith: '',
-                            country: 'unknown'
-                        }
-                    ],
-                    dispatch: function (appended, dynamicMasked) {
-                        var number = (dynamicMasked.value + appended).replace(/\D/g,'');
 
-                        return dynamicMasked.compiledMasks.find(function (m) {
-                            return number.indexOf(m.startsWith) === 0;
-                        });
-                    }
-                });
 
             }catch (e) {
                 console.log(e)
@@ -223,12 +226,12 @@
                 })
                 .done(
                     function(data){
-                        console.log(data)
 
+                        data = JSON.parse(data)
                         $("#submit").toggleClass('loading');
 
 
-                        data = JSON.parse(data)
+
                         for (let [key, value] of Object.entries(data)) {
 
                             if(key == 'message') {
@@ -252,149 +255,271 @@
         }
     </script>
 @endsection
+
 @section('content')
 
     <section class="internship_section">
         <div class="content-wrapper">
 
 
-            <form id="form" method="PATCH" class="internship_form">
+
+
+            <form id="form" method="PATCH"  action="{{ route('organisation.internships.update', $internship->id) }}" class="internship_form">
                 @csrf
                 @method('PATCH')
 
-                <h3 class="internship_form-title">
-                    <strong>@lang('content.internship.update.title')</strong>
-                </h3>
+
 
                 <div class="internship_form-group">
-                    <label for="title" class="internship_form-group-label">@lang('content.internship.update.name')</label>
-                    <input id="title" required type="text" class="internship_form-group-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.update.name')" minlength="3" value="{{ $internship->title }}" autofocus>
+                    <div class="left-aligned">
+                        <a class="back-link" href="{{ url()->previous() }}">@lang('content.volunteering.card.back')</a>
+                    </div>
+                    <div class="right-aligned">
+                    </div>
+                </div>
 
-                    @error('title')
-                    <span class="message-invalid" role="alert">
+                <div class="internship_form-group">
+                    <div class="centered">
+                        <h3 class="internship_form-title">
+                            <strong>@lang('content.internship.update.title')</strong>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="internship_form-group">
+                    <div class="centered-title">
+                        <div class="inner-icon">
+                            <input id="title" required type="text" class="internship_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.update.name')" value="{{ $internship->title }}" autofocus>
+
+                            @error('title')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="internship_form-group">
+                    <div class="left-aligned">
+                        <label for="city" class="internship_form-group-label">@lang('content.internship.create.city')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="city" class="custom-select-search internship_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ $internship->title }}" required autofocus>
+                                @foreach($cities as $city)
+                                    <option {{ ($city->id == $internship->city_id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('city')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="internship_form-group">
+                    <div class="left-aligned">
+                        <label for="age" class="internship_form-group-label">@lang('content.internship.create.age')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="age" class="custom-select internship_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ $internship->age }}" required autofocus>
+                                @foreach($ages as $age)
+                                    <option {{ ($age->id == $internship->age)? 'selected': '' }} value="{{ $age->id }}">{{ $age->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('age')
+                            <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                {{--<div class="internship_form-group">
+                    <div class="left-aligned">
+                        <label for="salary" class="internship_form-group-label">@lang('content.internship.create.salary')</label>
+                    </div>
+                    <div class="right-aligned">
+
+                        <div class="inner-icon">
+                            <div class="inline-group">
+                                <input id="salary" type="text" class="internship_form-group-input @error('salary') is-invalid @enderror" name="salary" placeholder="@lang('content.internship.create.salaryPlaceholder')" value="{{ $internship->salary }}" autofocus>
+
+                                @error('salary')
+                                <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+
+                                <select id="salaryType" class="custom-select internship_form-group-select @error('salaryType') is-invalid @enderror" name="salaryType" value="{{$internship->salary_type_id }}" required autofocus>
+                                    @foreach($salary_types as $salaryType)
+                                        <option {{ ($salaryType->id == $internship->salary_type_id)? 'selected': '' }} value="{{ $salaryType->id }}">{{ $salaryType->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('salaryType')
+                                <span class="message-invalid" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                    </div>
+                </div>--}}
+
+
+                <div class="internship_form-group">
+                    <div class="left-aligned">
+                        <label for="speciality" class="internship_form-group-label">@lang('content.internship.create.speciality')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="speciality" class="custom-select-search internship_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ $internship->speciality }}" required autofocus>
+                                @foreach($specialities as $speciality)
+                                    <option {{ ($speciality->id == $internship->speciality_id)? 'selected': '' }} value="{{ $speciality->id }}">{{ $speciality->name }}</option>
+                                @endforeach
+                            </select>
+
+                            @error('speciality')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <label for="city" class="internship_form-group-label">@lang('content.internship.update.city')</label>
-                    <select id="city" class="custom-select internship_form-group-select @error('city') is-invalid @enderror" name="city" value="{{ $internship->title }}" required autofocus>
-                        @foreach($cities as $city)
-                            <option {{ ($city->id == $internship->city_id)? 'selected': '' }} value="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="left-aligned">
+                        <label for="workTime" class="internship_form-group-label">@lang('content.internship.create.workTime')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <div class="inner-icon">
+                            <select id="workTime" class="custom-select internship_form-group-select @error('workTime') is-invalid @enderror" name="workTime" value="{{ $internship->work_time_type_id }}" required autofocus>
+                                @foreach($work_times as $workTime)
+                                    <option {{ ($workTime->id == $internship->work_time_type_id)? 'selected': '' }} value="{{ $workTime->id }}">{{ $workTime->name }}</option>
+                                @endforeach
+                            </select>
 
-                    @error('city')
-                    <span class="message-invalid" role="alert">
+                            @error('orkTime')
+                            <span class="message-invalid" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="internship_form-group">
+                    <div class="inner-icon stretch raw-text">
+                        <textarea id="description" name="description" type="text" class="internship_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.internship.update.description')" >{{ $internship->description }}</textarea>
+
+                        @error('description')
+                        <span class="message-invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <label for="age" class="internship_form-group-label">@lang('content.internship.update.age')</label>
-                    <select id="age" class="custom-select internship_form-group-select @error('age') is-invalid @enderror" name="age" value="{{ $internship->age }}" required autofocus>
-                        @foreach($ages as $age)
-                            <option {{ ($age->id == $internship->age)? 'selected': '' }} value="{{ $age->id }}">{{ $age->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('age')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div> 
-
-
-                <div class="internship_form-group">
-                    <label for="speciality" class="internship_form-group-label">@lang('content.internship.update.speciality')</label>
-                    <select id="speciality" class="custom-select internship_form-group-select @error('speciality') is-invalid @enderror" name="speciality" value="{{ $internship->speciality }}" required autofocus>
-                        @foreach($specialities as $speciality)
-                            <option {{ ($speciality->id == $internship->speciality_id)? 'selected': '' }} value="{{ $speciality->id }}">{{ $speciality->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('speciality')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <div class="internship_form-group description">
-                    <textarea id="description" name="description" required minlength="20" type="text" class="internship_form-group-input textarea @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.internship.update.description')" >{{ $internship->description }}</textarea>
-
-                    @error('description')
-                    <span class="message-invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-
-                <h3 class="internship_form-title">
-                    <strong>@lang('content.internship.update.contactsTitle')</strong>
-                </h3>
-
-
-                <div class="internship_form-group">
-                    <label for="contactPerson" class="internship_form-group-label">@lang('content.internship.update.contactPerson')</label>
-                    <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.internship.update.contactPerson')" class="internship_form-group-input @error('contactPerson') is-invalid @enderror" value="{{ $internship->contact }}" required autocomplete="contactPerson" autofocus minlength="3" maxlength="255">
-
-                    @error('contactPerson')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                    <div class="left-aligned">
+                    </div>
+                    <div class="right-aligned">
+                        <h3 class="internship_form-title">
+                            <strong>@lang('content.internship.create.contactsTitle')</strong>
+                        </h3>
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <label for="phone" class="internship_form-group-label">@lang('content.internship.update.phone')</label>
-                    <input id="phone" type="text" name="phone" placeholder="@lang('content.internship.update.phone')" class="internship_form-group-input @error('phone') is-invalid @enderror" value="{{ $internship->phone }}" required autocomplete="phone" autofocus minlength="3" maxlength="255">
+                    <div class="left-aligned">
+                        <label for="contactPerson" class="internship_form-group-label">@lang('content.internship.create.contactPerson')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="contactPerson" type="text" name="contactPerson" placeholder="@lang('content.internship.create.contactPerson')" class="internship_form-group-input @error('contactPerson') is-invalid @enderror"  value="{{ $internship->contact }}" required autocomplete="contactPerson" autofocus>
 
-                    @error('phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                        @error('contactPerson')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <label for="alt_phone" class="internship_form-group-label">@lang('content.internship.update.alt_phone')</label>
-                    <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.internship.update.alt_phone')" class="internship_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $internship->alt_phone }}" required autocomplete="alt_phone" autofocus minlength="3" maxlength="255">
+                    <div class="left-aligned">
+                        <label for="email" class="internship_form-group-label">@lang('content.internship.create.email')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="email" type="email" name="email" placeholder="@lang('content.internship.create.email')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ $internship->email }}" required autocomplete="email" autofocus>
 
-                    @error('alt_phone')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                        @error('email')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <label for="email" class="internship_form-group-label">@lang('content.internship.update.email')</label>
-                    <input id="email" type="email" name="email" placeholder="@lang('content.internship.update.email')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ $internship->email }}" required autocomplete="email" autofocus minlength="3">
+                    <div class="left-aligned">
+                        <label for="phone" class="internship_form-group-label">@lang('content.internship.create.phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="phone" type="text" name="phone" placeholder="@lang('content.internship.create.phone')" class="internship_form-group-input @error('phone') is-invalid @enderror" value="{{ $internship->phone }}" required autocomplete="phone" autofocus>
 
-                    @error('email')
-                    <span class="message-invalid" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                        @error('phone')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="internship_form-group">
-                    <button id="submit" class="button-secondary" role="button" type="submit">
+                    <div class="left-aligned">
+                        <label for="alt_phone" class="internship_form-group-label">@lang('content.internship.create.alt_phone')</label>
+                    </div>
+                    <div class="right-aligned">
+                        <input id="alt_phone" type="text" name="alt_phone" placeholder="@lang('content.internship.create.alt_phone')" class="internship_form-group-input @error('alt_phone') is-invalid @enderror" value="{{ $internship->alt_phone }}" autocomplete="alt_phone" autofocus>
+
+                        @error('alt_phone')
+                        <span class="message-invalid" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+
+
+                <div class="internship_form-group">
+                    <div class="centered">
+                        <button id="submit" class="button-account" role="button" type="submit">
                         <span>
-                            @lang('content.internship.update.save')
+                            @lang('content.internship.create.save')
                         </span>
-                        <div class="loading-icon"></div>
-                    </button>
+                            <div class="loading-icon"></div>
+                        </button>
+                    </div>
                 </div>
-                <div class="content-loader"></div>
-                <p class="operation-result">
-                </p>
 
-                <p class="tip">@lang('content.internship.update.notification')</p>
+
+
+                <p class="tip">@lang('content.internship.create.notification')</p>
+
 
             </form>
         </div>
@@ -417,5 +542,5 @@
 
 
 
-@endsection
 
+@endsection

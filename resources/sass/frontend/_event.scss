@@ -375,9 +375,69 @@
 
   &_form {
 
+    &-date-group {
+
+      flex-direction: column;
+      display: flex;
+      flex-wrap: nowrap;
+
+
+
+
+      &.time-group {
+        margin-top: -35px;
+
+        input {
+          max-width: 140px;
+          min-width: 140px;
+        }
+
+        @include for-tablet-portrait-up() {
+          margin-top: 0;
+          input {
+            max-width: 75px;
+            min-width: 75px;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+
+          label {
+            margin-left: 5px;
+            padding-right: 5px;
+          }
+
+        }
+      }
+
+
+
+
+
+      @include for-tablet-portrait-up() {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        max-width: 385px;
+
+        align-items: center;
+      }
+
+      input {
+        max-width: 150px;
+        min-width: 140px;
+
+      }
+
+      label {
+        margin-left: 20px;
+        padding-right: 10px;
+      }
+    }
+
     .tip {
-      @include text-usual(14px, $black, left);
-      max-width: 385px;
+      @include text-usual(14px, $black, center);
+      font-weight: bold;
     }
 
     .operation-result {
@@ -408,113 +468,21 @@
       @include for-tablet-portrait-up() {
         @include text-usual(20px, $black, left);
       }
-      margin-top: 35px;
-      margin-bottom: 25px;
+
     }
 
-    width: 290px;
+    width: 100%;
+    max-width: 700px;
 
-    @include for-tablet-portrait-up() {
-      width: 100%;
-    }
 
     margin: 0 auto;
-    margin-top: 20px;
-
-    &-date-group {
-
-      flex-direction: column;
-      display: flex;
-      flex-wrap: nowrap;
-
-
-
-
-      &.time-group {
-        margin-top: -35px;
-
-        @include for-tablet-portrait-up() {
-          margin-top: 0;
-        }
-      }
-
-
-
-
-
-      @include for-tablet-portrait-up() {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-
-        max-width: 385px;
-
-        align-items: center;
-      }
-
-      input {
-        max-width: 150px;
-        min-width: 140px;
-
-      }
-
-      label {
-        margin-left: 20px;
-        padding-right: 10px;
-      }
-    }
-
-
-
     &-group {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       position: relative;
       width: 100%;
-
-      margin-bottom: 24px;
-
-
-      &.date-group {
-        flex-direction: column;
-
-        @include for-tablet-portrait-up() {
-          flex-direction: row;
-        }
-
-
-
-        .inner-icon {
-          display: flex;
-          flex-direction: row;
-
-
-          justify-content: flex-start;
-        }
-      }
-
-      .right-aligned {
-        width: auto;
-
-        min-width: 290px;
-        max-width: 510px;
-
-        @include for-tablet-portrait-up() {
-          width: 100%;
-        }
-      }
-
-      .left-aligned {
-        width: 180px;
-        min-width: 180px;
-        display: flex;
-        justify-content: flex-start;
-
-        @include for-tablet-portrait-up() {
-          justify-content: flex-end;
-        }
-      }
+      align-items: center;
 
       .file-upload {
         background-color: #ffffff;
@@ -631,22 +599,6 @@
         transition: all .2s ease;
       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       .map {
         width: 100%;
         height: 350px;
@@ -700,6 +652,81 @@
 
       }
 
+
+
+      &.date-group {
+        flex-direction: column;
+
+        @include for-tablet-portrait-up() {
+          flex-direction: row;
+        }
+
+
+
+        .inner-icon {
+          display: flex;
+          flex-direction: row;
+
+
+          justify-content: flex-start;
+        }
+      }
+
+      margin-bottom: 24px;
+
+      .right-aligned {
+        width: auto;
+        min-width: 290px;
+        max-width: 510px;
+      }
+
+
+
+      .left-aligned {
+        width: 290px;
+
+        @include for-tablet-portrait-up() {
+          width: 180px;
+        }
+        display: flex;
+        justify-content: flex-start;
+      }
+
+
+
+      .inline-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        position: relative;
+
+
+
+        input {
+          margin-bottom: 10px;
+          @include for-desktop-up() {
+            min-width: 150px;
+            margin: 0;
+          }
+        }
+
+        .select2 {
+          @include for-desktop-up() {
+            min-width: 100px;
+            margin-right: 0;
+          }
+        }
+
+        @include for-desktop-up() {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          width: 290px;
+        }
+
+      }
+
       &.description {
         align-items: flex-end;
 
@@ -709,11 +736,9 @@
 
         .inner-icon {
           max-width: 575px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
+
+
 
         .right-aligned {
           max-width: 290px;
@@ -741,13 +766,16 @@
       .button-secondary {
         margin-left: 0;
         margin-right: 0;
-        width: 100%;
+        width: 290px;
+        display: flex;
+        flex-direction: column;
+      }
 
-        max-width: 290px;
-
-        @include for-tablet-portrait-up {
-          max-width: 385px;
-        }
+      .button-account {
+        margin-left: 0;
+        margin-right: 0;
+        width: 290px;
+        margin-top: 50px
       }
 
       .message-invalid {
@@ -755,6 +783,7 @@
         position: absolute;
         bottom: -20px;
         left: 0px;
+
       }
 
       &:last-child {
@@ -763,7 +792,7 @@
 
       @include for-tablet-portrait-up() {
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
       }
 
@@ -774,7 +803,7 @@
         padding-right: 20px;
 
         @include for-tablet-portrait-up() {
-          @include  text-usual(16px, $black, right);
+          @include  text-usual(16px, $black, left);
           padding-top: 0px;
           padding-bottom: 0px;
           line-height: 120%;
@@ -784,12 +813,13 @@
       &-input {
         height: 42px;
         width: 100%;
-        min-width: 290px;
-        max-width: 385px;
+        width: 290px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
         box-sizing: border-box;
         border-radius: 0px;
+
+
 
         @include text-usual(16px, $black, left);
         padding: 3px 20px;
@@ -807,10 +837,11 @@
         }
       }
 
+
+
       &-select ~ span{
         height: 42px;
-        width: 100%;
-        max-width: 385px;
+        width: 290px;
         background: #FFFFFF;
         border: 1px solid #E8ECEE;
         box-sizing: border-box;
@@ -821,9 +852,6 @@
         @include text-usual(18px, $black, left);
         padding: 3px 20px;
 
-        @include for-tablet-portrait-up() {
-          min-width: 385px;
-        }
 
         &:focus {
           outline: none;
@@ -832,8 +860,67 @@
 
       .inner-icon {
         position: relative;
-        max-width: 385px;
+        max-width: 290px;
       }
+
+      .stretch {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .centered {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .centered-title {
+        width: 100%;
+        max-width: 470px;
+        display: flex;
+        justify-content: center;
+
+        .inner-icon {
+          max-width: 290px;
+          width: 100%;
+
+          @include for-tablet-portrait-up() {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .centered-full {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .inner-icon {
+          max-width: 290px;
+          width: 100%;
+
+          @include for-tablet-portrait-up() {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .title-input {
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: left;
+        width: 100%;
+        padding-right: 0;
+        &::placeholder {
+          font-weight: bold;
+          font-size: 20px;
+          text-align: center;
+        }
+        padding-left: 0px;
+      }
+
     }
   }
 }

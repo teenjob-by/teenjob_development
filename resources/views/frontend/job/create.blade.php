@@ -106,7 +106,7 @@
             $(".modal__footer").empty();
             for (let [key, value] of  Object.entries(modals[name].buttons)) {
 
-                $(".modal__footer").append( '<button class="modal__btn modal__btn-primary" id="modal-' + key + '">' + value.text + '</button>');
+                $(".modal__footer").append( '<button type="button" class="modal__btn modal__btn-primary" id="modal-' + key + '">' + value.text + '</button>');
                 $("#modal-" + key).unbind()
                 $("#modal-" + key).bind("click", value.action)
             }
@@ -406,7 +406,7 @@
 
                 <div class="job_form-group">
                     <div class="inner-icon stretch raw-text">
-                        <textarea id="description" name="description" required type="text" class="job_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.create.description')" value="{{ old('description') }}"></textarea>
+                        <textarea id="description" name="description" type="text" class="job_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.job.create.description')" value="{{ old('description') }}"></textarea>
 
                         @error('description')
                         <span class="message-invalid" role="alert">
