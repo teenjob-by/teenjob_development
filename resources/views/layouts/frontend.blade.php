@@ -69,16 +69,16 @@
                     minimumResultsForSearch: -1
                 });
 
-                var launchFade = false;
-
-                $(".justselect-wrapper").on('mouseleave',function(event){
-
-                    $(".justselect-list").delay(2000).fadeOut()
+                var timeout;
+                $(".justselect-wrapper").mouseout(function(){
+                    clearTimeout(timeout)
+                    timeout = setTimeout(function(){
+                        $(".justselect-list").fadeOut()
+                    },2000);
+                }).mouseover(function(){
+                    clearTimeout(timeout)
                 });
 
-                $(".justselect-list").on('mouseenter',function(event){
-                    $(".justselect-list").fadeIn();
-                });
 
                 $('.custom-select-search').select2( {
                     language: "ru",
