@@ -3,7 +3,7 @@
     <meta name="description" content="Правила публикации объявлений. Условия попадания в черный список и удаления аккаунта. Использование персональных данных. Формирование правил пользования."/>
     <meta name="language" content="RU"/>
 
-    <title>О нас teenjob.by</title>
+    <title>О нас - teenjob.by</title>
 @endsection
 
 @section('og_meta')

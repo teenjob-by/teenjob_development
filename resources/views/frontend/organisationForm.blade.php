@@ -3,7 +3,7 @@
     <meta name="description" content="Редактирование организации"/>
     <meta name="language" content="RU"/>
 
-    <title>Редактирование организации</title>
+    <title>Редактирование организации - teenjob.by</title>
 @endsection
 @section('scripts')
     <script src="/js/micromodal.min.js"></script>

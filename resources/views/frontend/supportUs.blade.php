@@ -4,7 +4,7 @@
     <meta name="description" content="Присоединяйтесь к teenjob.by и развивайте проект вместе с нами либо становитесь нашим партнером."/>
     <meta name="language" content="RU"/>
 
-    <title>Поддержать волонтерский проект для подростков teenjob.by</title>
+    <title>Поддержать проект - teenjob.by</title>
 @endsection
 
 @section('og_meta')

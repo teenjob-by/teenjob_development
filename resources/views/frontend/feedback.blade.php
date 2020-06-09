@@ -3,7 +3,7 @@
     <meta name="description" content="Напишите на teenjob.by@gmail.com или заполните форму обратной связи. Будем рады сотрудничеству."/>
     <meta name="language" content="RU"/>
 
-    <title>Контакты teenjob.by</title>
+    <title>Обратная связь - teenjob.by</title>
 @endsection
 @section('og_meta')
     <meta property="og:image" content="{{url('/')}}/images/support.png">
