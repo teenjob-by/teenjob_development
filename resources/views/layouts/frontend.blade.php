@@ -74,7 +74,7 @@
                     clearTimeout(timeout)
                     timeout = setTimeout(function(){
                         $(".justselect-list").fadeOut()
-                    },2000);
+                    },500);
                 }).mouseover(function(){
                     clearTimeout(timeout)
                 });

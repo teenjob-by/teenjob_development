@@ -266,23 +266,23 @@
                     blocks: {
                         YYYY: {
                             mask: IMask.MaskedRange,
-                            from: 2000,
+                            from: 1900,
                             to: 2030,
-                            placeholderChar: '0',
+                            placeholderChar: 'г',
                         },
                         MM: {
                             mask: IMask.MaskedRange,
                             from: 1,
                             to: 12,
 
-                            placeholderChar: '0',
+                            placeholderChar: 'м',
                         },
                         DD: {
                             mask: IMask.MaskedRange,
                             from: 1,
                             to: 31,
 
-                            placeholderChar: '0',
+                            placeholderChar: 'д',
                         }
                     }
                 });
