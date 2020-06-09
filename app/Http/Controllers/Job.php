@@ -127,6 +127,11 @@ class Job extends Controller
                 return $query->whereBetween('salary', [$min, $max]);
             })
 
+
+
+            ->join('cities', 'offers.city_id', '=', 'cities.id')
+            ->select('offers.*', 'cities.name as city_name')
+
             ->when($request->has('query'), function ($query) use ($request){
                 return $query->where(
                     function ($query) use ($request) {
@@ -136,8 +141,6 @@ class Job extends Controller
                     });
             })
 
-            ->join('cities', 'offers.city_id', '=', 'cities.id')
-            ->select('offers.*', 'cities.name as city_name')
             ->orderBy('published_at', 'desc')
             ->paginate(15)
             ->onEachSide(1);

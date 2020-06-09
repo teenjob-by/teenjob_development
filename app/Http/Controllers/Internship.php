@@ -83,6 +83,9 @@ class Internship extends Controller
 
                 return $query->where($date_filter);
             })
+            ->join('cities', 'offers.city_id', '=', 'cities.id')
+            ->select('offers.*', 'cities.name as city_name')
+
             ->when($request->has('query'), function ($query) use ($request){
                 return $query->where(
                     function ($query) use ($request) {
@@ -91,8 +94,6 @@ class Internship extends Controller
                             ->orWhere('cities.name', 'like', '%'.$request->input('query').'%');
                     });
             })
-            ->join('cities', 'offers.city_id', '=', 'cities.id')
-            ->select('offers.*', 'cities.name as city_name')
 
             ->orderBy('published_at', 'desc')
             ->paginate(15)

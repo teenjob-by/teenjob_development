@@ -127,6 +127,9 @@ class Event extends Controller
                 return $query->where($date_filter_value);
             })
 
+            ->join('cities', 'offers.city_id', '=', 'cities.id')
+            ->select('offers.*', 'cities.name as city_name')
+
             ->when($request->has('query'), function ($query) use ($request){
                 return $query->where(
                     function ($query) use ($request) {
