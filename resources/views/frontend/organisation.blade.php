@@ -363,7 +363,7 @@
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
                                                                     <button type="submit" class="organisation_list-item-action-link">
                                                                         <i class="archive-icon"></i>
-                                                                        <span>В архив</span>
+                                                                        <span>Заархивировать</span>
                                                                     </button>
                                                                 </form>
                                                             @endif
