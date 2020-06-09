@@ -1,0 +1,127 @@
+.footer {
+
+  background-color: $white;
+  min-height: 200px;
+  width: 100%;
+  box-shadow: 0px -3px 20px rgba(0, 0, 0, 0.12);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+
+  &_wrapper {
+    @extend .content-wrapper;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    @include for-desktop-up() {
+      max-height: 90px;
+    }
+  }
+
+  &_logo {
+
+    &-mobile {
+      display: block;
+      width: 48px;
+      height: 48px;
+
+      .image {
+        width: 100%;
+        height: auto;
+      }
+
+      @include for-desktop-up() {
+        display: none;
+      }
+    }
+
+    &-desktop {
+      display: none;
+
+      width: 129px;
+      height: 100%;
+
+      @include for-desktop-up() {
+        display: flex;
+      }
+    }
+  }
+
+  &_nav {
+
+    margin-bottom: 16px;
+    padding-left: 32px;
+
+
+    height: auto;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: -7px;
+
+    @include for-desktop-up() {
+      flex-wrap: wrap;
+      padding-left: 90px;
+      margin-top: 0px;
+    }
+
+
+    flex-grow: 1;
+
+    &-link {
+      @include text-usual(15px, $gray, left);
+
+      padding-left: 0px;
+
+      @include for-desktop-up() {
+        padding-left: 45px;
+      }
+
+      line-height: 27px;
+    }
+  }
+
+  &_social {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-left: 80px;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: auto;
+    max-height: 77px;
+
+    &-title {
+      @include text-usual(14px, $orange, left);
+      padding-bottom: 15px;
+    }
+
+    &-icons-wrapper {
+
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+
+      width: 100%;
+
+      .social-icon {
+        width: 28px;
+        height: auto;
+      }
+
+      .social-icon-link {
+        display: flex;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+}
+

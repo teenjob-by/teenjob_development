@@ -1,0 +1,67 @@
+.reset {
+
+  &_section {
+    @extend .section;
+  }
+
+  &_title {
+    @include title($font-size-title-sm, $font-size-title-md, $font-size-title-lg, 8px, 8px, 8px);
+  }
+
+  &_subtitle {
+    @include text-usual(16px, $black, center);
+    margin-top: 15px;
+  }
+
+  &_form {
+
+    width: 290px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      margin-top: 16px;
+      position: relative;
+      margin-bottom: 24px;
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+
+      &-input {
+        height: 42px;
+        max-width: 100%;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &-invalid {
+    @include text-usual(12px, $red, left);
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+
+    @include for-tablet-portrait-up() {
+      bottom: -20px;
+      left: 160px;
+    }
+  }
+}
+

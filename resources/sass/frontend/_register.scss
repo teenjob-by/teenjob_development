@@ -1,0 +1,202 @@
+.register {
+
+  &_section {
+    @extend .section;
+
+    .button-primary {
+      max-width: 385px;
+
+      @include for-tablet-portrait-up() {
+        margin-right: 25px;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &_title {
+    @include title($font-size-title-sm, $font-size-title-md, $font-size-title-lg, 8px, 8px, 8px);
+  }
+
+  &_subtitle {
+    @include text-usual(16px, $black, center);
+    margin-top: 15px;
+  }
+
+  &_form {
+
+    &-title {
+      @include text-usual(20px, $black, left);
+      margin-top: 35px;
+      margin-bottom: 25px;
+    }
+
+    width: 290px;
+
+    @include for-tablet-portrait-up() {
+      width: 100%;
+    }
+
+    margin: 0 auto;
+    margin-top: 20px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+
+      @include for-tablet-portrait-up() {
+        width: 100%;
+        max-width: 880px;
+      }
+
+      margin-bottom: 24px;
+
+      .right-aligned {
+        width: auto;
+        min-width: 290px;
+        max-width: 510px;
+        position: relative;
+
+        @include for-tablet-portrait-up() {
+          width: 100%;
+        }
+      }
+
+      .left-aligned {
+        width: 180px;
+        min-width: 180px;
+        display: flex;
+        justify-content: flex-start;
+
+        @include for-tablet-portrait-up() {
+          justify-content: flex-end;
+        }
+      }
+
+      .button-primary {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+
+        max-width: 290px;
+
+        @include for-tablet-portrait-up {
+          max-width: 385px;
+        }
+      }
+
+      .message-invalid {
+        @include text-usual(12px, $red, left);
+        position: absolute;
+        bottom: -20px;
+        left: 0px;
+
+      }
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+
+      @include for-tablet-portrait-up() {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-right: 20px;
+
+        @include for-tablet-portrait-up() {
+          @include  text-usual(16px, $black, right);
+          padding-top: 0px;
+          padding-bottom: 0px;
+          line-height: 120%;
+        }
+      }
+
+      &-input {
+        height: 42px;
+        width: 100%;
+        min-width: 290px;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(16px, $black, left);
+        padding: 3px 20px;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          @include text-usual(16px, #cccccc, left);
+        }
+
+        &.textarea {
+          height: 200px;
+        }
+      }
+
+      &-select ~ span{
+        height: 42px;
+        width: 100%;
+        max-width: 385px;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        @include for-tablet-portrait-up() {
+          min-width: 385px;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inner-icon {
+        position: relative;
+        max-width: 385px;
+      }
+
+      .show-password {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        right: 15px;
+        top: 12px;
+
+        background: url(/images/show-password-icon.svg);
+      }
+    }
+  }
+
+
+
+  &_terms {
+    max-width: 385px;
+
+    @include text-usual(14px, $black, left);
+    line-height: 150%;
+
+    @include for-tablet-portrait-up() {
+      margin-right: 25px;
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+.textarea {
+  @extend .textfield;
+
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.trumbowyg-box {
+  @extend .textfield;
+  padding: 0;
+  height: auto;
+}
+

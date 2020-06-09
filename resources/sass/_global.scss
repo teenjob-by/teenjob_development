@@ -1,91 +1,134 @@
-h2, h3, h4 {
-    word-wrap: break-word;
+body {
+    background: $white;
+    min-width: 320px;
 }
 
-.modal-dialog {
-    max-width: 500px ;
-    margin: auto !important;
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-.btn-orange:not(:disabled):not(.disabled):active {
-    background: #ffbe4d;
-    color: #000000;
-    border: none;
-    outline: none;
-}
-
-.btn-orange:not(:disabled):not(.disabled):active:focus {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.btn.btn-orange {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 362px;
-    height: 50px;
-    min-height: 50px;
-    background: #ffbe4d !important;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
-    border-radius: 0;
-    color: #000000 !important;
-    border: none !important;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-
-    span {
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600 !important;
-        font-size: 18px !important;
-        line-height: 25px !important;
-        color: #000 !important;
+a {
+    text-decoration: none;
+    @include text-usual(inherit, $violet, center);
+    font-weight: inherit;
+    &:focus {
+        outline: none;
     }
 }
 
-.organisations-block {
-    margin-top: 85px;
+.note-editor {
+    ul, li, ol {
+        padding: initial;
+        margin: initial;
+        list-style: initial;
+    }
+}
 
-    .organisations-block-title {
-        font-family: Open Sans, sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 42px;
-        line-height: 57px;
+.section {
 
-        color: #121212;
+    padding-top: 60px;
+    padding-bottom: 80px;
+
+    @include for-desktop-up {
+        padding-top: 85px;
+        padding-bottom: 105px;
     }
 
-    @media all and (max-width:1023px) {
-        text-align: center;
-    }
-
-    .organisations-block-subtitle {
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 25px;
-        margin-top: 60px;
-        margin-bottom: 10px;
-        text-align: center;
-        color: #000000;
-    }
-
-    .organisations-block-description {
+    .pagination_wrapper {
         width: 100%;
-        justify-content: center;
+        height:auto;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    &_gray {
+        background-color: rgba(205, 217, 222, 0.1);
+    }
+}
+
+.content {
+    min-width: $min-breakpoint-width;
+
+    min-height: calc(100vh - #{$footer_height} - #{$header_height});
+}
+
+.content-wrapper {
+
+    min-width: $min-width;
+    max-width: $max-width;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
+
+
+    @include for-desktop-up {
+        padding-right: 0px;
+        padding-left: 0px;
+        overflow: unset;
+
+    }
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @include for-desktop-up {
         flex-direction: row;
-        margin-top: 50px;
+        align-items: flex-start;
     }
+}
+
+.button-subtitle {
+    @include button-text(18px, $black);
+    margin: 0px auto 10px;
+}
 
 
+.is-invalid {
+    border: 2px solid $red !important;
+}
 
+.volunteering-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    background: url("/images/volunteering.svg") 100% 100% no-repeat;
+    display: block;
+    margin-top: 5px;
+}
 
+.internship-icon {
+    width: 28px;
+    min-width: 28px;
+    height: 28px;
+    background: url("/images/internship.svg") 100% 100% no-repeat;
+    display: block;
+    margin-top: 5px;
+}
 
-    .btn-orange {
-        margin-top: 0px;
-    }
+.job-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    background: url("/images/job.svg") 100% 100% no-repeat;
+    display: block;
+    margin-top: 5px;
+}
+
+span + .job-icon {
+    margin-left: 5px;
 }

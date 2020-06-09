@@ -20,6 +20,9 @@ class Offer extends Model
         'phone',
         'email',
         'alt_phone',
+        'salary',
+        'salary_type_id',
+        'work_time_type_id',
         'status',
         'offer_type',
         'published_at',
@@ -80,6 +83,25 @@ class Offer extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function type()
+    {
+        if($this->offer_type == 0)
+            return 'volunteering';
+        if($this->offer_type == 1)
+            return 'internship';
+        return 'job';
+    }
+
+    public function salaryType()
+    {
+        return $this->belongsTo(SalaryType::class);
+    }
+
+    public function workTimeType()
+    {
+        return $this->belongsTo(WorkTimeType::class);
     }
 
     protected $casts = [

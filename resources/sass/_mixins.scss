@@ -1,0 +1,64 @@
+// Media queries
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1024px) { @content; }
+}
+
+
+@mixin title ($font-size-sm, $font-size-md, $font-size-lg, $margin-bottom-sm, $margin-bottom-md, $margin-bottom-lg) {
+  text-align: center;
+  font-size: $font-size-sm;
+  font-family: $font-family-heading;
+  font-style: normal;
+  font-weight: 600;
+  color: $font-title-color;
+  margin-bottom: $margin-bottom-sm;
+
+  @include for-tablet-portrait-up {
+    font-size: $font-size-md;
+    margin-bottom: $margin-bottom-md;
+  }
+
+  @include for-desktop-up {
+    font-size: $font-size-lg;
+    margin-bottom: $margin-bottom-lg;
+  }
+}
+
+@mixin text-usual ($font-size, $font-color, $align) {
+  text-align: $align;
+  font-size: $font-size;
+  font-family: $font-family-primary;
+  font-weight: normal;
+  color: $font-color;
+  line-height: 150%;
+  font-size: $font-size;
+}
+
+@mixin button-text ($font-size, $font-color) {
+  font-size: $font-size;
+  font-family: $font-family-primary;
+  font-weight: 600;
+  color: $font-color;
+  line-height: 150%;
+  font-size: $font-size;
+}
+
+@mixin image-adaptive ($width, $height) {
+  width: $width;
+  height: $height;
+  display: flex;
+  margin: 0 auto;
+
+  .card-header-image {
+    margin: inherit;
+  }
+}

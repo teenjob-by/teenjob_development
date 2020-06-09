@@ -1,70 +1,34 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "reset";
+@import "normalize";
+@import "variables";
+@import "fonts";
+@import "mixins";
+@import "global";
+@import "partials/card";
+@import "partials/button";
+@import "partials/slider";
+@import "partials/textfield";
+@import "partials/textarea";
+@import "partials/select";
+
+@import "frontend/chunks/footer";
+@import "frontend/chunks/header";
+@import "frontend/chunks/filter";
+@import "frontend/chunks/notFoundMessage";
+@import "frontend/chunks/modal";
 
 
-$grid-breakpoints: (
-    xs: 0,
-    sm: 320px,
-    md: 640px,
-    lg: 1024px,
-    xl: 1280px,
-);
-
-$container-max-widths: (
-    sm: 100%,
-    md: 100%,
-    lg: 960px,
-    xl: 960px,
-);
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import 'global';
-@import 'header';
-@import 'site';
-@import 'site/internship';
-@import 'admin/internship';
-@import 'admin/organisations';
-@import 'site/events';
-@import 'site/info-page';
-@import 'site/support';
-@import 'site/how-support';
-@import 'site/organisation';
-@import 'site/partials/filter';
-@import 'footer';
+@import "frontend/home";
+@import "frontend/login";
+@import "frontend/register";
+@import "frontend/organisation";
+@import "frontend/info-page";
+@import "frontend/supportUs";
+@import "frontend/search";
+@import "frontend/job";
+@import "frontend/internship";
+@import "frontend/volunteering";
+@import "frontend/event";
+@import "frontend/reset";
 
 
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 960px;
-    padding: 0;
-  }
-}
-
-.scroll {
-  overflow: auto;
-}
-
-#app-admin {
-  background-color: #ffffff !important;
-}
-
-.background {
-  background-color: #ffffff;
-}
-
-.selectric-hide-select.selectric-is-native select {
-  max-width: 196px;
-}
-
-.modal {
-  display: none;
-}
-
-.custom-file-label::after {
-  content: "Обзор" !important;
-}

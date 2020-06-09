@@ -1,0 +1,176 @@
+.login {
+
+  &_section {
+    @extend .section;
+  }
+
+  &_title {
+    @include title($font-size-title-sm, $font-size-title-md, $font-size-title-lg, 8px, 8px, 8px);
+  }
+
+  &_subtitle {
+    @include text-usual(16px, $black, center);
+    margin-top: 15px;
+  }
+
+  &_form {
+
+    width: 290px;
+    margin: 0 auto;
+    margin-top: 20px;
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      margin-top: 16px;
+      position: relative;
+
+      &-label {
+        @include  text-usual(14px, $black, left);
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+
+      &-input {
+        height: 42px;
+        max-width: 100%;
+        background: #FFFFFF;
+        border: 1px solid #E8ECEE;
+        box-sizing: border-box;
+        border-radius: 0px;
+
+        @include text-usual(18px, $black, left);
+        padding: 3px 20px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .show-password {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+
+        right: 10px;
+        top: 46px;
+
+        background: url(/images/show-password-icon.svg);
+      }
+    }
+  }
+
+  &_remember-section {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 38px;
+
+    position: relative;
+    cursor: pointer;    @include text-usual(12px, $gray, right);
+    user-select: none;
+
+    .remember_form {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      @include text-usual(12px, $gray, right);
+      user-select: none;
+
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      padding-top: 2px;
+      cursor: pointer;
+      user-select: none;
+
+      &-label {
+        @include text-usual(12px, $gray, right);
+        padding-left: 5px;
+      }
+
+      &-input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: $white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: background-color 0.5s ease-in;
+      }
+
+      &:hover input ~ .checkmark {
+        background-color: #ccc;
+        transition: background-color 0.5s ease-in;
+      }
+
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        opacity: 0%;
+        transition: opacity 0.1s ease-in;
+      }
+
+      /* Show the checkmark when checked */
+      input:checked ~ .checkmark:after {
+        opacity: 100%;
+        transition: opacity 0.1s ease-in;
+      }
+
+      /* Style the checkmark/indicator */
+      .checkmark:after {
+        left: 6px;
+        top: 0px;
+        width: 5px;
+        height: 10px;
+        border: solid $gray;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+        transition: opacity 0.1s ease-in;
+      }
+    }
+
+    .remind-link {
+      @include text-usual(12px, $gray, right);
+      padding-top: 2px;
+    }
+  }
+
+  &_delimeter {
+    width: 260px;
+    margin: 18px auto;
+
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &-text {
+      @include text-usual(16px, $black, center);
+      padding-top: 10px;
+    }
+  }
+
+  &-invalid {
+    @include text-usual(12px, $red, left);
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+  }
+}
+
