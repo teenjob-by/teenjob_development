@@ -187,12 +187,12 @@ Route::name('organisation.')->group(function () {
         Route::get('organisation/destroy', 'Organisation@destroy')->name('destroy');
 
         Route::patch('organisation/internships/{internship}/archive', 'Internship@archive')->name('internships.archive');
-        Route::patch('organisation/event/{event}/archive', 'Event@archive')->name('events.archive');
-        Route::patch('organisation/volunteerings/archive', 'Volunteering@archive')->name('volunteerings.archive');
+        Route::patch('organisation/events/{event}/archive', 'Event@archive')->name('events.archive');
+        Route::patch('organisation/volunteerings/{volunteering}/archive', 'Volunteering@archive')->name('volunteerings.archive');
         Route::patch('organisation/jobs/{job}/archive', 'Job@archive')->name('jobs.archive');
         Route::patch('organisation/internships/{internship}/unarchive', 'Internship@unarchive')->name('internships.unarchive');
         Route::patch('organisation/events/{event}/unarchive', 'Event@unarchive')->name('events.unarchive');
-        Route::patch('organisation/volunteerings/unarchive', 'Volunteering@unarchive')->name('volunteerings.unarchive');
+        Route::patch('organisation/volunteerings/{volunteering}/unarchive', 'Volunteering@unarchive')->name('volunteerings.unarchive');
         Route::patch('organisation/jobs/{job}/unarchive', 'Job@unarchive')->name('jobs.unarchive');
 
         Route::prefix('organisation')->group(function () {
