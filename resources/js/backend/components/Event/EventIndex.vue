@@ -104,7 +104,7 @@
 
 
 
-                if((this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'admin')) {
+                if((this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'archived') || (this.scope == 'admin')) {
                     this.actions.unshift(
                         {
                             text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
