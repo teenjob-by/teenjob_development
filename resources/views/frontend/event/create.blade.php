@@ -545,7 +545,7 @@
                     <div class="centered-title">
                         <div class="inner-icon">
                             <div class="file-upload">
-                                <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>@lang('content.event.create.addImage')</span></button>
+                                <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>@lang('content.event.create.loadPreview')</span></button>
 
                                 <div class="image-upload-wrap">
                                     <input class="file-upload-input" type='file' name="image" onchange="readURL(this);" accept="image/jpeg, image/png" />
