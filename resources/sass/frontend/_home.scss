@@ -35,6 +35,14 @@
           width: auto;
         }
       }
+
+      .card-wrapper {
+        margin-bottom: 60px;
+        @include for-desktop-up() {
+          margin-bottom: 0px;
+        }
+
+      }
     }
 
     &-for-teens {
@@ -231,6 +239,14 @@
         .button-primary {
           min-width: 260px;
         }
+      }
+
+      .card-wrapper {
+        margin-bottom: 60px;
+        @include for-desktop-up() {
+          margin-bottom: 0px;
+        }
+
       }
     }
     &-achievements {
