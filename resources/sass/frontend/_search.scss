@@ -28,7 +28,7 @@
     }
 
     &.open {
-      height: calc(60vh - 85px);
+      height: calc(60vh - 65px);
       transition: max-height 0.3s ease-in;
       overflow: scroll;
       box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.08);
