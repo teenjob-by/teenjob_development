@@ -83,15 +83,17 @@ class Internship extends Controller
 
                 return $query->where($date_filter);
             })
-
-
+            ->when($request->has('query'), function ($query) use ($request){
+                return $query->where(
+                    function ($query) use ($request) {
+                        return $query->where('title', 'like', '%'.$request->input('query').'%')
+                            ->orWhere('description', 'like', '%'.$request->input('query').'%')
+                            ->orWhere('cities.name', 'like', '%'.$request->input('query').'%');
+                    });
+            })
             ->join('cities', 'offers.city_id', '=', 'cities.id')
             ->select('offers.*', 'cities.name as city_name')
-            ->when($request->has('query'), function ($query) use ($request){
-                return $query->where('title', 'like', '%'.$request->input('query').'%')
-                    ->orWhere('description', 'like', '%'.$request->input('query').'%')
-                    ->orWhere('cities.name', 'like', '%'.$request->input('query').'%');
-            })
+
             ->orderBy('published_at', 'desc')
             ->paginate(15)
             ->onEachSide(1);

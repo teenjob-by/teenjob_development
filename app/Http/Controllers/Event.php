@@ -127,13 +127,13 @@ class Event extends Controller
                 return $query->where($date_filter_value);
             })
 
-            ->join('cities', 'events.city_id', '=', 'cities.id')
-            ->select('events.*', 'cities.name as city_name')
-            ->when($request->has('query'),function ($query) use ($request) {
-                return $query->where('title', 'like', '%'.$request->input('query').'%')
-                    ->orWhere('description', 'like', '%'.$request->input('query').'%')
-                    ->orWhere('name', 'like', '%'.$request->input('query').'%')
-                    ->orWhere('cities.name', 'like', '%'.$request->input('query').'%');
+            ->when($request->has('query'), function ($query) use ($request){
+                return $query->where(
+                    function ($query) use ($request) {
+                        return $query->where('title', 'like', '%'.$request->input('query').'%')
+                            ->orWhere('description', 'like', '%'.$request->input('query').'%')
+                            ->orWhere('cities.name', 'like', '%'.$request->input('query').'%');
+                    });
             })
             ->orderBy('date_start', $sort_direction)
             ->paginate(30)
