@@ -76,7 +76,7 @@
                     $(".justselect-list").delay(2000).fadeOut()
                 });
 
-                $(".justselect-wrapper").on('mouseenter',function(event){
+                $(".justselect-list").on('mouseenter',function(event){
                     $(".justselect-list").fadeIn();
                 });
 

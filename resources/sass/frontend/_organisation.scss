@@ -583,6 +583,12 @@
         }
       }
 
+      .button-account {
+        @include for-tablet-portrait-up {
+          margin-top: 40px;
+        }
+      }
+
       .message-invalid {
         @include text-usual(12px, $red, left);
         position: absolute;

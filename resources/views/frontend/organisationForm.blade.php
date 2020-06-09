@@ -406,7 +406,9 @@
                     <div class="left-aligned">
                     </div>
                     <div class="right-aligned">
-                        <p class="tip"><b>@lang('content.organisationForm.remind')</b></p>
+                        <h3 class="organisation_form-title">
+                            <strong>@lang('content.organisationForm.remind')</strong>
+                        </h3>
                     </div>
                 </div>
 
