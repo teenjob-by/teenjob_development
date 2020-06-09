@@ -151,11 +151,9 @@
   }
 
   .back-link {
-    display: none;
 
-    @include for-desktop-up() {
       display: block;
-    }
+
     font-size: 14px;
     line-height: 19px;
     color: #274684;
@@ -339,9 +337,7 @@
       margin-bottom: 18px;
     }
 
-    .back-link {
-      display: none;
-    }
+
 
     .offer-description {
       margin-top: 24px;
