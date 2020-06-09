@@ -579,7 +579,7 @@
                 <div class="event_form-group">
                     <div class="centered-title">
                         <div class="inner-icon">
-                            <div class="file-upload">
+                            <div id="image" class="file-upload">
                                 <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>@lang('content.event.create.addImage')</span></button>
 
                                 <div class="image-upload-wrap">
