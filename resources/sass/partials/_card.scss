@@ -10,7 +10,7 @@
   border-radius: 4px;
 
   &-header {
-    @include image-adaptive(80px, 80px);
+    @include image-adaptive(80px, auto);
     border-radius: 50%;
   }
 
