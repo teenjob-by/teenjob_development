@@ -356,6 +356,15 @@
             display: block;
           }
 
+          .unarchive-icon {
+            background: url(/images/unarchive.svg) center center no-repeat;
+            background-size: contain;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: block;
+          }
+
           .edit-icon {
             background: url(/images/edit.svg) center center no-repeat;
             background-size: contain;
@@ -405,6 +414,10 @@
             }
 
             .archive-icon {
+              display: none;
+            }
+
+            .unarchive-icon {
               display: none;
             }
 

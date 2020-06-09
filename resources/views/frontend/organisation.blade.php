@@ -351,7 +351,7 @@
                                                                     @method('patch')
                                                                     <input name="id" type="hidden" value="{{ $item->id }}">
                                                                     <button type="submit" class="organisation_list-item-action-link">
-                                                                        <i class="archive-icon"></i>
+                                                                        <i class="unarchive-icon"></i>
                                                                         <span>Разархивировать</span>
                                                                     </button>
                                                                 </form>
