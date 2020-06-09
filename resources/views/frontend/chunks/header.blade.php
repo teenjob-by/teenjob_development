@@ -106,7 +106,7 @@
 
                 <form id="desktop-search" class="header_search-form desktop-search" method="get">
 
-                    <input type="text" minlength="3" class="textfield-search search-form-wrapper_input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
+                    <input type="text" class="textfield-search search-form-wrapper_input" name="query" placeholder="{{ trans('header.search_placeholder' )}}" value="{{ empty($_GET['query'])? '': $_GET['query'] }}">
 
                     <button class="button-secondary search-form-wrapper_button" type="submit">
                         <i class="fas fa-search"></i>
