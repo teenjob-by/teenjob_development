@@ -98,11 +98,8 @@
 
     .back-link {
 
-      display: none;
-
-      @include for-desktop-up() {
         display: block;
-      }
+
 
       @include text-usual(14px, $violet, left);
       margin-bottom: 38px;
