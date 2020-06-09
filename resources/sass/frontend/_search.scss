@@ -12,6 +12,10 @@
     overflow: unset;
 
     margin-left: auto;
+
+    @include for-desktop-up() {
+      margin-left: 0;
+    }
     margin-right: auto;
     max-width: 660px;
 

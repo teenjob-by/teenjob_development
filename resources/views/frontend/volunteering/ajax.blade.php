@@ -17,7 +17,7 @@
 
                     </h3>
                     <h4 class="{{ $item_type }}_card-organisation"><a href="{{ $item->organisation['link'] }}" target="_blank">{{$item->organisation['name']}}</a></h4>
-                    <div class="{{ $item_type }}_card-description">{!! $item->getPreviewDesc() !!}</div>
+                    <div class="{{ $item_type }}_card-description raw-text">{!! $item->getPreviewDesc() !!}</div>
 
                     <div class="{{ $item_type }}_card-footer">
                         <p class="{{ $item_type }}_card-city">{{$item->city->name}}</p>

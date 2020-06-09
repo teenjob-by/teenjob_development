@@ -18,7 +18,7 @@
                 <p class="volunteering_description-info location">{{ $data->city->name }}</p>
                 <p class="volunteering_description-info portfolio">{{ $data->speciality()->name }}</p>
                 <p class="volunteering_description-info user">@lang('content.volunteering.card.age') {{ $data->age }}</p>
-                <div class="volunteering_description-text">{!! $data->description !!}</div>
+                <div class="volunteering_description-text raw-text">{!! $data->description !!}</div>
                 <p class="volunteering_description-contacts-title">@lang('content.volunteering.card.contacts')</p>
                 <p class="volunteering_description-info profile">{{ $data->contact }}</p>
                 <p class="volunteering_description-info envelope">{{ $data->email }}</p>

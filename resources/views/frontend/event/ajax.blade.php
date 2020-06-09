@@ -13,7 +13,7 @@
 
                     <p class="{{ $item_type }}_card-location">{{$item->city->name}}</p>
                     <h3 class="{{ $item_type }}_card-title trimmed">{{$item->title}}</h3>
-                    <div class="{{ $item_type }}_card-description trimmed">
+                    <div class="{{ $item_type }}_card-description trimmed raw-text">
                             {!!  $item->getPreviewDesc() !!}
                     </div>
                     <div class="{{ $item_type }}_card-more" >

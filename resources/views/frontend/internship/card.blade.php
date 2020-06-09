@@ -18,7 +18,7 @@
                 <p class="internship_description-info location">{{ $data->city->name }}</p>
                 <p class="internship_description-info portfolio">{{ $data->speciality()->name }}</p>
                 <p class="internship_description-info user">@lang('content.internship.card.age') {{ $data->age }}</p>
-                <div class="internship_description-text">{!! $data->description !!}</div>
+                <div class="internship_description-text raw-text">{!! $data->description !!}</div>
                 <p class="internship_description-contacts-title">@lang('content.internship.card.contacts')</p>
                 <p class="internship_description-info profile">{{ $data->contact }}</p>
                 <p class="internship_description-info envelope">{{ $data->email }}</p>

@@ -50,7 +50,7 @@
                 <p class="event_description-info location">{{ $data->city->name }}, {{ $data->address }}</p>
                 <p class="event_description-info user">@lang('content.event.card.age') {{ $data->age }}</p>
                 <p class="event_description-info type">{{ $data->type->name}}</p>
-                <div class="event_description-text">{!! $data->description !!}</div>
+                <div class="event_description-text raw-text">{!! $data->description !!}</div>
 
                 @if($data->location[0])
                     <div class="event_description-map" id="map">

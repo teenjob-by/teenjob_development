@@ -23,7 +23,7 @@
                     <p class="job_description-info salary">@lang('content.job.card.salary') {{ $data->salary }} {{ $data->salaryType->name}}</p>
                 @endif
                 <p class="job_description-info job-time">@lang('content.job.card.job-time') {{ $data->workTimeType->name }}</p>
-                <div class="job_description-text">{!! $data->description !!}</div>
+                <div class="job_description-text raw-text">{!! $data->description !!}</div>
                 <p class="job_description-contacts-title">@lang('content.job.card.contacts')</p>
                 <p class="job_description-info profile">{{ $data->contact }}</p>
                 <p class="job_description-info envelope">{{ $data->email }}</p>
