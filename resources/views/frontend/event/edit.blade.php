@@ -439,7 +439,7 @@
                 <div class="event_form-group">
                     <div class="centered-title">
                         <div class="inner-icon">
-                            <input id="title" required type="text" class="event_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.name')" value="{{ $event->title }}" autofocus>
+                            <input id="title" onfocus="this.selectionStart = this.selectionEnd = this.value.length;" required type="text" class="event_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.event.create.name')" value="{{ $event->title }}" autofocus>
 
                             @error('title')
                             <span class="message-invalid" role="alert">

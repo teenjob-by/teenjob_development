@@ -290,7 +290,7 @@
                 <div class="volunteering_form-group">
                     <div class="centered-title">
                         <div class="inner-icon">
-                            <input id="title" required type="text" class="volunteering_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.update.name')" value="{{ $volunteering->title }}" autofocus>
+                            <input id="title" onfocus="this.selectionStart = this.selectionEnd = this.value.length;" required type="text" class="volunteering_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.volunteering.update.name')" value="{{ $volunteering->title }}" autofocus>
 
                             @error('title')
                             <span class="message-invalid" role="alert">

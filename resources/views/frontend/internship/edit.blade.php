@@ -290,7 +290,7 @@
                 <div class="internship_form-group">
                     <div class="centered-title">
                         <div class="inner-icon">
-                            <input id="title" required type="text" class="internship_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.update.name')" value="{{ $internship->title }}" autofocus>
+                            <input id="title" onfocus="this.selectionStart = this.selectionEnd = this.value.length;" required type="text" class="internship_form-group-input title-input @error('title') is-invalid @enderror" name="title" placeholder="@lang('content.internship.update.name')" value="{{ $internship->title }}" autofocus>
 
                             @error('title')
                             <span class="message-invalid" role="alert">
