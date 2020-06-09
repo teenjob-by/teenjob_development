@@ -61,10 +61,23 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/i18n/ru.js"></script>
         <script>
+
+
             $(document).ready(function() {
                 $('.custom-select').select2( {
                     language: "ru",
                     minimumResultsForSearch: -1
+                });
+
+                var launchFade = false;
+
+                $(".justselect-wrapper").on('mouseleave',function(event){
+
+                    $(".justselect-list").delay(2000).fadeOut()
+                });
+
+                $(".justselect-wrapper").on('mouseenter',function(event){
+                    $(".justselect-list").fadeIn();
                 });
 
                 $('.custom-select-search').select2( {
@@ -98,6 +111,8 @@
                 }
 
             });
+
+
 
             $('#desktop-search').on('submit',function(event){
                 console.log( $('#search-select option:selected').val());
