@@ -34,7 +34,9 @@ class Internship extends Controller
             ->where('offer_type', 1)
 
             ->when($request->has('city'), function ($query) use ($request) {
-                return $query->where('city_id', $request->input('city'));
+                if($request->input('city') !== "120") {
+                    return $query->where('city_id', $request->input('city'));
+                }
             })
 
             ->when($request->has('speciality'), function ($query) use ($request){

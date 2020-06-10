@@ -38,7 +38,9 @@ class Event extends Controller
         $data = EventModel::whereIn('status', [1,2])
 
             ->when($request->has('city'),function ($query) use ($request) {
-                return $query->where('city_id', $request->input('city'));
+                if($request->input('city') !== "120") {
+                    return $query->where('city_id', $request->input('city'));
+                }
             })
 
             ->when($request->has('type'),function ($query) use ($request) {
