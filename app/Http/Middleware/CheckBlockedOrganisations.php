@@ -20,7 +20,7 @@ class CheckBlockedOrganisations
             if (auth()->user()->status == 3) {
                 $message = 'Ваш аккаунт заблокирован.';
                 auth()->logout();
-                return redirect()->route('login')->withMessage($message);
+                return redirect()->route('auth.login')->withErrors(['email' => $message]);
             }
         }
         return $next($request);

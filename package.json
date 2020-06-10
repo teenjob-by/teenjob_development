@@ -13,6 +13,7 @@
         "axios": "^0.18",
         "bootstrap": "^4.1.0",
         "cross-env": "^5.1",
+        "file-loader": "^6.0.0",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
         "lodash": "^4.17.5",
@@ -21,6 +22,17 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "webpack-livereload-plugin": "^1.2.0"
+    },
+    "dependencies": {
+        "bootstrap-vue": "^2.13.1",
+        "bootstrap-vue-datatable": "^1.0.7",
+        "qs": "^6.9.4",
+        "vue-js-modal": "^2.0.0-rc.3",
+        "vue-moment": "^4.1.0",
+        "vue-router": "^3.1.6",
+        "vue-trumbowyg": "^3.6.0",
+        "vuex": "^3.4.0"
     }
 }

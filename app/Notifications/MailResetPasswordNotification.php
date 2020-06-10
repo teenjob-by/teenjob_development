@@ -46,7 +46,7 @@ class MailResetPasswordNotification extends Notification
         return (new MailMessage)
             ->subject('Запрос на изменение пароля')
             ->line('Вами был сделан запрос на изменение пароля для входа в аккаунт teenjob.by')
-            ->action('Сбросить пароль', url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->action('Сбросить пароль', url(config('app.url').route('auth.password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::getFromJson('Ссылка на изменение пароля действительна в течение :count минут.', ['count' => config('auth.passwords.users.expire')]))
             ->line(Lang::getFromJson('Если вы не делали запрос на изменение пароля, просто проигнорируйте это сообщение.'));
     }

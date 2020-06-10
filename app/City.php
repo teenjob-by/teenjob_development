@@ -29,7 +29,7 @@ class City extends Model
 
     public function organisation()
     {
-        return $this->hasOne(Offer::class);
+        return $this->hasOne(Organisation::class);
     }
 
     public function event()

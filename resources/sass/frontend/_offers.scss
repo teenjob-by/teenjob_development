@@ -1,0 +1,491 @@
+.offers {
+
+  background: #ffffff;
+  padding: 55px 0 85px;
+    h2 {
+        word-wrap: break-word;
+    }
+  h3, h4 {
+    font-weight: 600;
+    color: #274684;
+    margin-bottom: 15px;
+      word-wrap: break-word;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  a {
+    color: #274684;
+    text-decoration: none;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+
+
+  .card-offer {
+
+    //width: 625px;
+
+    border: none;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    border-radius: 0;
+    margin-bottom: 50px;
+
+
+    .offer-title {
+      font-family: Montserrat;
+      font-size: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      a {
+        max-width: 90% !important;
+      }
+      .approved {
+        display: block;
+        width: 16px;
+        height: 14px;
+        background: url("/images/check.svg") top left no-repeat;
+        margin-left: 10px;
+      }
+    }
+
+    .offer-organisation {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      color: #274684;
+      a {
+        color: #274684;
+        text-decoration: none;
+      }
+    }
+
+    .offer-description {
+      font-size: 14px;
+      line-height: 150%;
+      color: #2F2F2F;
+      margin-bottom: 25px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 150%;
+      color: #2F2F2F;
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 150%;
+        color: #2F2F2F;
+      }
+
+      img {
+        padding: 10px;
+      }
+    }
+
+    .offer-footer {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      color: #2F2F2F;
+    }
+
+    .offer-city {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      color: #2F2F2F;
+      position: relative;
+      padding-left: 23px;
+      margin-bottom: 55px;
+
+      &:before {
+        content: url("/images/location-point.svg");
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .offer-data {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      color: #B0B0B0;
+    }
+  }
+}
+
+.offers-page {
+  background: #ffffff;
+  padding: 23px 0 100px 0;
+
+  .container {
+
+    max-width: 645px !important;
+  }
+
+  .offer-organisation {
+    margin-bottom: 8px;
+    a {
+      color: #274684;
+      text-decoration: none;
+    }
+  }
+
+  .back-link {
+
+      display: block;
+
+    font-size: 14px;
+    line-height: 19px;
+    color: #274684;
+    margin-bottom: 38px;
+    position: relative;
+    padding-left: 16px;
+
+    &:before {
+      content: url("/images/arrow-left-small.png");
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .offer-title {
+    margin-bottom: 24px;
+  }
+  .offer-button {
+    margin-bottom: 70px;
+    margin-top: 24px;
+  }
+  .offer-description {
+    margin-top: 24px;
+    margin-bottom: 50px;
+
+   img {
+     padding: 10px;
+   }
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 32px;
+    color: #121212;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #274684;
+    margin-bottom: 20px;
+  }
+
+  .offer-card-info {
+    font-size: 14px;
+    color: #2F2F2F;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+
+    &:before {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 3px;
+      left: 0;
+    }
+  }
+
+
+  .portfolio {
+    &:before {
+      content: url("/images/portfolio-icon.png");
+    }
+  }
+
+  .location {
+    &:before {
+      content: url("/images/location-point.svg");
+    }
+  }
+
+  .user {
+    &:before {
+      content: url("/images/user-icon.png");
+    }
+  }
+
+  .envelope {
+    &:before {
+      content: url("/images/envelope-icon.png");
+    }
+  }
+
+  .telephone {
+    &:before {
+      content: url("/images/telephone-icon.png");
+    }
+  }
+
+  .alt-contact {
+    &:before {
+      content: url("/images/altcontact-icon.svg");
+    }
+  }
+
+  .profile {
+    &:before {
+      content: url("/images/profile-icon.png");
+    }
+  }
+
+  .offer-card-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #2C2C2C;
+    margin-bottom: 12px;
+  }
+
+  .offer-card-date {
+    font-style: italic;
+    font-size: 14px;
+    color: #B0B0B0;
+    margin-bottom: 0;
+  }
+
+  .offer-card-description {
+    font-size: 14px;
+    line-height: 150%;
+    color: #2F2F2F;
+  }
+
+  .offer-card-abuse {
+    font-size: 14px;
+    color: #B0B0B0;
+    position: relative;
+    padding-left: 25px;
+
+    &:before {
+      content: url("/images/flag-icon.png");
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+    @media all and (max-width: 400px){
+        .offer-card-abuse {
+            margin-top: 15px;
+        }
+    }
+  .offer-card-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+    @media all and (max-width: 400px){
+        .offer-card-footer {
+            flex-direction: column !important;
+        }
+    }
+
+  .btn-info {
+    width: 219px;
+    height: 48px;
+    background: #3DA1DA;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 32px;
+    color: #FFFFFF;
+    border-radius: 0;
+  }
+
+}
+
+
+@media all and (max-width: 640px){
+  .offers-page {
+    padding: 50px 0 76px 0;
+
+
+    .offer-title {
+      margin-bottom: 18px;
+    }
+
+
+
+    .offer-description {
+      margin-top: 24px;
+      margin-bottom: 50px;
+    }
+
+
+    .offer-button {
+      margin-bottom: 24px;
+      margin-top: 60px;
+    }
+
+    .offer-card-footer {
+      flex-direction: column !important;
+    }
+  }
+}
+
+
+.internship-form {
+  background: #ffffff;
+  padding: 55px 0 85px;
+
+  .texteditor {
+    flex-direction: row !important;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  h2 {
+    display: block;
+    margin-bottom: 20px;
+  }
+  form {
+    width: 100%;
+  }
+  .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 326px;
+    margin-bottom: 24px;
+
+    label {
+      margin-right: 10px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: right;
+      color: #2F2F2F;
+    }
+  }
+  @media all and (max-width: 639px){
+    .form-group {
+      margin-right: 10px !important;
+      margin-left: 10px !important;
+      flex-direction: column;
+      align-items: flex-start !important;
+
+
+      label {
+        text-align: left;
+        margin-bottom: 5px;
+      }
+
+      .selectric-wrapper {
+        width: 100%;
+        height: 42px;
+      }
+
+      .texteditor {
+        flex-direction: row !important;
+        word-break: break-word;
+        white-space: normal;
+      }
+
+    }
+
+    input {
+      width: 100% !important;
+      height: 42px;
+      border-radius: 0;
+    }
+  }
+  .texteditor {
+    margin-right: auto;
+    justify-content: center;
+  }
+  .title {
+    display: block;
+    width: 264px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #121212;
+  }
+  .note-editor {
+    width: 644px;
+  }
+  input {
+    width: 264px;
+    height: 42px;
+    border-radius: 0;
+  }
+
+  @media all and (max-width: 639px){
+    input {
+      width: 100% !important;
+      height: 42px;
+      border-radius: 0;
+    }
+  }
+  .selectric-wrapper {
+    width: 264px;
+    height: 42px;
+  }
+  .btn-success {
+    border-radius: 0;
+    width: 304px;
+    height: 50px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    margin-top: 50px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+  }
+
+  .m-n {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .notification {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;
+    display: block;
+    text-align: center;
+  }
+}

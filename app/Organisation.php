@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 
 class Organisation extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +20,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
     protected $table = 'organisations';
 
     protected $fillable = [
-        'name', 'email', 'city_id', 'password', 'link', 'phone', 'contact', 'unique_identifier', 'type', 'role', 'request', 'alt_phone', 'alt_email', 'status',
+        'name', 'email', 'city_id', 'password', 'link', 'phone', 'contact', 'unique_identifier', 'type', 'role', 'request', 'alt_phone', 'alt_email', 'status', 'api_token',
     ];
 
     /**
@@ -28,7 +29,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     /**
@@ -40,7 +41,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function getType()
+    public function types()
     {
         return $this->belongsTo(OrganisationType::class,'type', 'id');
     }

@@ -14,11 +14,10 @@
   .language-panel {
     margin-left: 25px;
 
-
   }
 
   .language-panel_link-selected {
-    font-family: Open Sans, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -30,7 +29,7 @@
   }
 
   .language-panel_link {
-    font-family: Open Sans, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -41,7 +40,7 @@
   }
 
   .language-panel_link:hover {
-    font-family: Open Sans, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -49,7 +48,7 @@
     color: #FFFFFF;
     text-decoration: none;
     text-transform: uppercase;
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   .active {
@@ -92,7 +91,7 @@
 
         span {
             display: block;
-            font-family: Open Sans;
+            font-family: Montserrat;
             font-style: normal;
             font-weight: 600;
             font-size: 16px;
@@ -144,7 +143,7 @@
     }
 
   .title {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 60px;
@@ -179,7 +178,7 @@
     outline: none;
     padding-left: 40px;
 
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -188,7 +187,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     &::placeholder {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -213,7 +212,7 @@
     border: none;
     background: #FFFFFF;
 
-    font-family: Open Sans;
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -255,7 +254,7 @@
 
 
       span.label {
-        font-family: Open Sans;
+        font-family: Montserrat;
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
@@ -305,7 +304,7 @@
 
     .dropdown-item {
 
-      font-family: 'Open Sans', Serif;
+      font-family: 'Montserrat', Serif;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
@@ -317,7 +316,7 @@
         background-color: #ffffff;
       }
       a {
-        font-family: 'Open Sans', Serif;
+        font-family: 'Montserrat', Serif;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
@@ -357,7 +356,7 @@
 .navbar-nav .nav-link {
   margin-left: 23px;
   padding: 0 !important;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -396,6 +395,7 @@
   .search-wrapper {
     .title {
       font-size: 48px;
+
     }
 
     .search-box {
@@ -448,7 +448,7 @@
 
         span {
             display: block;
-            font-family: Open Sans;
+            font-family: Montserrat;
             font-style: normal;
             font-weight: 600;
             font-size: 16px;
@@ -498,7 +498,7 @@
 
         span {
           display: block;
-          font-family: Open Sans;
+          font-family: Montserrat;
           font-style: normal;
           font-weight: 600;
           font-size: 18px;
@@ -535,7 +535,7 @@
         align-items: center;
         span {
           display: block;
-          font-family: Open Sans;
+          font-family: Montserrat;
           font-style: normal;
           font-weight: 600;
           font-size: 14px;

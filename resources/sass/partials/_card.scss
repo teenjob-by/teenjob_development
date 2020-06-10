@@ -1,0 +1,29 @@
+.card {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  @include for-desktop-up() {
+    margin-bottom: 90px;
+  }
+  border-radius: 4px;
+
+  &-header {
+    @include image-adaptive(80px, auto);
+    border-radius: 50%;
+  }
+
+  &-body {
+    padding-top: 20px;
+  }
+
+  &-body-title {
+
+    @include title($font-size-title-card-sm, $font-size-title-card-md, $font-size-title-card-lg, $title-margin-card-sm, $title-margin-card-md, $title-margin-card-lg);
+  }
+
+  &-body-text {
+    @include text-usual(16px, $gray , center);
+  }
+}

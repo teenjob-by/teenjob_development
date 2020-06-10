@@ -1,0 +1,109 @@
+.select {
+
+}
+
+
+.justselect {
+  &-wrapper {
+    width: 172px;
+    height: 56px;
+    border: none;
+    border-radius: 4px 0px 0px 4px;
+    text-align: left;
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    background: $white;
+    display: none;
+    align-items: center;
+
+    @include for-tablet-landscape-up() {
+      display: flex;
+    }
+  }
+
+  &-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2F2F2F;
+    border-radius: 0;
+    text-align: left;
+    margin: 0 10px 0 25px;
+    padding: 0;
+    width: 100%;
+    border: none;
+    background: url(/images/category-arrow-left.svg) no-repeat 100%;
+  }
+
+  &-list {
+    top: 56px;
+    border-radius: 0;
+    z-index: 9999;
+
+    li {
+      font-family: "Montserrat", Serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 19px;
+      padding-left: 17px;
+      color: #2F2F2F;
+      display: block;
+      padding: 15px;
+      cursor: pointer;
+      min-height: 20px;
+    }
+
+    li:hover {
+      background: #D5D5D5;
+    }
+  }
+}
+.select2-container {
+  width: 100% !important;
+  max-width: 290px;
+}
+
+.select2-container--default span.selection {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  width: 100%;
+}
+
+.select2-container--default .selection .select2-selection--single {
+  border: none;
+  outline: none;
+}
+
+.select2-container .selection .select2-selection--single .select2-selection__rendered {
+  padding-left: 0px;
+  @include text-usual(14px, #2f2f2f ,left);
+  line-height: 200%;
+
+}
+
+.select2-container--default .selection .select2-selection--single .select2-selection__arrow {
+  top: 5px;
+  right: 5px;
+}
+
+.select2-search__field {
+  outline: 2px solid #E8ECEE;;
+  padding: 10px !important;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+  border: 1px solid #E8ECEE;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #E8ECEE !important;
+  color: $gray !important;
+}
+
+.select2-results__option {
+  @include text-usual(14px, $gray, left);
+}
