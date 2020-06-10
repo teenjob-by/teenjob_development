@@ -320,12 +320,14 @@ class Event extends Controller
 
         $date_start = $request->input('date_start').' '.$request->input('time_start');
         $date_finish = $request->input('date_finish').' '.$request->input('time_finish');
+
+
         $event = new EventModel([
             'title' => $request->input('title'),
             'city_id' => $request->input('city'),
             'address' => $request->input('address'),
-            'date_start' => \Carbon\Carbon::parse($date_start),
-            'date_finish' => \Carbon\Carbon::parse($date_finish),
+            'date_start' => \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start),
+            'date_finish' => \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start),
             'age' => $request->input('age'),
             'type_id' => $request->input('type'),
             'description' => $request->input('description'),
@@ -432,8 +434,8 @@ class Event extends Controller
             $event->title =  $request->input('title');
             $event->city_id = $request->input('city');
             $event->address = $request->input('address');
-            $event->date_start = \Carbon\Carbon::parse($date_start);
-            $event->date_finish = \Carbon\Carbon::parse($date_finish);
+            $event->date_start = \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start);
+            $event->date_finish = \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start);
             $event->age = $request->input('age');
 
             if(!empty(request()->image)){

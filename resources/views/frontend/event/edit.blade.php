@@ -360,11 +360,11 @@
 
                             $("#submit").toggleClass('loading');
 
-                            data = JSON.parse(data)
+
 
 
                             for (let [key, value] of Object.entries(data)) {
-
+                                console.log(console.log(data))
                                 if(key == 'message') {
                                     showModal('success');
                                 }
