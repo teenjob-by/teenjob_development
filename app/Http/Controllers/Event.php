@@ -73,7 +73,7 @@ class Event extends Controller
                 return $query->where('age', '<=', $request->input('age'));
             })
 
-            ->where(function ($query) use ($request, $sort_direction) {
+            ->where(function ($query) use ($request, &$sort_direction) {
 
                 $date_start = Carbon::now();
                 $date_end = Carbon::now();
@@ -90,22 +90,22 @@ class Event extends Controller
                     foreach ($date_filter as $item) {
                         if($item == 'today') {
                             $date = Carbon::now()->endOfDay();
-                            $date_end = ($date_end >= $date)? $date: $date_end;
+                            $date_end = ($date_end >= $date)? $date_end: $date;
                         }
 
                         if($item == 'tomorrow') {
                             $date = Carbon::now()->addDay()->endOfDay();
-                            $date_end = ($date_end >= $date)? $date: $date_end;
+                            $date_end = ($date_end >= $date)? $date_end: $date;
                         }
 
                         if($item == 'week') {
                             $date = Carbon::now()->endOfWeek();
-                            $date_end = ($date_end >= $date)? $date: $date_end;
+                            $date_end = ($date_end >= $date)? $date_end: $date;
                         }
 
                         if($item == 'nextweek') {
                             $date = Carbon::now()->addWeek()->endOfWeek();
-                            $date_end = ($date_end >= $date)? $date: $date_end;
+                            $date_end = ($date_end >= $date)? $date_end: $date;
                         }
 
                         if($item == 'past') {
