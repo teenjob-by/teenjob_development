@@ -335,8 +335,8 @@ class Internship extends Controller
             'speciality' => ['required'],
             'description' => ['required'],
             'contactPerson' => ['required'],
-            'phone' => ['required', 'min:3','max:255'],
-            'email' => ['required', 'email', 'max:255'],
+            'phone' => ['required'],
+            'email' => ['required', 'email'],
         ]);
 
         if ($validator->fails()) {

@@ -356,28 +356,6 @@
                 </div>
 
                 <div class="volunteering_form-group">
-                    <div class="left-aligned">
-                        <label for="workTime" class="volunteering_form-group-label">@lang('content.volunteering.create.workTime')</label>
-                    </div>
-                    <div class="right-aligned">
-                        <div class="inner-icon">
-                            <select id="workTime" class="custom-select volunteering_form-group-select @error('workTime') is-invalid @enderror" name="workTime" value="{{ old('workTime') }}" required autofocus>
-                                @foreach($work_times as $workTime)
-                                    <option value="{{ $workTime->id }}">{{ $workTime->name }}</option>
-                                @endforeach
-                            </select>
-
-                            @error('orkTime')
-                            <span class="message-invalid" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="volunteering_form-group">
                     <div class="inner-icon stretch raw-text">
                         <textarea id="description" name="description" type="text" class="volunteering_form-group-input textarea raw-text @error('description') is-invalid @enderror"  name="description" placeholder="@lang('content.volunteering.create.description')" value="{{ old('description') }}"></textarea>
 
