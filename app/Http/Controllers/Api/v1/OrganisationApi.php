@@ -113,8 +113,8 @@ class OrganisationApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'phone' => ['required', 'max:255'],
-            'request' => ['max:255'],
+            'phone' => ['required'],
+            'request' => ['required'],
         ]);
 
         if ($validator->fails()) {

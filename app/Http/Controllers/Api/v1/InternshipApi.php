@@ -136,14 +136,14 @@ class InternshipApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'min:3','max:255'],
+            'title' => ['required'],
             'city_id' => ['required'],
             'age' => ['required'],
             'speciality' => ['required'],
-            'description' => ['required','max:255'],
-            'contact' => ['required', 'min:3','max:255'],
-            'phone' => ['required', 'min:3','max:255'],
-            'email' => ['email', 'max:255'],
+            'description' => ['required'],
+            'contact' => ['required'],
+            'phone' => ['required'],
+            'email' => ['email'],
         ]);
 
         if ($validator->fails()) {

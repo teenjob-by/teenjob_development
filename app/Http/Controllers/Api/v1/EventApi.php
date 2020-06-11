@@ -129,12 +129,12 @@ class EventApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
+            'title' => 'required',
             'date_start' => 'required',
             'time_start' => 'required',
             'date_finish' => 'required',
             'time_finish' => 'required',
-            'address' => 'required|max:255'
+            'address' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -226,12 +226,12 @@ class EventApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
+            'title' => 'required',
             'date_start' => 'required',
             'time_start' => 'required',
             'date_finish' => 'required',
             'time_finish' => 'required',
-            'address' => 'required|max:255'
+            'address' => 'required'
         ]);
 
         if ($validator->fails()) {
