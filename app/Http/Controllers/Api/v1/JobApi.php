@@ -136,14 +136,14 @@ class JobApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'min:3','max:255'],
+            'title' => ['required'],
             'city_id' => ['required'],
             'age' => ['required'],
             'speciality' => ['required'],
-            'description' => ['required','max:255'],
-            'contact' => ['required', 'min:3','max:255'],
-            'phone' => ['required', 'min:3','max:255'],
-            'email' => ['email', 'max:255'],
+            'description' => ['required'],
+            'contact' => ['required'],
+            'phone' => ['required'],
+            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
@@ -203,14 +203,14 @@ class JobApi extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'title' => ['required', 'min:3','max:255'],
+            'title' => ['required'],
             'city_id' => ['required'],
             'age' => ['required'],
             'speciality' => ['required'],
-            'description' => ['required','max:255'],
-            'contact' => ['required', 'min:3','max:255'],
-            'phone' => ['required', 'min:3','max:255'],
-            'email' => ['email', 'max:255'],
+            'description' => ['required'],
+            'contact' => ['required'],
+            'phone' => ['required'],
+            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
