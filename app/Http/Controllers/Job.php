@@ -58,7 +58,7 @@ class Job extends Controller
 
             ->when($request->has('city'), function ($query) use ($request) {
                 if($request->input('city') !== "120") {
-                    return $query->where('city_id', $request->input('city'));
+                    return $query->whereIn('city_id', [$request->input('city'), "120"]);
                 }
             })
 
