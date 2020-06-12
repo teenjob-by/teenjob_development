@@ -96,7 +96,7 @@ class Event extends Model
     }
 
     public function getTimeBeforeArchiving () {
-        return (\Carbon\Carbon::parse($this->date_start)->addDay()->startOfDay());
+        return (\Carbon\Carbon::parse($this->date_start));
     }
 
     public function city()
