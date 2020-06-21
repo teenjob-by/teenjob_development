@@ -143,7 +143,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
@@ -210,7 +209,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']

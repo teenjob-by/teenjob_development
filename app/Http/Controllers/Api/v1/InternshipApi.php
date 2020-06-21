@@ -143,7 +143,6 @@ class InternshipApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
         ]);
 
         if ($validator->fails()) {
