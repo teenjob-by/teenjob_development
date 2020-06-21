@@ -419,7 +419,7 @@
                         <label for="email" class="internship_form-group-label">@lang('content.internship.create.email')</label>
                     </div>
                     <div class="right-aligned">
-                        <input id="email" type="email" name="email" placeholder="@lang('content.internship.create.email')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" name="email" placeholder="@lang('content.internship.create.email')" class="internship_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
                         <span class="message-invalid" role="alert">

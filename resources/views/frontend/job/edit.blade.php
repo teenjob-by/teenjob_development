@@ -437,7 +437,7 @@
                         <label for="email" class="job_form-group-label">@lang('content.job.create.email')</label>
                     </div>
                     <div class="right-aligned">
-                        <input id="email" type="email" name="email" placeholder="@lang('content.job.create.email')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ $job->email }}" required autocomplete="email" autofocus>
+                        <input id="email"  name="email" placeholder="@lang('content.job.create.email')" class="job_form-group-input @error('email') is-invalid @enderror" value="{{ $job->email }}" required autocomplete="email" autofocus>
 
                         @error('email')
                         <span class="message-invalid" role="alert">
