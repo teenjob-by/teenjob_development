@@ -74,6 +74,9 @@ class InternshipApi extends Controller
                 case 'banned':
                     $internships = InternshipModel::where('offer_type', 1)->where('status', 3)->with('city')->with('organisation')->get();
                     break;
+                case 'outdated':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 5)->with('city')->with('organisation')->get();
+                    break;
             }
 
 
@@ -87,6 +90,7 @@ class InternshipApi extends Controller
             "published" => [],
             "pending" => [],
             "archived" => [],
+            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -99,6 +103,9 @@ class InternshipApi extends Controller
                     break;
                 case 2:
                     array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['outdated'], $item);
                     break;
             }
         }

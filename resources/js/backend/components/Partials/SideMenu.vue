@@ -46,6 +46,12 @@
                     В архиве
                 </router-link>
             </li>
+
+            <li class="side-menu-link">
+                <router-link :to="{ name: 'jobIndex', params: { scope: 'outdated'} }">
+                    Прошедшие
+                </router-link>
+            </li>
         </ul>
 
         <p class="side-menu-header">Волонтерство</p>
@@ -68,6 +74,12 @@
             <li  class="side-menu-link">
                 <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'archived'} }">
                     В архиве
+                </router-link>
+            </li>
+
+            <li class="side-menu-link">
+                <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'outdated'} }">
+                    Прошедшие
                 </router-link>
             </li>
         </ul>
@@ -94,6 +106,11 @@
                     В архиве
                 </router-link>
             </li>
+            <li class="side-menu-link">
+                <router-link :to="{ name: 'internshipIndex', params: { scope: 'outdated'} }">
+                    Прошедшие
+                </router-link>
+            </li>
         </ul>
 
         <p class="side-menu-header">Мероприятия</p>
@@ -116,6 +133,11 @@
             <li  class="side-menu-link">
                 <router-link :to="{ name: 'eventIndex', params: { scope: 'archived'} }">
                     В архиве
+                </router-link>
+            </li>
+            <li class="side-menu-link">
+                <router-link :to="{ name: 'eventIndex', params: { scope: 'outdated'} }">
+                    Прошедшие
                 </router-link>
             </li>
         </ul>

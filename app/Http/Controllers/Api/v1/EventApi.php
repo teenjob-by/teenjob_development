@@ -68,6 +68,9 @@ class EventApi extends Controller
                 case 'banned':
                     $events = EventModel::where('status', 3)->with('city')->with('organisation')->get();
                     break;
+                case 'outdated':
+                    $events = EventModel::where('status', 5)->with('city')->with('organisation')->get();
+                    break;
             }
 
             return response()->json([ "data" => $events ], 200);
@@ -79,6 +82,7 @@ class EventApi extends Controller
             "published" => [],
             "pending" => [],
             "archived" => [],
+            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -91,6 +95,9 @@ class EventApi extends Controller
                     break;
                 case 2:
                     array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['outdated'], $item);
                     break;
             }
         }

@@ -61,6 +61,7 @@ class Organisation extends Controller
             "published" => [],
             "pending" => [],
             "archived" => [],
+            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -73,6 +74,9 @@ class Organisation extends Controller
                     break;
                 case 2:
                     array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['outdated'], $item);
                     break;
             }
         }
