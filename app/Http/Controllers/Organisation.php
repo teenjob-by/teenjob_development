@@ -96,16 +96,7 @@ class Organisation extends Controller
     public function update(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'alt_email' => ['email', 'max:255'],
-            'phone' => ['required', 'max:255'],
-            'alt_phone' => ['max:255'],
-            'city' => ['required'],
-            'request' => ['max:255'],
-            'password' => ['min:6', 'required_with:password_repeat','same:password_repeat'],
-            'password_repeat' => ['min:6'],
-            'password_old' => ['required']
-        ]);
+
 
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
@@ -118,7 +109,7 @@ class Organisation extends Controller
             $organisations->phone = $request->input('phone');
             $organisations->alt_phone = $request->input('alt_phone');
             $organisations->request = $request->input('request');
-            $organisations->city_id = $request->input('city');
+            $organisations->city_id = $request->input('city_id');
             if ((!empty($request->input('password'))) && ($request->input('password') == $request->input('password_repeat') )) {
                $organisations->password = Hash::make($request->input('password'));
             }

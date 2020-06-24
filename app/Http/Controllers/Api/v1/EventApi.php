@@ -110,7 +110,7 @@ class EventApi extends Controller
         $cities = City::all();
 
         $eventTypes = EventType::all();
-        $organisation = EventModel::findorFail($id);
+        $event = EventModel::findorFail($id);
         $ages = collect([
             (object)[
                 'id' => 14,
@@ -129,7 +129,7 @@ class EventApi extends Controller
                 'name'=>'17'
             ]
         ]);
-        return response()->json([ "data" => $organisation, "types" => $eventTypes, "cities" => $cities, 'ages' => $ages], 200);
+        return response()->json([ "data" => $event, "types" => $eventTypes, "cities" => $cities, 'ages' => $ages], 200);
     }
 
     public function update(Request $request)
@@ -139,8 +139,6 @@ class EventApi extends Controller
             'title' => 'required',
             'date_start' => 'required',
             'time_start' => 'required',
-            'date_finish' => 'required',
-            'time_finish' => 'required',
             'address' => 'required'
         ]);
 
@@ -150,7 +148,7 @@ class EventApi extends Controller
 
         $event = EventModel::findOrFail($request->input('id'));
         $date_start = $request->input('date_start').' '.$request->input('time_start');
-        $date_finish = $request->input('date_finish').' '.$request->input('time_finish');
+        $date_finish = $date_start;
         $event->title =  $request->input('title');
         $event->city_id = $request->input('city_id');
         $event->address = $request->input('address');
@@ -236,8 +234,6 @@ class EventApi extends Controller
             'title' => 'required',
             'date_start' => 'required',
             'time_start' => 'required',
-            'date_finish' => 'required',
-            'time_finish' => 'required',
             'address' => 'required'
         ]);
 
@@ -281,7 +277,7 @@ class EventApi extends Controller
 
 
         $date_start = $request->input('date_start').' '.$request->input('time_start');
-        $date_finish = $request->input('date_finish').' '.$request->input('time_finish');
+        $date_finish = $date_start;
         $event = new EventModel([
             'title' => $request->input('title'),
             'city_id' => $request->input('city_id'),

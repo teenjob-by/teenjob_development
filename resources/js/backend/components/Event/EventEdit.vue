@@ -1,155 +1,207 @@
 <template>
     <div>
 
-        <b-card class="mt-3 " header="Создание мероприятия">
+        <b-card class="mt-3 " header="Редактирование мероприятия">
 
             <b-card-body>
-                <b-form @submit="onSubmit" >
-                    <b-form-group
-                            id="title"
-                            label="Название:"
-                            label-for="title-input"
-                    >
-                        <b-form-input
-                                id="title-input"
-                                v-model="form.title"
-                                type="text"
-                                required
-                                placeholder="Название (офиц.)*"
-                        ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group id="city" label="Город*:" label-for="city-input">
-                        <b-form-select
-                                id="city-input"
-                                v-model="form.city_id"
-                                :options="cities"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
-
-                    <b-form-group id="age" label="Возраст*:" label-for="age-input">
-                        <b-form-select
-                                id="age-input"
-                                v-model="form.age"
-                                :options="ages"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
-
-
-                    <b-form-group id="type" label="Участие*:" label-for="type-input">
-                        <b-form-select
-                                id="type-input"
-                                v-model="form.type_id"
-                                :options="types"
-                                required
-                                value-field="id"
-                                text-field="name"
-                        ></b-form-select>
-                    </b-form-group>
-
-                    <b-form-group
-                            id="address"
-                            label="Адрес:"
-                            label-for="address-input"
-                    >
-                        <b-form-input
-                                id="address-input"
-                                v-model="form.address"
-                                type="text"
-                                required
-                                placeholder="Название (офиц.)*"
-                        ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group
-                            id="date_start"
-                            label="Дата начала:"
-                            label-for="date_start-input"
-                    >
-                        <b-form-input
-                                id="date_start-input"
-                                v-model="formattedStartDate"
-                                type="text"
-                                required
-                                placeholder="Дата"
-                        ></b-form-input>
-
-                        <b-form-input
-                                id="time_start-input"
-                                v-model="formattedStartTime"
-                                type="text"
-                                required
-                                :value="timeFormat(form.time_start)"
-                                placeholder="Время"
-                        ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group
-                            id="date_finish"
-                            label="Дата завершения:"
-                            label-for="date_finish-input"
-                    >
-                        <b-form-input
-                                id="date_finish-input"
-                                v-model="formattedFinishDate"
-                                type="text"
-                                required
-                                placeholder="Дата"
-                        ></b-form-input>
-
-                        <b-form-input
-                                id="time_finish-input"
-                                v-model="formattedFinishTime"
-                                type="text"
-                                required
-                                placeholder="Время"
-                        ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group id="description" label="Описание*:" label-for="description-input">
-                        <trumbowyg v-model="form.description" class="form-control" id="description" required></trumbowyg>
-                    </b-form-group>
+                <b-form @submit="onSubmit" class="event_form">
                     <div class="event_form-group">
-                        <p for="event-image">Загрузить изображение</p>
+                        <div class="centered-title">
+                            <div class="inner-icon">
+                                <input id="title-input" required type="text" class="event_form-group-input title-input" name="title" placeholder="Название (офиц.)*" autofocus v-model="form.title">
 
-                        <div class="file-upload">
-                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Добавить изображение</button>
 
-                            <div class="image-upload-wrap">
-                                <input class="file-upload-input" type='file' name="image" v-on:change="readURL" accept="image/*" />
-                                <div class="drag-text">
-                                    <h3>Drag and drop a file or select add Image</h3>
-                                </div>
+                                <span class="message-invalid" role="alert">
+                                    <strong></strong>
+                                </span>
+
                             </div>
-                            <div class="file-upload-content">
-                                <img class="file-upload-image" :src="form.image" alt="your image" />
-                                <div class="image-title-wrap">
-                                    <button type="button" v-on:click="removeUpload" class="remove-image">Remove <span class="image-title">{{ filename }}</span></button>
+                        </div>
+                    </div>
+
+                    <div class="event_form-group">
+                        <div class="left-aligned">
+                            <label for="city-input" class="event_form-group-label">Город (гл. офис)*:</label>
+                        </div>
+                        <div class="right-aligned">
+                            <div class="inner-icon">
+                                <b-form-select
+                                        id="city-input"
+                                        v-model="form.city_id"
+                                        :options="cities"
+                                        required
+                                        value-field="id"
+                                        text-field="name"
+                                >
+                                </b-form-select>
+
+
+                                <span class="message-invalid" role="alert">
+                                    <strong></strong>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event_form-group">
+                        <div class="left-aligned">
+                            <label for="age-input" class="event_form-group-label">Возраст*:</label>
+                        </div>
+                        <div class="right-aligned">
+                            <div class="inner-icon">
+                                <b-form-select
+                                        id="age-input"
+                                        v-model="form.age"
+                                        :options="ages"
+                                        required
+                                        value-field="id"
+                                        text-field="name"
+                                ></b-form-select>
+
+
+                                <span class="message-invalid" role="alert">
+                                    <strong></strong>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="event_form-group date-group">
+                        <div class="left-aligned">
+                            <label class="event_form-group-label" for="date_start">Дата начала:</label>
+                        </div>
+                        <div class="right-aligned">
+                            <div class="inner-icon">
+                                <div class="event_form-date-group">
+                                    <input type="text" required class="event_form-group-input datePicker" id="date_start" name="date_start" placeholder="" v-model="form.date_start"/>
+                                </div>
+
+                                <div class="event_form-date-group time-group">
+                                    <label for="date_start" class="event_form-group-label">Время</label>
+                                    <input required type="text" class="event_form-group-input timePicker" id="time_start" name="time_start" placeholder="" v-model="form.time_start"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <b-form-group class="event_form-group event_form-map-group">
-                        <p class="map-title">Карта</p>
-                        <div class="map" id="map">
+                    <div class="event_form-group">
+                        <div class="left-aligned">
+                            <label for="address-input" class="event_form-group-label">Адрес:</label>
                         </div>
-                        <input type="hidden" :value="form.location" name="location" id="event-location">
-                    </b-form-group>
+                        <div class="right-aligned">
+                            <input
+                                    id="address-input"
+                                    v-model="form.address"
+                                    type="text"
+                                    required
+                                    placeholder="Название (офиц.)*"
+                                    class="event_form-group-input"
+                            >
+
+                            <span class="message-invalid" role="alert">
+                                <strong></strong>
+                            </span>
+
+                        </div>
+                    </div>
+
+                    <div class="event_form-group">
+                        <div class="left-aligned">
+                            <label for="type-input" class="event_form-group-label">Участие*:</label>
+                        </div>
+                        <div class="right-aligned">
+                            <div class="inner-icon">
+                                <b-form-select
+                                        id="type-input"
+                                        v-model="form.type_id"
+                                        :options="types"
+                                        required
+                                        value-field="id"
+                                        text-field="name"
+                                ></b-form-select>
+
+
+                                <span class="message-invalid" role="alert">
+                                    <strong></strong>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
 
 
 
 
+                    <div class="event_form-group">
+                        <div class="inner-icon stretch raw-text">
+
+                            <trumbowyg v-model="form.description" class="form-control" id="description" required></trumbowyg>
+
+                            <span class="message-invalid" role="alert">
+                            <strong></strong>
+                        </span>
+
+                        </div>
+                    </div>
 
 
+                    <div class="event_form-group">
 
-                    <b-button type="submit" variant="primary">Сохранить</b-button>
+                        <div class="centered-title">
+                            <div class="inner-icon">
+                                <div id="image" class="file-upload">
+                                    <button class="button-secondary" type="button" onclick="$('.file-upload-input').trigger( 'click' )"><span>Загрузить обложку*</span></button>
+
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' name="image"  v-on:change="readURL" accept="image/jpeg, image/png" />
+                                        <div class="drag-text">
+                                            <h3>Перенесите изображение чтобы загрузить</h3>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload-content">
+                                        <img class="file-upload-image" src="#" alt="your image" />
+                                        <div class="image-title-wrap">
+                                            <button type="button"  v-on:click="removeUpload" class="button-secondary"><span>Удалить&nbsp;</span> <span class="image-title"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <span class="message-invalid" role="alert">
+                                    <strong></strong>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="event_form-group event_form-map-group">
+                        <div class="centered-full">
+                            <div class="inner-icon">
+                                <p class="map-title">Отметьте место проведения на карте</p>
+                                <div class="map" id="map">
+                                </div>
+                                <input type="hidden" :value="form.location" name="location" id="event-location">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="event_form-group">
+                        <div class="centered">
+                            <button id="submit" class="button-account" role="button" type="submit">
+                        <span>
+                            Сохранить
+                        </span>
+                                <div class="loading-icon"></div>
+                            </button>
+                        </div>
+                    </div>
 
                 </b-form>
             </b-card-body>
@@ -184,10 +236,11 @@
                 form: {
                     id: '',
                     title: '',
-                    age: '',
-                    city_id: '',
-                    type_id: '',
+                    age: '14',
+                    city_id: '1',
+                    type_id: '1',
                     location: '',
+                    description: '',
                     image: '',
                     address: '',
                     date_start: '',
@@ -201,9 +254,53 @@
                 show: true
             }
         },
-
         mounted() {
+            var app = this;
 
+            axios.get('/api/v1/events/' + this.id + '/edit', { headers: {
+                    'Authorization': `Bearer ` + localStorage.getItem('access_token')
+                }})
+                .then(function (resp) {
+                    app.specialities = resp.data.specialities
+                    app.ages = resp.data.ages
+                    app.types = resp.data.types
+                    app.cities = resp.data.cities
+                    app.form = resp.data.data;
+
+                    var image = app.form.image;
+                    if(image !== '') {
+                        $('.image-upload-wrap').hide();
+
+                        $('.file-upload-image').attr('src', image);
+                        $('.file-upload-content').show();
+
+                        $('.image-title').html(app.basename(app.form.image));
+                    }
+
+                    app.$loadScript("/js/gmaps.js")
+                        .then(() => {
+                            app.$loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap")
+                                .then(() => {
+
+                                })
+                                .catch(() => {
+                                    // Failed to fetch script
+                                });
+                        })
+                        .catch(() => {
+                            // Failed to fetch script
+                        });
+                    var date = app.$moment(resp.data.data.date_start);
+                    var time = app.$moment(resp.data.data.date_start);
+                    app.form.date_start = date.format('DD/MM/YYYY');
+                    app.form.time_start = time.format('HH:mm');
+
+
+                })
+                .catch(function (resp) {
+
+                    alert("Could not load Events");
+                });
             $('.image-upload-wrap').bind('dragover', function () {
                 $('.image-upload-wrap').addClass('image-dropping');
             });
@@ -211,110 +308,41 @@
                 $('.image-upload-wrap').removeClass('image-dropping');
             });
 
-            let mapScript = document.createElement('script')
-            mapScript.async = true;
-            mapScript.defer = true;
-            mapScript.setAttribute('src', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap')
-            document.head.appendChild(mapScript)
 
 
 
-                $('.image-upload-wrap').hide();
 
-                $('.file-upload-content').show();
+
+
 
 
         },
         created() {
-            let mapInitScript = document.createElement('script')
-            mapInitScript.setAttribute('src', '/js/gmaps.js')
-            document.head.appendChild(mapInitScript)
 
-            var app = this;
-
-            axios.get('/api/v1/events/' + app.id + '/edit', { headers: {
-                    'Authorization': `Bearer ` + localStorage.getItem('access_token')
-                }})
-                .then(function (resp) {
-                    app.form = resp.data.data;
-                    app.ages = resp.data.ages
-                    app.types = resp.data.types
-                    app.cities = resp.data.cities
-                })
-                .catch(function (resp) {
-
-                    alert("Could not load Events");
-                });
-        },
-
-        computed: {
-            formattedStartDate: {
-                get: function () {
-                    var value = this.form.date_start;
-                    var formatted = this.$moment(value).format("DD/MM/YY");
-                    return formatted;
-                },
-
-                set(val) {
-                    this.form.date_start = val;
-                }
-            },
-
-            formattedStartTime: {
-                get: function () {
-                    var value = this.form.time_start;
-                    var formatted = this.$moment(value).format("hh:mm");
-                    return formatted;
-                },
-
-                set(val) {
-                    this.form.time_start = val;
-                }
-            },
-
-            filename: {
-                get: function () {
-                    return this.form.image.split(/[\\/]/).pop();
-                }
-            },
-
-            formattedFinishDate: {
-                get: function () {
-                    var value = this.form.date_finish;
-                    var formatted = this.$moment(value).format("DD/MM/YY");
-                    return formatted;
-                },
-
-                set(val) {
-                    this.form.date_finish = val;
-                }
-            },
-
-            formattedFinishTime: {
-                get: function () {
-                    var value = this.form.time_finish;
-                    var formatted = this.$moment(value).format("hh:mm");
-                    return formatted;
-                },
-
-                set(val) {
-                    this.form.time_finish = val;
-                }
-            }
         },
         methods: {
             save() {
                 var app = this;
                 var form_data = new FormData();
+                this.form.location = $('#event-location').val();
+                var img = $('.file-upload-input')[0];
+
+                if (!(img.files && img.files[0])) {
+                    this.form.image = '';
+                }
 
                 for ( var key in this.form ) {
                     form_data.append(key, this.form[key]);
                 }
-                var location = $('#event-location').val();
-                form_data.append('location', location);
-                console.log(location);
 
-                axios.patch('/api/v1/events/' + app.id, form_data , { headers: {
+
+                console.log('test');
+
+                form_data.append('_method', 'PATCH');
+
+
+
+                axios.post('/api/v1/events/' + app.id, form_data , { headers: {
                         'Authorization': `Bearer ` + localStorage.getItem('access_token'),
                         'Content-Type': 'multipart/form-data'
                     }})
@@ -325,7 +353,10 @@
                             text: 'Успешно сохранено',
                             buttons: [
                                 {
-                                    title: 'Закрыть'
+                                    title: 'Закрыть',
+                                    handler: () => {
+                                        app.$router.push({ name: 'eventIndex', params: { scope: 'unapproved' } })
+                                    },
                                 }
                             ]
                         })
@@ -343,38 +374,14 @@
                         })
                     });
             },
-
-            dateFormat(val) {
-                return this.$moment(val).format("DD/MM/YY");
-            },
-
-            timeFormat(val) {
-                return this.$moment(val).format("hh:mm");
-            },
-
             onSubmit(evt , id) {
                 evt.preventDefault()
+                this.save();
+            },
 
-                this.$modal.show('dialog', {
-                    title: 'Подтверждение',
-                    text: 'Действительно хотите сохранить данные?',
-                    buttons: [
-                        {
-                            title: 'Да',
-                            handler: () => {
-                                this.save();
-                                this.$modal.hide('dialog');
-                            },
-                            default: true,
-                        },
-                        {
-                            title: 'Нет',
-                        },
-                        {
-                            title: 'Отмена'
-                        }
-                    ]
-                })
+            basename(path, suffix) {
+                let p = path.split( /[\/\\]/ ), name = p[p.length-1];
+                return ('string'!=typeof suffix) ? name : name.replace(new RegExp(suffix.replace('.', '\\.')+'$'),'');
             },
 
             readURL() {
@@ -418,768 +425,608 @@
 
 <style lang="scss" scoped>
 
-    // Media queries
-    @mixin for-phone-only {
-        @media (max-width: 599px) { @content; }
-    }
-    @mixin for-tablet-portrait-up {
-        @media (min-width: 600px) { @content; }
-    }
-    @mixin for-tablet-landscape-up {
-        @media (min-width: 900px) { @content; }
-    }
-    @mixin for-desktop-up {
-        @media (min-width: 1024px) { @content; }
-    }
-
-
-    @mixin title ($font-size-sm, $font-size-md, $font-size-lg, $margin-bottom-sm, $margin-bottom-md, $margin-bottom-lg) {
-        text-align: center;
-        font-size: $font-size-sm;
-        font-family: $font-family-primary;
-        font-style: normal;
-        font-weight: 600;
-        color: $font-title-color;
-        margin-bottom: $margin-bottom-sm;
-
-        @include for-tablet-portrait-up {
-            font-size: $font-size-md;
-            margin-bottom: $margin-bottom-md;
-        }
-
-        @include for-desktop-up {
-            font-size: $font-size-lg;
-            margin-bottom: $margin-bottom-lg;
-        }
-    }
-
-    @mixin text-usual ($font-size, $font-color, $align) {
-        text-align: $align;
-        font-size: $font-size;
-        font-family: $font-family-primary;
-        font-weight: normal;
-        color: $font-color;
-        line-height: 150%;
-        font-size: $font-size;
-    }
-
-    @mixin button-text ($font-size, $font-color) {
-        font-size: $font-size;
-        font-family: $font-family-primary;
-        font-weight: 600;
-        color: $font-color;
-        line-height: 150%;
-        font-size: $font-size;
-    }
-
-    @mixin image-adaptive ($width, $height) {
-        width: $width;
-        height: $height;
-        display: flex;
-        margin: 0 auto;
-
-        .card-header-image {
-            margin: inherit;
-        }
-    }
-
-
     $white: #ffffff;
     $lightgray: #F5F5F5;
     $violet: #274684;
     $black: #000000;
-    $orange: #ffbe4d;
+    $orange: #F87633;
     $blue: #0074d9;
     $darkgray: #2C2C2C;
     $gray: #2F2F2F;
     $red: #FF0000;
+    $yellow: #ffbe4d;
 
-    $header-height: 70px;
-    $footer-height: 200px;
-
-    $whiteselect: #B0B0B0;
-
-    // Blocks dimensions
-
-    $min-width: 290px;
-    $min-breakpoint-width: 320px;
-    $max-width: 960px;
-    $font-family-primary: 'Open Sans', sans-serif;
-    $font-title-color: $darkgray;
-
-
-    // Home page section titles
-    $font-size-title-sm: 28px;
-    $font-size-title-md: 28px;
-    $font-size-title-lg: 42px;
-
-    $title-margin-sm: 30px;
-    $title-margin-md: 30px;
-    $title-margin-lg: 60px;
-
-    // Card titles
-
-    $font-size-title-card-sm: 20px;
-    $font-size-title-card-md: 20px;
-    $font-size-title-card-lg: 20px;
-
-    $title-margin-card-sm: 12px;
-    $title-margin-card-md: 12px;
-    $title-margin-card-lg: 12px;
-
-    //Top menu
-
-    $font-size-top-menu-sm: 14px;
-    $font-size-top-menu-md: 20px;
-    $font-size-top-menu-lg: 20px;
-
-
-    //Top menu slogan
-
-    $font-size-menu-slogan-sm: 40px;
-    $font-size-menu-slogan-md: 40px;
-    $font-size-menu-slogan-lg: 48px;
-
-    $font-size-margin-slogan-sm: 30px;
-    $font-size-margin-slogan-md: 30px;
-    $font-size-margin-slogan-lg: 60px;
     .card {
         max-width: 700px;
         margin: auto;
     }
 
-    .event {
+    .event_form {
 
-        &_card {
-            width: 200px;
-            height: 400px;
+        .tip {
 
-            background: $white;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-sizing: border-box;
+            font-weight: bold;
+        }
+
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+
+        &-date-group {
+
+
+            display: flex;
+
+
+
+
+
+            &.time-group {
+
+
+                margin-top: 0;
+                input {
+                    max-width: 75px;
+                    min-width: 75px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+
+                label {
+                    margin-left: 15px;
+                    padding-right: 5px;
+                }
+
+            }
+
+
+
+
+
+
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+
+            max-width: 385px;
+
+            align-items: center;
+
+
+            input {
+                max-width: 150px;
+                min-width: 140px;
+
+            }
+
+            label {
+                margin-left: 20px;
+                padding-right: 10px;
+            }
+        }
+
+
+
+
+        &-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             position: relative;
-            display: block;
-            overflow: hidden;
-            margin-bottom: 38px;
-            transition: box-shadow 0.1s ease-in;
+            width: 100%;
+            align-items: center;
 
-            margin-right: 5px;
-            margin-left: 5px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-
-            @include for-desktop-up() {
-                margin-right: 0px;
-                margin-left: 0px;
-                margin-top: 0px;
-                margin-bottom: 20px;
-            }
-
-
-            &-overlay {
-                filter: brightness(0.7);
-            }
-
-            &-wrapper {
+            .file-upload {
+                background-color: #ffffff;
+                width: 100%;
+                margin: 0 auto;
                 display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                justify-content: space-evenly;
-
-                @include for-desktop-up() {
-                    justify-content: space-between;
-                }
-
-                .pagination {
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-
-
-                align-items: flex-start;
-                width: 100%;
-            }
-
-            &:hover{
-                box-shadow: -1px 4px 12px 0px rgba(0,0,0,0.4);
-            }
-
-            &-header {
-                width: 100%;
-                height: 170px;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-
-                &-time {
-                    height: 50px;
-                    background: rgba(0, 0, 0, 0.6);
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    justify-content: center;
-
-                    .time-wrapper {
-
-                        position: relative;
-                        display: block;
-                        margin-right: 10px;
-                        @include text-usual(14px, $white, right);
-                        font-weight: bold;
-
-                        &:before {
-                            content: url("/images/small-calendar.svg");
-                            position: absolute;
-                            top: 3px;
-                            left: -25px;
-                            width: 16px;
-                            height: 16px;
-                        }
-                    }
-                }
-
-                &-image{
-                    width: 200px;
-                    height: 168px;
-                    background: transparent url(/images/loading.svg) no-repeat center center;
-                    background-size: 50% 50%;
-                }
-            }
-
-            &-title {
-                @include text-usual(18px, #2C2C2C, left);
-                font-weight: bold;
-                line-height: 130%;
-                padding: 5px 15px 0px;
-
-                max-height: 70px;
-                overflow: hidden;
-
-            }
-
-
-            &-description {
-                padding: 0px 15px 20px;
-                margin-top: 5px;
-                max-height: 90px;
-                overflow: hidden;
-                position: relative;
-
-                &:after{
-                    position: absolute;
-                    bottom: 0px;
-                    right: 0;
-                    left: 0;
-                    box-shadow: -5px -13px 17px 8px #fff;
-                    content: "";
-                    height: 0px;
-                }
-
-                p {
-                    @include text-usual(14px, #2F2F2F, left);
-                }
-
-                ul {
-                    list-style: none !important;
-                    padding-left: 10px !important;
-                    margin-bottom: 0px !important;
-                    li {
-                        @include text-usual(14px, #2F2F2F, left);
-                    }
-                }
-            }
-
-            &-location {
-                @include text-usual(14px, #2F2F2F, left);
-
-                position: relative;
-                padding-left: 35px;
-                margin-top: 8px;
-
-                &:before {
-                    width: 16px;
-                    height: 16px;
-                    position: absolute;
-                    top: 2px;
-                    left: 10px;
-                    content: url("/images/location-point.svg");
-                }
-            }
-
-            &-more {
-                @include text-usual(14px, $violet, left);
-                padding-left: 15px;
-            }
-        }
-
-
-
-        &_description {
-            &-wrapper {
-                max-width: 675px;
-                margin-left: auto;
-                margin-right: auto;
-                width: 100%;
-            }
-
-            &-title {
-                @include text-usual(32px, #121212, left);
-                font-weight: bold;
-                margin-bottom: 24px;
-                word-wrap: break-word;
-            }
-
-
-
-
-
-            &-text {
-                margin-top: 24px;
-                margin-bottom: 40px;
-                @include text-usual(14px, #212529, left);
-            }
-
-            &-map {
-                width: 100%;
-                height:300px;
-                background: url(/images/map-background.svg) center center no-repeat;
-                margin-bottom: 40px;
-            }
-
-            &-contacts-title {
-                @include text-usual(16px, #2C2C2C, left);
-                font-weight: bold;
-                margin-bottom: 12px;
-            }
-
-            &-footer {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-            }
-
-            &-date {
-                @include text-usual(14px, #B0B0B0, left);
-                font-style: italic;
-            }
-
-            &-abuse {
-                @include text-usual(14px, #B0B0B0, left);
-                padding-left: 25px;
-                position: relative;
-                display: block;
-
-                &:before {
-                    content: url(/images/flag-icon.png);
-                    width: 16px;
-                    height: 16px;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
-            }
-        }
-
-        &_form {
-
-            .tip {
-                @include text-usual(14px, $black, center);
-            }
-
-            .operation-result {
-                @include text-usual(14px, $violet, center);
-                display: none;
-                margin-top: -20px;
-
-                &.show {
-                    display: block;
-                }
-            }
-
-            .remove-account-link {
-                @include text-usual(16px, $violet, center);
-                cursor: pointer;
-                margin-top: 30px;
-
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-
-            &-title {
-                @include text-usual(20px, $black, center);
-                margin-top: 35px;
-                margin-bottom: 25px;
-            }
-
-            width: 290px;
-
-            @include for-tablet-portrait-up() {
-                width: 100%;
-            }
-
-            margin: 0 auto;
-            margin-top: 20px;
-
-            &-date-group {
-                margin-right: 25px;
                 flex-direction: column;
-                display: flex;
-                flex-wrap: nowrap;
+                align-items: center;
+            }
 
-                @include for-desktop-up() {
+            .file-upload-btn {
+                width: 100%;
+                margin: 0;
+                color: #fff;
+                background: #1FB264;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                border-bottom: 4px solid #15824B;
+                transition: all .2s ease;
+                outline: none;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .file-upload-btn:hover {
+                background: $violet;
+                color: #ffffff;
+                transition: all .2s ease;
+                cursor: pointer;
+            }
+
+            .file-upload-btn:active {
+                border: 0;
+                transition: all .2s ease;
+            }
+
+            .file-upload-content {
+                display: none;
+                text-align: center;
+            }
+
+            .file-upload-input {
+                position: absolute;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                outline: none;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .image-upload-wrap {
+                margin-top: 20px;
+                border: 4px dashed $violet;
+                position: relative;
+                width: 100%;
+            }
+
+            .image-dropping,
+            .image-upload-wrap:hover {
+                background-color: lightgray;
+                border: 4px dashed #ffffff;
+            }
+
+            .image-title-wrap {
+                padding: 0 15px 15px 15px;
+                color: #222;
+            }
+
+            .drag-text {
+                text-align: center;
+            }
+
+            .drag-text h3 {
+                font-weight: 100;
+                text-transform: uppercase;
+                font-size: 16px;
+                text-align: center;
+                color: $violet;
+                padding: 60px 0;
+            }
+
+            .file-upload-image {
+                max-height: 200px;
+                max-width: 200px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            .remove-image {
+                width: 200px;
+                margin: 0;
+                color: #fff;
+                background: #cd4535;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                border-bottom: 4px solid #b02818;
+                transition: all .2s ease;
+                outline: none;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .remove-image:hover {
+                background: #c13b2a;
+                color: #ffffff;
+                transition: all .2s ease;
+                cursor: pointer;
+            }
+
+            .remove-image:active {
+                border: 0;
+                transition: all .2s ease;
+            }
+
+            .map {
+                width: 100%;
+                height: 350px;
+            }
+
+
+            &.event_form-map-group {
+                justify-content: center;
+                flex-direction: column;
+                .map-title {
+                    font-size: 18px;
+                    color: $black;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+            }
+
+
+            &.date-group {
+
+
+
+                flex-direction: row;
+
+
+
+
+                .inner-icon {
+                    display: flex;
                     flex-direction: row;
-                    flex-wrap: nowrap;
-                    justify-content: space-between;
-                    min-width: 385px;
-                    max-width: 385px;
-                    margin-left: 30px;
-                    margin-right: 25px;
-                    align-items: center;
+
+
+                    justify-content: flex-start;
+                }
+            }
+
+
+            margin-bottom: 24px;
+
+            .right-aligned {
+                width: auto;
+                min-width: 290px;
+                max-width: 510px;
+            }
+
+
+
+            .left-aligned {
+
+                width: 180px;
+
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            .centered-full {
+                width: 100%;
+                max-width: 100%;
+                display: flex;
+                justify-content: center;
+
+                .inner-icon {
+                    width: 100%;
+                    max-width: 100%;
+
                 }
             }
 
 
 
-            &-group {
+            .inline-group {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 width: 100%;
                 position: relative;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 24px;
 
 
-                .file-upload {
-                    background-color: #ffffff;
-                    width: 600px;
-                    margin: 0 auto;
-                    padding: 20px;
-                }
 
-                .file-upload-btn {
-                    width: 100%;
+                input {
+                    margin-bottom: 10px;
+
+                    min-width: 150px;
                     margin: 0;
-                    color: #fff;
-                    background: #1FB264;
-                    border: none;
-                    padding: 10px;
-                    border-radius: 4px;
-                    border-bottom: 4px solid #15824B;
-                    transition: all .2s ease;
-                    outline: none;
-                    text-transform: uppercase;
-                    font-weight: 700;
+
                 }
 
-                .file-upload-btn:hover {
-                    background: #1AA059;
-                    color: #ffffff;
-                    transition: all .2s ease;
-                    cursor: pointer;
+                .select2 {
+
+                    min-width: 100px;
+                    margin-right: 0;
+
                 }
 
-                .file-upload-btn:active {
-                    border: 0;
-                    transition: all .2s ease;
-                }
 
-                .file-upload-content {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                width: 290px;
+
+
+            }
+
+            &.description {
+                align-items: flex-end;
+
+                .left-aligned {
                     display: none;
-                    text-align: center;
                 }
 
-                .file-upload-input {
-                    position: absolute;
-                    margin: 0;
-                    padding: 0;
-                    width: 100%;
-                    height: 100%;
+                .inner-icon {
+                    max-width: 575px;
+                }
+
+
+
+                .right-aligned {
+                    max-width: 290px;
+
+
+                    max-width: 700px;
+
+
+                }
+
+
+                flex-direction: column;
+
+
+
+                .trumbowyg-box {
+                    max-width: 100%;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+
+            }
+
+            .button-secondary {
+                margin-left: 0;
+                margin-right: 0;
+                width: 290px;
+            }
+
+            .button-account {
+                margin-left: 0;
+                margin-right: 0;
+                width: 290px;
+                margin-top: 50px
+            }
+
+            .message-invalid {
+
+                position: absolute;
+                bottom: -20px;
+                left: 0px;
+
+            }
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+
+            &-label {
+
+                padding-right: 20px;
+
+
+
+                padding-top: 0px;
+                padding-bottom: 0px;
+                line-height: 120%;
+
+            }
+
+            &-input {
+                height: 42px;
+                width: 100%;
+                width: 290px;
+                background: #FFFFFF;
+                border: 1px solid #E8ECEE;
+                box-sizing: border-box;
+                border-radius: 0px;
+
+
+
+
+                padding: 3px 20px;
+
+                &:focus {
                     outline: none;
-                    opacity: 0;
-                    cursor: pointer;
                 }
 
-                .image-upload-wrap {
-                    margin-top: 20px;
-                    border: 4px dashed #1FB264;
-                    position: relative;
-                }
-
-                .image-dropping,
-                .image-upload-wrap:hover {
-                    background-color: #1FB264;
-                    border: 4px dashed #ffffff;
-                }
-
-                .image-title-wrap {
-                    padding: 0 15px 15px 15px;
-                    color: #222;
-                }
-
-                .drag-text {
-                    text-align: center;
-                }
-
-                .drag-text h3 {
-                    font-weight: 100;
-                    text-transform: uppercase;
-                    color: #15824B;
-                    padding: 60px 0;
-                }
-
-                .file-upload-image {
-                    max-height: 200px;
-                    max-width: 200px;
-                    margin: auto;
-                    padding: 20px;
-                }
-
-                .remove-image {
-                    width: 200px;
-                    margin: 0;
-                    color: #fff;
-                    background: #cd4535;
-                    border: none;
-                    padding: 10px;
-                    border-radius: 4px;
-                    border-bottom: 4px solid #b02818;
-                    transition: all .2s ease;
-                    outline: none;
-                    text-transform: uppercase;
-                    font-weight: 700;
-                }
-
-                .remove-image:hover {
-                    background: #c13b2a;
-                    color: #ffffff;
-                    transition: all .2s ease;
-                    cursor: pointer;
-                }
-
-                .remove-image:active {
-                    border: 0;
-                    transition: all .2s ease;
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                .map {
-                    width: 100%;
-                    height: 350px;
-                }
-
-
-                &.event_form-map-group {
-                    justify-content: center;
-                    flex-direction: column;
-                    .map-title {
-                        @include text-usual(18px, $black, center);
-                        margin-bottom: 20px;
-                    }
-                }
-
-
-
-                .inline-group {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    width: 100%;
-                    position: relative;
-
-
-
-                    input {
-                        margin-bottom: 10px;
-                        @include for-desktop-up() {
-                            min-width: 100px;
-                            margin: 0;
-                        }
-                    }
-
-                    .select2 {
-                        @include for-desktop-up() {
-                            min-width: 200px;
-                            margin-right: 0;
-                        }
-                    }
-
-                    @include for-desktop-up() {
-                        flex-direction: row;
-                        flex-wrap: nowrap;
-                        justify-content: space-between;
-                        min-width: 385px;
-                        max-width: 385px;
-                        margin-left: 30px;
-                        margin-right: 25px;
-                    }
+                &::placeholder {
 
                 }
 
-                &.description {
-                    @include for-desktop-up() {
-                        flex-direction: column;
-                        align-items: start;
-                        padding-right: 25px;
-                        .trumbowyg-box {
-                            max-width: 100%;
-                            margin-left: 0;
-                            margin-right: 0;
-                        }
-                    }
-                }
-
-                .message-invalid {
-                    @include text-usual(12px, $red, left);
-                    position: absolute;
-                    bottom: -20px;
-                    left: 0px;
-
-                    @include for-tablet-portrait-up() {
-                        bottom: -20px;
-                        left: 160px;
-                    }
-                }
-
-                &:last-child {
-                    margin-bottom: 0px;
-                }
-
-                @include for-tablet-portrait-up() {
-                    flex-direction: row;
-                    justify-content: flex-end;
-                    width: 570px;
-                    align-items: center;
-                }
-
-                &-label {
-                    @include  text-usual(14px, $black, left);
-                    padding-top: 7px;
-                    padding-bottom: 7px;
-
-
-                    @include for-tablet-portrait-up() {
-                        @include  text-usual(16px, $black, right);
-                        padding-top: 0px;
-                        padding-bottom: 0px;
-                        line-height: 120%;
-                    }
-                }
-
-                &-input {
-                    height: 42px;
-                    width: 100%;
-                    max-width: 385px;
-                    background: #FFFFFF;
-                    border: 1px solid #E8ECEE;
-                    box-sizing: border-box;
-                    border-radius: 0px;
-
-
-                    &.datePicker {
-                        margin-left: 0;
-                        width: 160px;
-                        min-width: 160px;
-                    }
-
-                    &.timePicker {
-                        margin-right: 0;
-                        width: 125px;
-                        min-width: 125px;
-                    }
-
-                    @include text-usual(16px, $black, left);
-                    padding: 3px 20px;
-
-                    @include for-tablet-portrait-up() {
-                        margin-left: 15px;
-                        margin-right: 25px;
-                        min-width: 385px;
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-
-                    &::placeholder {
-                        @include text-usual(16px, #cccccc, left);
-                    }
-
-                    &.textarea {
-                        height: 200px;
-                    }
-                }
-
-                &-select ~ span{
-                    height: 42px;
-                    width: 100%;
-                    max-width: 385px;
-                    background: #FFFFFF;
-                    border: 1px solid #E8ECEE;
-                    box-sizing: border-box;
-                    border-radius: 0px;
-                    display: flex;
-                    align-items: center;
-
-                    @include text-usual(18px, $black, left);
-                    padding: 3px 20px;
-
-                    @include for-tablet-portrait-up() {
-                        margin-left: 30px;
-                        margin-right: 25px;
-                        min-width: 385px;
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-
-                .show-password {
-                    position: absolute;
-                    width: 20px;
-                    height: 20px;
-                    cursor: pointer;
-
-                    right: 10px;
-                    top: 45px;
-
-                    @include for-tablet-portrait-up() {
-                        right: 35px;
-                        top: 12px;
-                    }
-
-                    background: url(/images/show-password-icon.svg);
+                &.textarea {
+                    height: 200px;
                 }
             }
+
+
+
+            &-select ~ span{
+                height: 42px;
+                width: 290px;
+                background: #FFFFFF;
+                border: 1px solid #E8ECEE;
+                box-sizing: border-box;
+                border-radius: 0px;
+                display: flex;
+                align-items: center;
+
+
+                padding: 3px 20px;
+
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .inner-icon {
+                position: relative;
+                max-width: 290px;
+            }
+
+            .stretch {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .centered {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .centered-title {
+                width: 100%;
+                max-width: 470px;
+                display: flex;
+                justify-content: center;
+
+                .inner-icon {
+                    max-width: 290px;
+                    width: 100%;
+
+
+                    max-width: 100%;
+
+                }
+            }
+
+            .title-input {
+                border: none;
+                font-weight: bold;
+                font-size: 20px;
+                text-align: left;
+                width: 100%;
+                padding-right: 0;
+                &::placeholder {
+                    font-weight: bold;
+                    font-size: 20px;
+                    text-align: center;
+                }
+                padding-left: 0px;
+            }
+
         }
+    }
+
+    .button {
+
+        width: 100%;
+        max-width: 362px;
+        height: auto;
+        min-height: 48px;
+        border-radius: 4px;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        padding-right: 34px;
+        padding-left: 34px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        transition-duration: 0.2s;
+        transition-property: background-color;
+        box-sizing: border-box;
+        width: 100%;
+
+
+        &:focus {
+            outline: none;
+        }
+
+
+        &:disabled {
+            background: #c0c0c0;
+            cursor: unset;
+
+            &:hover {
+
+            }
+        }
+
+        &.loading {
+            cursor: unset;
+            background: #c0c0c0;
+            transform: unset;
+            opacity: 0.7;
+
+            padding-top: 0;
+            padding-bottom: 0;
+
+
+            span {
+                display: none;
+            }
+
+            .loading-icon {
+                background: url(/images/loading-button.svg) center center no-repeat;
+                display: block;
+                margin: auto;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .loading-icon {
+            display: none;
+        }
+
+
+        span {
+            display: block;
+            margin: auto;
+            font-size: 16px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+
+        &-primary {
+            @extend .button;
+
+            color: $white;
+            background: $orange;
+            &:hover {
+                //background-color: #eca72f;
+            }
+        }
+
+        &-secondary {
+            @extend .button;
+            color: $white;
+            background: $violet;
+        }
+
+        &-account {
+            @extend .button;
+            color: $white;
+            background: $orange;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        &-info {
+            @extend .button;
+            color: $white;
+            background: #3DA1DA;
+            width: 260px;
+            height: 48px;
+            span {
+                font-size: 14px;
+            }
+
+            margin-left: 0;
+
+            margin-bottom: 70px;
+            margin-top: 32px;
+
+        }
+
     }
 
 </style>
