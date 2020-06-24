@@ -157,11 +157,9 @@
                     <div class="job_form-group">
                         <div class="inner-icon stretch raw-text">
 
-                            <trumbowyg v-model="form.description" class="form-control" id="description" required></trumbowyg>
-
-                            <span class="message-invalid" role="alert">
-                            <strong></strong>
-                        </span>
+                            <div class="inner-icon stretch raw-text">
+                                <textarea id="description" name="description" ref="editor" type="text" class="job_form-group-input textarea raw-text"  placeholder="Введите описание">{{ this.form.description }}</textarea>
+                            </div>
 
                         </div>
                     </div>
@@ -315,6 +313,34 @@
                     app.workTimeTypes = resp.data.workTimeTypes
                     app.salaryTypes = resp.data.salaryTypes
                     app.cities = resp.data.cities
+
+
+
+                    const options = {
+                        placeholder: 'Введите описание',
+                        tabsize: 2,
+                        height: 300,
+                        maxWidth: 543,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    };
+
+                    options.callbacks = {
+                        onChange: function(contents, $editable) {
+                            app.form.description = contents;
+                        }
+                    };
+
+                    $('#description').summernote(options);
+
+                    $('#description').summernote('code', app.form.description);
                 })
                 .catch(function (resp) {
 

@@ -119,7 +119,7 @@ class InternshipApi extends Controller
         $salaryTypes = SalaryType::all();
         $workTimeTypes = WorkTimeType::all();
         $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
-        $organisation = JobModel::findorFail($id);
+        $organisation = Offer::findorFail($id);
         $ages = collect([
             (object)[
                 'id' => 14,

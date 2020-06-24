@@ -138,15 +138,12 @@
 
                     <div class="event_form-group">
                         <div class="inner-icon stretch raw-text">
-
-                            <trumbowyg v-model="form.description" class="form-control" id="description" required></trumbowyg>
-
-                            <span class="message-invalid" role="alert">
-                            <strong></strong>
-                        </span>
-
+                            <textarea id="description" name="description" ref="editor" type="text" class="event_form-group-input textarea raw-text"  placeholder="Введите описание">{{ this.form.description }}</textarea>
                         </div>
                     </div>
+
+
+
 
 
                     <div class="event_form-group">
@@ -223,6 +220,8 @@
     // Import editor css
     import 'trumbowyg/dist/ui/trumbowyg.css';
 
+
+
     export default {
         name: "EventCreate",
 
@@ -257,6 +256,8 @@
         mounted() {
             var app = this;
 
+
+
             axios.get('/api/v1/events/' + this.id + '/edit', { headers: {
                     'Authorization': `Bearer ` + localStorage.getItem('access_token')
                 }})
@@ -277,6 +278,40 @@
                         $('.image-title').html(app.basename(app.form.image));
                     }
 
+
+
+
+
+                    const options = {
+                        placeholder: 'Введите описание',
+                        tabsize: 2,
+                        height: 300,
+                        maxWidth: 543,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    };
+
+                    options.callbacks = {
+                        onChange: function(contents, $editable) {
+                            app.form.description = contents;
+                        }
+                    };
+
+                    $('#description').summernote(options);
+
+                    $('#description').summernote('code', app.form.description);
+
+
+
+
+
                     app.$loadScript("/js/gmaps.js")
                         .then(() => {
                             app.$loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBk-L7v6RJ1QVUtF48zHH8_eY7VWUvtluQ&callback=initMap")
@@ -290,17 +325,14 @@
                         .catch(() => {
                             // Failed to fetch script
                         });
-                    var date = app.$moment(resp.data.data.date_start);
-                    var time = app.$moment(resp.data.data.date_start);
+                    var date = app.$moment(resp.data.data.date_start, "YYYY/MM/DD")
+                    var time = app.$moment(resp.data.data.date_start, 'HH:mm');
                     app.form.date_start = date.format('DD/MM/YYYY');
                     app.form.time_start = time.format('HH:mm');
 
 
                 })
-                .catch(function (resp) {
 
-                    alert("Could not load Events");
-                });
             $('.image-upload-wrap').bind('dragover', function () {
                 $('.image-upload-wrap').addClass('image-dropping');
             });
