@@ -226,7 +226,6 @@ class Internship extends Controller
             'description' => ['required'],
             'contactPerson' => ['required'],
             'phone' => ['required'],
-            'email' => ['required', 'email'],
         ]);
 
         if ($validator->fails()) {
@@ -336,7 +335,6 @@ class Internship extends Controller
             'description' => ['required'],
             'contactPerson' => ['required'],
             'phone' => ['required'],
-            'email' => ['required', 'email'],
         ]);
 
         if ($validator->fails()) {

@@ -397,7 +397,7 @@
                         <label for="email" class="volunteering_form-group-label">@lang('content.volunteering.create.email')</label>
                     </div>
                     <div class="right-aligned">
-                        <input id="email" type="email" name="email" placeholder="@lang('content.volunteering.create.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email"  name="email" placeholder="@lang('content.volunteering.create.email')" class="volunteering_form-group-input @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                         @error('email')
                         <span class="message-invalid" role="alert">

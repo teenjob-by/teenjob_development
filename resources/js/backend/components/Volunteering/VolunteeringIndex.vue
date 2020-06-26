@@ -100,7 +100,7 @@
 
 
 
-                if((this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived')) {
+                if((this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived') || (this.scope == 'outdated')) {
                     this.actions.unshift(
                         {
                             text: '<i class="fa fa-ban" aria-hidden="true"></i>', color: "info", action: (row, index) => {
@@ -110,7 +110,7 @@
                     )
                 }
 
-                if((this.scope == 'banned') || (this.scope == 'published') || (this.scope == 'unapproved')) {
+                if((this.scope == 'banned') || (this.scope == 'published') || (this.scope == 'unapproved') || (this.scope == 'outdated')) {
                     this.actions.unshift(
                         {
                             text: '<i class="fa fa-archive" aria-hidden="true"></i>', color: "info", action: (row, index) => {
@@ -121,7 +121,7 @@
                 }
 
 
-                if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived')) {
+                if(this.scope == 'banned' || (this.scope == 'unapproved') || (this.scope == 'admin') || (this.scope == 'archived') || (this.scope == 'outdated')) {
 
                     this.actions.unshift( {
                         text: '<i class="fa fa-globe" aria-hidden="true"></i>', color: "approve", action: (row, index) => {

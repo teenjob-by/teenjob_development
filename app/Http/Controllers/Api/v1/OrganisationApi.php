@@ -115,6 +115,7 @@ class OrganisationApi extends Controller
         $validator = Validator::make($request->all(), [
             'phone' => ['required'],
             'request' => ['required'],
+            'password' => ['required'],
         ]);
 
         if ($validator->fails()) {
@@ -123,6 +124,7 @@ class OrganisationApi extends Controller
 
         $organisations = OrganisationModel::findorFail($request->input('id'));
         $organisations->name = $request->input('name');
+        $organisations->city_id = $request->input('city_id');
         $organisations->link = $request->input('link');
         $organisations->unique_identifier = $request->input('unique_identifier');
         $organisations->contact = $request->input('contact');
@@ -130,6 +132,7 @@ class OrganisationApi extends Controller
         $organisations->phone = $request->input('phone');
         $organisations->alt_phone = $request->input('alt_phone');
         $organisations->type = $request->input('type');
+        $organisations->password =  Hash::make($request->input('password'));
         $organisations->save();
         return response()->json(["message" => "Информация сохранена"], 201);
     }
@@ -141,6 +144,36 @@ class OrganisationApi extends Controller
         return response()->json([ "types" => $types, "cities" => $cities], 200);
     }
 
+    public function store(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'phone' => ['required'],
+            'request' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->messages(), 200);
+        }
+
+        OrganisationModel::create([
+            'name' => $request->input('name'),
+            'link' => $request->input('link'),
+            'city_id' => $request->input('city_id'),
+            'type' => $request->input('type'),
+            'unique_identifier' => $request->input('unique_identifier'),
+            'contact' => $request->input('contactPerson'),
+            'phone' =>$request->input('phone'),
+            'email' => $request->input('email'),
+            'alt_phone' =>$request->input('alt_phone'),
+            'alt_email' => $request->input('alt_email'),
+            'password' => Hash::make($request->input('password')),
+            'role' => 1,
+        ]);
+
+        return response()->json(["message" => "Информация сохранена"], 201);
+    }
 
     public function destroy($id)
     {

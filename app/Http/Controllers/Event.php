@@ -35,7 +35,7 @@ class Event extends Controller
 
         $sort_direction = 'asc';
 
-        $data = EventModel::whereIn('status', [1,2])
+        $data = EventModel::whereIn('status', [1, 5])
 
             ->when($request->has('city'),function ($query) use ($request) {
                 if($request->input('city') !== "120") {

@@ -74,6 +74,9 @@ class JobApi extends Controller
                 case 'banned':
                     $jobs = JobModel::where('offer_type', 2)->where('status', 3)->with('city')->with('organisation')->get();
                     break;
+                case 'outdated':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 5)->with('city')->with('organisation')->get();
+                    break;
             }
 
             return response()->json([ "data" => $jobs ], 200);
@@ -85,6 +88,7 @@ class JobApi extends Controller
             "published" => [],
             "pending" => [],
             "archived" => [],
+            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -97,6 +101,9 @@ class JobApi extends Controller
                     break;
                 case 2:
                     array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['outdated'], $item);
                     break;
             }
         }
@@ -143,7 +150,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
@@ -210,7 +216,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
             'salary' => ['integer'],
             'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']

@@ -1,3 +1,21 @@
 .btn-danger {
   color: #000;
 }
+
+.custom-select {
+  border-radius: 0px;
+  height: 42px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@font-face{font-family:"summernote";font-style:normal;font-weight:400;font-display:auto;src:url(/fonts/summernote.eot);src:url(/fonts/summernote.eot?#iefix) format("embedded-opentype"),url(/fonts/summernote.woff2) format("woff2"),url(/fonts/summernote.woff) format("woff"),url(/fonts/summernote.ttf) format("truetype")}

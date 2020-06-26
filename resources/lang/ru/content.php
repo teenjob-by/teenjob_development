@@ -711,6 +711,7 @@ return [
             'archiveTitle' => 'В архиве',
             'unarchive' => 'Разархивировать',
             'notFoundArchive' => 'Архив стажировок пуст',
+            'outdated' => 'Прошедшие',
         ],
         'job' => [
             'title' => 'Вакансии',
@@ -725,6 +726,7 @@ return [
             'archiveTitle' => 'В архиве',
             'unarchive' => 'Разархивировать',
             'notFoundArchive' => 'Архив вакансий пуст',
+            'outdated' => 'Прошедшие',
         ],
         'volunteering' => [
             'title' => 'Волонтерство',
@@ -740,6 +742,7 @@ return [
             'archiveTitle' => 'В архиве',
             'unarchive' => 'Разархивировать',
             'notFoundArchive' => 'Архив объявлений пуст',
+            'outdated' => 'Прошедшие',
         ],
 
         'event' => [
@@ -754,6 +757,7 @@ return [
             'archiveTitle' => 'В архиве',
             'unarchive' => 'Разархивировать',
             'notFoundArchive' => 'Архив событий пуст',
+            'outdated' => 'Прошедшие',
         ],
         'modal' => [
             'send' => [
