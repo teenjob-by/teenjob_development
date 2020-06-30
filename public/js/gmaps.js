@@ -4,8 +4,8 @@ function initMap() {
 
 
 
-    if($('#event-location').val()) {
-
+    if($('#event-location').val() && ($('#event-location').val() !== '0')) {
+        console.log($('#event-location').val())
         var loc = $('#event-location').val().replace('(', '')
         loc = loc.replace(')', '')
 
