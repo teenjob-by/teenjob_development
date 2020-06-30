@@ -47,9 +47,9 @@ class Organisation extends Controller
         $events = Event::where('organisation_id', Auth::id())->orderBy('created_at', 'desc')->get();
 
         $data = array(
-            'job' => $this->sortItems($jobs),
-            'internship' => $this->sortItems($internships),
-            'volunteering' => $this->sortItems($volunteerings),
+            'job' => $this->sortOffers($jobs),
+            'internship' => $this->sortOffers($internships),
+            'volunteering' => $this->sortOffers($volunteerings),
             'event' => $this->sortEvents($events),
         );
 
