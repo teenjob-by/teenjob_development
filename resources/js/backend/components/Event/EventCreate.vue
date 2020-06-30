@@ -8,7 +8,7 @@
                     <div class="event_form-group">
                         <div class="centered-title">
                             <div class="inner-icon">
-                                <input id="title-input" required type="text" class="event_form-group-input title-input" name="title" placeholder="Название (офиц.)*" autofocus v-model="form.title">
+                                <input id="title-input" required type="text" class="event_form-group-input title-input" name="title" placeholder="Название" autofocus v-model="form.title">
 
 
                                 <span class="message-invalid" role="alert">
@@ -21,7 +21,7 @@
 
                     <div class="event_form-group">
                         <div class="left-aligned">
-                            <label for="city-input" class="event_form-group-label">Город (гл. офис)*:</label>
+                            <label for="city-input" class="event_form-group-label">Город :</label>
                         </div>
                         <div class="right-aligned">
                             <div class="inner-icon">
@@ -98,7 +98,7 @@
                                     v-model="form.address"
                                     type="text"
                                     required
-                                    placeholder="Название (офиц.)*"
+                                    placeholder="Название"
                                     class="event_form-group-input"
                             >
 

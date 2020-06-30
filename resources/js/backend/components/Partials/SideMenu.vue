@@ -46,12 +46,6 @@
                     В архиве
                 </router-link>
             </li>
-
-            <li class="side-menu-link">
-                <router-link :to="{ name: 'jobIndex', params: { scope: 'outdated'} }">
-                    Прошедшие
-                </router-link>
-            </li>
         </ul>
 
         <p class="side-menu-header">Волонтерство</p>
@@ -76,12 +70,6 @@
                     В архиве
                 </router-link>
             </li>
-
-            <li class="side-menu-link">
-                <router-link :to="{ name: 'volunteeringIndex', params: { scope: 'outdated'} }">
-                    Прошедшие
-                </router-link>
-            </li>
         </ul>
 
         <p class="side-menu-header">Стажировки</p>
@@ -104,11 +92,6 @@
             <li  class="side-menu-link">
                 <router-link :to="{ name: 'internshipIndex', params: { scope: 'archived'} }">
                     В архиве
-                </router-link>
-            </li>
-            <li class="side-menu-link">
-                <router-link :to="{ name: 'internshipIndex', params: { scope: 'outdated'} }">
-                    Прошедшие
                 </router-link>
             </li>
         </ul>

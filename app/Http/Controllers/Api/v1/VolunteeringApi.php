@@ -89,7 +89,6 @@ class VolunteeringApi extends Controller
             "published" => [],
             "pending" => [],
             "archived" => [],
-            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -104,7 +103,7 @@ class VolunteeringApi extends Controller
                     array_push($sorted['archived'], $item);
                     break;
                 case 5:
-                    array_push($sorted['outdated'], $item);
+                    array_push($sorted['archived'], $item);
                     break;
             }
         }

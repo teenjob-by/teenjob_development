@@ -50,13 +50,13 @@ class Organisation extends Controller
             'job' => $this->sortItems($jobs),
             'internship' => $this->sortItems($internships),
             'volunteering' => $this->sortItems($volunteerings),
-            'event' => $this->sortItems($events),
+            'event' => $this->sortEvents($events),
         );
 
         return view('frontend.organisation')->with('data', $data)->with('organisation', $organisation);
     }
 
-    public function sortItems ($collection){
+    public function sortEvents ($collection){
         $sorted = array(
             "published" => [],
             "pending" => [],
@@ -77,6 +77,34 @@ class Organisation extends Controller
                     break;
                 case 5:
                     array_push($sorted['outdated'], $item);
+                    break;
+            }
+        }
+
+        return $sorted;
+    }
+
+    public function sortOffers ($collection){
+        $sorted = array(
+            "published" => [],
+            "pending" => [],
+            "archived" => [],
+
+        );
+
+        foreach ($collection as $item) {
+            switch ($item->status) {
+                case 0:
+                    array_push($sorted['pending'], $item);
+                    break;
+                case 1:
+                    array_push($sorted['published'], $item);
+                    break;
+                case 2:
+                    array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['archived'], $item);
                     break;
             }
         }

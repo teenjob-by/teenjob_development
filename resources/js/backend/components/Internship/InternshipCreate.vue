@@ -8,7 +8,7 @@
                     <div class="internship_form-group">
                         <div class="centered-title">
                             <div class="inner-icon">
-                                <input id="title-input" required type="text" class="internship_form-group-input title-input" name="title" placeholder="Название (офиц.)*" autofocus v-model="form.title">
+                                <input id="title-input" required type="text" class="internship_form-group-input title-input" name="title" placeholder="Название" autofocus v-model="form.title">
 
 
                                 <span class="message-invalid" role="alert">
@@ -21,7 +21,7 @@
 
                     <div class="internship_form-group">
                         <div class="left-aligned">
-                            <label for="city-input" class="internship_form-group-label">Город (гл. офис)*:</label>
+                            <label for="city-input" class="internship_form-group-label">Город :</label>
                         </div>
                         <div class="right-aligned">
                             <div class="inner-icon">
@@ -85,6 +85,7 @@
                                 ></b-form-select>
 
 
+
                                 <span class="message-invalid" role="alert">
                                     <strong></strong>
                                 </span>
@@ -144,7 +145,7 @@
                             <label for="contactPerson-input" class="internship_form-group-label">Контактное лицо*:</label>
                         </div>
                         <div class="right-aligned">
-                            <input id="contactPerson-input" type="text" name="contactPerson" placeholder="Контактное лицо" class="internship_form-group-input " v-model="form.contact" required autocomplete="contactPerson" autofocus>
+                            <input id="contactPerson-input" type="text" name="contactPerson" placeholder="Контактное лицо" class="internship_form-group-input " v-model="form.contact" autocomplete="contactPerson" autofocus>
 
 
                             <span class="message-invalid" role="alert">
@@ -160,7 +161,24 @@
                             <label for="phone-input" class="internship_form-group-label">Телефон*:</label>
                         </div>
                         <div class="right-aligned">
-                            <input id="phone-input" type="text" name="phone" placeholder="Телефон" class="internship_form-group-input " v-model="form.phone" required autocomplete="phone" autofocus>
+                            <input id="phone-input" type="text" name="phone" placeholder="Телефон" class="internship_form-group-input " v-model="form.phone" autocomplete="phone" autofocus>
+
+
+                            <span class="message-invalid" role="alert">
+                                <strong></strong>
+                            </span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="internship_form-group">
+                        <div class="left-aligned">
+                            <label for="email-input" class="internship_form-group-label">Email*:</label>
+                        </div>
+                        <div class="right-aligned">
+                            <input id="email-input" type="text" name="email" placeholder="Email*:" class="internship_form-group-input " v-model="form.email" autocomplete="email" autofocus>
 
 
                             <span class="message-invalid" role="alert">
@@ -175,22 +193,7 @@
                             <label for="alt_phone-input" class="internship_form-group-label">Дополнительный тел.:</label>
                         </div>
                         <div class="right-aligned">
-                            <input id="alt_phone-input" type="text" name="alt_phone" placeholder="Дополнительный тел." class="internship_form-group-input " v-model="form.alt_phone" required autocomplete="alt_phone" autofocus>
-
-
-                            <span class="message-invalid" role="alert">
-                                <strong></strong>
-                            </span>
-
-                        </div>
-                    </div>
-
-                    <div class="internship_form-group">
-                        <div class="left-aligned">
-                            <label for="email-input" class="internship_form-group-label">Email*:</label>
-                        </div>
-                        <div class="right-aligned">
-                            <input id="email-input" type="text" name="email" placeholder="Email*:" class="internship_form-group-input " v-model="form.email" required autocomplete="email" autofocus>
+                            <input id="alt_phone-input" type="text" name="alt_phone"  class="internship_form-group-input " v-model="form.alt_phone" autocomplete="alt_phone" autofocus>
 
 
                             <span class="message-invalid" role="alert">

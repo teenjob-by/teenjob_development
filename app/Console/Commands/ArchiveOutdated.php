@@ -46,7 +46,7 @@ class ArchiveOutdated extends Command
         foreach ($offers as $offer)
         {
             if((Date::now() > $offer->getTimeBeforeArchiving()) || ($offer->status == 1)) {
-                $offer->status = 5;
+                $offer->status = 2;
                 $offer->save();
             }
         }

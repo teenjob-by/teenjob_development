@@ -48,6 +48,8 @@
       white-space: nowrap;
 
       @include text-usual(16px, #2F2F2F, left );
+
+      line-height: 200%;
     }
 
     &-organisation {

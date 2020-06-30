@@ -8,7 +8,7 @@
 
                     <div class="organisation_form-group">
                         <div class="left-aligned">
-                            <label for="name-input" class="organisation_form-group-label">Название (офиц.)*:</label>
+                            <label for="name-input" class="organisation_form-group-label">Название:</label>
                         </div>
                         <div class="right-aligned">
                             <div class="inner-icon">
@@ -17,7 +17,7 @@
                                         v-model="form.name"
                                         type="text"
                                         required
-                                        placeholder="Название (офиц.)*"
+                                        placeholder="Название"
                                         class="organisation_form-group-input "
                                 >
 
@@ -31,7 +31,7 @@
 
                     <div class="organisation_form-group">
                         <div class="left-aligned">
-                            <label for="city-input" class="organisation_form-group-label">Город (гл. офис)*:</label>
+                            <label for="city-input" class="organisation_form-group-label">Город :</label>
                         </div>
                         <div class="right-aligned">
                             <div class="inner-icon">
@@ -181,7 +181,7 @@
                                         id="alt_phone-input"
                                         v-model="form.alt_phone"
                                         type="text"
-                                        placeholder="Дополнительный тел."
+
                                         class="organisation_form-group-input "
                                 >
 
