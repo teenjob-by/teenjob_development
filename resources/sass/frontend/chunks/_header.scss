@@ -126,6 +126,11 @@ $header-height: 70px;
       padding-top: 10px;
       padding-bottom: 10px;
       align-items: center;
+
+      &.panel-item {
+        flex-direction: row;
+      }
+
       border-right: thin solid #9e1326;
       width: 100%;
       justify-content: center;
