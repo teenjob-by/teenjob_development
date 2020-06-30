@@ -292,7 +292,6 @@ class Job extends Controller
             'description' => ['required'],
             'contactPerson' => ['required'],
             'phone' => ['required'],
-            'email' => ['required', 'email'],
             'salaryType' => ['required'],
             'workTime' => ['required']
         ]);
@@ -407,7 +406,6 @@ class Job extends Controller
             'description' => ['required'],
             'contactPerson' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
             'salaryType' => ['required'],
             'workTime' => ['required']
         ]);

@@ -39,6 +39,14 @@ Vue.use(BootstrapVue)
 Vue.use(Vuex)
 Vue.use(VModal, { dialog: true })
 
+import LoadScript from 'vue-plugin-load-script';
+
+Vue.use(LoadScript);
+
+import Select2 from 'v-select2-component';
+
+Vue.component('vue-select', Select2);
+
 const store = new Vuex.Store({
     state: {
         menu: {

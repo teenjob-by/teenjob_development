@@ -50,17 +50,18 @@ class Organisation extends Controller
             'job' => $this->sortItems($jobs),
             'internship' => $this->sortItems($internships),
             'volunteering' => $this->sortItems($volunteerings),
-            'event' => $this->sortItems($events),
+            'event' => $this->sortEvents($events),
         );
 
         return view('frontend.organisation')->with('data', $data)->with('organisation', $organisation);
     }
 
-    public function sortItems ($collection){
+    public function sortEvents ($collection){
         $sorted = array(
             "published" => [],
             "pending" => [],
             "archived" => [],
+            "outdated" => [],
         );
 
         foreach ($collection as $item) {
@@ -72,6 +73,37 @@ class Organisation extends Controller
                     array_push($sorted['published'], $item);
                     break;
                 case 2:
+                    array_push($sorted['archived'], $item);
+                    break;
+                case 5:
+                    array_push($sorted['outdated'], $item);
+                    break;
+            }
+        }
+
+        return $sorted;
+    }
+
+    public function sortOffers ($collection){
+        $sorted = array(
+            "published" => [],
+            "pending" => [],
+            "archived" => [],
+
+        );
+
+        foreach ($collection as $item) {
+            switch ($item->status) {
+                case 0:
+                    array_push($sorted['pending'], $item);
+                    break;
+                case 1:
+                    array_push($sorted['published'], $item);
+                    break;
+                case 2:
+                    array_push($sorted['archived'], $item);
+                    break;
+                case 5:
                     array_push($sorted['archived'], $item);
                     break;
             }
@@ -92,16 +124,7 @@ class Organisation extends Controller
     public function update(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'alt_email' => ['email', 'max:255'],
-            'phone' => ['required', 'max:255'],
-            'alt_phone' => ['max:255'],
-            'city' => ['required'],
-            'request' => ['max:255'],
-            'password' => ['min:6', 'required_with:password_repeat','same:password_repeat'],
-            'password_repeat' => ['min:6'],
-            'password_old' => ['required']
-        ]);
+
 
         if ($validator->fails()) {
             return response()->json($validator->messages(), 200);
@@ -114,7 +137,7 @@ class Organisation extends Controller
             $organisations->phone = $request->input('phone');
             $organisations->alt_phone = $request->input('alt_phone');
             $organisations->request = $request->input('request');
-            $organisations->city_id = $request->input('city');
+            $organisations->city_id = $request->input('city_id');
             if ((!empty($request->input('password'))) && ($request->input('password') == $request->input('password_repeat') )) {
                $organisations->password = Hash::make($request->input('password'));
             }

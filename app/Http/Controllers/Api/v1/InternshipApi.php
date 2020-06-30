@@ -74,6 +74,9 @@ class InternshipApi extends Controller
                 case 'banned':
                     $internships = InternshipModel::where('offer_type', 1)->where('status', 3)->with('city')->with('organisation')->get();
                     break;
+                case 'outdated':
+                    $internships = InternshipModel::where('offer_type', 1)->where('status', 5)->with('city')->with('organisation')->get();
+                    break;
             }
 
 
@@ -100,6 +103,9 @@ class InternshipApi extends Controller
                 case 2:
                     array_push($sorted['archived'], $item);
                     break;
+                case 5:
+                    array_push($sorted['archived'], $item);
+                    break;
             }
         }
 
@@ -109,8 +115,10 @@ class InternshipApi extends Controller
     public function edit($id)
     {
         $cities = City::all();
+        $salaryTypes = SalaryType::all();
+        $workTimeTypes = WorkTimeType::all();
         $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
-        $organisation = InternshipModel::findorFail($id);
+        $organisation = Offer::findorFail($id);
         $ages = collect([
             (object)[
                 'id' => 14,
@@ -129,7 +137,8 @@ class InternshipApi extends Controller
                 'name'=>'17'
             ]
         ]);
-        return response()->json([ "data" => $organisation, "specialities" => $specialities, "cities" => $cities, 'ages' => $ages], 200);
+        return response()->json([ "data" => $organisation, "specialities" => $specialities, "cities" => $cities, "salaryTypes" => $salaryTypes, "workTimeTypes" => $workTimeTypes, 'ages' => $ages], 200);
+
     }
 
     public function update(Request $request)
@@ -143,7 +152,6 @@ class InternshipApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
         ]);
 
         if ($validator->fails()) {
@@ -168,6 +176,8 @@ class InternshipApi extends Controller
     public function create()
     {
         $cities = City::all();
+        $salaryTypes = SalaryType::all();
+        $workTimeTypes = WorkTimeType::all();
         $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
         $ages = collect([
             (object)[
@@ -187,7 +197,8 @@ class InternshipApi extends Controller
                 'name'=>'17'
             ]
         ]);
-        return response()->json([ "specialities" => $specialities, "cities" => $cities, 'ages' => $ages], 200);
+        return response()->json([ "specialities" => $specialities, "cities" => $cities, "salaryTypes" => $salaryTypes, "workTimeTypes" => $workTimeTypes, 'ages' => $ages], 200);
+
 
     }
 

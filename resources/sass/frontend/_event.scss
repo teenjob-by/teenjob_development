@@ -1,8 +1,9 @@
 .event {
 
   &_card {
-    width: 200px;
-    height: 400px;
+
+    width: 240px;
+    height: 420px;
 
     background: $white;
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -18,15 +19,22 @@
     margin-top: 10px;
     margin-bottom: 10px;
 
-    @media all and (min-width: 700px) {
-      &:nth-child(3n + 2) {
-        margin-left: 15px;
-        margin-right: 15px;
-      }
-    }
+
+
       
     &.card-overlay {
        filter: brightness(50%);
+    }
+
+    @include for-tablet-landscape-up() {
+
+
+      &:nth-child(2n + 2) {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+
     }
 
 
@@ -34,7 +42,25 @@
     @include for-desktop-up() {
       margin-top: 0px;
       margin-bottom: 20px;
+      width: 200px;
+      height: 420px;
+
+      &:nth-child(2n + 2) {
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      &:nth-child(3n + 2) {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+
+
+
     }
+
+
 
 
     &-overlay {
@@ -51,10 +77,16 @@
 
       justify-content: space-evenly;
 
-      @media all and (min-width: 700px) {
+      @include for-tablet-landscape-up() {
         justify-content: flex-start;
-        flex-direction: row;
         align-items: flex-start;
+        flex-direction: row;
+      }
+
+      @include for-desktop-up() {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: row;
       }
 
 
@@ -112,7 +144,7 @@
       }
 
       &-image{
-        width: 200px;
+        width: 100%;
         height: 168px;
         background: transparent url(/images/loading.svg) no-repeat center center;
         background-size: 50% 50%;
@@ -523,7 +555,7 @@
       }
 
       .file-upload-btn:hover {
-        background: #1AA059;
+        background: $violet;
         color: #ffffff;
         transition: all .2s ease;
         cursor: pointer;

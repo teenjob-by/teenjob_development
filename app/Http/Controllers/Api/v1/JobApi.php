@@ -74,6 +74,9 @@ class JobApi extends Controller
                 case 'banned':
                     $jobs = JobModel::where('offer_type', 2)->where('status', 3)->with('city')->with('organisation')->get();
                     break;
+                case 'outdated':
+                    $jobs = JobModel::where('offer_type', 2)->where('status', 5)->with('city')->with('organisation')->get();
+                    break;
             }
 
             return response()->json([ "data" => $jobs ], 200);
@@ -96,6 +99,9 @@ class JobApi extends Controller
                     array_push($sorted['pending'], $item);
                     break;
                 case 2:
+                    array_push($sorted['archived'], $item);
+                    break;
+                case 5:
                     array_push($sorted['archived'], $item);
                     break;
             }
@@ -143,9 +149,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
-            'salary' => ['integer'],
-            'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
         ]);
 
@@ -163,7 +166,10 @@ class JobApi extends Controller
         $job->phone = $request->input('phone');
         $job->email = $request->input('email');
         $job->alt_phone = $request->input('alt_phone');
-        $job->salary = $request->input('salary');
+        if(!($request->input('salary')))
+            $job->salary = null;
+        else
+            $job->salary = $request->input('salary');
         $job->salary_type_id = $request->input('salary_type_id');
         $job->work_time_type_id = $request->input('work_time_type_id');
 
@@ -210,9 +216,6 @@ class JobApi extends Controller
             'description' => ['required'],
             'contact' => ['required'],
             'phone' => ['required'],
-            'email' => ['email'],
-            'salary' => ['integer'],
-            'salary_type_id' => ['required'],
             'work_time_type_id' => ['required']
         ]);
 

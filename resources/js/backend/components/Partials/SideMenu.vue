@@ -118,6 +118,11 @@
                     В архиве
                 </router-link>
             </li>
+            <li class="side-menu-link">
+                <router-link :to="{ name: 'eventIndex', params: { scope: 'outdated'} }">
+                    Прошедшие
+                </router-link>
+            </li>
         </ul>
     </nav>
 </template>

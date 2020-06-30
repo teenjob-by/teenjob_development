@@ -28,7 +28,13 @@
                             <a class="header_menu-link" href="{{ route('auth.login') }}">
                                 <strong>@lang('header.navlink_11')</strong>
                             </a>
+
+                            <a class="header_menu-link" href="{{ route('auth.login') }}">
+                                Вход для организаций
+                            </a>
                         </li>
+
+
                     @else
 
                         <li class="header_menu-item">
