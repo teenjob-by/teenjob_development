@@ -37,7 +37,7 @@
 
                     @else
 
-                        <li class="header_menu-item">
+                        <li class="header_menu-item panel-item">
 
                         @if(\Illuminate\Support\Facades\Auth::user()->role)
                             <a class="header_menu-link" href="{{ route('organisation.index') }}">
