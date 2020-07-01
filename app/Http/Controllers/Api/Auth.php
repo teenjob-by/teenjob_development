@@ -25,7 +25,7 @@ class Auth extends Controller
 
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Teenjob ')->accessToken;
-                $response = ['access_token' => $token, 'token_type' => 'Bearer'];
+                $response = ['access_token' => $token, 'token_type' => 'Bearer', 'user_id' => $user->id];
                 return response()->json($response, 200);
             } else {
                 $response = "Password missmatch";
@@ -69,7 +69,7 @@ class Auth extends Controller
         ]);
 
         $token =  $user->createToken('Teenjob')-> accessToken;
-        $response = ['access_token' => $token, 'token_type' => 'Bearer'];
+        $response = ['access_token' => $token, 'token_type' => 'Bearer', 'user_id' => $user->id];
         return response()->json($response, 200);
     }
 
