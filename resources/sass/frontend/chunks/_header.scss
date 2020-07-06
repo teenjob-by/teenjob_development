@@ -172,6 +172,8 @@ $header-height: 70px;
       height: 100%;
       display: flex;
       justify-content: center;
+      flex-direction: column;
+      justify-content: space-evenly;
       align-items: center;
       white-space: nowrap;
       transition: color 0.2s ease-in;
