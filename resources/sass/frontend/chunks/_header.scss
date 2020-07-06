@@ -126,6 +126,11 @@ $header-height: 70px;
       padding-top: 10px;
       padding-bottom: 10px;
       align-items: center;
+
+      &.panel-item {
+        flex-direction: row;
+      }
+
       border-right: thin solid #9e1326;
       width: 100%;
       justify-content: center;
@@ -167,6 +172,8 @@ $header-height: 70px;
       height: 100%;
       display: flex;
       justify-content: center;
+      flex-direction: column;
+      justify-content: space-evenly;
       align-items: center;
       white-space: nowrap;
       transition: color 0.2s ease-in;

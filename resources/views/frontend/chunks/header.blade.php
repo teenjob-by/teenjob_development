@@ -27,17 +27,16 @@
                         <li class="header_menu-item">
                             <a class="header_menu-link" href="{{ route('auth.login') }}">
                                 <strong>@lang('header.navlink_11')</strong>
+                                <span>Вход для организаций<span>
                             </a>
 
-                            <a class="header_menu-link" href="{{ route('auth.login') }}">
-                                Вход для организаций
-                            </a>
+
                         </li>
 
 
                     @else
 
-                        <li class="header_menu-item">
+                        <li class="header_menu-item panel-item">
 
                         @if(\Illuminate\Support\Facades\Auth::user()->role)
                             <a class="header_menu-link" href="{{ route('organisation.index') }}">
