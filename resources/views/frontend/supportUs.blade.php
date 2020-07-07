@@ -62,12 +62,8 @@
         <div class="content-wrapper">
             <div class="info-page_subsection-full support-us">
                 <h3 class="info-page-title">@lang('content.help.title')</h3>
-                <h4 class="info-page-subtitle">@lang('content.help.subtitle')</h4>
 
 
-                <div class="donate-widget">
-                    <iframe width="100%" height="320" src="https://molamola.by/campaigns/widget/1579" frameborder="0" scrolling="no"></iframe>
-                </div>
                 <div class="card-wrapper">
                     <div class="support-card mb-0">
                         <div class="circle">

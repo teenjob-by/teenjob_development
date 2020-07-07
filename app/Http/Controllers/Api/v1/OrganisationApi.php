@@ -114,7 +114,6 @@ class OrganisationApi extends Controller
 
         $validator = Validator::make($request->all(), [
             'phone' => ['required'],
-            'request' => ['required'],
             'password' => ['required'],
         ]);
 
