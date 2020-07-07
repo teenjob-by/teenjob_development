@@ -326,13 +326,9 @@
                             // Failed to fetch script
                         });
                     var date = app.$moment(resp.data.data.date_start, "YYYY/MM/DD HH:mm")
-                    console.log(resp.data.data.date_start)
-                    var time = app.$moment(resp.data.data.date_start, 'YYYY/MM/DD HH:mm');
-                    console.log(resp.data.data.date_start)
+                    var time = app.$moment(resp.data.data.date_start, 'YYYY/MM/DD HH:mm')
                     app.form.date_start = date.format('DD/MM/YYYY');
-                    console.log(time)
                     app.form.time_start = time.format('HH:mm');
-                    console.log(app.form.time_start)
 
                 })
 
@@ -442,9 +438,9 @@
 
                 } else {
                     this.removeUpload();
-                    console.log('remove');
+
                 }
-                console.log('test');
+
             },
 
             removeUpload() {
