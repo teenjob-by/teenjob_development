@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\GlobalMetric;
 use Mail;
 
 
@@ -12,7 +13,11 @@ class StaticPage extends Controller
 {
     public function home()
     {
-        return view('frontend.home');
+        $organisation_count = GlobalMetric::where("name", "organisation_count")->get();
+
+        $counters = [200, 8, $organisation_count[0]->value];
+
+        return view('frontend.home')->with('counters', $counters);
     }
 
     public function conditions()

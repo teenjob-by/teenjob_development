@@ -325,11 +325,10 @@
                         .catch(() => {
                             // Failed to fetch script
                         });
-                    var date = app.$moment(resp.data.data.date_start, "YYYY/MM/DD")
-                    var time = app.$moment(resp.data.data.date_start, 'HH:mm');
+                    var date = app.$moment(resp.data.data.date_start, "YYYY/MM/DD HH:mm")
+                    var time = app.$moment(resp.data.data.date_start, 'YYYY/MM/DD HH:mm')
                     app.form.date_start = date.format('DD/MM/YYYY');
                     app.form.time_start = time.format('HH:mm');
-
 
                 })
 
@@ -439,9 +438,9 @@
 
                 } else {
                     this.removeUpload();
-                    console.log('remove');
+
                 }
-                console.log('test');
+
             },
 
             removeUpload() {
