@@ -122,9 +122,12 @@
             e.preventDefault();
             document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-
             setTimeout(function() {
-                $('.burger').click()
+
+                if(!($(".header_menu").is(":visible"))) {
+                    $('.burger').click()
+                }
+
             }, 500);
 
 
