@@ -2,7 +2,7 @@
     @if(($data->total()) > 0)
 
             @foreach($data as $item)
-                <a class="{{ $item_type }}_card {{ ($item->status == 2)? "card-overlay":"" }}"  href="{{ route('frontend.' .$item_type. 's.show', $item->id) }}">
+                <a class="{{ $item_type }}_card {{ (($item->status == 2) || ($item->status == 5))? "card-overlay":"" }}"  href="{{ route('frontend.' .$item_type. 's.show', $item->id) }}">
 
                     <div class="{{ $item_type }}_card-header">
                         <div class="{{ $item_type }}_card-header-time">
