@@ -153,7 +153,7 @@
                             @if($i == 1)
                                 <span>></span>
                             @endif
-                            <div class="counter-value" data-count="@lang('content.counter.card_'. $i .'.value')">0</div>
+                            <div class="counter-value" data-count="{{ $counters[$i - 1] }}">0</div>
                         </div>
                         <div class="card-body">
                             <p class="card-body-text">@lang('content.counter.card_'. $i .'.text')</p>

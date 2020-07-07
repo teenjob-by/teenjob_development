@@ -152,8 +152,8 @@ class EventApi extends Controller
         $event->title =  $request->input('title');
         $event->city_id = $request->input('city_id');
         $event->address = $request->input('address');
-        $event->date_start = \Carbon\Carbon::parse($date_start);
-        $event->date_finish = \Carbon\Carbon::parse($date_finish);
+        $event->date_start = \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start);
+        $event->date_finish = \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_finish);
         $event->age = $request->input('age');
 
         if(!empty(request()->image)){
@@ -282,8 +282,8 @@ class EventApi extends Controller
             'title' => $request->input('title'),
             'city_id' => $request->input('city_id'),
             'address' => $request->input('address'),
-            'date_start' => \Carbon\Carbon::parse($date_start),
-            'date_finish' => \Carbon\Carbon::parse($date_finish),
+            'date_start' => \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_start),
+            'date_finish' => \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date_finish),
             'age' => $request->input('age'),
             'type_id' => $request->input('type_id'),
             'description' => $request->input('description'),
