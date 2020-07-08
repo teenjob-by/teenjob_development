@@ -17,7 +17,7 @@ class StaticPage extends Controller
 
 
 
-        $counters = [200, 8, $organisation_count[0]->value];
+        $counters = [300, 8, $organisation_count[0]->value];
 
         return view('frontend.home')->with('counters', $counters);
     }
