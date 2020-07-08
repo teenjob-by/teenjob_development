@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Event;
 use App\Offer;
+use App\Organisation;
+use App\GlobalMetric;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Date;
 
@@ -58,5 +60,10 @@ class ArchiveOutdated extends Command
                 $event->save();
             }
         }
+
+        $organisationCount = GlobalMetric::where("name", "organisation_count")->get();
+        $organisations = Organisation::where("status", 1)->where("role", 1)->count();
+        $organisationCount[0]->value = $organisations;
+        $organisationCount[0]->save();
     }
 }

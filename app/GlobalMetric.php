@@ -13,4 +13,5 @@ class GlobalMetric extends Model
         'value'
     ];
 
+    public $timestamps = false;
 }

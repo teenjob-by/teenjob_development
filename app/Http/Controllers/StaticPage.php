@@ -15,6 +15,8 @@ class StaticPage extends Controller
     {
         $organisation_count = GlobalMetric::where("name", "organisation_count")->get();
 
+
+
         $counters = [200, 8, $organisation_count[0]->value];
 
         return view('frontend.home')->with('counters', $counters);
