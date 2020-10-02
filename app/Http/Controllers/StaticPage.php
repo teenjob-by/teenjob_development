@@ -6,7 +6,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\GlobalMetric;
+use App\Downloading_email;
 use Mail;
+use Illuminate\Http\Response;
+
 
 
 class StaticPage extends Controller
@@ -25,6 +28,40 @@ class StaticPage extends Controller
     public function conditions()
     {
         return view('frontend.conditions');
+    }
+
+    public function download()
+    {
+            $headers = [
+                'Content-Type' => 'application/pdf',
+                'Access-Control-Allow-Origin' => '*',
+            ];
+
+            $file = public_path()."/downloads/Мониторинг_и_оценка_среднего_образования_Беларуси_2020.pdf";
+
+            $counter = GlobalMetric::where("name", "results_downloaded_count")->get();
+            $counter[0]->value = (($counter[0]->value) + 1);
+            $counter[0]->save();
+
+            return response()->download($file, "Мониторинг_и_оценка_среднего_образования_Беларуси_2020.pdf", $headers);
+
+    }
+
+    public function leaveEmail(Request $request)
+    {
+
+        if($request->email)
+        {
+            $email = new Downloading_email([
+                'email' => $request->input('email')
+            ]);
+            $email->save();
+
+            return response()->json([ "message" => "Ok" ], 200);
+        }
+
+        return response()->json([ "message" => "fail" ], 500);
+
     }
 
     public function supportUs()
