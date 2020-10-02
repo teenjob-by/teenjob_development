@@ -31,17 +31,31 @@
             </li>
         </ul>
 
-        <div class="footer_social">
+        <div class="footer_social_wrapper">
 
-            <p class="footer_social-title">@lang('footer.social.title')</p>
+            <div class="footer_social">
 
-            <div class="footer_social-icons-wrapper">
-                <a class="social-icon-link" href="https://t.me/teenjob_by"><img class="social-icon" src="/images/telegram-icon.svg" alt="telegram icon"></a>
-                <a class="social-icon-link" href="https://www.instagram.com/teenjob.by/?hl=ru"><img class="social-icon" src="/images/instagram-icon.svg" alt="instagram icon"></a>
-                <a class="social-icon-link" href="https://vk.com/teenjob_by"><img class="social-icon" src="/images/vk-icon.svg" alt="vkontakte icon"></a>
-                <a class="social-icon-link" href="https://www.facebook.com/teenjob.by/"><img class="social-icon" src="/images/fb-icon.svg" alt="facebook icon"></a>
+                <p class="footer_social-title">@lang('footer.social.title')</p>
+
+                <div class="footer_social-icons-wrapper">
+                    <a class="social-icon-link" href="https://t.me/teenjob_by"><img class="social-icon" src="/images/telegram-icon.svg" alt="telegram icon"></a>
+                    <a class="social-icon-link" href="https://www.instagram.com/teenjob.by/?hl=ru"><img class="social-icon" src="/images/instagram-icon.svg" alt="instagram icon"></a>
+                    <a class="social-icon-link" href="https://vk.com/teenjob_by"><img class="social-icon" src="/images/vk-icon.svg" alt="vkontakte icon"></a>
+                    <a class="social-icon-link" href="https://www.facebook.com/teenjob.by/"><img class="social-icon" src="/images/fb-icon.svg" alt="facebook icon"></a>
+                </div>
             </div>
+
+            <div class="footer_social footer_social_blog">
+
+                <p class="footer_social-title">@lang('footer.social.blog')</p>
+
+                <div class="footer_social-icons-wrapper">
+                    <a class="social-icon-link" href="https://teenteam.teenjob.by/"><img class="social-icon" src="/images/teenteam-logo.svg" alt="blog icon"></a>
+                </div>
+            </div>
+
         </div>
+
     </div>
 
 </footer>
