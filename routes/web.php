@@ -80,6 +80,8 @@ Route::name('frontend.')->group(function () {
 
     Route::get('/', 'StaticPage@home')->name('home');
     Route::get('support-us', 'StaticPage@supportUs')->name('supportUs');
+    Route::get('download', 'StaticPage@download')->name('download');
+    Route::post('download', 'StaticPage@leaveEmail')->name('leaveEmail');
     Route::get('who-is-volunteer', 'StaticPage@whoIsVolunteer')->name('whoIsVolunteer');
     Route::get('who-is-intern', 'StaticPage@whoIsIntern')->name('whoIsIntern');
     Route::get('terms-of-use', 'StaticPage@termsOfUse')->name('termsOfUse');
