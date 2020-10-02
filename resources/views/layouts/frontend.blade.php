@@ -36,8 +36,6 @@
 
         <div id="overlay"></div>
 
-
-
         <!--styles and scripts section -->
 
 
@@ -99,14 +97,10 @@
                     '<div class="close_button">&times;</div>' +
                     '</div>' +
                     '<div class="modal_body">' +
-                    '<p class="title">С 4 июля по 30 сентября проводился Мониторинг и оценка школьного образования Беларуси <a target="_blank" href="http://eduforum.teenjob.by">http://eduforum.teenjob.by</a> Мы изучали мнение учеников и учителей со всей Беларуси. Оставьте почту, чтобы получить на нее результаты.</p>' +
-                    '<form class="modal_form" id="form_a" action="" method="">' +
-                    '<div class="input_labl">Email*</div>' +
+                    '<p class="title">С 4 июля по 30 сентября проводился Мониторинг и оценка школьного образования Беларуси <a target="_blank" href="http://eduforum.teenjob.by">http://eduforum.teenjob.by</a> Мы изучали мнение учеников и учителей со всей Беларуси. Результаты можно скачать, нажав кнопку ниже.</p>' +
                     '<div class="modal_inpt_wrapper">' +
-                    '<input type="email" required="required" class="modal_inpt" placeholder="" name="email" title="Введите свой email адрес">' +
-                    '<input type="submit" class="modal_button btn_dark btn-full" id="" value="Отправить">' +
+                    '<a href="https://dev.teenjob.by/download" class="modal_button btn_dark btn-full">Скачать</a>' +
                     '</div>' +
-                    '</form>' +
                     '</div>' +
                     '</div>';
 
@@ -129,47 +123,12 @@
 
 
 
-            function sendData() {
-                try {
-                    $.ajax({
-                        type: "POST",
-                        data: $('#form_a').serialize(),
-                        url: "https://dev.teenjob.by/download",
-                        success: function (json) {
-
-                            $('.modal_open').click();
-                            buildModalThanks()
-
-                            $('.close_button').addClass('modal_open');
-                            $(overlay).addClass('modal_open');
-
-                            dismissModal();
-                            $.cookie('visited', true, { expires: 100 });
-
-                        },
-                        error: function (data) {
-                            $('.modal_open').click();
-                            $.cookie('visited', true, { expires: 100 });
-
-                        }
-                    });
-                }
-                catch (e) {
-                    alert('error')
-                }
-            }
 
 
             function showModal(html) {
                 modalCtn.append(html);
 
-                $(".modal_button").click(function(e){
 
-                    sendData();
-
-                    e.preventDefault();
-                    return false;
-                });
                 overlay.fadeIn();
                 modalCtn.fadeIn();
             }
@@ -182,6 +141,8 @@
                     modalCtn.html('');
                 });
             }
+            </script>
+        <script>
 
 
             $(document).ready(function() {
@@ -294,8 +255,5 @@
 
 
 
-
     </body>
-
-
 </html>
