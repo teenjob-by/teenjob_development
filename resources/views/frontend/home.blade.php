@@ -287,7 +287,7 @@
                 <div id="reviews" class="swiper-container reviews-container">
                     <div class="swiper-wrapper">
 
-                        @for ($i = 1; $i <= 2; $i++)
+                        @for ($i = 1; $i <= 4; $i++)
                             <div class="swiper-slide">
                                 <div class="slide-wrapper">
                                     <div class="slide-image-wrapper">

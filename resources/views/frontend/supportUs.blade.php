@@ -97,7 +97,7 @@
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
 
-                                    @for ($i = 1; $i <= 3; $i++)
+                                    @for ($i = 1; $i <= 4; $i++)
                                         <div class="swiper-slide">
                                             <a href="@lang("content.help.link_".$i)" target="_blank" class="slide-wrapper">
                                                 <div class="image-wrapper" >
