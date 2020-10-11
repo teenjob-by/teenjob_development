@@ -19,6 +19,7 @@ return [
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
+
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -62,6 +63,9 @@ return [
     ],
 
     'to' => 'teenjob.by@gmail.com',
+
+    'notification_emails' => explode(',', env('NOTIFICATION_EMAILS', '')),
+    'notification_from' => env('NOTIFICATION_FROM', 'team@teenjob.by'),
 
     /*
     |--------------------------------------------------------------------------

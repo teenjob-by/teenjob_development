@@ -6,7 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Schema;
-
+use App\Event;
+use App\Offer;
+use App\Observers\EventObserver;
+use App\Observers\OfferObserver;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -36,5 +39,8 @@ class AppServiceProvider extends ServiceProvider
             $mail->markdown('emails.verify-email', ['url' => $url]);
             return $mail;
         });
+
+        Event::observe(EventObserver::class);
+        Offer::observe(OfferObserver::class);
     }
 }
