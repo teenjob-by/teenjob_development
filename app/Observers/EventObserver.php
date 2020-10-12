@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Event;
+use App\Jobs\SendTelegramNotification;
+use App\Notifications\TelegramEventCreated;
+use App\Notifications\TelegramPostEvent;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ModeratorEventCreated;
@@ -20,7 +23,7 @@ class EventObserver
     public function sendEmail(Event $event, Mailable $mail)
     {
         //foreach ( as $recipient) {
-        //    Mail::to($recipient)->queue(new ModeratorEventCreated($event));
+        //    Mail::to($recipient)->queue(new ModeratorOfferCreated($offer));
         //}
         Mail::cc(config('mail.notification_emails'))
             ->queue($mail);
@@ -29,7 +32,15 @@ class EventObserver
 
     public function created(Event $event)
     {
+
+        try {
             $this->sendEmail($event, new ModeratorEventCreated($event));
+            SendTelegramNotification::dispatch($event, new TelegramEventCreated('notifications.telegram.event-notification'));
+            SendTelegramNotification::dispatch($event, new TelegramPostEvent('notifications.telegram.event-post'));
+        } catch (Throwable $e) {
+            return false;
+        }
+
     }
 
     /**
@@ -40,7 +51,12 @@ class EventObserver
      */
     public function updated(Event $event)
     {
-        $this->sendEmail($event, new ModeratorEventUpdated($event));
+        try {
+            $this->sendEmail($event, new ModeratorEventUpdated($event));
+            SendTelegramNotification::dispatch($event, new TelegramEventUpdated('notifications.telegram.event-notification'));
+        } catch (Throwable $e) {
+            return false;
+        }
     }
 
     /**

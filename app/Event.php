@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Str;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class Event extends Model
 {
+    use Notifiable;
     protected $fillable = [
         'title',
         'city_id',
@@ -32,6 +35,30 @@ class Event extends Model
     public function type()
     {
         return $this->belongsTo(EventType::class);
+    }
+
+    public function descriptionMarkdown()
+    {
+        $converter = new HtmlConverter(array('strip_tags' => true));
+        $converter->getConfig()->setOption('bold_style', '*');
+        $converter->getConfig()->setOption('use_autolinks', false);
+
+        $html = $this->description;
+        $markdown = $converter->convert($html);
+
+        return $markdown;
+    }
+
+    public function url()
+    {
+        $url = url("/events/".$this->id);
+        return $url;
+    }
+
+    public function moderatorUrl()
+    {
+        $url = url("/admin/events/".$this->id."/edit");
+        return $url;
     }
 
     public function getPreviewDesc()

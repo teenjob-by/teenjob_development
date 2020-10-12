@@ -44,4 +44,9 @@ return [
         ],
     ],
 
+    'telegram-bot-api' => [
+        'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR BOT TOKEN HERE')
+    ],
+    'telegram-notifications-channel' => env('TELEGRAM_NOTIFICATIONS_CHANNEL', 'YOUR CHANNEL HERE')
+
 ];

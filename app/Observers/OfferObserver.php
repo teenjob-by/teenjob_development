@@ -2,6 +2,9 @@
 
 namespace App\Observers;
 
+use App\Jobs\SendTelegramNotification;
+use App\Notifications\TelegramOfferCreated;
+use App\Notifications\TelegramPostOffer;
 use App\Offer;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
@@ -29,7 +32,13 @@ class OfferObserver
 
     public function created(Offer $offer)
     {
-        $this->sendEmail($offer, new ModeratorOfferCreated($offer));
+            try {
+                $this->sendEmail($offer, new ModeratorOfferCreated($offer));
+                SendTelegramNotification::dispatch($offer, new TelegramOfferCreated('notifications.telegram.offer-notification'));
+                SendTelegramNotification::dispatch($offer, new TelegramPostOffer('notifications.telegram.offer-post'));
+            } catch (Throwable $e) {
+                return false;
+            }
     }
 
     /**
@@ -40,7 +49,12 @@ class OfferObserver
      */
     public function updated(Offer $offer)
     {
-        $this->sendEmail($offer, new ModeratorOfferUpdated($offer));
+        try {
+            $this->sendEmail($offer, new ModeratorOfferUpdated($offer));
+            SendTelegramNotification::dispatch($offer, new TelegramOfferUpdated('notifications.telegram.offer-notification'));
+        } catch (Throwable $e) {
+            return false;
+        }
     }
 
     /**

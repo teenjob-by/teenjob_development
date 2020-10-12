@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class Offer extends Model
 {
+    use Notifiable;
     protected $fillable = [
         'title',
         'city_id',
@@ -31,6 +34,8 @@ class Offer extends Model
 
     protected $dates = ['published_at'];
 
+
+
     public function getPublishedAtAttribute($date)
     {
         return new Date($date);
@@ -44,6 +49,40 @@ class Offer extends Model
     public function organisation()
     {
         return $this->belongsTo(Organisation::class);
+    }
+
+    public function url()
+    {
+        switch ($this->offer_type) {
+            case 0:
+                $url = url("/volunteerings-for-teens/".$this->id);
+                break;
+            case 1:
+                $url = url("/internships-for-teens/".$this->id);
+                break;
+            case 2:
+                $url = url("/jobs-for-teens/".$this->id);
+                break;
+        }
+
+        return $url;
+    }
+
+    public function moderatorUrl()
+    {
+        switch ($this->offer_type) {
+            case 0:
+                $url = url("/admin/volunteerings/".$this->id."/edit");
+                break;
+            case 1:
+                $url = url("/admin/internships/".$this->id."/edit");
+                break;
+            case 2:
+                $url = url("/admin/jobs/".$this->id."/edit");
+                break;
+        }
+
+        return $url;
     }
 
     public function getPreviewDesc()
@@ -62,6 +101,18 @@ class Offer extends Model
         $out = Str::limit($str,200,'...');
         $out  = clean($out);
         return $out;
+    }
+
+    public function descriptionMarkdown()
+    {
+        $converter = new HtmlConverter(array('strip_tags' => true));
+        $converter->getConfig()->setOption('bold_style', '*');
+        $converter->getConfig()->setOption('use_autolinks', false);
+
+        $html = $this->description;
+        $markdown = $converter->convert($html);
+
+        return $markdown;
     }
 
     public function getSeoMeta()
