@@ -109,7 +109,7 @@
                     '<div class="modal_body">' +
                     '<p class="title">С 4 июля по 30 сентября проводился Мониторинг и оценка школьного образования Беларуси <a target="_blank" href="http://eduforum.teenjob.by">http://eduforum.teenjob.by</a> Мы изучали мнение учеников и учителей со всей Беларуси. Результаты можно скачать, нажав кнопку ниже.</p>' +
                     '<div class="modal_inpt_wrapper">' +
-                    '<a href="https://dev.teenjob.by/download" class="modal_button btn_dark btn-full">Скачать</a>' +
+                    '<a href="https://teenjob.by/download" class="modal_button btn_dark btn-full">Скачать</a>' +
                     '</div>' +
                     '</div>' +
                     '</div>';
