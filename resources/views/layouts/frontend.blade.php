@@ -7,7 +7,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="language" content="{{ app()->getLocale() }}"/>
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=m2nMeB4vkl">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=m2nMeB4vkl">
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=m2nMeB4vkl">
+        <link rel="manifest" href="/images/favicon/site.webmanifest?v=m2nMeB4vkl">
+        <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg?v=m2nMeB4vkl" color="#5bbad5">
+        <link rel="shortcut icon" href="/images/favicon/favicon.ico?v=m2nMeB4vkl">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="/images/favicon/browserconfig.xml?v=m2nMeB4vkl">
+        <meta name="theme-color" content="#ffffff">
+
         <link href="/css/justselect.min.css" rel="stylesheet" />
         @yield('styles')
 
@@ -31,6 +41,10 @@
         </div>
 
         @include('frontend.chunks.footer')
+
+        <div id="modal_container"></div>
+
+        <div id="overlay"></div>
 
         <!--styles and scripts section -->
 
@@ -60,6 +74,84 @@
 
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/i18n/ru.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+        <script>
+
+            var modalCtn = $('#modal_container'),
+                overlay = $('#overlay');
+
+            $('document').ready(function() {
+
+                if ( !($.cookie('visited'))) {
+                    setTimeout(() => {
+
+                        var btnModalVal = $(this).attr('modal-value');
+
+                        buildModalNotification();
+
+                        $('.close_button').addClass('modal_open');
+                        $(overlay).addClass('modal_open');
+
+                        dismissModal();
+
+                    }, 30000)
+                }
+
+
+            });
+
+            function buildModalNotification() {
+                var html = '<div id="modal_a" class="modal_dialog">' +
+                    '<div class="modal_header">' +
+                    '<div class="close_button">&times;</div>' +
+                    '</div>' +
+                    '<div class="modal_body">' +
+                    '<p class="title">С 4 июля по 30 сентября проводился Мониторинг и оценка школьного образования Беларуси <a target="_blank" href="http://eduforum.teenjob.by">http://eduforum.teenjob.by</a> Мы изучали мнение учеников и учителей со всей Беларуси. Результаты можно скачать, нажав кнопку ниже.</p>' +
+                    '<div class="modal_inpt_wrapper">' +
+                    '<a href="https://teenjob.by/download" class="modal_button btn_dark btn-full">Скачать</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+
+                showModal(html);
+            }
+
+            function buildModalThanks() {
+                var html = '<div id="modal_a" class="modal_dialog">' +
+                    '<div class="modal_header">' +
+                    '<div class="close_button">&times;</div>' +
+                    '</div>' +
+                    '<div class="modal_body">' +
+                    '<p class="title">Спасибо, email получен, мы пришлем вам результаты!</p>' +
+                    '</div>' +
+                    '</div>';
+
+                showModal(html);
+            }
+
+
+
+
+
+
+            function showModal(html) {
+                modalCtn.append(html);
+
+
+                overlay.fadeIn();
+                modalCtn.fadeIn();
+            }
+
+            function dismissModal() {
+                $('.modal_open').click(function() {
+                    $.cookie('visited', true, { expires: 100 });
+                    modalCtn.hide();
+                    overlay.hide();
+                    modalCtn.html('');
+                });
+            }
+            </script>
         <script>
 
 

@@ -85,6 +85,40 @@
                 prevEl: '.swiper-button-prev-partners',
             },
         })
+
+
+
+        var swiperSliderTeam = new Swiper ('#team', {
+            direction: 'horizontal',
+            loop: true,
+            slidesPerView : 4,
+
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 2,
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 3,
+                },
+
+                1024: {
+                    slidesPerView: 4,
+                }
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next-team',
+                prevEl: '.swiper-button-prev-team',
+            },
+        })
+
+
         var a = 0;
         $(window).scroll(function() {
 
@@ -287,7 +321,7 @@
                 <div id="reviews" class="swiper-container reviews-container">
                     <div class="swiper-wrapper">
 
-                        @for ($i = 1; $i <= 2; $i++)
+                        @for ($i = 1; $i <= 4; $i++)
                             <div class="swiper-slide">
                                 <div class="slide-wrapper">
                                     <div class="slide-image-wrapper">
@@ -313,6 +347,47 @@
                 </span>
             </a>
 
+        </div>
+    </section>
+
+
+    <section class="home_section-partners">
+        <div class="content-wrapper">
+            <h3 class="home_title-partners">@lang('team.title')</h3>
+
+            <section class="home_carousel-wrapper">
+                <div id="team" class="swiper-container">
+                    <div class="swiper-wrapper" >
+
+                        @for ($i = 1; $i <= 5; $i++)
+                            <div class="swiper-slide">
+                                <div class="slide-wrapper">
+                                    <div class="slide-header">
+                                        <img class="slide-header-image" src="images/section-team/image-{{ $i }}.png">
+                                    </div>
+
+                                    <p class="slide-name">@lang("team.team_".$i.".name") @lang("team.team_".$i.".surname")</p>
+                                    <p class="slide-role">@lang("team.team_".$i.".role")</p>
+                                    <div class="slide-social">
+                                        <a href="@lang('team.team_'.$i.'.social.link_1')" target="_blank">
+                                            <img class="social-icon" src="images/section-team/fb.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endfor
+
+                    </div>
+                </div>
+                <div class="swiper-button-prev-team"></div>
+                <div class="swiper-button-next-team"></div>
+            </section>
+
+            <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" target="_blank">
+                <span>
+                    @lang('content.about_us.button')
+                </span>
+            </a>
         </div>
     </section>
 

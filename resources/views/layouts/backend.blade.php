@@ -18,7 +18,16 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png?v=m2nMeB4vkl">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png?v=m2nMeB4vkl">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png?v=m2nMeB4vkl">
+    <link rel="manifest" href="/images/favicon/site.webmanifest?v=m2nMeB4vkl">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg?v=m2nMeB4vkl" color="#5bbad5">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico?v=m2nMeB4vkl">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml?v=m2nMeB4vkl">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
     <link href="{{ mix('/css/backend/app.css') }}" rel="stylesheet">
