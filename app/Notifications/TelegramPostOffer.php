@@ -34,7 +34,6 @@ class TelegramPostOffer extends Notification
         return TelegramMessage::create()
             ->to(config('services.telegram-notifications-channel'))
             ->view($this->view, array('data' => $offer), $mergeData = [])
-            ->options(['parse_mode' => 'Markdown'])
-            ->button('Просмотреть',  $offer->url());
+            ->options(['parse_mode' => 'Markdown']);
     }
 }

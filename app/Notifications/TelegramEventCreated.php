@@ -42,7 +42,6 @@ class TelegramEventCreated extends Notification
             ->to(config('services.telegram-notifications-channel'))
             ->view($this->view, array('data' => $event), array('heading' => "Создано объявление"))
             ->options(['parse_mode' => 'Markdown'])
-            ->button('Просмотреть',  $event->url())
             ->button('Модерировать', $event->moderatorUrl());
     }
 

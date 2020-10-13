@@ -34,7 +34,6 @@ class TelegramPostEvent extends Notification
         return TelegramMessage::create()
             ->to(config('services.telegram-notifications-channel'))
             ->view($this->view, array('data' => $event), $mergeData = [])
-            ->options(['parse_mode' => 'Markdown'])
-            ->button('Просмотреть',  $event->url());
+            ->options(['parse_mode' => 'Markdown']);
     }
 }

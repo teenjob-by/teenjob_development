@@ -1,3 +1,5 @@
+#сайт
+
 _{{ $heading }}_
 *{{ $data->title }}*
 
