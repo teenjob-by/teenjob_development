@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Event;
 use App\Jobs\SendTelegramNotification;
 use App\Notifications\TelegramEventCreated;
+use App\Notifications\TelegramEventUpdated;
 use App\Notifications\TelegramPostEvent;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
