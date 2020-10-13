@@ -34,7 +34,7 @@ class TelegramOfferUpdated extends Notification
         return TelegramMessage::create()
             ->to(config('services.telegram-notifications-channel'))
             ->view($this->view, array('data' => $offer), array('heading' => "Объявление отредактировано"))
-            ->options(['parse_mode' => 'HTMl'])
+            ->options(['parse_mode' => 'Markdown'])
             ->button('Модерировать', $offer->moderatorUrl());
     }
 }
