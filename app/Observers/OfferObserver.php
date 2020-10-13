@@ -2,15 +2,12 @@
 
 namespace App\Observers;
 
-use App\Jobs\SendTelegramNotification;
-use App\Notifications\TelegramOfferCreated;
-use App\Notifications\TelegramOfferUpdated;
-use App\Notifications\TelegramPostOffer;
 use App\Offer;
+use App\Jobs\SendTelegramNotification;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ModeratorOfferCreated;
-use App\Mail\ModeratorOfferUpdated;
+use App\Mail\EmailNotification;
+use App\Notifications\TelegramNotification;
 
 class OfferObserver
 {
@@ -20,26 +17,28 @@ class OfferObserver
      * @param  \App\Offer  $offer
      * @return void
      */
+    public $item_type = "offer";
 
-    public function sendEmail(Offer $offer, Mailable $mail)
+    public function sendEmail(Mailable $mail)
     {
         //foreach ( as $recipient) {
         //    Mail::to($recipient)->queue(new ModeratorOfferCreated($offer));
         //}
         Mail::cc(config('mail.notification_emails'))
             ->queue($mail);
-
     }
 
     public function created(Offer $offer)
     {
-            try {
-                $this->sendEmail($offer, new ModeratorOfferCreated($offer));
-                SendTelegramNotification::dispatch($offer, new TelegramOfferCreated('notifications.telegram.offer-notification'));
-                SendTelegramNotification::dispatch($offer, new TelegramPostOffer('notifications.telegram.offer-post'));
-            } catch (Throwable $e) {
-                return false;
-            }
+        try {
+            $heading = "Создано новое объявление";
+
+            $this->sendEmail(new EmailNotification($offer, 'moderator.'. $this->item_type .'-created', $heading));
+            SendTelegramNotification::dispatch($offer, new TelegramNotification('notifications.telegram.'. $this->item_type .'-notification', $heading, true, false));
+            SendTelegramNotification::dispatch($offer, new TelegramNotification('notifications.telegram.'. $this->item_type .'-post', $heading, false, false));
+        } catch (Throwable $e) {
+            return false;
+        }
     }
 
     /**
@@ -51,8 +50,10 @@ class OfferObserver
     public function updated(Offer $offer)
     {
         try {
-            $this->sendEmail($offer, new ModeratorOfferUpdated($offer));
-            SendTelegramNotification::dispatch($offer, new TelegramOfferUpdated('notifications.telegram.offer-notification'));
+            $heading = "Объявление отредактировано пользователем";
+
+            $this->sendEmail(new EmailNotification($offer, 'moderator.'. $this->item_type .'-updated', $heading));
+            SendTelegramNotification::dispatch($offer, new TelegramNotification('notifications.telegram.'. $this->item_type .'-notification', $heading, true, false));
         } catch (Throwable $e) {
             return false;
         }

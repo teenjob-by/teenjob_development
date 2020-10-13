@@ -1,6 +1,6 @@
 <div class="item__wrapper">
     <div class="item__wrapper">
-        <h2>Новое объявление ожидает модерации</h2>
+        <h2>{{ $heading }}</h2>
         <h3 class="item__title">{{ $data->title }}</h3>
         <h4 class="item__author">
             <a href="{{ $data->organisation['link'] }}" target="_blank">
@@ -22,8 +22,6 @@
             @endisset
         </p>
 
-
-
         <p class="item__age">
             @lang('content.event.card.age') {{ $data->age }}
         </p>
@@ -35,17 +33,11 @@
             <p class="item__workTime"> {{ $data->workTimeType->name }}</p>
         @endif
 
-
         @isset($data->type)
             <p class="item__type">
                 {{ $data->type->name}}
             </p>
         @endisset
-
-        <div class="item__description">
-            {!! $data->description !!}
-        </div>
-
 
         @isset($data->contact)
             <p class="item__contactPerson">{{ $data->contact }}</p>
@@ -62,6 +54,10 @@
         @isset($data->altPhone)
             <p class="item__phone">{{ $data->alt_phone }}</p>
         @endisset
+
+        <a href="{{ $data->moderatorUrl() }}">
+            Модерировать
+        </a>
     </div>
 </div>
 

@@ -1,5 +1,5 @@
 <div class="item__wrapper">
-    <h2>Мероприятие ожидает проверки после редактирования пользователем</h2>
+    <h2>{{ $heading }}</h2>
     <h3 class="item__title">{{ $data->title }}</h3>
     <h4 class="item__author">
         <a href="{{ $data->organisation['link'] }}" target="_blank">
@@ -32,14 +32,9 @@
         </p>
     @endisset
 
-    <div class="item__description">
-        {!! $data->description !!}
-    </div>
-
-    @isset($data->location[0])
-        <div class="item__map" id="map">
-        </div>
-    @endisset
+    <a href="{{ $data->moderatorUrl() }}">
+        Модерировать
+    </a>
 
 </div>
 

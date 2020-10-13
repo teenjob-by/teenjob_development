@@ -4,13 +4,10 @@ namespace App\Observers;
 
 use App\Event;
 use App\Jobs\SendTelegramNotification;
-use App\Notifications\TelegramEventCreated;
-use App\Notifications\TelegramEventUpdated;
-use App\Notifications\TelegramPostEvent;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ModeratorEventCreated;
-use App\Mail\ModeratorEventUpdated;
+use App\Mail\EmailNotification;
+use App\Notifications\TelegramNotification;
 
 class EventObserver
 {
@@ -20,28 +17,28 @@ class EventObserver
      * @param  \App\Event  $event
      * @return void
      */
+    public $item_type = "event";
 
-    public function sendEmail(Event $event, Mailable $mail)
+    public function sendEmail(Mailable $mail)
     {
         //foreach ( as $recipient) {
         //    Mail::to($recipient)->queue(new ModeratorOfferCreated($offer));
         //}
         Mail::cc(config('mail.notification_emails'))
             ->queue($mail);
-
     }
 
     public function created(Event $event)
     {
-
         try {
-            $this->sendEmail($event, new ModeratorEventCreated($event));
-            SendTelegramNotification::dispatch($event, new TelegramEventCreated('notifications.telegram.event-notification'));
-            SendTelegramNotification::dispatch($event, new TelegramPostEvent('notifications.telegram.event-post'));
+            $heading = "Создано новое мероприятие";
+
+            $this->sendEmail(new EmailNotification($event, 'moderator.'. $this->item_type .'-created', $heading));
+            SendTelegramNotification::dispatch($event, new TelegramNotification('notifications.telegram.'. $this->item_type .'-notification', $heading, true, false));
+            SendTelegramNotification::dispatch($event, new TelegramNotification('notifications.telegram.'. $this->item_type .'-post', $heading, false, false));
         } catch (Throwable $e) {
             return false;
         }
-
     }
 
     /**
@@ -53,8 +50,10 @@ class EventObserver
     public function updated(Event $event)
     {
         try {
-            $this->sendEmail($event, new ModeratorEventUpdated($event));
-            SendTelegramNotification::dispatch($event, new TelegramEventUpdated('notifications.telegram.event-notification'));
+            $heading = "Мероприятие отредактировано пользователем";
+
+            $this->sendEmail(new EmailNotification($event, 'moderator.'. $this->item_type .'-updated', $heading));
+            SendTelegramNotification::dispatch($event, new TelegramNotification('notifications.telegram.'. $this->item_type .'-notification', $heading, true, false));
         } catch (Throwable $e) {
             return false;
         }
