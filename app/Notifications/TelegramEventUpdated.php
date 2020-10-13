@@ -35,7 +35,6 @@ class TelegramEventUpdated extends Notification
             ->to(config('services.telegram-notifications-channel'))
             ->view($this->view, array('data' => $event), array('heading' => "Мероприятие отредактировано"))
             ->options(['parse_mode' => 'HTMl'])
-            ->button('Просмотреть',  $event->url)
-            ->button('Модерировать', $event->moderatorUrl);
+            ->button('Модерировать', $event->moderatorUrl());
     }
 }

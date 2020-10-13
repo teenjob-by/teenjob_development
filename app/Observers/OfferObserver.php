@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Jobs\SendTelegramNotification;
 use App\Notifications\TelegramOfferCreated;
+use App\Notifications\TelegramOfferUpdated;
 use App\Notifications\TelegramPostOffer;
 use App\Offer;
 use Illuminate\Mail\Mailable;
