@@ -379,8 +379,8 @@
 
                     </div>
                 </div>
-                <div class="swiper-button-prev-team"></div>
-                <div class="swiper-button-next-team"></div>
+                <div class="swiper-button-prev-team  swiper-button-prev"></div>
+                <div class="swiper-button-next-team  swiper-button-next"></div>
             </section>
 
             <a role="button" class="button-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeF9aN5IB5q-Bdt6wxt3LErIl8frng04X6lflCwjD1WZcnEqg/viewform" target="_blank">

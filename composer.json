@@ -14,10 +14,12 @@
         "guzzlehttp/guzzle": "^6.5",
         "intervention/image": "^2.5",
         "jenssegers/date": "^4.0.0@beta",
+        "laravel-notification-channels/telegram": "^0.5.0",
         "laravel/framework": "^7.0",
         "laravel/passport": "^9.1",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "league/html-to-markdown": "^4.10",
         "mews/purifier": "^3.2"
     },
     "require-dev": {
