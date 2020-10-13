@@ -6,21 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Offer;
 
-class ModeratorOfferUpdated extends Mailable
+class EmailNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
+    public $view;
+    public $heading;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Offer $offer)
+    public function __construct($item, $view, $heading)
     {
-        $this->data = $offer;
+        $this->data = $item;
+        $this->view = $view;
+        $this->heading = $heading;
     }
 
     /**
@@ -31,7 +34,8 @@ class ModeratorOfferUpdated extends Mailable
     public function build()
     {
         return $this
-            ->from(config('mail.notification_from'))
-            ->view('emails.moderator.offer-updated');
+                    ->from(config('mail.notification_from'))
+                    ->subject($this->heading)
+                    ->view('emails.'.$this->view, array('heading' => $this->heading) );
     }
 }

@@ -8,8 +8,10 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Schema;
 use App\Event;
 use App\Offer;
+use App\Organisation;
 use App\Observers\EventObserver;
 use App\Observers\OfferObserver;
+use App\Observers\OrganisationObserver;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        Event::observe(EventObserver::class);
+        Offer::observe(OfferObserver::class);
+        Organisation::observe(OrganisationObserver::class);
+
         VerifyEmail::toMailUsing(function ($notifiable,$url){
             $mail = new MailMessage;
             $mail->subject('Подтверждение адреса');
@@ -40,7 +46,6 @@ class AppServiceProvider extends ServiceProvider
             return $mail;
         });
 
-        Event::observe(EventObserver::class);
-        Offer::observe(OfferObserver::class);
+
     }
 }
