@@ -322,6 +322,7 @@ class Job extends Controller
         $role = Auth::user()->role;
         if($role = \App\Organisation::AUTHOR) {
             $job->status = 1;
+            $job->published_at = new Date();
         }
         $job->save();
 
@@ -435,7 +436,7 @@ class Job extends Controller
             $job->salary_type_id = $request->input('salaryType');
             $job->work_time_type_id = $request->input('workTime');
 
-            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
+            if((Auth::user()->role !== 0) && (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $job->status = 0;
             }
 

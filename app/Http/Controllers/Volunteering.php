@@ -291,6 +291,7 @@ class Volunteering extends Controller
         $role = Auth::user()->role;
         if($role = \App\Organisation::AUTHOR) {
             $volunteering->status = 1;
+            $volunteering->published_at = new Date();
         }
         $volunteering->save();
 
@@ -401,14 +402,14 @@ class Volunteering extends Controller
             $volunteering->alt_phone = $request->input('alt_phone');
 
 
-            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
+            if((Auth::user()->role !== 0) && (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $volunteering->status = 0;
             }
 
             $volunteering->save();
 
             if($request->ajax()){
-                return response()->json([ "message" => "Объявление сохранено" ], 200);
+                return response()->json([ "message" => "Объявление сохранено"], 200);
             }
 
             return redirect()->route('organisation.index');

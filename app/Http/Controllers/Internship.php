@@ -250,6 +250,7 @@ class Internship extends Controller
         $role = Auth::user()->role;
         if($role = \App\Organisation::AUTHOR) {
             $internship->status = 1;
+            $internship->published_at = new Date();
         }
         $internship->save();
 
@@ -359,7 +360,7 @@ class Internship extends Controller
             $internship->alt_phone = $request->input('alt_phone');
 
 
-            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
+            if((Auth::user()->role !== 0) && (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $internship->status = 0;
             }
 

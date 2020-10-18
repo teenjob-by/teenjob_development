@@ -343,7 +343,9 @@ class Event extends Controller
         $role = Auth::user()->role;
         if($role = \App\Organisation::AUTHOR) {
             $event->status = 1;
+            $event->published_at = new Date();
         }
+
         $event->save();
 
         if($request->ajax()){
@@ -487,7 +489,7 @@ class Event extends Controller
             $event->description = $request->input('description');
             $event->location = $request->input('location');
 
-            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
+            if((Auth::user()->role !== 0) && (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $event->status = 0;
             }
 
