@@ -287,6 +287,8 @@ class Event extends Controller
 
         $organisation = Auth::user()->id;
 
+
+
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
         request()->image->move(public_path('upload/images'), $imageName);
@@ -337,6 +339,11 @@ class Event extends Controller
             'location' => $request->input('location'),
             'organisation_id' => $organisation
         ]);
+
+        $role = Auth::user()->role;
+        if($role = \App\Organisation::AUTHOR) {
+            $event->status = 1;
+        }
         $event->save();
 
         if($request->ajax()){
@@ -370,7 +377,7 @@ class Event extends Controller
     {
         $event = EventModel::findOrFail($id);
 
-        if((($event->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
+        if((($event->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $cities = City::all();
             $lastCity = $cities->pop();
             $cities = $cities->prepend($lastCity);
@@ -427,7 +434,7 @@ class Event extends Controller
 
         $event = EventModel::findOrFail($id);
 
-        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
 
 
 
@@ -480,7 +487,7 @@ class Event extends Controller
             $event->description = $request->input('description');
             $event->location = $request->input('location');
 
-            if(Auth::user()->role !== 0) {
+            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $event->status = 0;
             }
 
@@ -507,7 +514,7 @@ class Event extends Controller
     public function destroy($id)
     {
         $event = EventModel::findOrFail($id);
-        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $event->delete();
             return response()->json([ "message" => "Объявление удалено" ], 200);
@@ -521,7 +528,7 @@ class Event extends Controller
     public function archive($id)
     {
         $event = EventModel::findOrFail($id);
-        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $event->status = 2;
             $event->save();
@@ -537,7 +544,7 @@ class Event extends Controller
     public function unarchive($id)
     {
         $event = EventModel::findOrFail($id);
-        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($event->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $event->status = 0;
             $event->save();

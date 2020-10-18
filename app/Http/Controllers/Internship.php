@@ -247,6 +247,10 @@ class Internship extends Controller
             'alt_phone' => $request->input('alt_phone'),
             'organisation_id' => $organisation,
         ]);
+        $role = Auth::user()->role;
+        if($role = \App\Organisation::AUTHOR) {
+            $internship->status = 1;
+        }
         $internship->save();
 
         if($request->ajax()){
@@ -280,7 +284,7 @@ class Internship extends Controller
 
         $internship = Offer::findOrFail($id);
 
-        if((($internship->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
+        if((($internship->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
             $cities = City::all();
             $lastCity = $cities->pop();
@@ -343,7 +347,7 @@ class Internship extends Controller
 
         $internship = Offer::findOrFail($id);
 
-        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $internship->title = $request->input('title');
             $internship->city_id = $request->input('city');
             $internship->age = $request->input('age');
@@ -355,7 +359,7 @@ class Internship extends Controller
             $internship->alt_phone = $request->input('alt_phone');
 
 
-            if(Auth::user()->role !== 0) {
+            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $internship->status = 0;
             }
 
@@ -384,7 +388,7 @@ class Internship extends Controller
     public function destroy($id)
     {
         $internship = Offer::findOrFail($id);
-        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $internship->delete();
             return response()->json([ "message" => "Объявление удалено" ], 200);
@@ -398,7 +402,7 @@ class Internship extends Controller
     public function archive($id)
     {
         $internship = Offer::findOrFail($id);
-        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $internship->status = 2;
             $internship->save();
@@ -414,7 +418,7 @@ class Internship extends Controller
     public function unarchive($id)
     {
         $internship = Offer::findOrFail($id);
-        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($internship->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $internship->status = 0;
             $internship->save();

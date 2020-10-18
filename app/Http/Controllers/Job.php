@@ -318,6 +318,11 @@ class Job extends Controller
             'work_time_type_id' => $request->input('workTime'),
             'organisation_id' => $organisation,
         ]);
+
+        $role = Auth::user()->role;
+        if($role = \App\Organisation::AUTHOR) {
+            $job->status = 1;
+        }
         $job->save();
 
         if($request->ajax()){
@@ -351,7 +356,7 @@ class Job extends Controller
 
         $job = Offer::findOrFail($id);
 
-        if((($job->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
+        if((($job->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
             $cities = City::all();
             $lastCity = $cities->pop();
@@ -416,7 +421,7 @@ class Job extends Controller
 
         $job = Offer::findOrFail($id);
 
-        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $job->title = $request->input('title');
             $job->city_id = $request->input('city');
             $job->age = $request->input('age');
@@ -430,7 +435,7 @@ class Job extends Controller
             $job->salary_type_id = $request->input('salaryType');
             $job->work_time_type_id = $request->input('workTime');
 
-            if(Auth::user()->role !== 0) {
+            if((Auth::user()->role !== 0) || (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $job->status = 0;
             }
 
@@ -459,7 +464,7 @@ class Job extends Controller
     public function destroy($id)
     {
         $job = Offer::findOrFail($id);
-        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $job->delete();
             return response()->json([ "message" => "Объявление удалено" ], 200);
@@ -473,7 +478,7 @@ class Job extends Controller
     public function archive($id)
     {
         $job = Offer::findOrFail($id);
-        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $job->status = 2;
             $job->save();
@@ -489,7 +494,7 @@ class Job extends Controller
     public function unarchive($id)
     {
         $job = Offer::findOrFail($id);
-        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($job->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $job->status = 0;
             $job->save();
