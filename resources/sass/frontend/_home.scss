@@ -141,6 +141,13 @@
           line-height: 160%;
           text-align: center;
           color: #2F2F2F;
+            max-height: 250px;
+            overflow-y: scroll;
+
+            @include for-desktop-up() {
+                overflow-y: hidden;
+                max-height: unset;
+            }
         }
 
 
