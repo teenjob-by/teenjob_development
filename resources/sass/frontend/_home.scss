@@ -141,6 +141,13 @@
           line-height: 160%;
           text-align: center;
           color: #2F2F2F;
+            max-height: 250px;
+            overflow-y: scroll;
+
+            @include for-desktop-up() {
+                overflow-y: hidden;
+                max-height: unset;
+            }
         }
 
 
@@ -616,4 +623,37 @@
 
 
 
+}
+.form-group-review {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+    .review-form_form-group-input {
+        @extend .textfield;
+        max-width: 50%;
+        min-width: 50%;
+    }
+    .review-form_form-group-text {
+        @extend .textarea;
+        height: 150px;
+        box-sizing: border-box;
+        flex-grow: 1;
+        width: 100%;
+        max-width: unset;
+        margin-left: 0;
+    }
+
+    .review-form_form-group-select {
+        @extend .textfield;
+        max-width: 234px;
+        min-width: 234px;
+    }
+}
+.hidden-input {
+    display: none;
+}
+.show-input {
+    display: block !important;
 }

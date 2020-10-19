@@ -13,6 +13,8 @@ class Organisation extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
+    const AUTHOR = 9;
+
     /**
      * The attributes that are mass assignable.
      *

@@ -253,7 +253,7 @@ return [
                         <p>
                             <a class="job-rules-link" href="https://kodeksy-by.com/zakon_rb_ob_ohrane_truda/16.htm">Закон об охране труда РБ, ст. 16. Охрана труда несовершенноетних.</a>
                         </p>
-                    </li>       
+                    </li>
                     <li>
                         <p>
                             <a class="job-rules-link" href="https://www.bsmu.by/downloads/kafedri/k_1_vbol/47.pdf">Постановление № 47 МЗ РБ Медосмотры</a>
@@ -263,7 +263,7 @@ return [
                         <p>
                             <a class="job-rules-link" href="http://www.mir.pravo.by/library/edu/detipodrostki/detitryd/">Разъяснение особенностей трудоустройства на детском правовом портале (оформление, режим работы и др.)</a>
                         </p>
-                    </li> 
+                    </li>
                     '
             ],
             'notification' => '*Носит информационный характер, не является юридической консультацией.',
@@ -502,7 +502,7 @@ return [
                         <p>
                             <a class="vacancy-rules-link" href="https://kodeksy-by.com/zakon_rb_ob_ohrane_truda/16.htm">Закон об охране труда РБ, ст. 16. Охрана труда несовершенноетних.</a>
                         </p>
-                    </li>       
+                    </li>
                     <li>
                         <p>
                             <a class="vacancy-rules-link" href="https://www.bsmu.by/downloads/kafedri/k_1_vbol/47.pdf">Постановление № 47 МЗ РБ Медосмотры</a>
@@ -512,7 +512,7 @@ return [
                         <p>
                             <a class="vacancy-rules-link" href="http://www.mir.pravo.by/library/edu/detipodrostki/detitryd/">Разъяснение особенностей трудоустройства на детском правовом портале (оформление, режим работы и др.)</a>
                         </p>
-                    </li> 
+                    </li>
                     '
             ],
             'notification' => '*Носит информационный характер, не является юридической консультацией.',
@@ -1284,7 +1284,7 @@ return [
             'modal' => [
 
                 'success' => [
-                    'content' => 'Волонтерсто сохранено успешно',
+                    'content' => 'Волонтерство сохранено успешно',
                     'confirm' => 'ОК',
                 ],
 

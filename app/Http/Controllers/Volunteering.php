@@ -288,6 +288,11 @@ class Volunteering extends Controller
             'alt_phone' => $request->input('alt_phone'),
             'organisation_id' => $organisation,
         ]);
+        $role = Auth::user()->role;
+        if($role = \App\Organisation::AUTHOR) {
+            $volunteering->status = 1;
+            $volunteering->published_at = new Date();
+        }
         $volunteering->save();
 
         if($request->ajax()){
@@ -321,7 +326,7 @@ class Volunteering extends Controller
 
         $volunteering = Offer::findOrFail($id);
 
-        if((($volunteering->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0)) {
+        if((($volunteering->organisation_id == Auth::user()->id)) || (Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $specialities = OfferSpecialization::orderBy('name')->get();          $key = $specialities->search(function($item) {             return $item->id == 22;         });         $chunk = $specialities->pull($key);         $specialities->push($chunk);
             $cities = City::all();
             $lastCity = $cities->pop();
@@ -385,7 +390,7 @@ class Volunteering extends Controller
 
         $volunteering = Offer::findOrFail($id);
 
-        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || (Auth::user()->role == \App\Organisation::AUTHOR)) {
             $volunteering->title = $request->input('title');
             $volunteering->city_id = $request->input('city');
             $volunteering->age = $request->input('age');
@@ -397,14 +402,14 @@ class Volunteering extends Controller
             $volunteering->alt_phone = $request->input('alt_phone');
 
 
-            if(Auth::user()->role !== 0) {
+            if((Auth::user()->role !== 0) && (Auth::user()->role !== \App\Organisation::AUTHOR)) {
                 $volunteering->status = 0;
             }
 
             $volunteering->save();
 
             if($request->ajax()){
-                return response()->json([ "message" => "Объявление сохранено" ], 200);
+                return response()->json([ "message" => "Объявление сохранено"], 200);
             }
 
             return redirect()->route('organisation.index');
@@ -426,7 +431,7 @@ class Volunteering extends Controller
     public function destroy($id)
     {
         $volunteering = Offer::findOrFail($id);
-        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0) || ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $volunteering->delete();
             return response()->json([ "message" => "Объявление удалено" ], 200);
@@ -440,7 +445,7 @@ class Volunteering extends Controller
     public function archive($id)
     {
         $volunteering = Offer::findOrFail($id);
-        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)|| ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $volunteering->status = 2;
             $volunteering->save();
@@ -456,7 +461,7 @@ class Volunteering extends Controller
     public function unarchive($id)
     {
         $volunteering = Offer::findOrFail($id);
-        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)) {
+        if(($volunteering->organisation_id == Auth::user()->id) || ( Auth::user()->role == 0)|| ( Auth::user()->role == \App\Organisation::AUTHOR)) {
 
             $volunteering->status = 0;
             $volunteering->save();

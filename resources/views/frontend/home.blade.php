@@ -154,15 +154,45 @@
 
         $('.open-menu').click(function(e) {
             e.preventDefault();
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            //document.body.scrollTop = document.documentElement.scrollTop = 0;
 
-            setTimeout(function() {
+            //setTimeout(function() {
 
-                if(!($(".header_menu").is(":visible"))) {
-                    $('.burger').click()
+            //    if(!($(".header_menu").is(":visible"))) {
+           //         $('.burger').click()
+            //    }
+
+            //}, 500);
+
+            var btnModalVal = $(this).attr('modal-value');
+
+            buildModalReviewRequest();
+
+            $('.close_button').addClass('modal_open');
+            $(overlay).addClass('modal_open');
+
+            dismissModal();
+
+
+
+            $('#review-select').on('change', function(e) {
+
+                if($('#review-select').val() == "ученик") {
+
+                    $("#school-review-input").toggleClass("show-input");
+                    $("#organisation-review-input").removeClass("show-input")
+                }else {
+
+                    if($('#review-select').val() == "представитель организации") {
+                        $("#organisation-review-input").toggleClass("show-input");
+                        $("#school-review-input").removeClass("show-input");
+                    }
+                    else {
+                        $("#organisation-review-input").removeClass("show-input")
+                        $("#school-review-input").removeClass("show-input");
+                    }
                 }
-
-            }, 500);
+            });
 
 
 

@@ -98,6 +98,8 @@ Route::name('frontend.')->group(function () {
     Route::post('feedback', 'StaticPage@sendEmail');
     Route::get('feedback', 'StaticPage@feedback')->name('feedback');
 
+
+    Route::post('review', 'Review@store')->name('review.create');
     /*
      * Internship routes
      */
