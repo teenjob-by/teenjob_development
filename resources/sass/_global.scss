@@ -175,26 +175,37 @@ span + .job-icon {
     top: 0;
     bottom: 0;
     right: 0;
-    z-index: 4;
+    z-index: 99998;
     width: 100%;
     height: 100%;
     display: none;
 }
 
 #modal_container {
-    width: 380px;
+    width: 100%;
+    min-width: 310px;
     height: auto;
     background-color: #ffffff;
     position: fixed;
-    left: 50%;
-    right: 50%;
-    top: 100px;
-    margin: 65px -200px 0;
+    top: 0px;
+    left: 0;
+    right: 0;
+
+    @include for-desktop-up() {
+        width: 30vw;
+        left: calc(50% - 15vw);
+        right: calc(50% - 15vw);
+        top: 110px;
+    }
+
+
+
+
     -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     -moz-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     outline: 0;
-    z-index: 5;
+    z-index: 99999;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -252,7 +263,11 @@ span + .job-icon {
 
 .modal_body,
 .modal_header {
-    padding: 20px;
+    padding: 5px 20px 15px;
+
+    @include for-desktop-up() {
+        padding: 20px;
+    }
 }
 
 .close_button {

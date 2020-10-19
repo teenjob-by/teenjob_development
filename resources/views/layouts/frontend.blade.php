@@ -123,12 +123,62 @@
                     '<div class="close_button">&times;</div>' +
                     '</div>' +
                     '<div class="modal_body">' +
-                    '<p class="title">Спасибо, email получен, мы пришлем вам результаты!</p>' +
+                    '<p class="title">Спасибо! Мы обработаем и опубликуем отзыв в ближайшиие 3 дня.</p>' +
                     '</div>' +
                     '</div>';
 
                 showModal(html);
             }
+
+
+            function buildModalReviewRequest() {
+                var html = '<div id="modal_a" class="modal_dialog">' +
+                    '<div class="modal_header"> <span class="home_organisations-subtitle">Оставить отзыв</span>' +
+                    '<div class="close_button">&times;</div>' +
+                    '</div>' +
+                    '<div class="modal_body">' +
+                    '<form id="review-form" name="review-form" method="POST" action="/review" enctype="multipart/form-data">' +
+                    '<div class="form-group-review"><input class="review-form_form-group-input" style="max-width: 40%; min-width: " name="name" type="text" placeholder="Имя"/><input class="review-form_form-group-input " style="max-width: 40%;" name="last_name" type="text" placeholder="Фамилия"/></div>' +
+                    '<div class="form-group-review"><span style="margin-right: 10px; font-family: Montserrat;">Вы:</span> <select id="review-select" class="review-form_form-group-select" name="type">' +
+                    '<option value="ученик">Ученик</option>' +
+                    '<option value="студент">Студент</option>' +
+                    '<option value="родитель">Родитель</option>' +
+                    '<option value="представитель организации">Представитель организации</option>' +
+                    '</select></div>' +
+                    '<div class="form-group-review"><input id="organisation-review-input" class="review-form_form-group-input hidden-input" style="max-width: 268px; width: 268px;" name="organisation_name" type="text" placeholder="Название организации"/><input id="school-review-input" class="hidden-input show-input review-form_form-group-input" style="max-width: 268px; width: 268px;" name="grade" type="text" placeholder="В каком классе учитесь? "/></div>' +
+                    '<div class="form-group-review"><textarea class="review-form_form-group-text" name="text" type="text">Текст Вашего отзыва</textarea></div>' +
+                    '<div class="form-group-review"><span class="" style="margin-right: 10px; margin-bottom: 10px; font-family: Montserrat;" >Загрузить фото</span><input class="" style="font-family: Montserrat;" name="photo_url" type="file"/></div>' +
+                    '<div class="modal_inpt_wrapper">' +
+                    '<button type="submit" class="button-primary"><span>Отправить отзыв</span></button>' +
+                    '</div>' +
+                    '</form>' +
+                    '</div>' +
+                    '</div>';
+
+                showModal(html);
+                $('#review-form').submit(function(e) {
+                    var $form = $(this);
+                    $.ajax({
+                        type: $form.attr('method'),
+                        url: $form.attr('action'),
+                        data: new FormData( this ),
+                        processData: false,
+                        contentType: false
+                    }).done(function() {
+                        $('.modal_open').click();
+                        buildModalThanks();
+                        $('.close_button').addClass('modal_open');
+                        $(overlay).addClass('modal_open');
+
+                        dismissModal();
+                    }).fail(function() {
+
+                    });
+                    e.preventDefault();
+                });
+            }
+
+
 
 
 
